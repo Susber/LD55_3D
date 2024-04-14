@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Components;
@@ -14,9 +15,16 @@ public class PlayerController : MonoBehaviour
     public float speed;
     public Camera playercamera;
 
+    public Rigidbody playerrigidbody;
+
     public PlayerController()
     {
         Instance = this;
+    }
+
+    private void FixedUpdate()
+    {
+        playerrigidbody.velocity *= 0.8f;
     }
 
     void Update()
@@ -39,7 +47,7 @@ public class PlayerController : MonoBehaviour
             force += -speed * new Vector3(0,0,1);
         }
 
-        GetComponent<UnitController>().Push(force);
+        playerrigidbody.AddForce(force);
         playercamera.transform.position = new Vector3(this.transform.position.x, this.playercamera.transform.position.y, this.transform.position.z-12);
         
         /* sorry david!
