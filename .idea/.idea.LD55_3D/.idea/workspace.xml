@@ -4,11 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1c1d15bd-9ebc-406e-a8b4-ae065e33b06d" name="Changes" comment="jo vllt was neues kp einfach syncron machen">
+    <list default="true" id="1c1d15bd-9ebc-406e-a8b4-ae065e33b06d" name="Changes" comment="Fox Movement">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.LD55_3D/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.LD55_3D/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/ArenaController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ArenaController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/BulletController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/BulletController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GunController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GunController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/FoxController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/FoxController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Fox.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Fox.prefab" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,11 +31,9 @@
   }
 }</component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/1ef406b3fd3a4bfbac8a7b76b99d890b1fe00/1d/c376d154/Rigidbody.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/ArenaController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/BulletController.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock://F:/spieleentwicklung/LD55_3D/Assets/CarboardEffect/CutterMesh.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://F:/spieleentwicklung/LD55_3D/Assets/Levels/AbstractWave.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/Sylwia/RiderProjects/LD55_3D/Assets/FoxController.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Levels/AbstractWave.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Levels/Wave.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/PlayerController.cs" root0="FORCE_HIGHLIGHTING" />
@@ -44,20 +42,42 @@
     <setting file="file://$PROJECT_DIR$/Assets/Util.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="false" />
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 7
+}]]></component>
+  <component name="ProjectId" id="2f6O6trv5364PObkE30HI0NyRMu" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Attach to Unity Editor.Attach to Unity Editor.executor": "Debug",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "Standalone Player.Start Unity.executor": "Debug",
+    "ignore.virus.scanning.warn.message": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
+  },
+  "keyToStringList": {
+    "rider.external.source.directories": [
+      "C:\\Users\\Sylwia\\AppData\\Roaming\\JetBrains\\Rider2024.1\\resharper-host\\DecompilerCache",
+      "C:\\Users\\Sylwia\\AppData\\Roaming\\JetBrains\\Rider2024.1\\resharper-host\\SourcesCache",
+      "C:\\Users\\Sylwia\\AppData\\Local\\Symbols\\src"
+    ]
   }
-}</component>
-  <component name="RunManager" selected="Standalone Player.Start Unity">
+}]]></component>
+  <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Start Unity" type="RunUnityExe" factoryName="Unity Executable">
-      <option name="EXE_PATH" value="C:\Program Files\Unity 2022.3.24f1\Editor\Unity.exe" />
+      <option name="EXE_PATH" value="$PROJECT_DIR$/../../../../Program Files/Unity 2022.3.24f1/Editor/Unity.exe" />
       <option name="PROGRAM_PARAMETERS" value="-projectPath F:\spieleentwicklung\LD55_3D -debugCodeOptimization" />
-      <option name="WORKING_DIRECTORY" value="F:\spieleentwicklung\LD55_3D" />
+      <option name="WORKING_DIRECTORY" value="F:/spieleentwicklung/LD55_3D" />
       <option name="PASS_PARENT_ENVS" value="1" />
       <option name="USE_EXTERNAL_CONSOLE" value="0" />
       <method v="2" />
@@ -80,10 +100,10 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="3120">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" />
+      <option name="pid" value="3120" />
       <option name="projectPathOnTarget" />
       <option name="selectedOptions">
         <list />
@@ -91,6 +111,7 @@
       <method v="2" />
     </configuration>
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task id="LOCAL-00001" summary="stuff">
       <option name="closed" value="true" />
@@ -180,11 +201,36 @@
       <option name="project" value="LOCAL" />
       <updated>1713115937911</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="1c1d15bd-9ebc-406e-a8b4-ae065e33b06d" name="Changes" comment="jo vllt was neues kp einfach syncron machen" />
+      <created>1713117888796</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1713117888796</updated>
+      <workItem from="1713117889897" duration="3662000" />
+    </task>
+    <task id="LOCAL-00012" summary="Fox Movement">
+      <option name="closed" value="true" />
+      <created>1713117966668</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1713117966668</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
   </component>
   <component name="UnityCheckinConfiguration" checkUnsavedScenes="false" />
   <component name="UnityProjectConfiguration" hasMinimizedUI="true" />
+  <component name="UnityProjectDiscoverer">
+    <option name="hasUnityReference" value="true" />
+    <option name="unityProject" value="true" />
+    <option name="unityProjectFolder" value="true" />
+  </component>
+  <component name="UnityUnitTestConfiguration" currentTestLauncher="Both" />
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
       <map>
@@ -197,6 +243,7 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
     <MESSAGE value="stuff" />
     <MESSAGE value="bullet fix" />
     <MESSAGE value="collider fix" />
@@ -205,6 +252,7 @@
     <MESSAGE value="gun recoil" />
     <MESSAGE value="jo pusht bitte keinen müll" />
     <MESSAGE value="jo vllt was neues kp einfach syncron machen" />
-    <option name="LAST_COMMIT_MESSAGE" value="jo vllt was neues kp einfach syncron machen" />
+    <MESSAGE value="Fox Movement" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fox Movement" />
   </component>
 </project>
