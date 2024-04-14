@@ -41,7 +41,7 @@ public class ArenaController : MonoBehaviour
     public AbstractWave waitForWaveToFinish = null;
     public float spawnNextWaveTime;
 
-    public UpgradeUIComponent upgradeUi;
+    //public UpgradeUIComponent upgradeUi;
 
     private void Start()
     {
@@ -59,8 +59,8 @@ public class ArenaController : MonoBehaviour
             Destroy(t.gameObject);
         }
         
-        upgradeUi.UpdateUI();
-        upgradeUi.gameObject.SetActive(false);
+     //   upgradeUi.UpdateUI();
+    //    upgradeUi.gameObject.SetActive(false);
     }
 
 
