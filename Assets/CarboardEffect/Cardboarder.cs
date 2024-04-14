@@ -82,8 +82,8 @@ public class Cardboarder : MonoBehaviour {
 
 		float texture_w = CardboardLineMaterial.mainTexture.width;
 		float texture_h = CardboardLineMaterial.mainTexture.height;
-		Debug.Log(CardboardLineMaterial.mainTexture.width);
-		Debug.Log(CardboardLineMaterial.mainTexture.height);
+		// Debug.Log(CardboardLineMaterial.mainTexture.width);
+		// Debug.Log(CardboardLineMaterial.mainTexture.height);
 		float aspect_ratio = texture_w / texture_h;
 
 		float totalDistance = 0;

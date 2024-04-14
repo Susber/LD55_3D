@@ -15,6 +15,8 @@ namespace Components
         private float armor_factor = 1;
         private float armor;
 
+        public int coins;
+
         public void Damage(float damage)
         {
             life -= damage * armor_factor;
@@ -28,6 +30,14 @@ namespace Components
 
         void Die()
         {
+            for (var i = 0; i < coins; i++)
+            {
+                var coin = Instantiate(ArenaController.Instance.coinPrefab, ArenaController.Instance.coinContainer);
+                coin.transform.position = this.transform.position + new Vector3(0, 0.5f, 0);
+                var rnd = ArenaController.Instance.rnd;
+                coin.GetComponent<Rigidbody>().AddForce(
+                    3 * new Vector3((float) rnd.NextDouble() * 2 - 1, (float) rnd.NextDouble(), (float) rnd.NextDouble() * 2 - 1));
+            }
             Destroy(this.gameObject);
         }
 

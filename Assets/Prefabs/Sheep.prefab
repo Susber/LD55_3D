@@ -52,6 +52,7 @@ MonoBehaviour:
   turnobject: {fileID: 1715748472247808631}
   turntransform: {fileID: 0}
   life: 5
+  coins: 1
 --- !u!54 &8525234114814371360
 Rigidbody:
   m_ObjectHideFlags: 0
