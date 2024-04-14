@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Components;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -23,11 +24,20 @@ public class SheepMovementController : MonoBehaviour
 
     public UnitController unitcontroller;
 
+    public SpriteRenderer spriteRenderer;
+
     private void Start()
     {
         currentState = SheepState.Idle;
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
-
+    
+    void FlipSprite(bool right)
+    {
+        // default: left
+        spriteRenderer.flipX = right;
+        
+    }
     void FixedUpdate()
     {    
         sheepRigidbody.velocity *= 0.99f;
@@ -53,6 +63,10 @@ public class SheepMovementController : MonoBehaviour
             case SheepState.MoveTowardsPlayer:
                 var from = this.transform.position;
                 var to = PlayerController.Instance.transform.position;
+
+
+                FlipSprite(from.x < to.x);
+
                 if ((to - from).sqrMagnitude < 1)
                 {
                     return;
