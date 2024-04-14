@@ -15,6 +15,8 @@ public class ArenaController : MonoBehaviour
     }
     
     public static ArenaController Instance;
+
+    public Vector3 arenaRadius;
     
     public Transform enemyContainer;
     public GameObject decorationContainer;
@@ -36,7 +38,7 @@ public class ArenaController : MonoBehaviour
         for (var x = 0; x < 5000; x++)
         {
             var enemy = Instantiate(grassPrefab, decorationContainer.transform);
-            var randomPos = RandomPos();
+            var randomPos = RandomPosOnArena();
             enemy.transform.localPosition = new Vector3(randomPos.x, 0.8f, randomPos.z);
         }
 
@@ -92,11 +94,10 @@ public class ArenaController : MonoBehaviour
     }
     
     
-    public Vector3 RandomPos()
+    public Vector3 RandomPosOnArena()
     {
-        //var origin = (Vector3) (transform.localPosition - this.transform.localScale / 2);
-        //return origin + new Vector3((float)rnd.NextDouble() * this.transform.localScale.x,0, (float)rnd.NextDouble() * this.transform.localScale.y);
-        return new Vector3((float)rnd.NextDouble() * 200,0, (float)rnd.NextDouble() * 200)- new Vector3(100,0,100);
+        var origin = transform.position - this.arenaRadius;
+        return origin + new Vector3((float)rnd.NextDouble() * arenaRadius.x * 2,0, (float)rnd.NextDouble() * arenaRadius.z * 2);
     }
 /*
     public Vector3 RandomEmptyPos(float freeCircleRadius, float distToPlayer)
