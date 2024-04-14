@@ -25,13 +25,15 @@ public class CutterMesh : MonoBehaviour
     {
 
     }
+
     // Update is called once per frame
     void Update()
     {
 
     }
 
-    private MeshConnectedComponents ComputeConnectedComponentsAfterCut(Mesh mesh, Vector3 cutting_point, Vector3 cutting_normal)
+    private MeshConnectedComponents ComputeConnectedComponentsAfterCut(Mesh mesh, Vector3 cutting_point,
+        Vector3 cutting_normal)
     {
         MeshConnectedComponents res = new MeshConnectedComponents();
         // todo: implement graph search
@@ -60,14 +62,11 @@ public class CutterMesh : MonoBehaviour
 
             Vector3[] corners = { corner1, corner2, corner3 };
             int[] ids = { mesh.triangles[i], mesh.triangles[i + 1], mesh.triangles[i + 2] };
-
             Vector2[] uvs = { mesh.uv[ids[0]], mesh.uv[ids[1]], mesh.uv[ids[2]] };
 
             float dot1 = Vector3.Dot(corner1, cutting_normal);
             float dot2 = Vector3.Dot(corner2, cutting_normal);
             float dot3 = Vector3.Dot(corner3, cutting_normal);
-
-			// sonst berechne Schnittpunkte
 			float sign1 = Mathf.Sign(dot1);
 			float sign2 = Mathf.Sign(dot2);
 			float sign3 = Mathf.Sign(dot3);
@@ -102,6 +101,7 @@ public class CutterMesh : MonoBehaviour
             {
                 one_side_index = 2;
             }
+
             if (sign1 == sign3)
             {
                 one_side_index = 1;
