@@ -33,6 +33,9 @@ public class Cardboarder : MonoBehaviour {
 		PolygonCollider2D col = gameObject.GetComponent<PolygonCollider2D>();
 		col.TryUpdateShapeToAttachedSprite();
 
+		// deactivate collider!
+		col.enabled = false;
+
 		CreateCardboardSideLineMesh();
 		CreateCardboardFace(0.01f);
 
@@ -57,13 +60,6 @@ public class Cardboarder : MonoBehaviour {
 				spriteRenderer.flipY = originalSpriteRenderer.flipY;
 			}
 		}
-	}
-
-	private void MeshAccessDemo()
-	{
-		GameObject cbFace = transform.Find("CardboardFace").gameObject;
-		MeshFilter myMeshFilter = cbFace.GetComponent<MeshFilter>();
-		// Debug.Log("My filter: " + myMeshFilter.ToString());
 	}
 
 	private void RedrawCardboard()
