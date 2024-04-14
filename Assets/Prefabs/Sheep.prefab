@@ -49,6 +49,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   unitRigidbody: {fileID: 8525234114814371360}
+  life: 5
 --- !u!54 &8525234114814371360
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -93,6 +94,7 @@ MonoBehaviour:
   stateTime: 0
   stateMaxTime: 4
   sheepRigidbody: {fileID: 8525234114814371360}
+  unitcontroller: {fileID: 0}
 --- !u!136 &8446307993481465819
 CapsuleCollider:
   m_ObjectHideFlags: 0
