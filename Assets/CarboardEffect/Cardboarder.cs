@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 
 [RequireComponent(typeof(PolygonCollider2D))]
 public class Cardboarder : MonoBehaviour {
@@ -15,7 +16,6 @@ public class Cardboarder : MonoBehaviour {
 	void Start()
 	{
 		CreateCardboard();
-		MeshAccessDemo();
 	}
 
 	private void FindAndDestroyChild(string name)
@@ -84,6 +84,12 @@ public class Cardboarder : MonoBehaviour {
 		List<Vector2> uvs = new List<Vector2>();
 		List<int> triangles = new List<int>();
 
+		float texture_w = CardboardLineMaterial.mainTexture.width;
+		float texture_h = CardboardLineMaterial.mainTexture.height;
+		Debug.Log(CardboardLineMaterial.mainTexture.width);
+		Debug.Log(CardboardLineMaterial.mainTexture.height);
+		float aspect_ratio = texture_w / texture_h;
+
 		float totalDistance = 0;
 		PolygonCollider2D col = gameObject.GetComponent<PolygonCollider2D>();
 		for (int i = 0; i < col.points.Length; i++)
@@ -91,12 +97,19 @@ public class Cardboarder : MonoBehaviour {
 			Vector2 current = col.points[i];
 			Vector2 next = col.points[(i + 1) % col.points.Length];
 
-			vertices.Add(new Vector3(current.x, current.y));
-			vertices.Add(new Vector3(next.x, next.y));
-			vertices.Add(new Vector3(next.x, next.y, CardboardTickness));
-			vertices.Add(new Vector3(current.x, current.y, CardboardTickness));
+			Vector3 current_world = transform.TransformPoint(current);
+			Vector3 next_world = transform.TransformPoint(next);
 
-			float distance = TextureTileScale * Vector2.Distance(current, next);
+			//vertices.Add(new Vector3(current.x, current.y));
+			//vertices.Add(new Vector3(next.x, next.y));
+			//vertices.Add(new Vector3(next.x, next.y, CardboardTickness));
+			//vertices.Add(new Vector3(current.x, current.y, CardboardTickness));
+			vertices.Add(transform.InverseTransformPoint(current_world));
+			vertices.Add(transform.InverseTransformPoint(next_world));
+			vertices.Add(transform.InverseTransformPoint(new Vector3(next_world.x, next_world.y, next_world.z + CardboardTickness)));
+			vertices.Add(transform.InverseTransformPoint(new Vector3(current_world.x, current_world.y, current_world.z + CardboardTickness)));
+
+			float distance = TextureTileScale * Vector2.Distance(current_world, next_world) / (CardboardTickness * aspect_ratio);
 			float rest = totalDistance - Mathf.Floor(totalDistance);
 			totalDistance += distance;
 
@@ -174,12 +187,12 @@ public class Cardboarder : MonoBehaviour {
 		msh.RecalculateBounds();
 
 		// Set up game object with mesh;
-		name = "CardboardFace";
+		string _name = "CardboardFace";
 		if (invert)
 		{
-			name += "Inv";
+			_name += "Inv";
 		}
-		GameObject obj = new GameObject(name);
+		GameObject obj = new GameObject(_name);
 		obj.transform.parent = transform;
 		obj.transform.localEulerAngles = Vector3.zero;
 		obj.transform.localPosition = new Vector3(0, 0, zOffset);

@@ -351,7 +351,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad9e048db1c913f458bd7585770e4661, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TextureTileScale: 2
+  TextureTileScale: 1
   CardboardTickness: 0.1
   DoubleSided: 1
   DuplicateSpriteOnBackFace: 1
