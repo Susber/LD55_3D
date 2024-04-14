@@ -29,7 +29,7 @@ public class ArenaController : MonoBehaviour
 
     // prefabs
     public GameObject sheepPrefab;
-    public Component grassPrefab;
+    public GameObject grassPrefab;
 
     public GameObject runePrefab;
 

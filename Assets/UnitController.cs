@@ -8,7 +8,7 @@ namespace Components
     {
         public Rigidbody unitRigidbody;
 
-        private float life = 100;
+        public float life = 100;
         private float armor_factor = 1;
         private float armor;
 

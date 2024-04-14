@@ -49,6 +49,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   unitRigidbody: {fileID: 8525234114814371360}
+  life: 5
 --- !u!54 &8525234114814371360
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -93,6 +94,7 @@ MonoBehaviour:
   stateTime: 0
   stateMaxTime: 4
   sheepRigidbody: {fileID: 8525234114814371360}
+  unitcontroller: {fileID: 0}
 --- !u!136 &8446307993481465819
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -159,7 +161,7 @@ SpriteRenderer:
   m_GameObject: {fileID: 3397787977454652844}
   m_Enabled: 1
   m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_ReceiveShadows: 0
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
   m_MotionVectors: 1
@@ -349,7 +351,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad9e048db1c913f458bd7585770e4661, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TextureTileScale: 2
+  TextureTileScale: 1
   CardboardTickness: 0.1
   DoubleSided: 1
   DuplicateSpriteOnBackFace: 1
