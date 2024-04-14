@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class RuneController : MonoBehaviour
@@ -102,14 +103,14 @@ public class RuneController : MonoBehaviour
         }
     }
 
-    public void MakeRuneFromEdges(RuneEdges edges) {
+    public void MakeRuneFromEdges(RuneEdges edges, Vector3 offset) {
         RuneLineController[] lineSegments = new RuneLineController[edges.from.Length];
         for (var i = 0; i < edges.from.Length; i++)
         {
-            var from = edges.from[i];
-            var to = edges.to[i];
-            from.y += 0.1f;
-            to.y += 0.1f;
+            var from = edges.from[i] + offset;
+            var to = edges.to[i] + offset;
+            from.y += 0.0001f * i;  // to prevent y-fighting
+            to.y += 0.0001f * i;
 
             var segmentLength = 0.2f;
             var numPoints = (int) ((to - from).magnitude / segmentLength + 1);

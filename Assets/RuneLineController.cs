@@ -78,7 +78,7 @@ public class RuneLineController : MonoBehaviour
 
     public bool IsComplete()
     {
-        return rightAlphaActive - leftAlphaActive < 0.01f;
+        return rightAlphaActive - leftAlphaActive < 0.9f;
     }
 
     public void UpdateGradient()

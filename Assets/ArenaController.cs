@@ -172,12 +172,16 @@ public class ArenaController : MonoBehaviour
     {
         if (newStage == GameStage.IN_LEVEL) {
             levelWaveQueue.Clear();
-            levelWaveQueue.Add(new SpawnRune(1, new RuneController.Pentagram(5, 5f)));
-            // levelWaveQueue.Add(new SpawnRune(1, new RuneController.Estate(4f)));
-            // levelWaveQueue.Add(new SpawnRune(1, new RuneController.Line(4f)));
+            for (var n = 0; n < 5; n++)
+            {
+                levelWaveQueue.Add(new SpawnRune(0, new RuneController.Pentagram(5, 5f)));
+            }
+
             for (var n = 0; n < 5; n++)
             {
                 levelWaveQueue.Add(new Wave(5, sheepPrefab, 10));
+                levelWaveQueue.Add(new SpawnRune(1, new RuneController.Estate(2f)));
+
             }
             spawnNextWaveTime = 0;
         }
