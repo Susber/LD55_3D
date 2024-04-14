@@ -14,6 +14,8 @@ public class BulletController : MonoBehaviour
     void Start()
     {
         lifetime = 3;
+        
+        
     }
 
     // Update is called once per frame
@@ -37,7 +39,9 @@ public class BulletController : MonoBehaviour
         if (n_to_hit < 1)
             return;
         var incomingRigidbody = coll.GetComponent<Rigidbody>();
-        var obstracle = coll.GetComponent<Rigidbody>().gameObject;
+        if (incomingRigidbody is null)
+            return;
+        GameObject obstracle = incomingRigidbody.gameObject;
         if (enemyBullet)
         {
             var unit = obstracle.GetComponent<PlayerController>();

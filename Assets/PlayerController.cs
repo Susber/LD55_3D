@@ -10,10 +10,11 @@ using UnityEngine.Serialization;
 public class PlayerController : MonoBehaviour
 {
     public static PlayerController Instance;
-    public Component bulletPrefab;
     
     public float speed;
     public Camera playercamera;
+    public GameObject gunPrefab;
+    public GunController gun;
 
     public Rigidbody playerrigidbody;
 
@@ -22,6 +23,13 @@ public class PlayerController : MonoBehaviour
     public PlayerController()
     {
         Instance = this;
+    }
+
+    public void Start()
+    {
+        print("Instantiate(gunPrefab,this.transform).GetComponent<GunController>();");
+        gun = Instantiate(gunPrefab,this.transform).GetComponent<GunController>();
+        gun.holder = this;
     }
 
     private void FixedUpdate()
@@ -51,26 +59,6 @@ public class PlayerController : MonoBehaviour
 
         playerrigidbody.AddForce(force);
         playercamera.transform.position = new Vector3(this.transform.position.x, this.playercamera.transform.position.y, this.transform.position.z-12);
-        
-        
-        bool left = Input.GetKeyDown(KeyCode.Mouse0);
-        bool right = Input.GetKeyDown(KeyCode.Mouse1);
-
-        if (left || right) {
-            Vector3 worldPosition;
-            float distance;
-            Plane plane = new Plane(Vector3.up, 0);
-            Ray ray = playercamera.ScreenPointToRay(Input.mousePosition);
-            if (plane.Raycast(ray, out distance))
-            {
-                worldPosition = ray.GetPoint(distance);
-                var direction = Vector3.Normalize(worldPosition - transform.position);
-                direction.y = 0;
-                var bullet = Instantiate(bulletPrefab,playerrigidbody.position, new Quaternion()).GetComponent<BulletController>();
-                bullet.SetTeam(false);
-                bullet.bulletRigidbody.velocity = direction * 100;
-            }
-        }
         
 
     }
