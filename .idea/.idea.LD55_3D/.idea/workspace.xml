@@ -4,14 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1c1d15bd-9ebc-406e-a8b4-ae065e33b06d" name="Changes" comment="stuff">
-      <change beforePath="$PROJECT_DIR$/Assets/BulletController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/BulletController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/PlayerController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/PlayerController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Sheep.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Sheep.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/SheepMovementController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/SheepMovementController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/UnitController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UnitController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
+    <list default="true" id="1c1d15bd-9ebc-406e-a8b4-ae065e33b06d" name="Changes" comment="bullet fix">
+      <change beforePath="$PROJECT_DIR$/Assets/Levels/AbstractWave.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Levels/AbstractWave.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Levels/Wave.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Levels/Wave.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,23 +16,24 @@
   <component name="Git.Settings">
     <option name="UPDATE_TYPE" value="REBASE" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "Susber"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;Susber&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/Susber/LD55_3D.git",
-    "accountId": "e75496e9-4eaa-4a4d-8e37-49e718f959d8"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/Susber/LD55_3D.git&quot;,
+    &quot;accountId&quot;: &quot;e75496e9-4eaa-4a4d-8e37-49e718f959d8&quot;
   }
-}]]></component>
+}</component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/1ef406b3fd3a4bfbac8a7b76b99d890b1fe00/1d/c376d154/Rigidbody.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/ArenaController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/BulletController.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Levels/Wave.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Levels/AbstractWave.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Levels/Wave.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/PlayerController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/SheepMovementController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/UnitController.cs" root0="FORCE_HIGHLIGHTING" />
@@ -47,11 +43,11 @@
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "node.js.selected.package.tslint": "(autodetect)"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="Start Unity" type="RunUnityExe" factoryName="Unity Executable">
       <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\2022.3.24f1\Editor\Unity.exe" />
@@ -79,13 +75,22 @@
       <option name="project" value="LOCAL" />
       <updated>1713099449793</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="bullet fix">
+      <option name="closed" value="true" />
+      <created>1713104128258</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1713104128258</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="UnityCheckinConfiguration" checkUnsavedScenes="false" />
   <component name="UnityProjectConfiguration" hasMinimizedUI="true" />
   <component name="VcsManagerConfiguration">
     <MESSAGE value="stuff" />
-    <option name="LAST_COMMIT_MESSAGE" value="stuff" />
+    <MESSAGE value="bullet fix" />
+    <option name="LAST_COMMIT_MESSAGE" value="bullet fix" />
   </component>
 </project>
