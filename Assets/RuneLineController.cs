@@ -8,39 +8,92 @@ public class RuneLineController : MonoBehaviour
 {
     public LineRenderer lineRenderer;
 
-    [FormerlySerializedAs("pentagram")] public RuneController rune;
-    public bool[] segmentsActive;
-    public Vector3[] segmentCenters;
+    public RuneController rune;
+    public Vector3 left;
+    public Vector3 right;
+    public float leftAlphaActive = 0;
+    public float rightAlphaActive = 1;
+
+    public RuneLineController leftNeighbor;
+    public RuneLineController rightNeighbor;
 
     public Color inactiveColor;
     public Color activeColor;
 
+    public float drawThreshold;
+
+    void Update()
+    {
+        UpdateGradient();
+    }
 
     void FixedUpdate()
     {
         var playerPos = PlayerController.Instance.transform.position;
-        for (var i = 0; i < segmentCenters.Length; i++)
+        playerPos = new Vector3(playerPos.x, 0, playerPos.z);
+        var normal = (right - left).normalized;
+
+        var lineLength = (right - left).magnitude;
+        var drawAtAlpha = Vector3.Dot(playerPos - left, normal) / lineLength;
+        if (drawAtAlpha < -drawThreshold / lineLength || drawAtAlpha > 1 + drawThreshold / lineLength)
         {
-            if ((playerPos - segmentCenters[i]).sqrMagnitude < 2)
+            return;
+        }
+
+        var distToLineSqr = (playerPos - (left + normal * lineLength * drawAtAlpha)).sqrMagnitude;
+        if (distToLineSqr > drawThreshold * drawThreshold)
+        {
+            return;
+        }
+
+        var canDrawLeft = leftAlphaActive > 0 || (leftNeighbor != null && (leftNeighbor.rightAlphaActive < 1 || leftNeighbor.IsComplete()));
+        var canDrawRight = rightAlphaActive < 1 || (rightNeighbor != null && (rightNeighbor.leftAlphaActive > 0 || rightNeighbor.IsComplete()));
+        if (!rune.startedDrawing)
+        {
+            if (rune.needsToStartAtEnd)
             {
-                segmentsActive[i] = true;
-                UpdateGradient();
+                canDrawLeft = leftNeighbor == null;
+                canDrawRight = rightNeighbor == null;
+            }
+            else
+            {
+                canDrawLeft = true;
+                canDrawRight = true;
             }
         }
+        
+        if (canDrawLeft && drawAtAlpha > leftAlphaActive && drawAtAlpha - leftAlphaActive < drawThreshold / lineLength)
+        {
+            leftAlphaActive = drawAtAlpha;
+            rune.startedDrawing = true;
+        }
+        if (canDrawRight && drawAtAlpha < rightAlphaActive && rightAlphaActive - drawAtAlpha < drawThreshold / lineLength)
+        {
+            rightAlphaActive = drawAtAlpha;
+            rune.startedDrawing = true;
+        }
+
+        UpdateGradient();
+    }
+
+    public bool IsComplete()
+    {
+        return rightAlphaActive - leftAlphaActive < 0.9f;
     }
 
     public void UpdateGradient()
     {
-        var numPoints = segmentsActive.Length;
-        GradientColorKey[] colorList = new GradientColorKey[numPoints];
-        GradientAlphaKey[] colorAlphasList = new GradientAlphaKey[numPoints];
+        GradientColorKey[] colorList = new GradientColorKey[3];
+        GradientAlphaKey[] colorAlphasList = new GradientAlphaKey[2];
 
-        for (var j = 0; j < numPoints; j++)
-        {
-            var alpha = (float) j / (numPoints - 1);
-            colorList[j] = new GradientColorKey(segmentsActive[j] ? activeColor : inactiveColor, alpha);
-            colorAlphasList[j] = new GradientAlphaKey(1.0f, alpha);
-        }
+        var complete = IsComplete();
+
+        colorList[0] = new GradientColorKey(complete || leftAlphaActive > 0 ? activeColor : inactiveColor, leftAlphaActive);
+        colorList[1] = new GradientColorKey(!complete ? inactiveColor : activeColor, rightAlphaActive);
+        colorList[2] = new GradientColorKey(activeColor, 1.0f);
+        
+        colorAlphasList[0] = new GradientAlphaKey(1.0f, 0.0f);
+        colorAlphasList[1] = new GradientAlphaKey(1.0f, 1.0f);
 
         Gradient newGradient = new Gradient();
         newGradient.mode = GradientMode.Fixed;

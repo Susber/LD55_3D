@@ -14,8 +14,6 @@ public class BulletController : MonoBehaviour
     void Start()
     {
         lifetime = 3;
-        
-        
     }
 
     // Update is called once per frame
