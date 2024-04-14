@@ -19,7 +19,7 @@ public class ArenaController : MonoBehaviour
     public Vector3 arenaRadius;
     
     public Transform enemyContainer;
-    public GameObject decorationContainer;
+    public Transform decorationContainer;
     public GameStage currentStage = GameStage.IN_LEVEL;
 
     public Random rnd = new Random();
@@ -153,7 +153,7 @@ public class ArenaController : MonoBehaviour
     public GameObject SpawnEnemy(GameObject enemyPrefab, Vector3 pos)
     {
         var enemy = Instantiate(enemyPrefab, enemyContainer);
-        enemy.transform.localPosition = pos;
+        enemy.transform.localPosition = new Vector3(pos.x, 0, pos.z);
         return enemy;
     }
 
