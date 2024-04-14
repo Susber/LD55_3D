@@ -29,14 +29,15 @@ public class SheepMovementController : MonoBehaviour
     private void Start()
     {
         currentState = SheepState.Idle;
-        spriteRenderer = GetComponent<SpriteRenderer>();
+        spriteRenderer = GetComponentsInChildren < SpriteRenderer>()[0];
     }
     
     void FlipSprite(bool right)
     {
         // default: left
-        spriteRenderer.flipX = right;
-        
+        if (right)
+        {transform.Rotate(Vector3.up, Mathf.PI);}
+
     }
     void FixedUpdate()
     {    
@@ -63,9 +64,8 @@ public class SheepMovementController : MonoBehaviour
             case SheepState.MoveTowardsPlayer:
                 var from = this.transform.position;
                 var to = PlayerController.Instance.transform.position;
-
-
-                FlipSprite(from.x < to.x);
+                
+                //FlipSprite(sheepRigidbody.velocity.x > 0);
 
                 if ((to - from).sqrMagnitude < 1)
                 {
