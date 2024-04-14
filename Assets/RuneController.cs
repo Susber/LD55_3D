@@ -109,8 +109,8 @@ public class RuneController : MonoBehaviour
         {
             var from = edges.from[i] + offset;
             var to = edges.to[i] + offset;
-            from.y += 0.0001f * i;  // to prevent y-fighting
-            to.y += 0.0001f * i;
+            from.y += 0.0001f * (i + 1);  // to prevent y-fighting
+            to.y += 0.0001f * (i + 1);
 
             var segmentLength = 0.2f;
             var numPoints = (int) ((to - from).magnitude / segmentLength + 1);
