@@ -28,7 +28,6 @@ public class PlayerController : UnitController
     // Update is called once per frame
     new void Update()
     {
-        print("update");
         base.Update();
         Vector3 force = new Vector3(0,0,0);
         if (Input.GetKey(KeyCode.W))

@@ -591,7 +591,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   arenaRadius: {x: 200, y: 0, z: 200}
   enemyContainer: {fileID: 2012929726}
-  decorationContainer: {fileID: 849804653}
+  decorationContainer: {fileID: 849804654}
   currentStage: 0
   sheepPrefab: {fileID: 2803500051409867777, guid: 9eb6d85379b1c3d429183805285ed6cc, type: 3}
   grassPrefab: {fileID: 1406442389543254810, guid: dad9cf64e56c9ca4c97065777e9ab0c7, type: 3}

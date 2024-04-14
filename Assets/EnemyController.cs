@@ -12,6 +12,7 @@ namespace Components
         }
         new void Update()
         {
+            Debug.Log("push the sheep");
             base.Update();
             var from = this.transform.position;
             var to = PlayerController.Instance.transform.position;

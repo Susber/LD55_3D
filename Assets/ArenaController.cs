@@ -19,7 +19,7 @@ public class ArenaController : MonoBehaviour
     public Vector3 arenaRadius;
     
     public Transform enemyContainer;
-    public GameObject decorationContainer;
+    public Transform decorationContainer;
     public GameStage currentStage = GameStage.IN_LEVEL;
 
     public Random rnd = new Random();
