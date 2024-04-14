@@ -6,7 +6,7 @@ using Unity.VisualScripting;
 public class Cardboarder : MonoBehaviour {
 
 	public float TextureTileScale = 1f;
-	public float CardboardTickness = 1f;
+	public float CardboardTickness = 0.1f;
 	public bool DoubleSided = true;
 	public bool DuplicateSpriteOnBackFace = true;
 	public Material CardboardLineMaterial;
