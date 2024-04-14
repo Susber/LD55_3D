@@ -41,6 +41,7 @@ public class BulletController : MonoBehaviour
             if (unit != null)
             {
                 unit.Damage(5);
+                print("hit" + gameObject);
                 Destroy(gameObject);
             }
             
@@ -51,9 +52,9 @@ public class BulletController : MonoBehaviour
             if (unit != null)
             {
                 unit.Damage(5);
+                print("hit" + gameObject);
                 Destroy(gameObject);
             }
         }
-        print("hit" + obstracle);
     }
 }
