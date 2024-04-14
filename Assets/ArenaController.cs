@@ -5,6 +5,7 @@ using Components;
 using Components.Levels;
 using Random = System.Random;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 using UnityEngine.XR;
 
 public class ArenaController : MonoBehaviour
@@ -22,6 +23,7 @@ public class ArenaController : MonoBehaviour
     public Transform enemyContainer;
     public Transform decorationContainer;
     public Transform runeContainer;
+    public Transform coinContainer;
     
     public GameStage currentStage = GameStage.IN_LEVEL;
 
@@ -33,10 +35,13 @@ public class ArenaController : MonoBehaviour
     public GameObject grassPrefab;
 
     public GameObject runePrefab;
+    public GameObject coinPrefab;
 
     public List<AbstractWave> levelWaveQueue = new List<AbstractWave>();
     public AbstractWave waitForWaveToFinish = null;
     public float spawnNextWaveTime;
+
+    public UpgradeUIComponent upgradeUi;
 
     private void Start()
     {
@@ -53,6 +58,8 @@ public class ArenaController : MonoBehaviour
         {
             Destroy(t.gameObject);
         }
+        
+        upgradeUi.UpdateUI();
     }
 
 

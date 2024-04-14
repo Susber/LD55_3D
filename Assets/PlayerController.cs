@@ -5,6 +5,7 @@ using Components;
 using Unity.VisualScripting;
 using UnityEditor.UI;
 using UnityEngine;
+using UnityEngine.Experimental.Rendering;
 using UnityEngine.Serialization;
 
 public class PlayerController : MonoBehaviour
@@ -15,10 +16,12 @@ public class PlayerController : MonoBehaviour
     public Camera playercamera;
     public GameObject gunPrefab;
     public GunController gun;
+    public float suckCoinDistance;
 
     public Rigidbody playerrigidbody;
 
     private int lifes = 5;
+    public int coins = 0;
 
     public PlayerController()
     {
@@ -27,7 +30,6 @@ public class PlayerController : MonoBehaviour
 
     public void Start()
     {
-        print("Instantiate(gunPrefab,this.transform).GetComponent<GunController>();");
         gun = Instantiate(gunPrefab,this.transform).GetComponent<GunController>();
         gun.holder = this;
     }
