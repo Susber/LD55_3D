@@ -9,10 +9,10 @@ public class GunController : MonoBehaviour
     public GameObject bulletPrefab;
 
     private float cooldown = 0.10f;
-    private float max_recoil = 0.8f;
+    private float max_recoil = 0.4f;
     private Vector3 lastShotDir = new Vector3(0, 0, 0); //direction where the gun is pushed
 
-    private Vector3 playerGunPosition = new Vector3(0, 6, -0.5f); // default gun position
+    private Vector3 playerGunPosition = new Vector3(0, 1, -0.5f); // default gun position
 
     private float timeout = 0; //current cooldown, 0 means shooting is possible
     // Start is called before the first frame update
