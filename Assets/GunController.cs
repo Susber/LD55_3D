@@ -10,10 +10,9 @@ public class GunController : MonoBehaviour
 
     private float cooldown = 0.10f;
     private float max_recoil = 0.8f;
-    private Vector3 lastShotDir = new Vector3(0, 0, 0);
+    private Vector3 lastShotDir = new Vector3(0, 0, 0); //direction where the gun is pushed
 
     private Vector3 playerGunPosition = new Vector3(0, 6, -0.5f); // default gun position
-    private float recoil_dir = 0; // left/right direction where the gun is pushed
 
     private float timeout = 0; //current cooldown, 0 means shooting is possible
     // Start is called before the first frame update
@@ -68,5 +67,6 @@ public class GunController : MonoBehaviour
         print("playerGunPosition" + playerGunPosition);
         print("displacement * lastShotDir" + displacement * lastShotDir);
         print("displacement" + displacement);
+        // recoil looks wheird and changes depending on angle, reason is scale of player...
     }
 }

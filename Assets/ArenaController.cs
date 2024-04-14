@@ -45,7 +45,7 @@ public class ArenaController : MonoBehaviour
         {
             var enemy = Instantiate(grassPrefab, decorationContainer.transform);
             var randomPos = RandomPosOnArena();
-            enemy.transform.localPosition = new Vector3(randomPos.x, 0.8f, randomPos.z);
+            enemy.transform.localPosition = new Vector3(randomPos.x, 0.2f, randomPos.z);
         }
 
         foreach (Transform t in enemyContainer)
@@ -172,12 +172,16 @@ public class ArenaController : MonoBehaviour
     {
         if (newStage == GameStage.IN_LEVEL) {
             levelWaveQueue.Clear();
-            levelWaveQueue.Add(new SpawnRune(1, new RuneController.Pentagram(5, 5f)));
-            // levelWaveQueue.Add(new SpawnRune(1, new RuneController.Estate(4f)));
-            // levelWaveQueue.Add(new SpawnRune(1, new RuneController.Line(4f)));
+            for (var n = 0; n < 5; n++)
+            {
+                levelWaveQueue.Add(new SpawnRune(0, new RuneController.Pentagram(5, 5f)));
+            }
+
             for (var n = 0; n < 5; n++)
             {
                 levelWaveQueue.Add(new Wave(5, sheepPrefab, 10));
+                levelWaveQueue.Add(new SpawnRune(1, new RuneController.Estate(2f)));
+
             }
             spawnNextWaveTime = 0;
         }
