@@ -51,6 +51,7 @@ public class PlayerController : UnitController
         Push(force);
         playercamera.transform.position = new Vector3(this.transform.position.x, this.playercamera.transform.position.y, this.transform.position.z-5);//tilt 25, shift 5
         
+        /* sorry david!
         bool left = Input.GetKeyDown(KeyCode.Mouse0);
         bool right = Input.GetKeyDown(KeyCode.Mouse1);
 
@@ -72,7 +73,7 @@ public class PlayerController : UnitController
                 bullet.bulletRigidbody.velocity = direction * 10;
             }
         }
-
+        */
 
     }
     
