@@ -14,7 +14,7 @@ public class Cardboarder : MonoBehaviour {
 
 	void Start()
 	{
-		createCardboard();
+		CreateCardboard();
 		MeshAccessDemo();
 	}
 
@@ -28,7 +28,7 @@ public class Cardboarder : MonoBehaviour {
 		}
 	}
 
-	private void createCardboard()
+	private void CreateCardboard()
 	{
 		PolygonCollider2D col = gameObject.GetComponent<PolygonCollider2D>();
 		col.TryUpdateShapeToAttachedSprite();
@@ -75,7 +75,7 @@ public class Cardboarder : MonoBehaviour {
 		FindAndDestroyChild("BackFaceSprite");
 
 		// Create new stuff
-		createCardboard();
+		CreateCardboard();
 	}
 
 	private void CreateCardboardSideLineMesh()
