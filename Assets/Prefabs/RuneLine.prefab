@@ -150,5 +150,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lineRenderer: {fileID: -8409999579085026719}
-  pentagram: {fileID: 0}
-  segmentCenters: []
+  rune: {fileID: 0}
+  left: {x: 0, y: 0, z: 0}
+  right: {x: 0, y: 0, z: 0}
+  leftAlphaActive: 0
+  rightAlphaActive: 1
+  leftNeighbor: {fileID: 0}
+  rightNeighbor: {fileID: 0}
+  inactiveColor: {r: 0.5754717, g: 0.52932537, b: 0.52932537, a: 0}
+  activeColor: {r: 1, g: 0, b: 0.16184282, a: 0}
+  drawThreshold: 1

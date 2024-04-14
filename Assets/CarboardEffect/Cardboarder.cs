@@ -63,7 +63,7 @@ public class Cardboarder : MonoBehaviour {
 	{
 		GameObject cbFace = transform.Find("CardboardFace").gameObject;
 		MeshFilter myMeshFilter = cbFace.GetComponent<MeshFilter>();
-		Debug.Log("My filter: " + myMeshFilter.ToString());
+		// Debug.Log("My filter: " + myMeshFilter.ToString());
 	}
 
 	private void RedrawCardboard()
