@@ -22,6 +22,7 @@ public class ArenaController : MonoBehaviour
     public Transform enemyContainer;
     public Transform decorationContainer;
     public Transform runeContainer;
+    public Transform coinContainer;
     
     public GameStage currentStage = GameStage.IN_LEVEL;
 
@@ -32,6 +33,7 @@ public class ArenaController : MonoBehaviour
     public GameObject grassPrefab;
 
     public GameObject runePrefab;
+    public GameObject coinPrefab;
 
     public List<AbstractWave> levelWaveQueue = new List<AbstractWave>();
     public AbstractWave waitForWaveToFinish = null;
