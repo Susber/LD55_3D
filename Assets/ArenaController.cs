@@ -153,7 +153,7 @@ public class ArenaController : MonoBehaviour
     public GameObject SpawnEnemy(GameObject enemyPrefab, Vector3 pos)
     {
         var enemy = Instantiate(enemyPrefab, enemyContainer);
-        enemy.transform.localPosition = pos;
+        enemy.transform.localPosition = new Vector3(pos.x, 0, pos.z);
         return enemy;
     }
 
