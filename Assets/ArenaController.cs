@@ -60,6 +60,7 @@ public class ArenaController : MonoBehaviour
         }
         
         upgradeUi.UpdateUI();
+        upgradeUi.gameObject.SetActive(false);
     }
 
 
