@@ -45,7 +45,7 @@ public class ArenaController : MonoBehaviour
         {
             var enemy = Instantiate(grassPrefab, decorationContainer.transform);
             var randomPos = RandomPosOnArena();
-            enemy.transform.localPosition = new Vector3(randomPos.x, 0.8f, randomPos.z);
+            enemy.transform.localPosition = new Vector3(randomPos.x, 0.2f, randomPos.z);
         }
 
         foreach (Transform t in enemyContainer)
