@@ -86,7 +86,6 @@ public class CutterMesh : MonoBehaviour
 
             float[] signs = { sign1, sign2, sign3 };
 
-            // add the triangle to one of the meshes
             if (sign1 == sign2 && sign1 == sign3)
             {
                 int active_component = component_prediction.vertexComponentIds[ids[0]];
@@ -171,7 +170,7 @@ public class CutterMesh : MonoBehaviour
 				intersection_dict.Add(i2key, i2Data);
 			}
 
-            // Erstelle neue Dreiecke für genau zwei Meshes
+            // Erstelle neue Dreiecke fÃ¼r genau zwei Meshes
 
             // kleine Seite
             if (old_to_new_ids[ids[one_side_index]] == -1)
@@ -188,7 +187,7 @@ public class CutterMesh : MonoBehaviour
             mesh_data[smaller_component_id].triangle_indices.Add(intersection_dict[i1key].class_id_to_vertex_id[smaller_component_id]);
 			mesh_data[smaller_component_id].triangle_indices.Add(intersection_dict[i2key].class_id_to_vertex_id[smaller_component_id]);
 
-			// große Seite
+			// groï¿½e Seite
 			if (old_to_new_ids[ids[c2]] == -1)
 			{
 				old_to_new_ids[ids[c2]] = mesh_data[larger_component_id].next_id;
