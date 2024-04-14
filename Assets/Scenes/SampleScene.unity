@@ -173,8 +173,10 @@ MonoBehaviour:
   CardboardTickness: 0.1
   DoubleSided: 1
   DuplicateSpriteOnBackFace: 1
-  CardboardLineMaterial: {fileID: 2100000, guid: 34000f52b6e8f9f41960347ae81e0859, type: 2}
-  CardboardFaceMaterial: {fileID: 2100000, guid: 1403fc2ab19269c4caa83692d9ade743, type: 2}
+  CardboardLineMaterial: {fileID: 2100000, guid: 34000f52b6e8f9f41960347ae81e0859,
+    type: 2}
+  CardboardFaceMaterial: {fileID: 2100000, guid: 1403fc2ab19269c4caa83692d9ade743,
+    type: 2}
   FaceFillColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!60 &150775528
 PolygonCollider2D:
@@ -450,7 +452,7 @@ Transform:
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
   m_LocalRotation: {x: 0.3420201, y: 0, z: 0, w: 0.9396927}
-  m_LocalPosition: {x: 0, y: 10, z: -12}
+  m_LocalPosition: {x: 0, y: 14, z: -15}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -529,8 +531,8 @@ Light:
   serializedVersion: 10
   m_Type: 1
   m_Shape: 0
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 2
+  m_Color: {r: 0.36827758, g: 0.2004717, b: 0.8018868, a: 1}
+  m_Intensity: 0.5
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -588,13 +590,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 410087039}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.37421018, y: -0.42118102, z: 0.19639902, w: 0.8024967}
-  m_LocalPosition: {x: 0, y: 3, z: 0}
+  m_LocalRotation: {x: 0.34018758, y: -0.36734268, z: 0.054465298, w: 0.8639244}
+  m_LocalPosition: {x: 0, y: 5.26, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 50, y: -55.384, z: 0}
+  m_LocalEulerAnglesHint: {x: 38.889, y: -50.16, z: -11.548}
 --- !u!114 &410087042
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -668,8 +670,10 @@ MonoBehaviour:
   CardboardTickness: 0.1
   DoubleSided: 1
   DuplicateSpriteOnBackFace: 1
-  CardboardLineMaterial: {fileID: 2100000, guid: 34000f52b6e8f9f41960347ae81e0859, type: 2}
-  CardboardFaceMaterial: {fileID: 2100000, guid: 1403fc2ab19269c4caa83692d9ade743, type: 2}
+  CardboardLineMaterial: {fileID: 2100000, guid: 34000f52b6e8f9f41960347ae81e0859,
+    type: 2}
+  CardboardFaceMaterial: {fileID: 2100000, guid: 1403fc2ab19269c4caa83692d9ade743,
+    type: 2}
   FaceFillColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!60 &557276427
 PolygonCollider2D:
@@ -908,8 +912,10 @@ MonoBehaviour:
   CardboardTickness: 0.1
   DoubleSided: 1
   DuplicateSpriteOnBackFace: 1
-  CardboardLineMaterial: {fileID: 2100000, guid: 34000f52b6e8f9f41960347ae81e0859, type: 2}
-  CardboardFaceMaterial: {fileID: 2100000, guid: 1403fc2ab19269c4caa83692d9ade743, type: 2}
+  CardboardLineMaterial: {fileID: 2100000, guid: 34000f52b6e8f9f41960347ae81e0859,
+    type: 2}
+  CardboardFaceMaterial: {fileID: 2100000, guid: 1403fc2ab19269c4caa83692d9ade743,
+    type: 2}
   FaceFillColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!60 &678905150
 PolygonCollider2D:
@@ -1334,8 +1340,10 @@ MonoBehaviour:
   CardboardTickness: 0.1
   DoubleSided: 1
   DuplicateSpriteOnBackFace: 1
-  CardboardLineMaterial: {fileID: 2100000, guid: 34000f52b6e8f9f41960347ae81e0859, type: 2}
-  CardboardFaceMaterial: {fileID: 2100000, guid: 1403fc2ab19269c4caa83692d9ade743, type: 2}
+  CardboardLineMaterial: {fileID: 2100000, guid: 34000f52b6e8f9f41960347ae81e0859,
+    type: 2}
+  CardboardFaceMaterial: {fileID: 2100000, guid: 1403fc2ab19269c4caa83692d9ade743,
+    type: 2}
   FaceFillColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!60 &902768510
 PolygonCollider2D:
@@ -1574,8 +1582,10 @@ MonoBehaviour:
   CardboardTickness: 0.1
   DoubleSided: 1
   DuplicateSpriteOnBackFace: 1
-  CardboardLineMaterial: {fileID: 2100000, guid: 34000f52b6e8f9f41960347ae81e0859, type: 2}
-  CardboardFaceMaterial: {fileID: 2100000, guid: 1403fc2ab19269c4caa83692d9ade743, type: 2}
+  CardboardLineMaterial: {fileID: 2100000, guid: 34000f52b6e8f9f41960347ae81e0859,
+    type: 2}
+  CardboardFaceMaterial: {fileID: 2100000, guid: 1403fc2ab19269c4caa83692d9ade743,
+    type: 2}
   FaceFillColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!60 &992490398
 PolygonCollider2D:
@@ -1814,8 +1824,10 @@ MonoBehaviour:
   CardboardTickness: 0.1
   DoubleSided: 1
   DuplicateSpriteOnBackFace: 1
-  CardboardLineMaterial: {fileID: 2100000, guid: 34000f52b6e8f9f41960347ae81e0859, type: 2}
-  CardboardFaceMaterial: {fileID: 2100000, guid: 1403fc2ab19269c4caa83692d9ade743, type: 2}
+  CardboardLineMaterial: {fileID: 2100000, guid: 34000f52b6e8f9f41960347ae81e0859,
+    type: 2}
+  CardboardFaceMaterial: {fileID: 2100000, guid: 1403fc2ab19269c4caa83692d9ade743,
+    type: 2}
   FaceFillColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!60 &1093754235
 PolygonCollider2D:
@@ -2323,8 +2335,10 @@ MonoBehaviour:
   CardboardTickness: 0.1
   DoubleSided: 1
   DuplicateSpriteOnBackFace: 1
-  CardboardLineMaterial: {fileID: 2100000, guid: 34000f52b6e8f9f41960347ae81e0859, type: 2}
-  CardboardFaceMaterial: {fileID: 2100000, guid: 1403fc2ab19269c4caa83692d9ade743, type: 2}
+  CardboardLineMaterial: {fileID: 2100000, guid: 34000f52b6e8f9f41960347ae81e0859,
+    type: 2}
+  CardboardFaceMaterial: {fileID: 2100000, guid: 1403fc2ab19269c4caa83692d9ade743,
+    type: 2}
   FaceFillColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!60 &1230441794
 PolygonCollider2D:
@@ -2521,47 +2535,58 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1827268862}
     m_Modifications:
-    - target: {fileID: 2803500051409867777, guid: 9eb6d85379b1c3d429183805285ed6cc, type: 3}
+    - target: {fileID: 2803500051409867777, guid: 9eb6d85379b1c3d429183805285ed6cc,
+        type: 3}
       propertyPath: m_Name
       value: Sheep
       objectReference: {fileID: 0}
-    - target: {fileID: 4818428266293904272, guid: 9eb6d85379b1c3d429183805285ed6cc, type: 3}
+    - target: {fileID: 4818428266293904272, guid: 9eb6d85379b1c3d429183805285ed6cc,
+        type: 3}
       propertyPath: m_LocalPosition.x
       value: 4
       objectReference: {fileID: 0}
-    - target: {fileID: 4818428266293904272, guid: 9eb6d85379b1c3d429183805285ed6cc, type: 3}
+    - target: {fileID: 4818428266293904272, guid: 9eb6d85379b1c3d429183805285ed6cc,
+        type: 3}
       propertyPath: m_LocalPosition.y
       value: 0.02
       objectReference: {fileID: 0}
-    - target: {fileID: 4818428266293904272, guid: 9eb6d85379b1c3d429183805285ed6cc, type: 3}
+    - target: {fileID: 4818428266293904272, guid: 9eb6d85379b1c3d429183805285ed6cc,
+        type: 3}
       propertyPath: m_LocalPosition.z
       value: 4
       objectReference: {fileID: 0}
-    - target: {fileID: 4818428266293904272, guid: 9eb6d85379b1c3d429183805285ed6cc, type: 3}
+    - target: {fileID: 4818428266293904272, guid: 9eb6d85379b1c3d429183805285ed6cc,
+        type: 3}
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 4818428266293904272, guid: 9eb6d85379b1c3d429183805285ed6cc, type: 3}
+    - target: {fileID: 4818428266293904272, guid: 9eb6d85379b1c3d429183805285ed6cc,
+        type: 3}
       propertyPath: m_LocalRotation.x
       value: -0
       objectReference: {fileID: 0}
-    - target: {fileID: 4818428266293904272, guid: 9eb6d85379b1c3d429183805285ed6cc, type: 3}
+    - target: {fileID: 4818428266293904272, guid: 9eb6d85379b1c3d429183805285ed6cc,
+        type: 3}
       propertyPath: m_LocalRotation.y
       value: -0
       objectReference: {fileID: 0}
-    - target: {fileID: 4818428266293904272, guid: 9eb6d85379b1c3d429183805285ed6cc, type: 3}
+    - target: {fileID: 4818428266293904272, guid: 9eb6d85379b1c3d429183805285ed6cc,
+        type: 3}
       propertyPath: m_LocalRotation.z
       value: -0
       objectReference: {fileID: 0}
-    - target: {fileID: 4818428266293904272, guid: 9eb6d85379b1c3d429183805285ed6cc, type: 3}
+    - target: {fileID: 4818428266293904272, guid: 9eb6d85379b1c3d429183805285ed6cc,
+        type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4818428266293904272, guid: 9eb6d85379b1c3d429183805285ed6cc, type: 3}
+    - target: {fileID: 4818428266293904272, guid: 9eb6d85379b1c3d429183805285ed6cc,
+        type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4818428266293904272, guid: 9eb6d85379b1c3d429183805285ed6cc, type: 3}
+    - target: {fileID: 4818428266293904272, guid: 9eb6d85379b1c3d429183805285ed6cc,
+        type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
@@ -2572,7 +2597,8 @@ PrefabInstance:
   m_SourcePrefab: {fileID: 100100000, guid: 9eb6d85379b1c3d429183805285ed6cc, type: 3}
 --- !u!4 &1236696943 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 4818428266293904272, guid: 9eb6d85379b1c3d429183805285ed6cc, type: 3}
+  m_CorrespondingSourceObject: {fileID: 4818428266293904272, guid: 9eb6d85379b1c3d429183805285ed6cc,
+    type: 3}
   m_PrefabInstance: {fileID: 1236696942}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1258695198
@@ -3223,13 +3249,18 @@ MonoBehaviour:
   arenaRadius: {x: 50, y: 0, z: 50}
   enemyContainer: {fileID: 2012929726}
   decorationContainer: {fileID: 849804654}
-  runeContainer: {fileID: 1156258613}
+  runeContainer: {fileID: 0}
   coinContainer: {fileID: 1846789867}
   currentStage: 0
-  sheepPrefab: {fileID: 2803500051409867777, guid: 9eb6d85379b1c3d429183805285ed6cc, type: 3}
-  grassPrefab: {fileID: 2781580127000154396, guid: dad9cf64e56c9ca4c97065777e9ab0c7, type: 3}
-  runePrefab: {fileID: 8721840526022088290, guid: 70fba3cee298745c99ccf7cc87cf7026, type: 3}
-  coinPrefab: {fileID: 3081014807101979079, guid: b1555eba47bc246ce8106c0833decdf0, type: 3}
+  sheepPrefab: {fileID: 2803500051409867777, guid: 9eb6d85379b1c3d429183805285ed6cc,
+    type: 3}
+  foxPrefab: {fileID: 2938945773274849202, guid: 33137d0d85baa8849aeff5d6bbae406f,
+    type: 3}
+  grassPrefab: {fileID: 2781580127000154396, guid: dad9cf64e56c9ca4c97065777e9ab0c7,
+    type: 3}
+  runePrefab: {fileID: 0}
+  coinPrefab: {fileID: 3081014807101979079, guid: b1555eba47bc246ce8106c0833decdf0,
+    type: 3}
   spawnNextWaveTime: 0
 --- !u!1 &1846789866
 GameObject:
@@ -3291,7 +3322,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.2, y: 0.2, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2020529206}
@@ -3312,8 +3343,10 @@ MonoBehaviour:
   CardboardTickness: 0.1
   DoubleSided: 1
   DuplicateSpriteOnBackFace: 1
-  CardboardLineMaterial: {fileID: 2100000, guid: 34000f52b6e8f9f41960347ae81e0859, type: 2}
-  CardboardFaceMaterial: {fileID: 2100000, guid: 1403fc2ab19269c4caa83692d9ade743, type: 2}
+  CardboardLineMaterial: {fileID: 2100000, guid: 34000f52b6e8f9f41960347ae81e0859,
+    type: 2}
+  CardboardFaceMaterial: {fileID: 2100000, guid: 1403fc2ab19269c4caa83692d9ade743,
+    type: 2}
   FaceFillColor: {r: 0.3301887, g: 0.108720176, b: 0.04516733, a: 0}
 --- !u!60 &1886359225
 PolygonCollider2D:
@@ -3618,14 +3651,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0.02, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1268705960}
-  - {fileID: 1139669374}
-  - {fileID: 1140909106}
-  - {fileID: 1517650980}
-  - {fileID: 1536939499}
-  - {fileID: 1543047432}
-  - {fileID: 1258695199}
+  m_Children: [{fileID: 1268705960}, {fileID: 1139669374}, {fileID: 1140909106}, {
+      fileID: 1517650980}, {fileID: 1536939499}, {fileID: 1543047432}, {fileID: 1258695199}]
   m_Father: {fileID: 1827268862}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2020529204
@@ -3656,8 +3683,8 @@ Transform:
   m_GameObject: {fileID: 2020529204}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -8}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.2, y: 0.2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1886359223}
@@ -3683,9 +3710,9 @@ CapsuleCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 1
-  m_Height: 0.5
+  m_Height: 0.16000004
   m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: 0.15349478, z: 0}
 --- !u!54 &2020529208
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3725,9 +3752,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b2b00aa581d734438d2cd91807456cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 3
+  speed: 20
   playercamera: {fileID: 330585545}
-  gunPrefab: {fileID: 767943210248605396, guid: ed09840e02fb31f48b2fb862f790dfe7, type: 3}
+  gunPrefab: {fileID: 767943210248605396, guid: ed09840e02fb31f48b2fb862f790dfe7,
+    type: 3}
   gun: {fileID: 0}
   suckCoinDistance: 10
   playerrigidbody: {fileID: 2020529208}

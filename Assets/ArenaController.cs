@@ -30,6 +30,7 @@ public class ArenaController : MonoBehaviour
 
     // prefabs
     public GameObject sheepPrefab;
+    public GameObject foxPrefab;
     public GameObject grassPrefab;
 
     public GameObject runePrefab;
@@ -182,6 +183,7 @@ public class ArenaController : MonoBehaviour
             for (var n = 0; n < 5; n++)
             {
                 levelWaveQueue.Add(new Wave(5, sheepPrefab, 10));
+                levelWaveQueue.Add(new Wave(2, foxPrefab, 1));
                 levelWaveQueue.Add(new SpawnRune(1, new RuneController.Estate(2f)));
 
             }
