@@ -43,6 +43,10 @@ public class FoxMovementController : MonoBehaviour
         
     }
 
+    void FlipSprite()
+    {
+
+    }
     void FixedUpdate()
     {    
         foxRigidbody.velocity *= 0.99f;

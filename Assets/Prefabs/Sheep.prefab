@@ -49,6 +49,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   unitRigidbody: {fileID: 8525234114814371360}
+  turnobject: {fileID: 1715748472247808631}
+  turntransform: {fileID: 0}
   life: 5
   coins: 1
 --- !u!54 &8525234114814371360
@@ -96,6 +98,7 @@ MonoBehaviour:
   stateMaxTime: 4
   sheepRigidbody: {fileID: 8525234114814371360}
   unitcontroller: {fileID: 0}
+  spriteRenderer: {fileID: 0}
 --- !u!136 &8446307993481465819
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -169,6 +172,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5352100900037371708, guid: 6f7e979114f64b94a838456a28e48c32, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9157240664416866700, guid: 6f7e979114f64b94a838456a28e48c32, type: 3}
+      propertyPath: m_FlipX
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9157240664416866700, guid: 6f7e979114f64b94a838456a28e48c32, type: 3}
@@ -931,5 +938,10 @@ PrefabInstance:
 --- !u!4 &1501704702682735912 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5352100900037371708, guid: 6f7e979114f64b94a838456a28e48c32, type: 3}
+  m_PrefabInstance: {fileID: 6814327843858055700}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1715748472247808631 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5286886440268558435, guid: 6f7e979114f64b94a838456a28e48c32, type: 3}
   m_PrefabInstance: {fileID: 6814327843858055700}
   m_PrefabAsset: {fileID: 0}
