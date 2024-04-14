@@ -10,7 +10,7 @@ public class FoxMovementController : MonoBehaviour
 {
     public enum FoxState
     {
-        Idle, MoveTowardsPlayer
+        Attack, MoveTowardsPlayer
     }
 
     public float speed;
