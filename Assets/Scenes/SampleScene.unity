@@ -20495,9 +20495,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b2b00aa581d734438d2cd91807456cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 0}
   speed: 20
   playercamera: {fileID: 330585545}
+  gunPrefab: {fileID: 767943210248605396, guid: ed09840e02fb31f48b2fb862f790dfe7, type: 3}
+  gun: {fileID: 0}
   playerrigidbody: {fileID: 2020529208}
 --- !u!1 &2038957314
 GameObject:
