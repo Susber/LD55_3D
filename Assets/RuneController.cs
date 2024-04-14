@@ -108,6 +108,8 @@ public class RuneController : MonoBehaviour
         {
             var from = edges.from[i];
             var to = edges.to[i];
+            from.y += 0.1f;
+            to.y += 0.1f;
 
             var segmentLength = 0.2f;
             var numPoints = (int) ((to - from).magnitude / segmentLength + 1);
