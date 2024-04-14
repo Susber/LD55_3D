@@ -6,7 +6,7 @@ using Unity.VisualScripting;
 public class Cardboarder : MonoBehaviour {
 
 	public float TextureTileScale = 1f;
-	public float CardboardTickness = 1f;
+	public float CardboardTickness = 0.1f;
 	public bool DoubleSided = true;
 	public bool DuplicateSpriteOnBackFace = true;
 	public Material CardboardLineMaterial;
@@ -33,6 +33,9 @@ public class Cardboarder : MonoBehaviour {
 		PolygonCollider2D col = gameObject.GetComponent<PolygonCollider2D>();
 		col.TryUpdateShapeToAttachedSprite();
 
+		// deactivate collider!
+		col.enabled = false;
+
 		CreateCardboardSideLineMesh();
 		CreateCardboardFace(0.01f);
 
@@ -57,13 +60,6 @@ public class Cardboarder : MonoBehaviour {
 				spriteRenderer.flipY = originalSpriteRenderer.flipY;
 			}
 		}
-	}
-
-	private void MeshAccessDemo()
-	{
-		GameObject cbFace = transform.Find("CardboardFace").gameObject;
-		MeshFilter myMeshFilter = cbFace.GetComponent<MeshFilter>();
-		// Debug.Log("My filter: " + myMeshFilter.ToString());
 	}
 
 	private void RedrawCardboard()
