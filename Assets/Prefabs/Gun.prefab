@@ -99,3 +99,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   holder: {fileID: 0}
   bulletPrefab: {fileID: 3081014807101979079, guid: ad76d7c6d3f90b5439db3191d096ae8c, type: 3}
+  explosionPrefab: {fileID: 6593172532142632681, guid: 991e576b0511bb94794eb0dd6aa8fd7a, type: 3}
