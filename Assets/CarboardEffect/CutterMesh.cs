@@ -1,8 +1,11 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
+using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.UIElements;
+using static UnityEditor.Searcher.SearcherWindow.Alignment;
 
 public class MeshConnectedComponents
 {
@@ -16,6 +19,13 @@ public class MeshBuildingData
 	public List<Vector2> uvs;
 	public List<int> triangle_indices;
     public int next_id = 0;
+}
+
+public class IntersectionData
+{
+    public Vector3 pos;
+    public Vector2 uv;
+    public Dictionary<int, int> class_id_to_vertex_id;
 }
 
 public class CutterMesh : MonoBehaviour
@@ -41,18 +51,21 @@ public class CutterMesh : MonoBehaviour
         return res;
     }
 
-    private void cutMesh(Mesh mesh, Vector3 cutting_point, Vector3 cutting_normal)
+    private List<Mesh> CutMesh(Mesh mesh, Vector3 cutting_point, Vector3 cutting_normal)
     {
         MeshConnectedComponents component_prediction = ComputeConnectedComponentsAfterCut(mesh, cutting_point, cutting_normal);
 
         List<MeshBuildingData> mesh_data = new List<MeshBuildingData>(component_prediction.numComponents);
-
+        
         // wtf why so bad c#
         List<int> old_to_new_ids = new List<int>();
         for (int i = 0; i < mesh.vertexCount; i++)
         {
             old_to_new_ids.Add(-1);
         }
+
+        // store all cut vertices
+        var intersection_dict = new Dictionary<Tuple<int, int>, IntersectionData>();
 
         for (int i = 0; i < mesh.triangles.Length; i += 3)
         {
@@ -67,14 +80,14 @@ public class CutterMesh : MonoBehaviour
             float dot1 = Vector3.Dot(corner1, cutting_normal);
             float dot2 = Vector3.Dot(corner2, cutting_normal);
             float dot3 = Vector3.Dot(corner3, cutting_normal);
-			float sign1 = Mathf.Sign(dot1);
-			float sign2 = Mathf.Sign(dot2);
-			float sign3 = Mathf.Sign(dot3);
+            float sign1 = Mathf.Sign(dot1);
+            float sign2 = Mathf.Sign(dot2);
+            float sign3 = Mathf.Sign(dot3);
 
-			float[] signs = { sign1, sign2, sign3 };
+            float[] signs = { sign1, sign2, sign3 };
 
-			// add the triangle to one of the meshes
-			if (sign1 == sign2 && sign1 == sign3) 
+            // add the triangle to one of the meshes
+            if (sign1 == sign2 && sign1 == sign3)
             {
                 int active_component = component_prediction.vertexComponentIds[ids[0]];
                 // add new vertices
@@ -83,16 +96,16 @@ public class CutterMesh : MonoBehaviour
                     if (old_to_new_ids[ids[j]] == -1)
                     {
                         old_to_new_ids[ids[j]] = mesh_data[active_component].next_id;
-                        mesh_data[active_component].next_id += 1;
-						// create vertex
-						mesh_data[active_component].verts.Add(corners[j]);
-					}
+                        mesh_data[active_component].next_id++;
+                        // create vertex
+                        mesh_data[active_component].verts.Add(corners[j] + cutting_point);
+                        // create uvs
+                        mesh_data[active_component].uvs.Add(uvs[j]);
+                    }
                     // create triangle
                     mesh_data[active_component].triangle_indices.Add(old_to_new_ids[ids[j]]);
-                    // create uvs
-                    mesh_data[active_component].uvs.Add(uvs[j]);
-				}
-				continue;
+                }
+                continue;
             }
 
             int one_side_index = 0;
@@ -107,24 +120,121 @@ public class CutterMesh : MonoBehaviour
                 one_side_index = 1;
             }
 
-            Vector3 intersection1 = compute_intersection(corners[one_side_index], corners[one_side_index + 2 % 3], cutting_normal);
-            Vector3 intersection2 = compute_intersection(corners[one_side_index], corners[one_side_index + 1 % 3], cutting_normal);
+			int smaller_component_id = component_prediction.vertexComponentIds[ids[one_side_index]];
+            int larger_component_id = component_prediction.vertexComponentIds[ids[(one_side_index + 1) % 3]];
 
-            if (signs[one_side_index] < 0)
+			int c1 = one_side_index;
+            int c2 = (one_side_index + 1) % 3;
+			int c3 = (one_side_index + 2) % 3;
+
+            var i1key = new Tuple<int, int>(math.min(ids[c1], ids[c2]), math.max(ids[c1], ids[c2]));
+			var i2key = new Tuple<int, int>(math.min(ids[c1], ids[c2]), math.max(ids[c1], ids[c2]));
+
+			if (!intersection_dict.ContainsKey(i1key))
             {
-                continue;
-            }
+				float intersection1 = ComputeIntersection(corners[c1], corners[c2], cutting_normal);
+                // compute new pos and uv
+                Vector3 cutPos = Vector3.Lerp(corners[c1], corners[c2], intersection1);
+                Vector2 cutUV = Vector2.Lerp(uvs[c1], uvs[c2], intersection1);
+                // add vertices
+                mesh_data[smaller_component_id].verts.Add(cutPos);
+                mesh_data[smaller_component_id].next_id++;
+				mesh_data[larger_component_id].verts.Add(cutPos);
+				mesh_data[larger_component_id].next_id++;
+                // add uvs in both meshes
+                mesh_data[smaller_component_id].uvs.Add(cutUV);
+                mesh_data[larger_component_id].uvs.Add(cutUV);
+				// store reference to ids
+				IntersectionData i1Data = new IntersectionData();
+                i1Data.class_id_to_vertex_id.Add(smaller_component_id, mesh_data[smaller_component_id].next_id - 1);
+				i1Data.class_id_to_vertex_id.Add(larger_component_id, mesh_data[larger_component_id].next_id - 1);
+                intersection_dict.Add(i1key, i1Data);
+			}
+			if (!intersection_dict.ContainsKey(i2key))
+			{
+				float intersection2 = ComputeIntersection(corners[c1], corners[c3], cutting_normal);
+				// compute new pos and uv
+				Vector3 cutPos = Vector3.Lerp(corners[c1], corners[c3], intersection2);
+				Vector2 cutUV = Vector2.Lerp(uvs[c1], uvs[c3], intersection2);
+				// add vertices
+				mesh_data[smaller_component_id].verts.Add(cutPos);
+				mesh_data[smaller_component_id].next_id++;
+				mesh_data[larger_component_id].verts.Add(cutPos);
+				mesh_data[larger_component_id].next_id++;
+				// add uvs in both meshes
+				mesh_data[smaller_component_id].uvs.Add(cutUV);
+				mesh_data[larger_component_id].uvs.Add(cutUV);
+				// store reference to ids
+				IntersectionData i2Data = new IntersectionData();
+				i2Data.class_id_to_vertex_id.Add(smaller_component_id, mesh_data[smaller_component_id].next_id - 1);
+				i2Data.class_id_to_vertex_id.Add(larger_component_id, mesh_data[larger_component_id].next_id - 1);
+				intersection_dict.Add(i2key, i2Data);
+			}
 
+            // Erstelle neue Dreiecke für genau zwei Meshes
 
+            // kleine Seite
+            if (old_to_new_ids[ids[one_side_index]] == -1)
+            {
+				old_to_new_ids[ids[one_side_index]] = mesh_data[smaller_component_id].next_id;
+				mesh_data[smaller_component_id].next_id++;
+                // create vertex
+                mesh_data[smaller_component_id].verts.Add(corners[one_side_index]);
+				// create uvs
+				mesh_data[smaller_component_id].uvs.Add(uvs[one_side_index]);
+			}
+            // zwei cut vertices sind schon da :O
+            mesh_data[smaller_component_id].triangle_indices.Add(old_to_new_ids[ids[c1]]);
+            mesh_data[smaller_component_id].triangle_indices.Add(intersection_dict[i1key].class_id_to_vertex_id[smaller_component_id]);
+			mesh_data[smaller_component_id].triangle_indices.Add(intersection_dict[i2key].class_id_to_vertex_id[smaller_component_id]);
 
-            // erstelle neue Dreiecke mit den Schnittpunkten
-        }
+			// große Seite
+			if (old_to_new_ids[ids[c2]] == -1)
+			{
+				old_to_new_ids[ids[c2]] = mesh_data[larger_component_id].next_id;
+				mesh_data[larger_component_id].next_id++;
+				// create vertex
+				mesh_data[larger_component_id].verts.Add(corners[c2]);
+				// create uvs
+				mesh_data[larger_component_id].uvs.Add(uvs[c2]);
+			}
+			if (old_to_new_ids[ids[c3]] == -1)
+			{
+				old_to_new_ids[ids[c3]] = mesh_data[larger_component_id].next_id;
+				mesh_data[larger_component_id].next_id++;
+				// create vertex
+				mesh_data[larger_component_id].verts.Add(corners[c3]);
+				// create uvs
+				mesh_data[larger_component_id].uvs.Add(uvs[c3]);
+			}
+            // zwei cut vertices ... sind schon da! :OO
+            mesh_data[larger_component_id].triangle_indices.Add(old_to_new_ids[ids[c2]]);
+			mesh_data[larger_component_id].triangle_indices.Add(old_to_new_ids[ids[c3]]);
+			mesh_data[larger_component_id].triangle_indices.Add(intersection_dict[i1key].class_id_to_vertex_id[larger_component_id]);
+			mesh_data[larger_component_id].triangle_indices.Add(intersection_dict[i1key].class_id_to_vertex_id[larger_component_id]);
+			mesh_data[larger_component_id].triangle_indices.Add(old_to_new_ids[ids[c3]]);
+			mesh_data[larger_component_id].triangle_indices.Add(intersection_dict[i2key].class_id_to_vertex_id[larger_component_id]);
+		}
+
+        // create meshes
+        var meshes = new List<Mesh>();
+        foreach(var meshdata in mesh_data)
+        {
+            Mesh m = new Mesh();
+			m.name = "CutMesh";
+            m.vertices = meshdata.verts.ToArray();
+			m.uv = meshdata.uvs.ToArray();
+			m.triangles = meshdata.triangle_indices.ToArray();
+			m.RecalculateNormals();
+            meshes.Add(m);
+		}
+        return meshes;
     }
 
-    private Vector3 compute_intersection(Vector3 point1, Vector3 point2, Vector3 normal)
+    private float ComputeIntersection(Vector3 point1, Vector3 point2, Vector3 normal)
     {
-        Vector3 distance = Vector3.Normalize(point1 - point2);
-        return point1 + distance * (-Vector3.Dot(point1, normal) / Vector3.Dot(distance, normal));
+        Vector3 distance = Vector3.Normalize(point2 - point1);
+        return -Vector3.Dot(point1, normal) / Vector3.Dot(distance, normal);
     }
 
 }
