@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Components;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SheepMovementController : MonoBehaviour
 {
@@ -19,6 +20,8 @@ public class SheepMovementController : MonoBehaviour
     public float stateMaxTime;
 
     public Rigidbody sheepRigidbody;
+
+    public UnitController unitcontroller;
 
     private void Start()
     {
