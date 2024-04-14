@@ -8,7 +8,7 @@ public class GunController : MonoBehaviour
     
     public GameObject bulletPrefab;
 
-    private float cooldown = 0.10f;
+    private float cooldown = 0.20f;
     private float max_recoil = 0.4f;
     private Vector3 lastShotDir = new Vector3(0, 0, 0); //direction where the gun is pushed
 
