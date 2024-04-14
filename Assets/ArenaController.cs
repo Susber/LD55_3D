@@ -5,6 +5,7 @@ using Components;
 using Components.Levels;
 using Random = System.Random;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 using UnityEngine.XR;
 
 public class ArenaController : MonoBehaviour
@@ -40,6 +41,8 @@ public class ArenaController : MonoBehaviour
     public AbstractWave waitForWaveToFinish = null;
     public float spawnNextWaveTime;
 
+    public UpgradeUIComponent upgradeUi;
+
     private void Start()
     {
         SetStage(GameStage.IN_LEVEL);
@@ -55,6 +58,8 @@ public class ArenaController : MonoBehaviour
         {
             Destroy(t.gameObject);
         }
+        
+        upgradeUi.UpdateUI();
     }
 
 

@@ -30,7 +30,6 @@ public class PlayerController : MonoBehaviour
 
     public void Start()
     {
-        print("Instantiate(gunPrefab,this.transform).GetComponent<GunController>();");
         gun = Instantiate(gunPrefab,this.transform).GetComponent<GunController>();
         gun.holder = this;
     }
