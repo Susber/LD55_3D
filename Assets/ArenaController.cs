@@ -99,20 +99,20 @@ public class ArenaController : MonoBehaviour
         var origin = transform.position - this.arenaRadius;
         return origin + new Vector3((float)rnd.NextDouble() * arenaRadius.x * 2,0, (float)rnd.NextDouble() * arenaRadius.z * 2);
     }
-/*
+
     public Vector3 RandomEmptyPos(float freeCircleRadius, float distToPlayer)
     {
         var freeCircleRadiusSqr = freeCircleRadius * freeCircleRadius;
         for (var numTry = 0; numTry < 20; numTry++)
         {
-            var rndPos = RandomPos();
+            var rndPos = RandomPosOnArena();
             var minDistSquared = Mathf.Infinity;
             foreach (Transform child in enemyContainer.transform)
             {
-                minDistSquared = Mathf.Min(minDistSquared, ((Vector2) child.localPosition - rndPos).sqrMagnitude);
+                minDistSquared = Mathf.Min(minDistSquared, (child.localPosition - rndPos).sqrMagnitude);
             }
 
-            var playerDist = ((Vector2)PlayerController.Instance.transform.localPosition - rndPos).sqrMagnitude;
+            var playerDist = (PlayerController.Instance.transform.localPosition - rndPos).sqrMagnitude;
             if (minDistSquared >= freeCircleRadiusSqr && playerDist >= distToPlayer)
             {
                 return rndPos;
@@ -120,37 +120,37 @@ public class ArenaController : MonoBehaviour
         }
         // fail, relax.
         return RandomEmptyPos(freeCircleRadius - 3, distToPlayer - 3);
-    }*/
+    }
 
     private void FixedUpdate()
     {
-        // switch (currentStage)
-        // {
-        //     case GameStage.IN_LEVEL:
-        //     {
-        //         var hasNextWave = levelWaveQueue.Count > 0;
-        //         if (hasNextWave)
-        //         {
-        //             var nextWave = levelWaveQueue[0];
-        //             spawnNextWaveTime += Time.fixedDeltaTime;
-        //             if (spawnNextWaveTime >= nextWave.spawnTime)
-        //             {
-        //                 // spawn next wave
-        //                 levelWaveQueue.RemoveAt(0);
-        //                 nextWave.DoSpawn();
-        //                 spawnNextWaveTime = 0;
-        //             }
-        //         }
-        //         break;
-        //     }
-        //     case GameStage.UPGRADE:
-        //     {
-        //         break;
-        //     }
-        // }
+        switch (currentStage)
+        {
+            case GameStage.IN_LEVEL:
+            {
+                var hasNextWave = levelWaveQueue.Count > 0;
+                if (hasNextWave)
+                {
+                    var nextWave = levelWaveQueue[0];
+                    spawnNextWaveTime += Time.fixedDeltaTime;
+                    if (spawnNextWaveTime >= nextWave.spawnTime)
+                    {
+                        // spawn next wave
+                        levelWaveQueue.RemoveAt(0);
+                        nextWave.DoSpawn();
+                        spawnNextWaveTime = 0;
+                    }
+                }
+                break;
+            }
+            case GameStage.UPGRADE:
+            {
+                break;
+            }
+        }
     }
 
-    public GameObject SpawnEnemy(GameObject enemyPrefab, Vector2 pos)
+    public GameObject SpawnEnemy(GameObject enemyPrefab, Vector3 pos)
     {
         var enemy = Instantiate(enemyPrefab, enemyContainer);
         enemy.transform.localPosition = pos;
