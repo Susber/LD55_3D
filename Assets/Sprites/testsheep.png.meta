@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 297275a948f891942aadf3abb61cc280
+guid: d157807d7d3a7c34597bc46c23d47cb7
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -39,12 +39,12 @@ TextureImporter:
     mipBias: 0
     wrapU: 1
     wrapV: 1
-    wrapW: 1
+    wrapW: 0
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
   spriteMode: 2
-  spriteExtrude: 1
+  spriteExtrude: 0
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
@@ -72,7 +72,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 2
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -110,106 +110,22 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: flora_1
+      name: testsheep_0
       rect:
         serializedVersion: 2
-        x: 114
-        y: 750
-        width: 1554
-        height: 416
+        x: 787
+        y: 525
+        width: 321
+        height: 364
       alignment: 9
-      pivot: {x: 0.50230694, y: 0.034639947}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      pivot: {x: 0.5, y: 0.36211553}
+      border: {x: 2, y: 112, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3e19ef7f0317b2a4488a323e52892089
-      internalID: -1162469850
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: flora_2
-      rect:
-        serializedVersion: 2
-        x: 1414
-        y: 226
-        width: 455
-        height: 529
-      alignment: 9
-      pivot: {x: 0.44878572, y: 0.032391988}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c474a756c72bff24a8b760ca6eb612fe
-      internalID: 2068830020
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: flora_3
-      rect:
-        serializedVersion: 2
-        x: 99
-        y: 209
-        width: 269
-        height: 175
-      alignment: 9
-      pivot: {x: 0.4600187, y: 0.090286344}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 5f0aa08dd77f1aa4cbe2a943cfe3aa1f
-      internalID: 469076444
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: flora_4
-      rect:
-        serializedVersion: 2
-        x: 478
-        y: 217
-        width: 399
-        height: 300
-      alignment: 9
-      pivot: {x: 0.44609034, y: 0.069800414}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 60dc5758e281c1d43b4bb56de3d9fbfd
-      internalID: 977061769
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: flora_5
-      rect:
-        serializedVersion: 2
-        x: 983
-        y: 227
-        width: 439
-        height: 459
-      alignment: 9
-      pivot: {x: 0.4877507, y: 0.043088857}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 083d6be2b65921f468f59ac71502fde2
-      internalID: 912193540
+      spriteID: 44a266ebc19abd947b2603d030a451cb
+      internalID: -1338262928
       vertices: []
       indices: 
       edges: []
@@ -225,12 +141,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      flora_0: 727292805
-      flora_1: -1162469850
-      flora_2: 2068830020
-      flora_3: 469076444
-      flora_4: 977061769
-      flora_5: 912193540
+      testsheep_0: -1338262928
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

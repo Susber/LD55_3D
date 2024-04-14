@@ -14,16 +14,35 @@ public class Cardboarder : MonoBehaviour {
 
 	void Start()
 	{
+		createCardboard();
+		MeshAccessDemo();
+	}
+
+	private void FindAndDestroyChild(string name)
+	{
+		Transform c = transform.Find(name);
+		if (c != null) 
+		{
+			Debug.Log("Found object " + c.ToString());
+			Destroy(c.gameObject);
+		}
+	}
+
+	private void createCardboard()
+	{
+		PolygonCollider2D col = gameObject.GetComponent<PolygonCollider2D>();
+		col.TryUpdateShapeToAttachedSprite();
+
 		CreateCardboardSideLineMesh();
 		CreateCardboardFace(0.01f);
 
-		if(DoubleSided)
+		if (DoubleSided)
 			CreateCardboardFace(CardboardTickness - 0.01f, true);
 
 		if (DuplicateSpriteOnBackFace)
 		{
 			SpriteRenderer originalSpriteRenderer = GetComponent<SpriteRenderer>();
-			if(originalSpriteRenderer != null)
+			if (originalSpriteRenderer != null)
 			{
 				GameObject obj = new GameObject("BackFaceSprite");
 				obj.transform.parent = transform;
@@ -38,6 +57,25 @@ public class Cardboarder : MonoBehaviour {
 				spriteRenderer.flipY = originalSpriteRenderer.flipY;
 			}
 		}
+	}
+
+	private void MeshAccessDemo()
+	{
+		GameObject cbFace = transform.Find("CardboardFace").gameObject;
+		MeshFilter myMeshFilter = cbFace.GetComponent<MeshFilter>();
+		Debug.Log("My filter: " + myMeshFilter.ToString());
+	}
+
+	private void RedrawCardboard()
+	{
+		// Find and delete existing stuff
+		FindAndDestroyChild("CardboardLine");
+		FindAndDestroyChild("CardboardFace");
+		FindAndDestroyChild("CardboardFaceInv");
+		FindAndDestroyChild("BackFaceSprite");
+
+		// Create new stuff
+		createCardboard();
 	}
 
 	private void CreateCardboardSideLineMesh()
@@ -136,7 +174,12 @@ public class Cardboarder : MonoBehaviour {
 		msh.RecalculateBounds();
 
 		// Set up game object with mesh;
-		GameObject obj = new GameObject("CardboardFace");
+		name = "CardboardFace";
+		if (invert)
+		{
+			name += "Inv";
+		}
+		GameObject obj = new GameObject(name);
 		obj.transform.parent = transform;
 		obj.transform.localEulerAngles = Vector3.zero;
 		obj.transform.localPosition = new Vector3(0, 0, zOffset);
