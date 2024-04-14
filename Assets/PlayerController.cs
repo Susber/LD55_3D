@@ -6,7 +6,7 @@ using UnityEditor.UI;
 using UnityEngine;
 using UnityEngine.Serialization;
 
-public class PlayerController : UnitController
+public class PlayerController : MonoBehaviour
 {
     public static PlayerController Instance;
     public Component bulletPrefab;
@@ -18,17 +18,9 @@ public class PlayerController : UnitController
     {
         Instance = this;
     }
-    
-    // Start is called before the first frame update
-    new void Start()
-    {
-        base.Start();
-    }
 
-    // Update is called once per frame
-    new void Update()
+    void Update()
     {
-        base.Update();
         Vector3 force = new Vector3(0,0,0);
         if (Input.GetKey(KeyCode.W))
         {
@@ -47,8 +39,8 @@ public class PlayerController : UnitController
             force += -speed * new Vector3(0,0,1);
         }
 
-        Push(force);
-        playercamera.transform.position = new Vector3(this.transform.position.x, this.playercamera.transform.position.y, this.transform.position.z-5);//tilt 25, shift 5
+        GetComponent<UnitController>().Push(force);
+        playercamera.transform.position = new Vector3(this.transform.position.x, this.playercamera.transform.position.y, this.transform.position.z-12);
         
         /* sorry david!
         bool left = Input.GetKeyDown(KeyCode.Mouse0);
