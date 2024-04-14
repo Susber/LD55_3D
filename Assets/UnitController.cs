@@ -31,12 +31,12 @@ namespace Components
             unitRigidbody.constraints = RigidbodyConstraints.FreezeRotation | RigidbodyConstraints.FreezePositionY;
         }
 
-        public void Update()
+        public void FixedUpdate()
         {
             unitRigidbody.angularVelocity = new Vector3(0, 0, 0);
             //unitRigidbody.constraints.
             //unitRigidbody.rotation.SetEulerAngles(new Vector3(0, 0, 0));
-            unitRigidbody.velocity *= 0.99f;
+            unitRigidbody.velocity *= 0.9f;
         }
 
         public void Push(Vector3 force)
