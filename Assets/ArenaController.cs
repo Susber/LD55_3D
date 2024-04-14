@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Components;
+using Components.Levels;
 using Random = System.Random;
 using UnityEngine;
 using UnityEngine.XR;
@@ -20,6 +21,8 @@ public class ArenaController : MonoBehaviour
     
     public Transform enemyContainer;
     public Transform decorationContainer;
+    public Transform runeContainer;
+    
     public GameStage currentStage = GameStage.IN_LEVEL;
 
     public Random rnd = new Random();
@@ -28,7 +31,10 @@ public class ArenaController : MonoBehaviour
     public GameObject sheepPrefab;
     public Component grassPrefab;
 
-    public List<Wave> levelWaveQueue = new List<Wave>();
+    public GameObject runePrefab;
+
+    public List<AbstractWave> levelWaveQueue = new List<AbstractWave>();
+    public AbstractWave waitForWaveToFinish = null;
     public float spawnNextWaveTime;
 
     private void Start()
@@ -132,12 +138,17 @@ public class ArenaController : MonoBehaviour
                 if (hasNextWave)
                 {
                     var nextWave = levelWaveQueue[0];
+                    if (waitForWaveToFinish != null && !waitForWaveToFinish.finished)
+                    {
+                        return;
+                    }
                     spawnNextWaveTime += Time.fixedDeltaTime;
                     if (spawnNextWaveTime >= nextWave.spawnTime)
                     {
                         // spawn next wave
                         levelWaveQueue.RemoveAt(0);
                         nextWave.DoSpawn();
+                        waitForWaveToFinish = nextWave;
                         spawnNextWaveTime = 0;
                     }
                 }
@@ -161,9 +172,10 @@ public class ArenaController : MonoBehaviour
     {
         if (newStage == GameStage.IN_LEVEL) {
             levelWaveQueue.Clear();
+            levelWaveQueue.Add(new SpawnRune(1, 5f));
             for (var n = 0; n < 5; n++)
             {
-                levelWaveQueue.Add(new Wave(sheepPrefab, 10, 5));
+                levelWaveQueue.Add(new Wave(5, sheepPrefab, 10));
             }
             spawnNextWaveTime = 0;
         }

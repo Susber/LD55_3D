@@ -2,19 +2,19 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
-public class PentagramLineController : MonoBehaviour
+public class RuneLineController : MonoBehaviour
 {
     public LineRenderer lineRenderer;
 
-    public PentagramController pentagram;
+    [FormerlySerializedAs("pentagram")] public RuneController rune;
     public bool[] segmentsActive;
     public Vector3[] segmentCenters;
 
-    // Update is called once per frame
-    void Update()
-    {
-    }
+    public Color inactiveColor;
+    public Color activeColor;
+
 
     void FixedUpdate()
     {
@@ -38,7 +38,7 @@ public class PentagramLineController : MonoBehaviour
         for (var j = 0; j < numPoints; j++)
         {
             var alpha = (float) j / (numPoints - 1);
-            colorList[j] = new GradientColorKey(segmentsActive[j] ? pentagram.activeColor : pentagram.inactiveColor, alpha);
+            colorList[j] = new GradientColorKey(segmentsActive[j] ? activeColor : inactiveColor, alpha);
             colorAlphasList[j] = new GradientAlphaKey(1.0f, alpha);
         }
 

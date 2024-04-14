@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: -8409999579085026719}
   - component: {fileID: 8616315166702226557}
   m_Layer: 0
-  m_Name: PentagramLine
+  m_Name: RuneLine
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -2,20 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PentagramController : MonoBehaviour
+public class RuneController : MonoBehaviour
 {
     public Transform linesContainer;
-
     public GameObject linePrefab;
-
-    public Color inactiveColor;
-    public Color activeColor;
     
-    void Start()
+    public void MakePentagram(int n, float radius, float segmentLength)
     {
-        var n = 5;
-        var radius = 4;
-        var segmentLength = 1;
         Vector3[] circlePos = new Vector3[n];
         for (var i = 0; i < n; i++)
         {
@@ -29,6 +22,10 @@ public class PentagramController : MonoBehaviour
             var to = circlePos[(i + 2) % n];
             
             var numPoints = (int) ((to - from).magnitude / segmentLength + 1);
+            if (numPoints > 9)
+            {
+                numPoints = 9;  // stupid unity limit
+            }
             Vector3[] segmentList = new Vector3[numPoints];
 
             Vector3[] segmentCenters = new Vector3[numPoints - 1];
@@ -52,15 +49,10 @@ public class PentagramController : MonoBehaviour
             lineRenderer.positionCount = numPoints;
             lineRenderer.SetPositions(segmentList);
 
-            line.GetComponent<PentagramLineController>().pentagram = this;
-            line.GetComponent<PentagramLineController>().segmentsActive = new bool[numPoints - 1];
-            line.GetComponent<PentagramLineController>().segmentCenters = segmentCenters;
-            line.GetComponent<PentagramLineController>().UpdateGradient();
+            line.GetComponent<RuneLineController>().rune = this;
+            line.GetComponent<RuneLineController>().segmentsActive = new bool[numPoints - 1];
+            line.GetComponent<RuneLineController>().segmentCenters = segmentCenters;
+            line.GetComponent<RuneLineController>().UpdateGradient();
         }
-    }
-
-    void Update()
-    {
-        
     }
 }
