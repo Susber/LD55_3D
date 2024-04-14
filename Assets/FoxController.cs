@@ -20,13 +20,15 @@ public class FoxMovementController : MonoBehaviour
 
     public float stateMaxTime;
 
+    public float shootDistance;
+
     public Rigidbody foxRigidbody;
 
     public UnitController unitcontroller;
 
     private void Start()
     {
-        currentState = FoxState.Idle;
+        currentState = FoxState.MoveTowardsPlayer;
     }
 
     void FixedUpdate()
@@ -38,23 +40,23 @@ public class FoxMovementController : MonoBehaviour
             stateTime = 0;
             switch (currentState)
             {
-                case FoxState.Idle:
+                case FoxState.Attack:
                     currentState = FoxState.MoveTowardsPlayer;
                     break;
                 case FoxState.MoveTowardsPlayer:
-                    currentState = FoxState.Idle;
+                    currentState = FoxState.Attack;
                     break;
             }
         }
         
         switch (currentState)
         {
-            case FoxState.Idle:
+            case FoxState.Attack:
                 break;
             case FoxState.MoveTowardsPlayer:
                 var from = this.transform.position;
                 var to = PlayerController.Instance.transform.position;
-                if ((to - from).sqrMagnitude < 1)
+                if ((to - from).sqrMagnitude < shootDistance)
                 {
                     return;
                 }
