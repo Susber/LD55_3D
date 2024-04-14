@@ -10,6 +10,7 @@ public class BulletController : MonoBehaviour
     public float lifetime = 0;
     public Rigidbody bulletRigidbody;
     private bool enemyBullet =  true;
+    private int n_to_hit = 1;
     void Start()
     {
         lifetime = 3;
@@ -33,6 +34,8 @@ public class BulletController : MonoBehaviour
     
     void OnTriggerEnter(Collider coll)
     {
+        if (n_to_hit < 1)
+            return;
         var incomingRigidbody = coll.GetComponent<Rigidbody>();
         var obstracle = coll.GetComponent<Rigidbody>().gameObject;
         if (enemyBullet)
@@ -43,6 +46,7 @@ public class BulletController : MonoBehaviour
                 unit.Damage(5);
                 print("hit" + gameObject);
                 Destroy(gameObject);
+                n_to_hit -= 1;
             }
             
         }
@@ -54,6 +58,7 @@ public class BulletController : MonoBehaviour
                 unit.Damage(5);
                 print("hit" + gameObject);
                 Destroy(gameObject);
+                n_to_hit -= 1;
             }
         }
     }
