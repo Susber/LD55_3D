@@ -41,6 +41,8 @@ public class ArenaController : MonoBehaviour
     public AbstractWave waitForWaveToFinish = null;
     public float spawnNextWaveTime;
 
+    public int currentLevel;
+
     public UpgradeUIComponent upgradeUi;
 
     private void Start()
@@ -161,6 +163,15 @@ public class ArenaController : MonoBehaviour
                         spawnNextWaveTime = 0;
                     }
                 }
+                else
+                {
+                    // all waves finished, wait for all enemies to be dead and all coins to be collected.
+                    if (enemyContainer.childCount == 0 && coinContainer.childCount == 0)
+                    {
+                        currentLevel += 1;
+                        SetStage(GameStage.UPGRADE);
+                    }
+                }
                 break;
             }
             case GameStage.UPGRADE:
@@ -179,23 +190,40 @@ public class ArenaController : MonoBehaviour
 
     public void SetStage(GameStage newStage)
     {
-        if (newStage == GameStage.IN_LEVEL) {
-            levelWaveQueue.Clear();
-            for (var n = 0; n < 5; n++)
+        switch (newStage)
+        {
+            case GameStage.IN_LEVEL:
             {
-                levelWaveQueue.Add(new SpawnRune(0, new RuneController.Pentagram(5, 5f)));
-            }
+                levelWaveQueue.Clear();
+                for (var n = 0; n < 5; n++)
+                {
+                    levelWaveQueue.Add(new SpawnRune(0, new RuneController.Pentagram(5, 5f)));
+                }
 
-            for (var n = 0; n < 5; n++)
+                for (var n = 0; n < 1; n++)
+                {
+                    levelWaveQueue.Add(new Wave(5, sheepPrefab, 10));
+                    levelWaveQueue.Add(new Wave(2, foxPrefab, 1));
+                    levelWaveQueue.Add(new SpawnRune(1, new RuneController.Estate(2f)));
+                }
+
+                spawnNextWaveTime = 0;
+                break;
+            }
+            case GameStage.UPGRADE:
             {
-                levelWaveQueue.Add(new Wave(5, sheepPrefab, 10));
-                levelWaveQueue.Add(new Wave(2, foxPrefab, 1));
-                levelWaveQueue.Add(new SpawnRune(1, new RuneController.Estate(2f)));
-
+                upgradeUi.gameObject.SetActive(true);
+                upgradeUi.UpdateUI();
+                break;
             }
-            spawnNextWaveTime = 0;
         }
 
         currentStage = newStage;
+    }
+
+    public void StartPlayingNextLevel()
+    {
+        ArenaController.Instance.upgradeUi.gameObject.SetActive(false);
+        SetStage(GameStage.IN_LEVEL);
     }
 }
