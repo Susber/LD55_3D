@@ -18,13 +18,16 @@ public class SheepMovementController : MonoBehaviour
 
     public float stateMaxTime;
 
+    public Rigidbody sheepRigidbody;
+
     private void Start()
     {
         currentState = SheepState.Idle;
     }
 
     void FixedUpdate()
-    {
+    {    
+        sheepRigidbody.velocity *= 0.99f;
         stateTime += Time.fixedDeltaTime;
         if (stateTime > stateMaxTime)
         {
@@ -52,7 +55,7 @@ public class SheepMovementController : MonoBehaviour
                     return;
                 }
                 var dir = (to - from).normalized;
-                GetComponent<UnitController>().Push(speed * dir);
+                sheepRigidbody.AddForce(speed * dir);
                 break;
         }
     }

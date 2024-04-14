@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 205407816392405511}
   - component: {fileID: 8525234114814371360}
   - component: {fileID: 8977130361960385968}
+  - component: {fileID: 8446307993481465819}
   m_Layer: 0
   m_Name: Sheep
   m_TagString: Untagged
@@ -125,7 +126,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 116
   m_CollisionDetection: 0
 --- !u!114 &8977130361960385968
 MonoBehaviour:
@@ -143,3 +144,27 @@ MonoBehaviour:
   currentState: 0
   stateTime: 0
   stateMaxTime: 4
+  sheepRigidbody: {fileID: 8525234114814371360}
+--- !u!136 &8446307993481465819
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2803500051409867777}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.25
+  m_Height: 0.5
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
