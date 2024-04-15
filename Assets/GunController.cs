@@ -45,8 +45,8 @@ public class GunController : MonoBehaviour
         //print("normalized: " + direction);
         lastShotDir = direction;
         //if(AudioManger.Instance is not null)
-        if(AudioManger.Instance is not null)
-            AudioManger.Instance.PlaySoundGun();
+        if(AudioManager.Instance is not null)
+            AudioManager.Instance.PlaySoundGun();
         this.ps.Play();
 
         float shootHalfAngleInRad = shootHalfAngle / 360 * 2 * Mathf.PI;
