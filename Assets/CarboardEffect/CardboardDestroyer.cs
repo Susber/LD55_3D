@@ -47,6 +47,13 @@ public class CardboardDestroyer : MonoBehaviour
         List<Mesh> pieces = CutterMesh.RecursiveCutting(cutMesh, targetNumPieces, new Vector3(0, 0, 1));
 
         // create game objects for each cut mesh
+        Transform coinContainer = ArenaController.Instance.coinContainer;
+
+
+        foreach (Mesh piece in pieces)
+        {
+
+        }
             // cardboard, texture front and backface, colliders
         
 
