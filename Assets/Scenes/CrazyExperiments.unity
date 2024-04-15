@@ -171,6 +171,8 @@ MonoBehaviour:
   cardboardPiece: {fileID: 9186086360536189253, guid: 7f07d26212f45496898c7fd1a003f444, type: 3}
   cardboardMaterial: {fileID: 2100000, guid: ce9f6a58e82aa3349bd3775fff79fa80, type: 2}
   cardboardSideMaterial: {fileID: 2100000, guid: 34000f52b6e8f9f41960347ae81e0859, type: 2}
+  cardboardWidth: 0.1
+  CardboardTexScale: 1
   cardboardColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1001 &755773912
 PrefabInstance:
@@ -182,7 +184,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 205407816392405511, guid: 9eb6d85379b1c3d429183805285ed6cc, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2415150734508217240, guid: 9eb6d85379b1c3d429183805285ed6cc, type: 3}
       propertyPath: m_Enabled
@@ -500,6 +502,8 @@ MonoBehaviour:
   cardboardPiece: {fileID: 9186086360536189253, guid: 7f07d26212f45496898c7fd1a003f444, type: 3}
   cardboardMaterial: {fileID: 2100000, guid: ce9f6a58e82aa3349bd3775fff79fa80, type: 2}
   cardboardSideMaterial: {fileID: 2100000, guid: 34000f52b6e8f9f41960347ae81e0859, type: 2}
+  cardboardWidth: 0.1
+  CardboardTexScale: 1
   cardboardColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &1392543903
 GameObject:

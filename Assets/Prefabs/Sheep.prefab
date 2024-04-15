@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 8977130361960385968}
   - component: {fileID: 8446307993481465819}
   - component: {fileID: -8320157743892894610}
+  - component: {fileID: 434331006152931121}
   m_Layer: 0
   m_Name: Sheep
   m_TagString: Untagged
@@ -141,6 +142,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   indicatorPrefab: {fileID: 5472028992003191506, guid: 52430cf08dc204677ae07b1b20f6bdbc, type: 3}
   indicator: {fileID: 0}
+--- !u!95 &434331006152931121
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2803500051409867777}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 19ab2a19cd57443d4b4c0984badde348, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &6814327843858055700
 PrefabInstance:
   m_ObjectHideFlags: 0
