@@ -4,11 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1c1d15bd-9ebc-406e-a8b4-ae065e33b06d" name="Changes" comment="sorry for the debug spam, removed here">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.LD55_3D/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.LD55_3D/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Sheep.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Sheep.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/UnitController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UnitController.cs" afterDir="false" />
-    </list>
+    <list default="true" id="1c1d15bd-9ebc-406e-a8b4-ae065e33b06d" name="Changes" comment="jo sprites flippen jetzt!" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -43,6 +39,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Levels/Wave.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/PlayerController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="mock://F:/spieleentwicklung/LD55_3D/Assets/Prefabs/Gun.prefab" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://F:/spieleentwicklung/LD55_3D/Assets/Prefabs/Sheep.prefab" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/SheepMovementController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/UnitController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Util.cs" root0="FORCE_HIGHLIGHTING" />
@@ -272,7 +269,23 @@
       <option name="project" value="LOCAL" />
       <updated>1713143165938</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="jo sprites flippen jetzt!">
+      <option name="closed" value="true" />
+      <created>1713145427181</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1713145427182</updated>
+    </task>
+    <task id="LOCAL-00024" summary="jo sprites flippen jetzt!">
+      <option name="closed" value="true" />
+      <created>1713145569573</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1713145569573</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="UnityCheckinConfiguration" checkUnsavedScenes="false" />
@@ -303,6 +316,7 @@
     <MESSAGE value="fix" />
     <MESSAGE value="explosion and bullets despawning fix" />
     <MESSAGE value="sorry for the debug spam, removed here" />
-    <option name="LAST_COMMIT_MESSAGE" value="sorry for the debug spam, removed here" />
+    <MESSAGE value="jo sprites flippen jetzt!" />
+    <option name="LAST_COMMIT_MESSAGE" value="jo sprites flippen jetzt!" />
   </component>
 </project>
