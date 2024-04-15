@@ -26,6 +26,7 @@ public class ArenaController : MonoBehaviour
     public Vector3 arenaRadius;
     
     public Transform enemyContainer;
+    public Transform friendContainer;
     public Transform decorationContainer;
     public Transform bigRuneContainer;
     public Transform smallRuneContainer;
@@ -412,7 +413,7 @@ public class ArenaController : MonoBehaviour
     {
         float bestDistSqr = Mathf.Infinity;
         UnitController closest = null;
-        foreach (var enemy in enemyContainer.GetComponents<UnitController>())
+        foreach (var enemy in enemyContainer.GetComponentsInChildren<UnitController>())
         {
             var currDistSqr = (enemy.transform.position - searchCenter).sqrMagnitude;
             if (currDistSqr < bestDistSqr)
