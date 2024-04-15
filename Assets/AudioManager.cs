@@ -123,6 +123,20 @@ public class AudioManager : MonoBehaviour
             PlaySound(13, 0.1f);
     }
 
+    public void PlaySoundGotHit()
+    {
+        PlaySound(14, 0.3f);
+    }
+
+    public void PlaySoundDeath()
+    {
+        PlaySound(15, 0.3f);
+    }
+    public void PlaySoundEnd()
+    {
+        PlaySound(15, 0.3f);
+    }
+
 
     // Function to play a specific sound from the array
     public void PlaySound(int index, float volume)

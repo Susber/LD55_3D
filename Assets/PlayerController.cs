@@ -124,6 +124,9 @@ public class PlayerController : MonoBehaviour
 
     public void Damage(Vector3 knockback)
     {
+        if (AudioManager.Instance is not null)
+            AudioManager.Instance.PlaySoundGotHit();
+
         playerrigidbody.AddForce(knockback);
         if (invulnerableTimeLeft > 0)
         {
