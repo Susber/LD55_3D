@@ -151,13 +151,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbc869cc3bf678447895abda4b1f7549, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gunPrefab: {fileID: 767943210248605396, guid: ed09840e02fb31f48b2fb862f790dfe7, type: 3}
+  renderingContainer: {fileID: 7869340404830290835}
+  spriteRenderer: {fileID: 0}
   stateTime: 0
   stateMaxTime: 0
-  sheepRigidbody: {fileID: 0}
+  minionrigidbody: {fileID: 0}
   unitcontroller: {fileID: 0}
-  spriteRenderer: {fileID: 0}
   playerrigidbody: {fileID: 0}
   target: {fileID: 0}
+  gun: {fileID: 0}
 --- !u!1001 &6814327843858055700
 PrefabInstance:
   m_ObjectHideFlags: 0

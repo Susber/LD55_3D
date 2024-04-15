@@ -26,6 +26,7 @@ public class ArenaController : MonoBehaviour
     public Vector3 arenaRadius;
     
     public Transform enemyContainer;
+    public Transform friendContainer;
     public Transform decorationContainer;
     public Transform bigRuneContainer;
     public Transform smallRuneContainer;
@@ -246,6 +247,7 @@ public class ArenaController : MonoBehaviour
                     if (enemyContainer.childCount == 0 && coinContainer.childCount == 0)
                     {
                         currentLevel += 1;
+                        // todo, if level is >= 10, then play win screen!
                         UpdateHud();
                         SetStage(GameStage.UPGRADE);
                     }
@@ -371,13 +373,14 @@ public class ArenaController : MonoBehaviour
                 for (var i = 0 ; i < numSmallRunes - smallRuneContainer.childCount; i++)
                     SpawnRune(false);
                 levelWaveQueue.Clear();
-                levelWaveQueue.Add(new Wave(0, sheepPrefab, 10));
-                for (var n = 0; n < currentLevel + 1; n++)
-                {
-                    levelWaveQueue.Add(new Wave(5, sheepPrefab, 10));
-                    levelWaveQueue.Add(new Wave(2, foxPrefab, 1));
-                    levelWaveQueue.Add(new Wave(2, dogPrefab, 1));
-                }
+                levelWaveQueue.Add(new Wave(0, sheepPrefab, 1));
+                // levelWaveQueue.Add(new Wave(0, sheepPrefab, 10));
+                // for (var n = 0; n < currentLevel + 1; n++)
+                // {
+                //     levelWaveQueue.Add(new Wave(5, sheepPrefab, 10));
+                //     levelWaveQueue.Add(new Wave(2, foxPrefab, 1));
+                //     levelWaveQueue.Add(new Wave(2, dogPrefab, 1));
+                // }
 
                 spawnNextWaveTime = 0;
                 break;
@@ -410,7 +413,7 @@ public class ArenaController : MonoBehaviour
     {
         float bestDistSqr = Mathf.Infinity;
         UnitController closest = null;
-        foreach (var enemy in enemyContainer.GetComponents<UnitController>())
+        foreach (var enemy in enemyContainer.GetComponentsInChildren<UnitController>())
         {
             var currDistSqr = (enemy.transform.position - searchCenter).sqrMagnitude;
             if (currDistSqr < bestDistSqr)

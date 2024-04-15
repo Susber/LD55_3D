@@ -90,25 +90,26 @@ public class BulletController : MonoBehaviour
         if (n_to_hit < 1)
             return;
         var obstacle = coll.gameObject;
+        PlayerController player = obstacle.GetComponent<PlayerController>();
+        MinionController minion = obstacle.GetComponent<MinionController>();
+        bool collIsEnemy = !(player is not null || minion is not null);
         
-        if (shotFromEnemy)
+        if(shotFromEnemy == collIsEnemy)
+            return;
+        
+        var unit = obstacle.GetComponent<UnitController>();
+        if (unit != null)
         {
-            var unit = obstacle.GetComponent<PlayerController>();
-            if (unit != null)
-            {
-                unit.Damage(bulletRigidbody.velocity.normalized * PlayerController.Instance.gun.knockback);
-                OnHit();
-            }
-            
+            unit.Damage(PlayerController.Instance.gun.damage, bulletRigidbody.velocity.normalized * PlayerController.Instance.gun.knockback);
+            OnHit();
         }
         else
         {
-            var unit = obstacle.GetComponent<UnitController>();
-            if (unit != null)
-            {
-                unit.Damage(PlayerController.Instance.gun.damage, bulletRigidbody.velocity.normalized * PlayerController.Instance.gun.knockback);
+            if(player is not null){
+                player.Damage(bulletRigidbody.velocity.normalized * PlayerController.Instance.gun.knockback);
                 OnHit();
             }
         }
+        
     }
 }

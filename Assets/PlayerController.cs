@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
     public float speed;
     public Camera playercamera;
     public GameObject gunPrefab;
+    public GameObject minionPrefab;
     public GunController gun;
     public float suckCoinDistance;
 
@@ -33,7 +34,7 @@ public class PlayerController : MonoBehaviour
     public void Start()
     {
         gun = Instantiate(gunPrefab, renderingContainer).GetComponent<GunController>();
-        gun.Init(this.playerrigidbody);
+        gun.Init(this.playerrigidbody, false);
         gun.SetGuntype(GunController.Guntype.Rocketlauncher);
         gun.guntype = GunController.Guntype.Rocketlauncher;
     }
@@ -97,6 +98,13 @@ public class PlayerController : MonoBehaviour
             {
                 var upgrades = ArenaController.Instance.upgradeUi;
                 upgrades.stats[UpgradeUIComponent.Health] += 100;
+            }
+            
+            
+            if (Input.GetKey(KeyCode.M))
+            {
+                MinionController minion = Instantiate(minionPrefab, ArenaController.Instance.friendContainer).GetComponent<MinionController>();
+                minion.Init(3,playerrigidbody.position);
             }
         }
 
