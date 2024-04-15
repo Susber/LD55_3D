@@ -56,7 +56,7 @@ public class BulletController : MonoBehaviour
             if (unit != null)
             {
                 unit.Damage(5);
-                print("hit" + gameObject);
+ //               print("hit" + gameObject);
                 Destroy(gameObject);
                 n_to_hit -= 1;
             }

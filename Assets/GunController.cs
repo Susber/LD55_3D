@@ -28,7 +28,7 @@ public class GunController : MonoBehaviour
         var direction = worldpos - transform.position;
         direction.y = 0;
         direction = Vector3.Normalize(direction);
-        print("normalized: " + direction);
+        //print("normalized: " + direction);
         lastShotDir = direction;
         var bullet = Instantiate(bulletPrefab,transform.position, new Quaternion()).GetComponent<BulletController>();
         bullet.SetTeam(false);
@@ -69,6 +69,6 @@ public class GunController : MonoBehaviour
     {
         var displacement = max_recoil * timeout / cooldown;
         transform.localPosition = playerGunPosition - displacement * lastShotDir;
-        // recoil looks wheird and changes depending on angle, reason is scale of player...
+        // recoil looks weird and changes depending on angle, reason is scale of player...
     }
 }
