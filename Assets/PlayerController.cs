@@ -43,7 +43,7 @@ public class PlayerController : MonoBehaviour
     public void Start()
     {
         gun = Instantiate(gunPrefab, renderingContainer).GetComponent<GunController>();
-        gun.Init(this.playerrigidbody, false, GunController.Guntype.Rocketlauncher);
+        gun.Init(this.playerrigidbody, false, GunController.Guntype.Shotgun);
     }
 
     private void FixedUpdate()
@@ -171,14 +171,14 @@ public class PlayerController : MonoBehaviour
             upgrades.stats[UpgradeUIComponent.Health] = 0;
             currentState = PlayerState.DEAD;
 
-			// spawn broken cardboard
-   //         CardboardDestroyer myRendererCardboardDestroyer = transform.GetComponentInChildren<CardboardDestroyer>();
-			//if (myRendererCardboardDestroyer != null)
-			//{
-			//	myRendererCardboardDestroyer.SpawnDestroyedCardboard(10);
-			//}
+            //spawn broken cardboard
+            CardboardDestroyer myRendererCardboardDestroyer = transform.GetComponentInChildren<CardboardDestroyer>();
+            if (myRendererCardboardDestroyer != null)
+            {
+                myRendererCardboardDestroyer.SpawnDestroyedCardboard(10);
+            }
 
-			return;
+            return;
         }
         invulnerableTimeLeft = invulnerableTimeAfterHit;
         ArenaController.Instance.UpdateHud();
