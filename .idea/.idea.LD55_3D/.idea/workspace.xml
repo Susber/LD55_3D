@@ -4,12 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1c1d15bd-9ebc-406e-a8b4-ae065e33b06d" name="Changes" comment="better unit walking without constant drag">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.LD55_3D/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.LD55_3D/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AudioManger.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AudioManger.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/BulletController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/BulletController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GunController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GunController.cs" afterDir="false" />
-    </list>
+    <list default="true" id="1c1d15bd-9ebc-406e-a8b4-ae065e33b06d" name="Changes" comment="collider sizes" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -34,12 +29,35 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/1ef406b3fd3a4bfbac8a7b76b99d890b1fe00/1d/c376d154/Rigidbody.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/c5ed782439084ef1bc2ad85eec89e9fe175a00/4c/4b0af9f7/Color.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/ArenaController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://F:/spieleentwicklung/LD55_3D/Assets/AudioManger.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://F:/spieleentwicklung/LD55_3D/Assets/AudioManger.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://F:/spieleentwicklung/LD55_3D/Assets/BulletController.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/BulletController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://F:/spieleentwicklung/LD55_3D/Assets/FoxController.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://F:/spieleentwicklung/LD55_3D/Assets/GunController.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://F:/spieleentwicklung/LD55_3D/Assets/GunController.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Levels/AbstractWave.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Levels/Wave.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/PlayerController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://F:/spieleentwicklung/LD55_3D/Assets/Prefabs/Dog.prefab" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://F:/spieleentwicklung/LD55_3D/Assets/Prefabs/Dog.prefab" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://F:/spieleentwicklung/LD55_3D/Assets/Prefabs/Dog.prefab" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://F:/spieleentwicklung/LD55_3D/Assets/Prefabs/Explosion.prefab" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://F:/spieleentwicklung/LD55_3D/Assets/Prefabs/Fox.prefab" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://F:/spieleentwicklung/LD55_3D/Assets/Prefabs/Fox.prefab" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://F:/spieleentwicklung/LD55_3D/Assets/Prefabs/Sheep.prefab" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://F:/spieleentwicklung/LD55_3D/Assets/Prefabs/Sheep.prefab" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://F:/spieleentwicklung/LD55_3D/Assets/Prefabs/Sheep.prefab" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://F:/spieleentwicklung/LD55_3D/Assets/Prefabs/XPCardboard.prefab.meta" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://F:/spieleentwicklung/LD55_3D/Assets/Prefabs/XPCardboard.prefab.meta" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://F:/spieleentwicklung/LD55_3D/Assets/Scenes/SampleScene.unity" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://F:/spieleentwicklung/LD55_3D/Assets/Scenes/SampleScene.unity" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://F:/spieleentwicklung/LD55_3D/Assets/Scenes/SampleScene.unity" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://F:/spieleentwicklung/LD55_3D/Assets/Scenes/SampleScene.unity" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://F:/spieleentwicklung/LD55_3D/Assets/Scenes/SampleScene.unity" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://F:/spieleentwicklung/LD55_3D/Assets/Scenes/SampleScene.unity" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://F:/spieleentwicklung/LD55_3D/Assets/Scenes/SampleScene.unity" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://F:/spieleentwicklung/LD55_3D/Assets/Scenes/SampleScene.unity" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://F:/spieleentwicklung/LD55_3D/Assets/Scenes/SampleScene.unity" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://F:/spieleentwicklung/LD55_3D/Assets/Scenes/SampleScene.unity" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/SheepMovementController.cs" root0="FORCE_HIGHLIGHTING" />
@@ -348,7 +366,23 @@
       <option name="project" value="LOCAL" />
       <updated>1713189497635</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="effects">
+      <option name="closed" value="true" />
+      <created>1713194778667</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1713194778667</updated>
+    </task>
+    <task id="LOCAL-00030" summary="collider sizes">
+      <option name="closed" value="true" />
+      <created>1713194814250</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1713194814250</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -392,6 +426,8 @@
     <MESSAGE value="rauch" />
     <MESSAGE value="sheep something" />
     <MESSAGE value="better unit walking without constant drag" />
-    <option name="LAST_COMMIT_MESSAGE" value="better unit walking without constant drag" />
+    <MESSAGE value="effects" />
+    <MESSAGE value="collider sizes" />
+    <option name="LAST_COMMIT_MESSAGE" value="collider sizes" />
   </component>
 </project>
