@@ -38,6 +38,7 @@ public class GunController : MonoBehaviour
         direction = Vector3.Normalize(direction);
         //print("normalized: " + direction);
         lastShotDir = direction;
+        AudioManger.Instance.PlaySoundGun();
 
         float shootHalfAngleInRad = shootHalfAngle / 360 * 2 * Mathf.PI;
         for (var i = 0; i < shootAmount; i++)
