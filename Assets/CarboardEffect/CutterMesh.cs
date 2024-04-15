@@ -36,13 +36,64 @@ public class CutterMesh : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        OneCut();
+        TestCutting(3);
     }
 
     // Update is called once per frame
     void Update()
     {
 
+    }
+
+    private void TestCutting(int numPieces)
+    {
+		Mesh mymesh = GetComponent<MeshFilter>().mesh;
+		Material myMat = GetComponent<MeshRenderer>().material;
+
+        Vector3 cuttingTangent = new Vector3(0,1,0);
+
+        List<Mesh> pieces = RecursiveCutting(mymesh, numPieces, cuttingTangent);
+	}
+
+    private void CreateDebugMesh(Mesh mesh, float offset)
+    {
+		Material myMat = GetComponent<MeshRenderer>().material;
+		GameObject obj = new GameObject("Debug Mesh");
+		obj.transform.parent = transform;
+		obj.transform.localPosition = new Vector3(0, offset, 0);
+		obj.transform.localEulerAngles = Vector3.zero;
+		obj.transform.localScale = Vector3.one;
+		MeshFilter meshFilter = obj.AddComponent<MeshFilter>();
+		MeshRenderer renderer = obj.AddComponent<MeshRenderer>();
+		meshFilter.mesh = mesh;
+		renderer.material = myMat;
+	}
+
+    public List<Mesh> RecursiveCutting(Mesh mesh, int pieceCountTarget, Vector3 cuttingPlaneTangent)
+    {
+        List<Mesh> pieces = new();
+		pieces.Add(mesh);
+
+        float debugOffset = 0.2f;
+        while (pieces.Count < pieceCountTarget)
+        {
+            List<Mesh> newPieces = new List<Mesh>();
+
+            foreach (Mesh m in pieces)
+            {
+                List<Mesh> cutM = RandomCenterCut(m, cuttingPlaneTangent);
+                newPieces.AddRange(cutM);
+            }
+            pieces.Clear();
+            foreach (var m in newPieces)
+            {
+                pieces.Add(m);
+                CreateDebugMesh(m, debugOffset);
+            }
+            debugOffset += 0.2f;
+        }
+
+        return pieces;
     }
 
     private void OneCut()
@@ -74,7 +125,7 @@ public class CutterMesh : MonoBehaviour
             i++;
         }
     }
-    private void RandomCenterCut(Mesh mesh, Vector3 cuttingPlaneTangent)
+    private List<Mesh> RandomCenterCut(Mesh mesh, Vector3 cuttingPlaneTangent)
     {
         // compute cog
         Vector3 cog = Vector3.zero;
@@ -83,8 +134,12 @@ public class CutterMesh : MonoBehaviour
             cog += v;
         }
         cog /= mesh.vertexCount;
-        
-        // random dir
+
+        Vector2 refDir = AnyOrthogonal(cuttingPlaneTangent.normalized);
+        float randnagle = UnityEngine.Random.Range(0, 180);
+        Vector3 cuttingNormal = Quaternion.AngleAxis(randnagle, cuttingPlaneTangent.normalized) * refDir;
+
+        return CutMesh(mesh, cog, new Vector3(1,0,2));
     }
 
     public class AdjacencyList
@@ -126,6 +181,8 @@ public class CutterMesh : MonoBehaviour
         // todo: implement graph search
 
         AdjacencyList adjacencyList = new AdjacencyList();
+
+        // Add all mesh vertices
 
         // über jedes Dreieck iterieren
         for (int i = 0; i < mesh.triangles.Length; i += 3)
@@ -223,6 +280,7 @@ public class CutterMesh : MonoBehaviour
         Debug.Log(component_prediction.numComponents);
 
         List<MeshBuildingData> mesh_data = new List<MeshBuildingData>(component_prediction.numComponents);
+
         for (int i = 0; i < component_prediction.numComponents; i++)
         {
             mesh_data.Add(new MeshBuildingData());
@@ -414,6 +472,15 @@ public class CutterMesh : MonoBehaviour
             meshes.Add(m);
         }
         return meshes;
+    }
+
+    private Vector3 AnyOrthogonal(Vector3 normal)
+    {
+        if(Mathf.Approximately(normal.z, 1))
+        {
+            return new Vector3(0, -normal.z, normal.y);
+        }
+        return new Vector3(normal.y, -normal.x, 0);
     }
 
     private float ComputeIntersection(Vector3 point1, Vector3 point2, Vector3 normal)
