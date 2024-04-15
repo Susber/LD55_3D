@@ -17,9 +17,9 @@ public class UpgradeUIComponent : MonoBehaviour
     public const int Health = 0;
     public const int Speed = 1;
     public const int Weapon = 2;
-    public const int Meteor = 3;
-    public const int Minions = 4;
-    public const int Poop = 5;
+    public const int SummonGiant = 3;
+    public const int SummonBomb = 4;
+    public const int NotYetDecidedSmallAttack = 5;
 
     public void UpdateUI()
     {
@@ -64,9 +64,9 @@ public class UpgradeUIComponent : MonoBehaviour
         switch (statNum)
         {
             case Health:
-            case Meteor:
-            case Minions:
-            case Poop:
+            case SummonGiant:
+            case SummonBomb:
+            case NotYetDecidedSmallAttack:
                 break; // these are handled indirectly
             case Speed:
                 PlayerController.Instance.speed += 1.2f;

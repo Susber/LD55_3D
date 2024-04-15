@@ -20,19 +20,23 @@ public class RuneController : MonoBehaviour
     public float maxPrepareTime = 1;
     private bool summonEffectFinished = false;
 
-    [FormerlySerializedAs("state")] public RuneState currentState = RuneState.DRAWING;
+    public float runeScale;
+
+    public RuneState currentState = RuneState.DRAWING;
 
     public class RuneEdges
     {
         public Vector3[] from;
         public Vector3[] to;
         public bool closedLoop;
+        public float runeScale;
 
-        public RuneEdges(int n, bool closedLoop)
+        public RuneEdges(int n, bool closedLoop, float runeScale)
         {
             from = new Vector3[n];
             to = new Vector3[n];
             this.closedLoop = closedLoop;
+            this.runeScale = runeScale;
         }
     }
 
@@ -54,7 +58,7 @@ public class RuneController : MonoBehaviour
         public void PlayEffect(RuneController rune);
     }
 
-    public class SummonMeteoroidEffect : SummonEffect
+    public class SummonBombEffect : SummonEffect
     {
         public async void PlayEffect(RuneController rune)
         {
@@ -65,6 +69,16 @@ public class RuneController : MonoBehaviour
                 explosion.Init(line.left, 5, Color.yellow);
                 await Task.Delay(100);
             }
+            await Task.Delay(500);
+            rune.summonEffectFinished = true;
+        }
+    }
+    
+    public class SummonGiantEffect : SummonEffect
+    {
+        public async void PlayEffect(RuneController rune)
+        {
+            // todo!!!
             await Task.Delay(500);
             rune.summonEffectFinished = true;
         }
@@ -88,11 +102,41 @@ public class RuneController : MonoBehaviour
                 circlePos[i] = new Vector3(radius * Mathf.Cos(angle), 0, radius * Mathf.Sin(angle));
             }
 
-            var edges = new RuneEdges(n, true);
+            var edges = new RuneEdges(n, true, radius);
             for (var i = 0; i < n; i++)
             {
                 var from = circlePos[(2 * i) % n];
                 var to = circlePos[(2 * i + 2) % n];
+                edges.from[i] = from;
+                edges.to[i] = to;
+            }
+
+            return edges;
+        }
+    }
+    public class Triangle : RuneType {
+        int n;
+        float radius;
+
+        public Triangle(int n, float radius)
+        {
+            this.n = n;
+            this.radius = radius;
+        }
+        public RuneEdges MakeEdges()
+        {
+            Vector3[] circlePos = new Vector3[n];
+            for (var i = 0; i < n; i++)
+            {
+                var angle = 2 * Mathf.PI * i / n;
+                circlePos[i] = new Vector3(radius * Mathf.Cos(angle), 0, radius * Mathf.Sin(angle));
+            }
+
+            var edges = new RuneEdges(n, true, radius);
+            for (var i = 0; i < n; i++)
+            {
+                var from = circlePos[i];
+                var to = circlePos[(i + 1) % n];
                 edges.from[i] = from;
                 edges.to[i] = to;
             }
@@ -112,7 +156,7 @@ public class RuneController : MonoBehaviour
         public RuneEdges MakeEdges()
         {
             float l = radius;
-            var edges = new RuneEdges(4, false);
+            var edges = new RuneEdges(4, false, radius);
             edges.from[0] = new Vector3(-1 * l, 0, -1 * l);
             edges.to[0] = new Vector3(1 * l, 0, 1 * l);
             edges.from[1] = new Vector3(1 * l, 0, 1 * l);
@@ -136,7 +180,7 @@ public class RuneController : MonoBehaviour
         public RuneEdges MakeEdges()
         {
             float l = radius;
-            var edges = new RuneEdges(1, false);
+            var edges = new RuneEdges(1, false, radius);
             edges.from[0] = new Vector3(-1 * l, 0, 0);
             edges.to[0] = new Vector3(1 * l, 0, 0);
             return edges;
@@ -145,6 +189,7 @@ public class RuneController : MonoBehaviour
 
     public void MakeRuneFromEdges(RuneEdges edges, Vector3 offset) {
         lineSegments = new RuneLineController[edges.from.Length];
+        runeScale = edges.runeScale;
         for (var i = 0; i < edges.from.Length; i++)
         {
             var from = edges.from[i] + offset;
@@ -241,5 +286,13 @@ public class RuneController : MonoBehaviour
             }
         }
 
+    }
+
+    public void MaybeDestroyOnWaveBegin()
+    {
+        if (!startedDrawing)
+        {
+            Destroy(this.gameObject);
+        }
     }
 }
