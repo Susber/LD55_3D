@@ -44,14 +44,14 @@ public class CardboardDestroyer : MonoBehaviour
             }
 
             Mesh pieceInv = CutterMesh.InvertedMesh(piece);
-            Mesh boundary = CreateBoundaryMesh(piece);
+            Mesh boundary = CreateBoundaryMesh(piece, transform.TransformDirection(new Vector3(0, 0, cardboardWidth)));
 
             GameObject xpPiece = GameObject.Instantiate(cardboardPiece, coinContainer);
             MeshCollider xpCollider = xpPiece.GetComponent<MeshCollider>();
             Rigidbody xpBody = xpPiece.GetComponent<Rigidbody>();
-            xpPiece.transform.position = frontFaceChild.position;
-            xpPiece.transform.rotation = frontFaceChild.rotation;
-            xpPiece.transform.localScale = frontFaceChild.localScale;
+            xpPiece.transform.position = transform.position;
+            xpPiece.transform.rotation = transform.rotation;
+            xpPiece.transform.localScale = transform.localScale;
 
             GameObject frontFace = new GameObject("FrontFace");
             GameObject backFace = new GameObject("BackFace");
@@ -96,7 +96,7 @@ public class CardboardDestroyer : MonoBehaviour
         transform.gameObject.SetActive(false);
     }
 
-    private Mesh CreateBoundaryMesh(Mesh mesh)
+    private Mesh CreateBoundaryMesh(Mesh mesh, Vector3 offsetVec)
     {
         List<Vector3> boundary = MeshBoundarySequence(mesh);
 
@@ -119,8 +119,8 @@ public class CardboardDestroyer : MonoBehaviour
 
 			vertices.Add(transform.InverseTransformPoint(current_world));
 			vertices.Add(transform.InverseTransformPoint(next_world));
-			vertices.Add(transform.InverseTransformPoint(new Vector3(next_world.x, next_world.y, next_world.z + cardboardWidth)));
-			vertices.Add(transform.InverseTransformPoint(new Vector3(current_world.x, current_world.y, current_world.z + cardboardWidth)));
+			vertices.Add(transform.InverseTransformPoint(next_world + offsetVec));
+			vertices.Add(transform.InverseTransformPoint(current_world + offsetVec));
 
 			float distance = CardboardTexScale * Vector2.Distance(current_world, next_world) / (cardboardWidth * aspect_ratio);
 			float rest = totalDistance - Mathf.Floor(totalDistance);
