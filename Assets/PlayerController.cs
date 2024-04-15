@@ -1,11 +1,15 @@
 using Components;
 using Unity.VisualScripting;
 using UnityEngine;
+using System.Threading;
+using UnityEngine;
+using UnityEngine.SceneManagement;
+
 
 public class PlayerController : MonoBehaviour
 {
     public static PlayerController Instance;
-    
+
     public float speed;
     public Camera playercamera;
     public GameObject gunPrefab;
@@ -79,7 +83,7 @@ public class PlayerController : MonoBehaviour
         //cheats
         if (Input.GetKey(KeyCode.LeftControl))
         {
-            if(Input.GetKey(KeyCode.T))
+            if (Input.GetKey(KeyCode.T))
             {
                 gun.SetGuntype(GunController.Guntype.Rocketlauncher);
             }
@@ -88,7 +92,7 @@ public class PlayerController : MonoBehaviour
             {
                 gun.SetGuntype(GunController.Guntype.Shotgun);
             }
-            
+
             if (Input.GetKey(KeyCode.H))
             {
                 var upgrades = ArenaController.Instance.upgradeUi;
@@ -108,7 +112,7 @@ public class PlayerController : MonoBehaviour
         var traction = 1 / (Vector3.Magnitude(dif) + 1); // the larger the speed difference, the lower the traction
         //print("speed_scale " + traction);
         //speed_scale = speed_scale * speed_scale * speed_scale;
-        playerrigidbody.velocity += traction  * strength * dif;
+        playerrigidbody.velocity += traction * strength * dif;
     }
 
     public void Damage(Vector3 knockback)
@@ -123,7 +127,9 @@ public class PlayerController : MonoBehaviour
         if (upgrades.stats[UpgradeUIComponent.Health] <= 0)
         {
             upgrades.stats[UpgradeUIComponent.Health] = 0;
-            // todo, death sequence!
+            Thread.Sleep(5000);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+
         }
         invulnerableTimeLeft = invulnerableTimeAfterHit;
         ArenaController.Instance.UpdateHud();
