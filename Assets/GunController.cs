@@ -21,6 +21,7 @@ public class GunController : MonoBehaviour
     private Vector3 lastShotDir = new Vector3(0, 0, 0); //direction where the gun is pushed
 
     private Vector3 playerGunPosition = new Vector3(0, 1, -0.5f); // default gun position
+    private bool fromEnemy =  true;
 
     public float damage;
     public int shootAmount;
@@ -53,7 +54,20 @@ public class GunController : MonoBehaviour
     void shootRocket(Vector3 dir)
     {
         var bullet = Instantiate(bulletPrefab).GetComponent<BulletController>();
-        bullet.Init(BulletController.BulletType.Rocket, transform.position, dir * 10, false);
+        bullet.Init(BulletController.BulletType.Rocket, transform.position, dir * 10, fromEnemy);
+    }
+
+    public void SetLevel(int level)
+    {
+        switch (guntype)
+        {
+            case Guntype.Shotgun:
+                cooldown = 2f / (1 + level);
+                break;
+            case Guntype.Rocketlauncher:
+                cooldown = 4f / (1 + level);
+                break;
+        }
     }
     
     void shootShotgun(Vector3 dir)
@@ -72,56 +86,73 @@ public class GunController : MonoBehaviour
         }
 
     }
-    void ShootAt(Vector3 worldpos)
+    public void TryShootAt(Vector3 worldpos)
     {
-        var direction = worldpos - transform.position;
-        direction.y = 0;
-        direction = Vector3.Normalize(direction);
-        this.smoke.transform.rotation = Quaternion.LookRotation(direction);
-        lastShotDir = direction;
-        //AudioManger.Instance.PlaySoundGun();
-        this.ps.Play();
         
-        switch (guntype)
-        {
-            case Guntype.Shotgun:
-                shootShotgun(direction);
-                break;
-            case Guntype.Rocketlauncher:
-                shootRocket(direction);
-                break;
+        if(timeout <= 0){
+            if (AudioManager.Instance is not null)
+                AudioManager.Instance.PlaySoundGun();
+            var direction = worldpos - transform.position;
+            direction.y = 0;
+            direction = Vector3.Normalize(direction);
+            this.smoke.transform.rotation = Quaternion.LookRotation(direction);
+            lastShotDir = direction;
+            //AudioManger.Instance.PlaySoundGun();
+            this.ps.Play();
+        
+            switch (guntype)
+            {
+                case Guntype.Shotgun:
+                    shootShotgun(direction);
+                    break;
+                case Guntype.Rocketlauncher:
+                    shootRocket(direction);
+                    break;
+            }
+        
+            timeout = cooldown;
+        
         }
-        
-        timeout = cooldown;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(timeout <= 0){
+        MaybeTurnGun();
+        if (timeout <= 0) {
             bool left = Input.GetKey(KeyCode.Mouse0);
             bool right = Input.GetKey(KeyCode.Mouse1);
-            if(playerController is not null)
-                if (left || right) {
-                    float distance;
-                    Plane plane = new Plane(Vector3.up, 0);
-                    Ray ray = playerController.playercamera.ScreenPointToRay(Input.mousePosition);
-                    if (plane.Raycast(ray, out distance))
+            if (playerController != null && (left || right))
+            {
+                float distance;
+                Plane plane = new Plane(Vector3.up, 0);
+                Ray ray = playerController.playercamera.ScreenPointToRay(Input.mousePosition);
+                if (plane.Raycast(ray, out distance))
+                {
+                    Vector3 worldpos = ray.GetPoint(distance);
+                    TryShootAt(worldpos);
+                    if (right)
                     {
-                        Vector3 worldpos = ray.GetPoint(distance);
-                        ShootAt(worldpos);
-                        if (right)
-                        {
-                            var explosion = Instantiate(explosionPrefab).GetComponent<ExplosionController>();
-                            explosion.Init(worldpos, 5, Color.red);
-                        }
+                        var explosion = Instantiate(explosionPrefab).GetComponent<ExplosionController>();
+                        explosion.Init(worldpos, 5, Color.red);
                     }
                 }
-        }
-        else
-        {
+            }
+        } else {
             timeout -= Time.deltaTime;
             UpdateGunPosition();
+        }
+    }
+
+    private void MaybeTurnGun()
+    {
+        float distance;
+        Plane plane = new Plane(Vector3.up, 0);
+        Ray ray = playerController.playercamera.ScreenPointToRay(Input.mousePosition);
+        if (plane.Raycast(ray, out distance))
+        {
+            Vector3 worldpos = ray.GetPoint(distance);
+            transform.localScale = new Vector3(worldpos.x < transform.position.x ? 1 : -1, 1, 1);
         }
     }
 
@@ -132,12 +163,13 @@ public class GunController : MonoBehaviour
         // recoil looks weird and changes depending on angle, reason is scale of player...
     }
 
-    public void Init(Rigidbody rigidbody)
+    public void Init(Rigidbody rigidbody, bool fromEnemy2)
     {
         this.holder = rigidbody;
         var player = rigidbody.gameObject.GetComponent<PlayerController>();
         if (player is not null)
             this.playerController = player;
+        this.fromEnemy = fromEnemy2;
 
     }
 }

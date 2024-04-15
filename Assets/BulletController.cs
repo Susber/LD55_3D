@@ -4,6 +4,7 @@ using Components;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
+using Color = UnityEngine.Color;
 
 public class BulletController : MonoBehaviour
 {
@@ -80,7 +81,7 @@ public class BulletController : MonoBehaviour
         if (bullettype == BulletType.Rocket)
         {
             var explosion = Instantiate(explosionPrefab).GetComponent<ExplosionController>();
-            explosion.Init(bulletRigidbody.position, 5, Color.red);
+            explosion.Init(bulletRigidbody.position, 5, new Color(1f, 0.667f, 0f));
         }
         ps.Stop();
         Destroy(gameObject);
@@ -90,25 +91,26 @@ public class BulletController : MonoBehaviour
         if (n_to_hit < 1)
             return;
         var obstacle = coll.gameObject;
+        PlayerController player = obstacle.GetComponent<PlayerController>();
+        MinionController minion = obstacle.GetComponent<MinionController>();
+        bool collIsEnemy = !(player is not null || minion is not null);
         
-        if (shotFromEnemy)
+        if(shotFromEnemy == collIsEnemy)
+            return;
+        
+        var unit = obstacle.GetComponent<UnitController>();
+        if (unit != null)
         {
-            var unit = obstacle.GetComponent<PlayerController>();
-            if (unit != null)
-            {
-                unit.Damage(bulletRigidbody.velocity.normalized * PlayerController.Instance.gun.knockback);
-                OnHit();
-            }
-            
+            unit.Damage(PlayerController.Instance.gun.damage, bulletRigidbody.velocity.normalized * PlayerController.Instance.gun.knockback);
+            OnHit();
         }
         else
         {
-            var unit = obstacle.GetComponent<UnitController>();
-            if (unit != null)
-            {
-                unit.Damage(PlayerController.Instance.gun.damage, bulletRigidbody.velocity.normalized * PlayerController.Instance.gun.knockback);
+            if(player is not null){
+                player.Damage(bulletRigidbody.velocity.normalized * PlayerController.Instance.gun.knockback);
                 OnHit();
             }
         }
+        
     }
 }

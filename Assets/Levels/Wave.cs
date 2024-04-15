@@ -21,6 +21,8 @@ public class Wave : AbstractWave
         var spawnCenter3d = ArenaController.Instance.RandomWavePos(ArenaController.Instance.spawnDistanceToPlayer);
         var spawnCenter = new Vector2(spawnCenter3d.x, spawnCenter3d.z);
 
+        // spawnCenter = new Vector2(0, 20); // todo, remove me.
+
         var playerPos3d = PlayerController.Instance.transform.position;
         var dir = spawnCenter - new Vector2(playerPos3d.x, playerPos3d.z);
         var angle = Mathf.Atan2(dir.y, dir.x);
