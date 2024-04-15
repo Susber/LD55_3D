@@ -21,18 +21,19 @@ public class GunController : MonoBehaviour
     private Vector3 lastShotDir = new Vector3(0, 0, 0); //direction where the gun is pushed
 
     private Vector3 playerGunPosition = new Vector3(0, 1, -0.5f); // default gun position
-    private bool fromEnemy =  true;
+    public bool fromEnemy =  true;
 
-    public float damage;
     public int shootAmount;
     public float shootHalfAngle;  // in degrees
+
+    public int level = 1;
 
     public float bulletLifetime;
 
     private float timeout = 0; //current cooldown, 0 means shooting is possible
     // Start is called before the first frame update
 
-    public Guntype guntype;
+    private Guntype guntype;
     public enum Guntype
     {
         Rocketlauncher, Shotgun
@@ -43,22 +44,28 @@ public class GunController : MonoBehaviour
     {
         UpdateGunPosition();
         ps = GetComponentInChildren<ParticleSystem>();
-        this.guntype = Guntype.Shotgun;
     }
 
     public void SetGuntype(Guntype gunType2)
     {
-        this.guntype = gunType2;
+        guntype = gunType2;
+        print("set guntype" + gunType2);
+    }
+
+    public Guntype GetGuntype()
+    {
+        return guntype;
     }
 
     void shootRocket(Vector3 dir)
     {
         var bullet = Instantiate(bulletPrefab).GetComponent<BulletController>();
-        bullet.Init(BulletController.BulletType.Rocket, transform.position, dir * 10, fromEnemy);
+        bullet.Init(BulletController.BulletType.Rocket, transform.position, dir * 15,level, fromEnemy);
     }
 
-    public void SetLevel(int level)
+    public void SetLevel(int level2)
     {
+        this.level = level2;
         switch (guntype)
         {
             case Guntype.Shotgun:
@@ -79,7 +86,7 @@ public class GunController : MonoBehaviour
             var spreadDirection2d = Util.Rotate2d(new Vector2(dir.x, dir.z), shotAngle);
             var spreadDirection = new Vector3(spreadDirection2d.x, 0, spreadDirection2d.y);
             var bullet = Instantiate(bulletPrefab).GetComponent<BulletController>();
-            bullet.Init(BulletController.BulletType.Bullet, transform.position, spreadDirection * 50, false );
+            bullet.Init(BulletController.BulletType.Bullet, transform.position, spreadDirection * 50,level, this.fromEnemy );
             // bullet.SetTeam(false);
             // bullet.bulletRigidbody.velocity = spreadDirection * 50;
             // bullet.lifetime = bulletLifetime;
@@ -148,7 +155,7 @@ public class GunController : MonoBehaviour
     {
         float distance;
         Plane plane = new Plane(Vector3.up, 0);
-        Ray ray = playerController.playercamera.ScreenPointToRay(Input.mousePosition);
+        Ray ray = PlayerController.Instance.playercamera.ScreenPointToRay(Input.mousePosition);
         if (plane.Raycast(ray, out distance))
         {
             Vector3 worldpos = ray.GetPoint(distance);
@@ -163,13 +170,14 @@ public class GunController : MonoBehaviour
         // recoil looks weird and changes depending on angle, reason is scale of player...
     }
 
-    public void Init(Rigidbody rigidbody, bool fromEnemy2)
+    public void Init(Rigidbody rigidbody, bool fromEnemy2, Guntype guntype)
     {
         this.holder = rigidbody;
         var player = rigidbody.gameObject.GetComponent<PlayerController>();
         if (player is not null)
             this.playerController = player;
         this.fromEnemy = fromEnemy2;
+        this.SetGuntype(guntype);
 
     }
 }
