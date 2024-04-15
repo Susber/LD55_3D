@@ -23,9 +23,10 @@ public class GunController : MonoBehaviour
     private Vector3 playerGunPosition = new Vector3(0, 1, -0.5f); // default gun position
     public bool fromEnemy =  true;
 
-    public float damage;
     public int shootAmount;
     public float shootHalfAngle;  // in degrees
+
+    public int level = 1;
 
     public float bulletLifetime;
 
@@ -59,11 +60,12 @@ public class GunController : MonoBehaviour
     void shootRocket(Vector3 dir)
     {
         var bullet = Instantiate(bulletPrefab).GetComponent<BulletController>();
-        bullet.Init(BulletController.BulletType.Rocket, transform.position, dir * 10, fromEnemy);
+        bullet.Init(BulletController.BulletType.Rocket, transform.position, dir * 10,level, fromEnemy);
     }
 
-    public void SetLevel(int level)
+    public void SetLevel(int level2)
     {
+        this.level = level2;
         switch (guntype)
         {
             case Guntype.Shotgun:
@@ -84,7 +86,7 @@ public class GunController : MonoBehaviour
             var spreadDirection2d = Util.Rotate2d(new Vector2(dir.x, dir.z), shotAngle);
             var spreadDirection = new Vector3(spreadDirection2d.x, 0, spreadDirection2d.y);
             var bullet = Instantiate(bulletPrefab).GetComponent<BulletController>();
-            bullet.Init(BulletController.BulletType.Bullet, transform.position, spreadDirection * 50, this.fromEnemy );
+            bullet.Init(BulletController.BulletType.Bullet, transform.position, spreadDirection * 50,level, this.fromEnemy );
             // bullet.SetTeam(false);
             // bullet.bulletRigidbody.velocity = spreadDirection * 50;
             // bullet.lifetime = bulletLifetime;

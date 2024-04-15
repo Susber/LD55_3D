@@ -100,6 +100,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lifetime: 3
   bulletRigidbody: {fileID: 5053093279220131840}
+  bulletdamage: 1
   explosionPrefab: {fileID: 6593172532142632681, guid: 991e576b0511bb94794eb0dd6aa8fd7a, type: 3}
 --- !u!96 &4695275575198648406
 TrailRenderer:

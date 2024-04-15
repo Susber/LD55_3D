@@ -43,7 +43,7 @@ public class PlayerController : MonoBehaviour
     public void Start()
     {
         gun = Instantiate(gunPrefab, renderingContainer).GetComponent<GunController>();
-        gun.Init(this.playerrigidbody, false, GunController.Guntype.Rocketlauncher);
+        gun.Init(this.playerrigidbody, false, GunController.Guntype.Shotgun);
     }
 
     private void FixedUpdate()

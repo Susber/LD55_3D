@@ -53,7 +53,7 @@ public class ExplosionController : MonoBehaviour
         main.startSpeed = new ParticleSystem.MinMaxCurve(main.startSpeed.constantMin * scale, main.startSpeed.constantMax * scale);
     }
 
-    void Update()
+    void FixedUpdate()
     {
         if(!exploded)
         {
@@ -79,7 +79,7 @@ public class ExplosionController : MonoBehaviour
         var dir = Vector3.Normalize(displacement);
         var distance = Vector3.Magnitude(displacement);
         var force_magnitude = (size - distance) / size; // one at center, 0 at border of explosion (distance = size)
-        var knockback = dir * force_magnitude * size * 600;
+        var knockback = force_magnitude * size * 500 * dir;
         
         PlayerController playerController = rigidbody.gameObject.GetComponent<PlayerController>();
         if (playerController is not null)
