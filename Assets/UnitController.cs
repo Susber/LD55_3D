@@ -25,6 +25,8 @@ namespace Components
             life -= damage * armor_factor;
             if (life <= 0)
             {
+                if (AudioManager.Instance is not null)
+                    AudioManager.Instance.PlaySoundDestroyEnemy();
                 Die();
             }
             // knockback
