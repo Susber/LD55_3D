@@ -246,6 +246,7 @@ public class ArenaController : MonoBehaviour
                     if (enemyContainer.childCount == 0 && coinContainer.childCount == 0)
                     {
                         currentLevel += 1;
+                        // todo, if level is >= 10, then play win screen!
                         UpdateHud();
                         SetStage(GameStage.UPGRADE);
                     }
@@ -371,13 +372,14 @@ public class ArenaController : MonoBehaviour
                 for (var i = 0 ; i < numSmallRunes - smallRuneContainer.childCount; i++)
                     SpawnRune(false);
                 levelWaveQueue.Clear();
-                levelWaveQueue.Add(new Wave(0, sheepPrefab, 10));
-                for (var n = 0; n < currentLevel + 1; n++)
-                {
-                    levelWaveQueue.Add(new Wave(5, sheepPrefab, 10));
-                    levelWaveQueue.Add(new Wave(2, foxPrefab, 1));
-                    levelWaveQueue.Add(new Wave(2, dogPrefab, 1));
-                }
+                levelWaveQueue.Add(new Wave(0, sheepPrefab, 1));
+                // levelWaveQueue.Add(new Wave(0, sheepPrefab, 10));
+                // for (var n = 0; n < currentLevel + 1; n++)
+                // {
+                //     levelWaveQueue.Add(new Wave(5, sheepPrefab, 10));
+                //     levelWaveQueue.Add(new Wave(2, foxPrefab, 1));
+                //     levelWaveQueue.Add(new Wave(2, dogPrefab, 1));
+                // }
 
                 spawnNextWaveTime = 0;
                 break;
