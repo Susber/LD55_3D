@@ -43,8 +43,7 @@ public class PlayerController : MonoBehaviour
     public void Start()
     {
         gun = Instantiate(gunPrefab, renderingContainer).GetComponent<GunController>();
-        gun.Init(this.playerrigidbody, false);
-        gun.SetGuntype(GunController.Guntype.Rocketlauncher);
+        gun.Init(this.playerrigidbody, false, GunController.Guntype.Rocketlauncher);
     }
 
     private void FixedUpdate()
@@ -52,6 +51,7 @@ public class PlayerController : MonoBehaviour
         playerrigidbody.velocity *= 0.998f;
         if (invulnerableTimeLeft > 0)
             invulnerableTimeLeft -= Time.fixedDeltaTime;
+        print(gun.GetGuntype());
     }
 
     void Update()

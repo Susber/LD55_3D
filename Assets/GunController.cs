@@ -32,7 +32,7 @@ public class GunController : MonoBehaviour
     private float timeout = 0; //current cooldown, 0 means shooting is possible
     // Start is called before the first frame update
 
-    public Guntype guntype;
+    private Guntype guntype;
     public enum Guntype
     {
         Rocketlauncher, Shotgun
@@ -43,12 +43,17 @@ public class GunController : MonoBehaviour
     {
         UpdateGunPosition();
         ps = GetComponentInChildren<ParticleSystem>();
-        this.guntype = Guntype.Shotgun;
     }
 
     public void SetGuntype(Guntype gunType2)
     {
-        this.guntype = gunType2;
+        guntype = gunType2;
+        print("set guntype" + gunType2);
+    }
+
+    public Guntype GetGuntype()
+    {
+        return guntype;
     }
 
     void shootRocket(Vector3 dir)
@@ -163,13 +168,14 @@ public class GunController : MonoBehaviour
         // recoil looks weird and changes depending on angle, reason is scale of player...
     }
 
-    public void Init(Rigidbody rigidbody, bool fromEnemy2)
+    public void Init(Rigidbody rigidbody, bool fromEnemy2, Guntype guntype)
     {
         this.holder = rigidbody;
         var player = rigidbody.gameObject.GetComponent<PlayerController>();
         if (player is not null)
             this.playerController = player;
         this.fromEnemy = fromEnemy2;
+        this.SetGuntype(guntype);
 
     }
 }
