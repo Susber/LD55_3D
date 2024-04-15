@@ -51,7 +51,6 @@ public class PlayerController : MonoBehaviour
         playerrigidbody.velocity *= 0.998f;
         if (invulnerableTimeLeft > 0)
             invulnerableTimeLeft -= Time.fixedDeltaTime;
-        print(gun.GetGuntype());
     }
 
     void Update()
@@ -117,6 +116,11 @@ public class PlayerController : MonoBehaviour
                         MinionController minion = Instantiate(minionPrefab, ArenaController.Instance.friendContainer).GetComponent<MinionController>();
                         minion.Init(3,playerrigidbody.position,60);
                     }
+                    
+                    if (Input.GetKey(KeyCode.C))
+                    {
+                        gun.ChargeWithRockets(5);
+                    }
                 }
 
                 break;
@@ -126,9 +130,7 @@ public class PlayerController : MonoBehaviour
                 Walk(Vector3.zero, 0.8f);
                 GetComponent<Animator>().enabled = false;
                 deathTicks += Time.deltaTime;
-                float deathTickAnim = Mathf.Clamp(deathTicks, 0, 1) * Mathf.PI;
-                renderingContainer.rotation = Quaternion.Euler(0, 0, deathTickAnim);
-                if (deathTickAnim >= 3f)
+                if (deathTicks >= 3f)
                 {
                     SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
                 }
@@ -138,7 +140,10 @@ public class PlayerController : MonoBehaviour
 
         //this.transform.position += Time.deltaTime * force;
         //playerrigidbody.AddForce(force);
-        playercamera.transform.position = new Vector3(this.transform.position.x, this.playercamera.transform.position.y, this.transform.position.z - 17);
+        if (currentState != PlayerState.DEAD)
+        {
+			playercamera.transform.position = new Vector3(this.transform.position.x, this.playercamera.transform.position.y, this.transform.position.z - 17);
+		}
     }
     void Walk(Vector3 speed, float strength)
     {

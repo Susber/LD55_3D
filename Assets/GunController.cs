@@ -34,6 +34,9 @@ public class GunController : MonoBehaviour
     // Start is called before the first frame update
 
     private Guntype guntype;
+    private int n_chargedrockets = 0;
+    private bool ischarged = false;
+
     public enum Guntype
     {
         Rocketlauncher, Shotgun
@@ -44,6 +47,13 @@ public class GunController : MonoBehaviour
     {
         UpdateGunPosition();
         ps = GetComponentInChildren<ParticleSystem>();
+    }
+
+    public void ChargeWithRockets(int n_rockets)
+    {
+        this.n_chargedrockets += n_rockets;
+        ischarged = true;
+        this.SetGuntype(Guntype.Rocketlauncher);
     }
 
     public void SetGuntype(Guntype gunType2)
@@ -116,7 +126,18 @@ public class GunController : MonoBehaviour
                     shootRocket(direction);
                     break;
             }
-        
+
+            if (ischarged)
+            {
+                int n_chargedrockets_old = n_chargedrockets;
+                n_chargedrockets -= 1;
+                if (n_chargedrockets == 0 && n_chargedrockets_old == 1)
+                {
+                    SetGuntype(Guntype.Shotgun);
+                    ischarged = false;
+                }
+            }
+
             timeout = cooldown;
         
         }
@@ -138,10 +159,10 @@ public class GunController : MonoBehaviour
                 {
                     Vector3 worldpos = ray.GetPoint(distance);
                     TryShootAt(worldpos);
-                    if (right)
+                    if (right && Input.GetKey(KeyCode.LeftControl))
                     {
                         var explosion = Instantiate(explosionPrefab).GetComponent<ExplosionController>();
-                        explosion.Init(worldpos, 5, Color.red);
+                        explosion.Init(worldpos, 10, Color.red);
                     }
                 }
             }
