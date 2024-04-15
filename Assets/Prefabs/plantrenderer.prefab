@@ -167,5 +167,5 @@ MonoBehaviour:
   DoubleSided: 1
   DuplicateSpriteOnBackFace: 1
   CardboardLineMaterial: {fileID: 2100000, guid: 34000f52b6e8f9f41960347ae81e0859, type: 2}
-  CardboardFaceMaterial: {fileID: -876546973899608171, guid: fa580a2bdafff7a4f9d5d4cb0ed9dc7e, type: 3}
+  CardboardFaceMaterial: {fileID: 2100000, guid: 6399dcf4b1625924f91a7456bcb5eb62, type: 2}
   FaceFillColor: {r: 1, g: 1, b: 1, a: 0}
