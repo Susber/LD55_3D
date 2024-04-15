@@ -4,11 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8fd0fe12-69a8-4dfd-9394-ff892a1b4efa" name="Changes" comment="no idea what this is">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.ld55-3d/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ld55-3d/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/PlayerController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/PlayerController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/RuneController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/RuneController.cs" afterDir="false" />
-    </list>
+    <list default="true" id="8fd0fe12-69a8-4dfd-9394-ff892a1b4efa" name="Changes" comment="so geil" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -24,6 +20,7 @@
     <setting file="mock:///Users/frithjof/Documents/dev/unity/ld55-3d/Assets/ArenaController.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Users/frithjof/Documents/dev/unity/ld55-3d/Assets/EnemyIndicatorComponent.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Users/frithjof/Documents/dev/unity/ld55-3d/Assets/EnemyIndicatorComponent.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Users/frithjof/Documents/dev/unity/ld55-3d/Assets/PlayerController.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Users/frithjof/Documents/dev/unity/ld55-3d/Assets/Scenes/SampleScene.unity" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Users/frithjof/Documents/dev/unity/ld55-3d/Assets/Scenes/SampleScene.unity" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Users/frithjof/Documents/dev/unity/ld55-3d/Assets/Scenes/SampleScene.unity" root0="SKIP_HIGHLIGHTING" />
@@ -144,15 +141,7 @@
       <workItem from="1713200551253" duration="2716000" />
       <workItem from="1713207433853" duration="852000" />
       <workItem from="1713208342900" duration="13018000" />
-      <workItem from="1713221965173" duration="3013000" />
-    </task>
-    <task id="LOCAL-00018" summary="spawn runes at random pos">
-      <option name="closed" value="true" />
-      <created>1713117315434</created>
-      <option name="number" value="00018" />
-      <option name="presentableId" value="LOCAL-00018" />
-      <option name="project" value="LOCAL" />
-      <updated>1713117315434</updated>
+      <workItem from="1713221965173" duration="3241000" />
     </task>
     <task id="LOCAL-00019" summary="fix }">
       <option name="closed" value="true" />
@@ -538,7 +527,15 @@
       <option name="project" value="LOCAL" />
       <updated>1713224682322</updated>
     </task>
-    <option name="localTasksCounter" value="67" />
+    <task id="LOCAL-00067" summary="so geil">
+      <option name="closed" value="true" />
+      <created>1713225181642</created>
+      <option name="number" value="00067" />
+      <option name="presentableId" value="LOCAL-00067" />
+      <option name="project" value="LOCAL" />
+      <updated>1713225181642</updated>
+    </task>
+    <option name="localTasksCounter" value="68" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -565,7 +562,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="remove sheep" />
     <MESSAGE value="doggy" />
     <MESSAGE value="undo markus scene" />
     <MESSAGE value="ok?" />
@@ -590,7 +586,8 @@
     <MESSAGE value="shotgun rune" />
     <MESSAGE value="waves" />
     <MESSAGE value="no idea what this is" />
-    <option name="LAST_COMMIT_MESSAGE" value="no idea what this is" />
+    <MESSAGE value="so geil" />
+    <option name="LAST_COMMIT_MESSAGE" value="so geil" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
