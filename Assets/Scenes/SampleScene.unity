@@ -10833,6 +10833,7 @@ MonoBehaviour:
   levelText: {fileID: 1669541068}
   numBigRunes: 5
   numSmallRunes: 30
+  tutorialRuneRadius: 8
   spawnDistanceToPlayer: 30
 --- !u!1 &1836498911
 GameObject:
