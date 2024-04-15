@@ -106,10 +106,27 @@ public class RuneController : MonoBehaviour
     
     public class SummonGiantEffect : SummonEffect
     {
+        int level = 0;
+        public SummonGiantEffect(int level)
+        {
+            this.level = level;
+        }
+        
         public async void PlayEffect(RuneController rune)
         {
-            // todo!!!
-            await Task.Delay(500);
+            var pos = rune.transform.position;
+            float radius = rune.runeScale/2;
+            int n_minions = level;
+
+            for (int i = 0; i < level; i++)
+            {
+                float angle = 360f / n_minions * i;
+                var vec = pos + radius * new Vector3(Mathf.Cos(angle), 0, Mathf.Sin(angle));
+                MinionController minion = Instantiate(ArenaController.Instance.minionPrefab, ArenaController.Instance.friendContainer).GetComponent<MinionController>();
+                minion.Init(level,vec, 10 + level * 5);
+            }
+            
+            
             rune.summonEffectFinished = true;
         }
     }

@@ -1,13 +1,8 @@
-using System;
-using System.Numerics;
 using Components;
 using Unity.VisualScripting;
 using UnityEngine;
 using System.Threading;
-using System.Threading.Tasks;
 using UnityEngine.SceneManagement;
-using Quaternion = UnityEngine.Quaternion;
-using Vector3 = UnityEngine.Vector3;
 
 
 public class PlayerController : MonoBehaviour
@@ -50,7 +45,6 @@ public class PlayerController : MonoBehaviour
         gun = Instantiate(gunPrefab, renderingContainer).GetComponent<GunController>();
         gun.Init(this.playerrigidbody, false);
         gun.SetGuntype(GunController.Guntype.Rocketlauncher);
-        gun.guntype = GunController.Guntype.Rocketlauncher;
     }
 
     private void FixedUpdate()
@@ -121,7 +115,7 @@ public class PlayerController : MonoBehaviour
                     if (Input.GetKey(KeyCode.M))
                     {
                         MinionController minion = Instantiate(minionPrefab, ArenaController.Instance.friendContainer).GetComponent<MinionController>();
-                        minion.Init(3,playerrigidbody.position);
+                        minion.Init(3,playerrigidbody.position,60);
                     }
                 }
 

@@ -58,7 +58,7 @@ void FixedUpdate()
         {
             var explosionPrefab = PlayerController.Instance.gun.explosionPrefab;
             var explosion = Instantiate(explosionPrefab).GetComponent<ExplosionController>();
-            explosion.Init(transform.position, bombScale * 5, Color.yellow);
+            explosion.Init(transform.position, bombScale * 5, new Color(0.69f, 0f, 0.639f));
             Destroy(this.gameObject);
             exploded = true;
         }

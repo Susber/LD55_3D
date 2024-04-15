@@ -99,6 +99,9 @@ namespace Components
             var incomingRigidbody = collision.gameObject.GetComponent<Rigidbody>();
             if (incomingRigidbody == null)
                 return;
+            var minion = unitRigidbody.gameObject.GetComponent<MinionController>();
+            if (minion != null)
+                return;
             GameObject obstracle = incomingRigidbody.gameObject;
             var player = obstracle.GetComponent<PlayerController>();
             if (player == null)
