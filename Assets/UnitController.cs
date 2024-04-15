@@ -7,7 +7,6 @@ namespace Components
     public class UnitController : MonoBehaviour
     {
         public Rigidbody unitRigidbody;
-        public GameObject turnobject;
         public Transform turntransform;
         
 
@@ -43,8 +42,6 @@ namespace Components
 
         public void Start()
         {
-            if (turnobject is not null)
-                turntransform = turnobject.GetComponent<Transform>();
         }
 
         // public void Update()
@@ -56,7 +53,7 @@ namespace Components
         // }
         public void Update()
         {
-            //if(turntransform is not null)
+            if(turntransform is not null)
                 if (unitRigidbody.velocity.x < 0)
                     turntransform.rotation.eulerAngles.Set(0,180,0);
                 else
