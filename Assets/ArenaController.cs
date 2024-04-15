@@ -37,6 +37,7 @@ public class ArenaController : MonoBehaviour
     // prefabs
     public GameObject sheepPrefab;
     public GameObject foxPrefab;
+    public GameObject dogPrefab;
     public GameObject grassPrefab;
     public GameObject treePrefab;
     public GameObject stonePrefab;
@@ -337,6 +338,7 @@ public class ArenaController : MonoBehaviour
                 {
                     levelWaveQueue.Add(new Wave(5, sheepPrefab, 10));
                     levelWaveQueue.Add(new Wave(2, foxPrefab, 1));
+                    levelWaveQueue.Add(new Wave(2, dogPrefab, 1));
                 }
 
                 spawnNextWaveTime = 0;
