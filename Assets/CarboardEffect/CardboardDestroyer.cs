@@ -29,7 +29,7 @@ public class CardboardDestroyer : MonoBehaviour
         // cut the mesh
         List<Mesh> pieces = CutterMesh.RecursiveCutting(cutMesh, targetNumPieces, new Vector3(0, 0, 1).normalized);
         // create game objects for each cut mesh
-        Transform coinContainer = null; //ArenaController.Instance.coinContainer;
+        Transform coinContainer = ArenaController.Instance.coinContainer;
         if (coinContainer == null)
         {
             Debug.Log("no coin container found!");

@@ -178,11 +178,11 @@ public class PlayerController : MonoBehaviour
             currentState = PlayerState.DEAD;
 
 			// spawn broken cardboard
-            CardboardDestroyer myRendererCardboardDestroyer = transform.GetComponentInChildren<CardboardDestroyer>();
-			if (myRendererCardboardDestroyer != null)
-			{
-				myRendererCardboardDestroyer.SpawnDestroyedCardboard(10);
-			}
+   //         CardboardDestroyer myRendererCardboardDestroyer = transform.GetComponentInChildren<CardboardDestroyer>();
+			//if (myRendererCardboardDestroyer != null)
+			//{
+			//	myRendererCardboardDestroyer.SpawnDestroyedCardboard(10);
+			//}
 
 			return;
         }
