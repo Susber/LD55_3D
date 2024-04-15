@@ -44,6 +44,7 @@ public class GunController : MonoBehaviour
         this.smoke.transform.rotation = Quaternion.LookRotation(direction);//.Euler(0, angle, 0);
         //print("normalized: " + direction);
         lastShotDir = direction;
+        //if(AudioManger.Instance is not null)
         AudioManger.Instance.PlaySoundGun();
         this.ps.Play();
 

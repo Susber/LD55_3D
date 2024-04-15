@@ -20,7 +20,6 @@ public class BulletController : MonoBehaviour
     void Update()
     {
         lifetime -= Time.deltaTime;
-        print("destroy on lifetime");
         if (lifetime <= 0)
         {
             Destroy(this.gameObject);
