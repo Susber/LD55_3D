@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44998872, g: 0.50004894, b: 0.57552326, a: 1}
+  m_IndirectSpecularColor: {r: 0.44998896, g: 0.50004935, b: 0.57552373, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -6132,6 +6132,7 @@ Transform:
   - {fileID: 1156258613}
   - {fileID: 1521529258}
   - {fileID: 1846789867}
+  - {fileID: 2139368254}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1827268864
@@ -6148,6 +6149,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   arenaRadius: {x: 50, y: 0, z: 50}
   enemyContainer: {fileID: 2012929726}
+  friendContainer: {fileID: 2139368254}
   decorationContainer: {fileID: 849804654}
   bigRuneContainer: {fileID: 1156258613}
   smallRuneContainer: {fileID: 1521529258}
@@ -6753,6 +6755,7 @@ MonoBehaviour:
   speed: 10
   playercamera: {fileID: 330585545}
   gunPrefab: {fileID: 767943210248605396, guid: ed09840e02fb31f48b2fb862f790dfe7, type: 3}
+  minionPrefab: {fileID: 2803500051409867777, guid: bac055eae138f4347ab61405701ea72d, type: 3}
   gun: {fileID: 0}
   suckCoinDistance: 10
   playerrigidbody: {fileID: 2020529208}
@@ -6827,8 +6830,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 976bd36752be3f64ea752ff6ffa49829, type: 3}
   - {fileID: 8300000, guid: 9ee5cbb97ecda374e8bdb629cc75008b, type: 3}
   - {fileID: 8300000, guid: 643159d153f23624186dd283e4ff1988, type: 3}
-  menuMusic: {fileID: 726531412}
-  gameMusic: {fileID: 276650947}
+  menuMusic: {fileID: 0}
+  gameMusic: {fileID: 0}
 --- !u!82 &2122550139
 AudioSource:
   m_ObjectHideFlags: 0
@@ -6942,6 +6945,37 @@ Transform:
   - {fileID: 726531413}
   - {fileID: 276650948}
   m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2139368253
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2139368254}
+  m_Layer: 0
+  m_Name: Friends
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2139368254
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2139368253}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1827268862}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2147210235
 GameObject:
