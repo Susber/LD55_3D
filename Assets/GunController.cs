@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class GunController : MonoBehaviour
@@ -7,8 +8,9 @@ public class GunController : MonoBehaviour
     public PlayerController holder;
     
     public GameObject bulletPrefab;
+    public GameObject explosionPrefab;
 
-    private float cooldown = 0.20f;
+    private float cooldown = 0.50f;
     private float max_recoil = 0.4f;
     private Vector3 lastShotDir = new Vector3(0, 0, 0); //direction where the gun is pushed
 
@@ -26,7 +28,7 @@ public class GunController : MonoBehaviour
         var direction = worldpos - transform.position;
         direction.y = 0;
         direction = Vector3.Normalize(direction);
-        print("normalized: " + direction);
+        //print("normalized: " + direction);
         lastShotDir = direction;
         var bullet = Instantiate(bulletPrefab,transform.position, new Quaternion()).GetComponent<BulletController>();
         bullet.SetTeam(false);
@@ -48,6 +50,11 @@ public class GunController : MonoBehaviour
                 {
                     Vector3 worldpos = ray.GetPoint(distance);
                     ShootAt(worldpos);
+                    if (right)
+                    {
+                        var explosion = Instantiate(explosionPrefab).GetComponent<ExplosionController>();
+                        explosion.Init(worldpos, 5, Color.yellow);
+                    }
                 }
             }
         }
@@ -62,11 +69,6 @@ public class GunController : MonoBehaviour
     {
         var displacement = max_recoil * timeout / cooldown;
         transform.localPosition = playerGunPosition - displacement * lastShotDir;
-        
-        print("lastShotDir" + lastShotDir);
-        print("playerGunPosition" + playerGunPosition);
-        print("displacement * lastShotDir" + displacement * lastShotDir);
-        print("displacement" + displacement);
-        // recoil looks wheird and changes depending on angle, reason is scale of player...
+        // recoil looks weird and changes depending on angle, reason is scale of player...
     }
 }

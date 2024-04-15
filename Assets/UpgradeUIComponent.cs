@@ -32,7 +32,7 @@ public class UpgradeUIComponent : MonoBehaviour
         }
 
         var player = PlayerController.Instance;
-        titleText.text = "Congratulations, you completed level " + ArenaController.Instance.currentLevel + " / 10!";
+        titleText.text = "Congratulations, you completed level " + ArenaController.Instance.currentLevel + " / " + ArenaController.Instance.maxLevel + "!";
         moneyText.text = "Money left: " + player.coins;
     }
 

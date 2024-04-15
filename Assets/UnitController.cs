@@ -7,7 +7,6 @@ namespace Components
     public class UnitController : MonoBehaviour
     {
         public Rigidbody unitRigidbody;
-        public GameObject turnobject;
         public Transform turntransform;
         
 
@@ -43,8 +42,6 @@ namespace Components
 
         public void Start()
         {
-            if (turnobject is not null)
-                turntransform = turnobject.GetComponent<Transform>();
         }
 
         // public void Update()
@@ -56,12 +53,30 @@ namespace Components
         // }
         public void Update()
         {
-            //if(turntransform is not null)
+            if(turntransform is not null)
                 if (unitRigidbody.velocity.x < 0)
                     turntransform.rotation.eulerAngles.Set(0,180,0);
                 else
                     turntransform.rotation.eulerAngles.Set(0,0,0);
             
+        }
+        
+        void OnCollisionEnter(Collision collision)
+        {
+            var incomingRigidbody = collision.gameObject.GetComponent<Rigidbody>();
+            if (incomingRigidbody is null)
+                return;
+            GameObject obstracle = incomingRigidbody.gameObject;
+            var player = obstracle.GetComponent<PlayerController>();
+            if (player == null)
+                return;
+            player.Damage();
+            // maybe play explosion to push away the enemies?
+            // for now, we just remove the enemy so we don't get hurt again instantly. 
+            if (player.invulnerableTimeLeft <= 0)
+            {
+                Destroy(this.gameObject);
+            }
         }
     }
 }
