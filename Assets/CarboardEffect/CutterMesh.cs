@@ -1,8 +1,10 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Runtime.CompilerServices;
 using Unity.Mathematics;
+using Unity.PlasticSCM.Editor.WebApi;
 using UnityEngine;
 using UnityEngine.UIElements;
 using static UnityEditor.Searcher.SearcherWindow.Alignment;
@@ -30,7 +32,6 @@ public class IntersectionData
 
 public class CutterMesh : MonoBehaviour
 {
-    /*
     
     // Start is called before the first frame update
     void Start()
@@ -118,7 +119,7 @@ public class CutterMesh : MonoBehaviour
         MeshConnectedComponents res = new MeshConnectedComponents();
         // todo: implement graph search
 
-        AdjacencyList<int> adjacencyList = new AdjacencyList<int>();
+        AdjacencyList<int> adjacencyList = new AdjacencyList<int>(0);
 
         // über jedes Dreieck iterieren
         for (int i = 0; i < mesh.triangles.Length; i += 3)
@@ -136,84 +137,79 @@ public class CutterMesh : MonoBehaviour
 
             if (sign1 == sign2 && sign1 != sign3)
             {
-                adjacencyList.AddEdge(mesh.triangles[i], mesh.triangles[i + 1])
-                continue
+                adjacencyList.AddEdge(mesh.triangles[i], mesh.triangles[i + 1]);
+                continue;
             }
 
             if (sign1 == sign3 && sign1 != sign2)
             {
-                adjacencyList.AddEdge(mesh.triangles[i], mesh.triangles[i + 2])
-                continue
+                adjacencyList.AddEdge(mesh.triangles[i], mesh.triangles[i + 2]);
+                continue;
             }
 
-            adjacencyList.AddEdge(mesh.triangles[i], mesh.triangles[i + 1])
-            adjacencyList.AddEdge(mesh.triangles[i + 1], mesh.triangles[i + 2])
-            adjacencyList.AddEdge(mesh.triangles[i], mesh.triangles[i + 2])
+            if (sign2 == sign3 && sign1 != sign2)
+            {
+                adjacencyList.AddEdge(mesh.triangles[i + 1], mesh.triangles[i + 2]);
+                continue;
+            }
+
+            adjacencyList.AddEdge(mesh.triangles[i], mesh.triangles[i + 1]);
+            adjacencyList.AddEdge(mesh.triangles[i + 1], mesh.triangles[i + 2]);
+            adjacencyList.AddEdge(mesh.triangles[i], mesh.triangles[i + 2]);
         }
 
         // do BFS to find components
-        // Mark all the vertices as not visited
-        bool[] visited = new bool[vertices.Length];
-        for (int i = 0; i < vertices.Length; i++)
+        int n = mesh.vertexCount;
+		// Mark all the vertices as not visited
+		bool[] visited = new bool[n];
+        for (int i = 0; i < n; i++)
             visited[i] = false;
 
         // save vertexComponentindex
-        int[] componentIndex = new int[vertices.Length];
-
-        // Create a queue for BFS
-        Queue<int> queue = new Queue<int>();
-
-
-        int index_vertex = 0;
+        int[] componentIndex = new int[n];
         int component = 0;
 
-        // Mark the current node as
-        // visited and enqueue it
-        visited[index_vertex] = true;
-        queue.Enqueue(index_vertex);
-
-        while (index < mesh.vertices.Length)
+        for (int start_index = 0; start_index < n; start_index++)
         {
+            if (visited[start_index]) { continue; }
+			// start bfs
 
-            while (queue.Any())
+			// Create a queue for BFS
+			Queue<int> queue = new Queue<int>();
+			queue.Enqueue(start_index);
+
+            while(queue.Any())
             {
+				// Dequeue a vertex from queue
+				// and print it
+				int curr_index = queue.First();
+				queue.Dequeue();
 
-                // Dequeue a vertex from queue
-                // and print it
-                s = queue.First();
-                Console.Write(s + " ");
-                queue.Dequeue();
+                componentIndex[curr_index] = component;
+                visited[curr_index] = true;
 
-                // Get all adjacent vertices of the
-                // dequeued vertex s. If a adjacent
-                // has not been visited, then mark it
-                // visited and enqueue it
-                AdjacencyList<int> list = adjacencyList[s];
+				// Get all adjacent vertices of the
+				// dequeued vertex s. If a adjacent
+				// has not been visited, then mark it
+				// visited and enqueue it
 
-                foreach (var val in list)
-                {
-                    if (!visited[val])
-                    {
-                        visited[val] = true;
-                        queue.Enqueue(val);
-                        componentIndex[val] = component;
-                    }
-                }
-            }
+                // TODO
+				//foreach (var val in adjacencyList.  )
+				//{
+				//	if (!visited[val])
+				//	{
+				//		visited[val] = true;
+				//		queue.Enqueue(val);
+				//		componentIndex[val] = component
 
-            while (visited[index_vertex])
-            {
-                index_vertex++;
-            }
-            visited[index_vertex] = true;
-            queue.Enqueue(index_vertex);
-
+				//	}
+				//}
+			}
             component++;
+		}
 
-        }
-
-        res.vertexComponentIds = component;
-        res.vertexComponentIds = componentIndex;
+        res.vertexComponentIds = componentIndex.ToList();
+        res.numComponents = component;
 
         return res;
     }
@@ -402,6 +398,4 @@ public class CutterMesh : MonoBehaviour
         Vector3 distance = Vector3.Normalize(point2 - point1);
         return -Vector3.Dot(point1, normal) / Vector3.Dot(distance, normal);
     }
-
-    */
 }

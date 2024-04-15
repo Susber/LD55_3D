@@ -2,18 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using Components;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 public class BulletController : MonoBehaviour
 {
     // Start is called before the first frame update
 
-    public float lifetime = 0;
+    public float lifetime = 2;
     public Rigidbody bulletRigidbody;
     private bool enemyBullet =  true;
     private int n_to_hit = 1;
     void Start()
     {
-        lifetime = 3;
     }
 
     // Update is called once per frame
@@ -36,10 +36,10 @@ public class BulletController : MonoBehaviour
     {
         if (n_to_hit < 1)
             return;
-        var incomingRigidbody = coll.GetComponent<Rigidbody>();
-        if (incomingRigidbody is null)
+        var obstracle = coll.gameObject;
+        
+        if (obstracle is null)
             return;
-        GameObject obstracle = incomingRigidbody.gameObject;
         if (enemyBullet)
         {
             var unit = obstracle.GetComponent<PlayerController>();

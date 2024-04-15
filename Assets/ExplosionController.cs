@@ -15,12 +15,21 @@ public class ExplosionController : MonoBehaviour
     public ParticleSystem particlesystem;
 
     public SphereCollider spherecollider;
-
-    void Start()
+    void Start(float size2)
     {
-        // frithjof: todo, i commented this out @susber
-        // this.spherecollider.radius = size2;
-        // this.size = size2;
+    }
+    
+    public void Init(Vector3 pos, float size2, Color c)
+    {
+        spherecollider = GetComponent<SphereCollider>();
+        particlesystem = GetComponent<ParticleSystem>();
+        particlesystem.Stop();
+        var main = particlesystem.main;
+        main.startColor = new ParticleSystem.MinMaxGradient(c, Color.white);
+        this.spherecollider.radius = size2;
+        this.size = size2;
+        transform.position = pos;
+        timer = 0.1f;
     }
 
     void Update()
