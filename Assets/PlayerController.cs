@@ -171,6 +171,7 @@ public class PlayerController : MonoBehaviour
         }
         var upgrades = ArenaController.Instance.upgradeUi;
         upgrades.stats[UpgradeUIComponent.Health] -= 1;
+        ArenaController.Instance.UpdateHud();
         if (upgrades.stats[UpgradeUIComponent.Health] <= 0)
         {
             upgrades.stats[UpgradeUIComponent.Health] = 0;
@@ -186,7 +187,6 @@ public class PlayerController : MonoBehaviour
             return;
         }
         invulnerableTimeLeft = invulnerableTimeAfterHit;
-        ArenaController.Instance.UpdateHud();
     }
 
     public int GetHealth()
