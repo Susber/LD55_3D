@@ -51,7 +51,6 @@ public class PlayerController : MonoBehaviour
         playerrigidbody.velocity *= 0.998f;
         if (invulnerableTimeLeft > 0)
             invulnerableTimeLeft -= Time.fixedDeltaTime;
-        print(gun.GetGuntype());
     }
 
     void Update()
@@ -116,6 +115,11 @@ public class PlayerController : MonoBehaviour
                     {
                         MinionController minion = Instantiate(minionPrefab, ArenaController.Instance.friendContainer).GetComponent<MinionController>();
                         minion.Init(3,playerrigidbody.position,60);
+                    }
+                    
+                    if (Input.GetKey(KeyCode.C))
+                    {
+                        gun.ChargeWithRockets(5);
                     }
                 }
 

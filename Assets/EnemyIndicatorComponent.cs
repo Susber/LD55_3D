@@ -29,7 +29,7 @@ public class EnemyIndicatorComponent : MonoBehaviour
         foreach (var entity in ArenaController.Instance.enemyContainer.GetComponentsInChildren<UnitController>())
         {
             var vec = playerCamera.WorldToScreenPoint(entity.transform.position);
-            Debug.Log(vec);
+            //Debug.Log(vec);
             if (vec.x >= 0 && vec.y >= 0 && vec.x <= playerCamera.pixelWidth && vec.y <= playerCamera.pixelHeight)
             {
                 return true;
@@ -77,6 +77,7 @@ public class EnemyIndicatorComponent : MonoBehaviour
             image.transform.rotation = Quaternion.Euler(0, 0, angle * 180 / Mathf.PI);
 
             var alpha = HasEnemyOnScreen() ? 0f : fullAlpha;
+            // alpha = 1f;
             alpha = Mathf.MoveTowards(lastAlpha, alpha, 4f * Time.deltaTime);
             lastAlpha = alpha;
             image.color = new Color(image.color.r, image.color.g, image.color.b, alpha);

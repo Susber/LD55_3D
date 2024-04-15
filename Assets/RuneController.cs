@@ -130,6 +130,23 @@ public class RuneController : MonoBehaviour
             rune.summonEffectFinished = true;
         }
     }
+    
+    public class SummonRocketsEffect : SummonEffect
+    {
+        int level = 0;
+        public SummonRocketsEffect(int level)
+        {
+            this.level = level;
+        }
+        
+        public async void PlayEffect(RuneController rune)
+        {
+            PlayerController.Instance.gun.ChargeWithRockets(3 + level * 4);
+            
+            
+            rune.summonEffectFinished = true;
+        }
+    }
 
     public class TutorialRuneEffect : SummonEffect
     {
