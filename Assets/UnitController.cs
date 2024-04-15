@@ -28,6 +28,10 @@ namespace Components
                 if (AudioManager.Instance is not null)
                     AudioManager.Instance.PlaySoundDestroyEnemy();
                 Die();
+            } else
+            {
+                if (AudioManager.Instance is not null)
+                    AudioManager.Instance.PlaySoundHit();
             }
             // knockback
             unitRigidbody.AddForce(knockback);
