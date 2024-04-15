@@ -83,14 +83,12 @@ public class ArenaController : MonoBehaviour
         }
         for (int i = 0; i < num_trees; i++)
         {
-            var tree = Instantiate(treePrefab, decorationContainer.transform);
             var randomPos = RandomPosOnArena(2f);
-            print((randomPos - transform.position).magnitude);
-            if (2 * (randomPos - transform.position).magnitude < tutorialRuneRadius)
+            if ((randomPos - transform.position).magnitude >= tutorialRuneRadius * 1.5f)
             {
-                continue;  // skip trees here.
+                var tree = Instantiate(treePrefab, decorationContainer.transform);
+                tree.transform.localPosition = new Vector3(randomPos.x, 0, randomPos.z);
             }
-            tree.transform.localPosition = new Vector3(randomPos.x, 0, randomPos.z);
         }
 		for (int i = 0; i < num_stones; i++)
 		{
