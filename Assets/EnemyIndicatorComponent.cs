@@ -29,7 +29,7 @@ public class EnemyIndicatorComponent : MonoBehaviour
         foreach (var entity in ArenaController.Instance.enemyContainer.GetComponentsInChildren<UnitController>())
         {
             var vec = playerCamera.WorldToScreenPoint(entity.transform.position);
-            Debug.Log(vec);
+            //Debug.Log(vec);
             if (vec.x >= 0 && vec.y >= 0 && vec.x <= playerCamera.pixelWidth && vec.y <= playerCamera.pixelHeight)
             {
                 return true;

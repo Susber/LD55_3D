@@ -75,7 +75,7 @@ public class MinionController : MonoBehaviour
             var dist_sqr = dif.sqrMagnitude;
             
             var walkspeed = new Vector3(0, 0, 0);
-            if(dist_sqr > 3*3)
+            if(dist_sqr > 5*5)
                 walkspeed = speed * dir;
             unitcontroller.Walk(walkspeed, 0.3f);
         }
