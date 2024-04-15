@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
+using Components;
+using Unity.VisualScripting;
 using UnityEditor.UI;
 using UnityEngine;
 
@@ -42,7 +44,7 @@ public class ExplosionController : MonoBehaviour
         else
         {
             lifetime -= Time.deltaTime;
-            if (timer <= 0)
+            if (lifetime <= 0)
             {
                 Destroy(this);
             }
@@ -54,10 +56,16 @@ public class ExplosionController : MonoBehaviour
         var displacement = rigidbody.position - this.transform.position;
         var dir = Vector3.Normalize(displacement);
         var distance = Vector3.Magnitude(displacement);
-        var force_magnitude = (size - distance) / size;
-        var force = dir * force_magnitude * size * 2;
+        var force_magnitude = (size - distance) / size; // one at center, 0 at border of explosion (distance = size)
+        var force = dir * force_magnitude * size * 400;
         rigidbody.AddForce(force);
-
+        
+        PlayerController playerController = rigidbody.gameObject.GetComponent<PlayerController>();
+                if (playerController is not null)
+                    playerController.Damage();
+        UnitController unitController = rigidbody.gameObject.GetComponent<UnitController>();
+        if (unitController is not null)
+            unitController.Damage(force_magnitude * size * 10);
     }
     private void explode()
     {
@@ -65,9 +73,9 @@ public class ExplosionController : MonoBehaviour
         particlesystem.Play();
         for(int I =0; I < AffectedObjects.Count; I++)
         {
-            var rigidbody = AffectedObjects[I];
-            if(rigidbody is not null)
-                PushRigidbody(rigidbody);
+            var affectedrigidbody = AffectedObjects[I];
+            if(!affectedrigidbody.IsDestroyed())
+                PushRigidbody(affectedrigidbody);
         }
 
         this.GetComponent<SphereCollider>().enabled = false;

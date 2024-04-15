@@ -11,23 +11,23 @@ using static UnityEditor.Searcher.SearcherWindow.Alignment;
 
 public class MeshConnectedComponents
 {
-    public List<int> vertexComponentIds;
-    public int numComponents;
+    public List<int> vertexComponentIds = new List<int>();
+    public int numComponents = 0;
 }
 
 public class MeshBuildingData
 {
-    public List<Vector3> verts;
-    public List<Vector2> uvs;
-    public List<int> triangle_indices;
+    public List<Vector3> verts = new List<Vector3>();
+    public List<Vector2> uvs = new List<Vector2>();
+    public List<int> triangle_indices = new List<int>();
     public int next_id = 0;
 }
 
 public class IntersectionData
 {
-    public Vector3 pos;
-    public Vector2 uv;
-    public Dictionary<int, int> class_id_to_vertex_id;
+    public Vector3 pos = new Vector3();
+    public Vector2 uv = new Vector2();
+    public Dictionary<int, int> class_id_to_vertex_id = new Dictionary<int, int>();
 }
 
 public class CutterMesh : MonoBehaviour
@@ -36,7 +36,7 @@ public class CutterMesh : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        OneCut();
     }
 
     // Update is called once per frame
@@ -45,71 +45,77 @@ public class CutterMesh : MonoBehaviour
 
     }
 
-    public class AdjacencyList<K>
+    private void OneCut()
     {
-        private List<List<K>> _vertexList = new List<List<K>>();
-        private Dictionary<K, List<K>> _vertexDict = new Dictionary<K, List<K>>();
+        Mesh mymesh = GetComponent<MeshFilter>().mesh;
+        Material myMat = GetComponent<MeshRenderer>().material;
 
-        public AdjacencyList(K rootVertexKey)
+        Vector3 planeCenter = new Vector3(0,0,0);
+        Vector3 cuttingDir = new Vector3(1,0,2);
+        cuttingDir.Normalize();
+
+        // do the cut 
+        var meshesAfterCut = CutMesh(mymesh, planeCenter, cuttingDir);
+
+        // create game objects with new meshes
+
+        int i = 0;
+        foreach (var mesh in meshesAfterCut)
         {
-            AddVertex(rootVertexKey);
+			GameObject obj = new GameObject("Cut" + i.ToString());
+			obj.transform.parent = transform;
+			obj.transform.localPosition = new Vector3(0, 0.2f, 0);
+			obj.transform.localEulerAngles = Vector3.zero;
+			obj.transform.localScale = Vector3.one;
+			MeshFilter meshFilter = obj.AddComponent<MeshFilter>();
+			MeshRenderer renderer = obj.AddComponent<MeshRenderer>();
+			meshFilter.mesh = mesh;
+            renderer.material = myMat;
+            i++;
         }
-
-        private List<K> AddVertex(K key)
+    }
+    private void RandomCenterCut(Mesh mesh, Vector3 cuttingPlaneTangent)
+    {
+        // compute cog
+        Vector3 cog = Vector3.zero;
+        foreach (Vector3 v in mesh.vertices)
         {
-            List<K> vertex = new List<K>();
-            _vertexList.Add(vertex);
-            _vertexDict.Add(key, vertex);
-
-            return vertex;
+            cog += v;
         }
+        cog /= mesh.vertexCount;
+        
+        // random dir
+    }
 
-        public void AddEdge(K startKey, K endKey)
+    public class AdjacencyList
+    {
+        private Dictionary<int, List<int>> adjList = new Dictionary<int, List<int>>();
+
+        public void AddEdge(int startKey, int endKey)
         {
-            List<K> startVertex = _vertexDict.ContainsKey(startKey) ? _vertexDict[startKey] : null;
-            List<K> endVertex = _vertexDict.ContainsKey(endKey) ? _vertexDict[endKey] : null;
-
-            if (startVertex == null)
-                throw new ArgumentException("Cannot create edge from a non-existent start vertex.");
-
-            if (endVertex == null)
-                endVertex = AddVertex(endKey);
-
-            startVertex.Add(endKey);
-            endVertex.Add(startKey);
-        }
-
-        public void RemoveVertex(K key)
-        {
-            List<K> vertex = _vertexDict[key];
-
-            //First remove the edges / adjacency entries
-            int vertexNumAdjacent = vertex.Count;
-            for (int i = 0; i < vertexNumAdjacent; i++)
+            if (!adjList.ContainsKey(startKey))
             {
-                K neighbourVertexKey = vertex[i];
-                RemoveEdge(key, neighbourVertexKey);
+                adjList[startKey]  = new List<int>();
+            }
+            if (!adjList.ContainsKey(endKey)) 
+            {
+                adjList[endKey] = new List<int>();
             }
 
-            //Lastly remove the vertex / adj. list
-            _vertexList.Remove(vertex);
-            _vertexDict.Remove(key);
-        }
+            if (!adjList[startKey].Contains(endKey))
+            {
+                adjList[startKey].Add(endKey);
+            }
+			if (!adjList[endKey].Contains(startKey))
+			{
+				adjList[endKey].Add(startKey);
+			}
+		}
 
-        public void RemoveEdge(K startKey, K endKey)
+        public List<int> GetNeighbours(int key)
         {
-            ((List<K>)_vertexDict[startKey]).Remove(endKey);
-            ((List<K>)_vertexDict[endKey]).Remove(startKey);
-        }
-
-        public bool Contains(K key)
-        {
-            return _vertexDict.ContainsKey(key);
-        }
-
-        public int VertexDegree(K key)
-        {
-            return _vertexDict[key].Count;
+            if (adjList.ContainsKey(key)) return adjList[key];
+            else return null;
         }
     }
 
@@ -119,7 +125,7 @@ public class CutterMesh : MonoBehaviour
         MeshConnectedComponents res = new MeshConnectedComponents();
         // todo: implement graph search
 
-        AdjacencyList<int> adjacencyList = new AdjacencyList<int>(0);
+        AdjacencyList adjacencyList = new AdjacencyList();
 
         // über jedes Dreieck iterieren
         for (int i = 0; i < mesh.triangles.Length; i += 3)
@@ -188,23 +194,19 @@ public class CutterMesh : MonoBehaviour
                 componentIndex[curr_index] = component;
                 visited[curr_index] = true;
 
-				// Get all adjacent vertices of the
-				// dequeued vertex s. If a adjacent
-				// has not been visited, then mark it
-				// visited and enqueue it
+                // Get all adjacent vertices of the
+                // dequeued vertex s. If a adjacent
+                // has not been visited, then mark it
+                // visited and enqueue it
 
-                // TODO
-				//foreach (var val in adjacencyList.  )
-				//{
-				//	if (!visited[val])
-				//	{
-				//		visited[val] = true;
-				//		queue.Enqueue(val);
-				//		componentIndex[val] = component
-
-				//	}
-				//}
-			}
+                foreach (var val in adjacencyList.GetNeighbours(curr_index))
+                {
+                    if (!visited[val])
+                    {
+                        queue.Enqueue(val);
+                    }
+                }
+            }
             component++;
 		}
 
@@ -218,7 +220,13 @@ public class CutterMesh : MonoBehaviour
     {
         MeshConnectedComponents component_prediction = ComputeConnectedComponentsAfterCut(mesh, cutting_point, cutting_normal);
 
+        Debug.Log(component_prediction.numComponents);
+
         List<MeshBuildingData> mesh_data = new List<MeshBuildingData>(component_prediction.numComponents);
+        for (int i = 0; i < component_prediction.numComponents; i++)
+        {
+            mesh_data.Add(new MeshBuildingData());
+        }
 
         // wtf why so bad c#
         List<int> old_to_new_ids = new List<int>();
@@ -290,7 +298,7 @@ public class CutterMesh : MonoBehaviour
             int c3 = (one_side_index + 2) % 3;
 
             var i1key = new Tuple<int, int>(math.min(ids[c1], ids[c2]), math.max(ids[c1], ids[c2]));
-            var i2key = new Tuple<int, int>(math.min(ids[c1], ids[c2]), math.max(ids[c1], ids[c2]));
+            var i2key = new Tuple<int, int>(math.min(ids[c1], ids[c3]), math.max(ids[c1], ids[c3]));
 
             if (!intersection_dict.ContainsKey(i1key))
             {
@@ -332,7 +340,7 @@ public class CutterMesh : MonoBehaviour
                 i2Data.class_id_to_vertex_id.Add(larger_component_id, mesh_data[larger_component_id].next_id - 1);
                 intersection_dict.Add(i2key, i2Data);
             }
-
+            
             // Erstelle neue Dreiecke für genau zwei Meshes
 
             // kleine Seite
@@ -350,8 +358,14 @@ public class CutterMesh : MonoBehaviour
             mesh_data[smaller_component_id].triangle_indices.Add(intersection_dict[i1key].class_id_to_vertex_id[smaller_component_id]);
             mesh_data[smaller_component_id].triangle_indices.Add(intersection_dict[i2key].class_id_to_vertex_id[smaller_component_id]);
 
-            // gro�e Seite
-            if (old_to_new_ids[ids[c2]] == -1)
+            Debug.Log("One Triangle on small side");
+            Debug.Log(old_to_new_ids[ids[c1]]);
+            Debug.Log(intersection_dict[i1key].class_id_to_vertex_id[smaller_component_id]);
+			Debug.Log(intersection_dict[i2key].class_id_to_vertex_id[smaller_component_id]);
+
+
+			// gro�e Seite
+			if (old_to_new_ids[ids[c2]] == -1)
             {
                 old_to_new_ids[ids[c2]] = mesh_data[larger_component_id].next_id;
                 mesh_data[larger_component_id].next_id++;
@@ -376,7 +390,16 @@ public class CutterMesh : MonoBehaviour
             mesh_data[larger_component_id].triangle_indices.Add(intersection_dict[i1key].class_id_to_vertex_id[larger_component_id]);
             mesh_data[larger_component_id].triangle_indices.Add(old_to_new_ids[ids[c3]]);
             mesh_data[larger_component_id].triangle_indices.Add(intersection_dict[i2key].class_id_to_vertex_id[larger_component_id]);
-        }
+
+			Debug.Log("Two Triangles on large side");
+			Debug.Log(old_to_new_ids[ids[c2]]);
+			Debug.Log(old_to_new_ids[ids[c3]]);
+			Debug.Log(intersection_dict[i1key].class_id_to_vertex_id[larger_component_id]);
+			Debug.Log(intersection_dict[i1key].class_id_to_vertex_id[larger_component_id]);
+			Debug.Log(old_to_new_ids[ids[c3]]);
+			Debug.Log(intersection_dict[i2key].class_id_to_vertex_id[larger_component_id]);
+
+		}
 
         // create meshes
         var meshes = new List<Mesh>();
