@@ -46,6 +46,12 @@ public class AudioManager : MonoBehaviour
         PlaySound(randomNumber, 0.4f);
     }
 
+    public void PlaySoundHit()
+    {
+        int randomNumber = UnityEngine.Random.Range(7, 10);
+        PlaySound(randomNumber, 0.4f);
+    }
+
 
     // Function to play a specific sound from the array
     public void PlaySound(int index, float volume)
