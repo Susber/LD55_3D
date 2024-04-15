@@ -98,10 +98,6 @@ public class Cardboarder : MonoBehaviour
 			Vector3 current_world = transform.TransformPoint(current);
 			Vector3 next_world = transform.TransformPoint(next);
 
-			//vertices.Add(new Vector3(current.x, current.y));
-			//vertices.Add(new Vector3(next.x, next.y));
-			//vertices.Add(new Vector3(next.x, next.y, CardboardTickness));
-			//vertices.Add(new Vector3(current.x, current.y, CardboardTickness));
 			vertices.Add(transform.InverseTransformPoint(current_world));
 			vertices.Add(transform.InverseTransformPoint(next_world));
 			vertices.Add(transform.InverseTransformPoint(new Vector3(next_world.x, next_world.y, next_world.z + CardboardTickness)));

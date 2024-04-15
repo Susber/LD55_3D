@@ -8,12 +8,12 @@ public class AudioManager : MonoBehaviour
     public static AudioManager Instance;
     void Awake()
     {
-        if (Instance is null)
+        if (Instance == null)
         {
             Instance = this;
-            DontDestroyOnLoad(gameObject);
+            DontDestroyOnLoad(gameObject); 
         }
-        else
+        else if (Instance != this)
         {
             Destroy(gameObject);
         }
@@ -22,11 +22,71 @@ public class AudioManager : MonoBehaviour
     public AudioSource audioSource;
     public AudioClip[] audioClips;
 
-    void Update()
+    public AudioSource menuMusic;
+    public AudioSource gameMusic;
+
+    private float fadeTime = 1.0f; // Duration of the fade
+
+    void Start()
+    {
+        // Set both music tracks to loop
+        menuMusic.loop = true;
+        gameMusic.loop = true;
+
+        // Start with menu music muted and game music playing
+        menuMusic.volume = 0;
+        gameMusic.volume = 0.3f;
+        menuMusic.Play();
+        gameMusic.Play();
+    }
+
+    private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            PlaySoundGun();
+            FadeToMenuMusic();
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            FadeToGameMusic();
+        }
+    }
+
+    // Call this to fade to menu music
+    public void FadeToMenuMusic()
+    {
+        StartCoroutine(FadeAudio(gameMusic, false));
+        StartCoroutine(FadeAudio(menuMusic, true));
+    }
+
+    // Call this to fade to game music
+    public void FadeToGameMusic()
+    {
+        StartCoroutine(FadeAudio(menuMusic, false));
+        StartCoroutine(FadeAudio(gameMusic, true));
+    }
+
+    IEnumerator FadeAudio(AudioSource audioSource, bool fadeIn)
+    {
+        float startVolume = fadeIn ? 0 : audioSource.volume;
+        float endVolume = fadeIn ? 0.3f : 0;
+        float currentTime = 0;
+
+        while (currentTime < fadeTime)
+        {
+            currentTime += Time.deltaTime;
+            audioSource.volume = Mathf.Lerp(startVolume, endVolume, currentTime / fadeTime);
+            yield return null;
+        }
+
+        if (!fadeIn)
+        {
+            audioSource.volume = 0; // Ensure volume is set to 0 after fading out
+        }
+        else
+        {
+            audioSource.volume = 0.3f; // Ensure volume is set to max after fading in
         }
     }
 
@@ -61,6 +121,20 @@ public class AudioManager : MonoBehaviour
             PlaySound(12, 0.1f);
         else
             PlaySound(13, 0.1f);
+    }
+
+    public void PlaySoundGotHit()
+    {
+        PlaySound(14, 0.3f);
+    }
+
+    public void PlaySoundDeath()
+    {
+        PlaySound(15, 0.3f);
+    }
+    public void PlaySoundEnd()
+    {
+        PlaySound(15, 0.3f);
     }
 
 
