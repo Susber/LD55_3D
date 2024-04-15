@@ -19,6 +19,7 @@ public class UpgradeUIComponent : MonoBehaviour
     public const int Weapon = 2;
     public const int SummonGiant = 3;
     public const int SummonBomb = 4;
+    public const int SummonShotgun = 5;
 
     public void UpdateUI()
     {

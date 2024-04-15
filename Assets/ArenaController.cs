@@ -297,9 +297,18 @@ public class ArenaController : MonoBehaviour
         }
         else
         {
-            runeType = new RuneController.Triangle(3, 3f);
-            spawnType = UpgradeUIComponent.SummonBomb;
-            summonEffect = new RuneController.SummonBombEffect(upgradeUi.stats[spawnType]);
+            if (rnd.NextDouble() < 0.5)
+            {
+                runeType = new RuneController.Triangle(3, 3f);
+                spawnType = UpgradeUIComponent.SummonBomb;
+                summonEffect = new RuneController.SummonBombEffect(upgradeUi.stats[spawnType]);
+            }
+            else
+            {
+                runeType = new RuneController.Estate(3f);
+                spawnType = UpgradeUIComponent.SummonShotgun;
+                summonEffect = new RuneController.SummonRocketsEffect(upgradeUi.stats[spawnType]);
+            }
         }
 
         // check if unlocked
