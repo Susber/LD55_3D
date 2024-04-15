@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 8446307993481465819}
   - component: {fileID: -8320157743892894610}
   - component: {fileID: 434331006152931121}
+  - component: {fileID: 9045591007426569554}
   m_Layer: 0
   m_Name: Sheep
   m_TagString: Untagged
@@ -163,6 +164,24 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &9045591007426569554
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2803500051409867777}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a098a0efcc1ccb4bb97107c16580f8c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cardboardPiece: {fileID: 9186086360536189253, guid: 7f07d26212f45496898c7fd1a003f444, type: 3}
+  cardboardMaterial: {fileID: 2100000, guid: 6399dcf4b1625924f91a7456bcb5eb62, type: 2}
+  cardboardSideMaterial: {fileID: 2100000, guid: 34000f52b6e8f9f41960347ae81e0859, type: 2}
+  cardboardWidth: 0.1
+  CardboardTexScale: 1
+  cardboardColor: {r: 0.764151, g: 0.764151, b: 0.764151, a: 0}
 --- !u!1001 &6814327843858055700
 PrefabInstance:
   m_ObjectHideFlags: 0

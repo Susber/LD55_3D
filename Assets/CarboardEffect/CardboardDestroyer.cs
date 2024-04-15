@@ -19,7 +19,7 @@ public class CardboardDestroyer : MonoBehaviour
     public void SpawnDestroyedCardboard(int targetNumPieces)
     {
         // Get object with correct mesh
-        var frontFaceChild = transform.Find("CardboardFace");
+        var frontFaceChild = transform.Find("renderer/CardboardFace");
         if (frontFaceChild == null)
         {
             Debug.Log("No Cardboard to destroy");
@@ -92,6 +92,8 @@ public class CardboardDestroyer : MonoBehaviour
             //xpBody.AddForce(forceIntensity * (Vector3.up + UnityEngine.Random.onUnitSphere).normalized, ForceMode.Impulse);
             xpBody.AddTorque(forceIntensity * (UnityEngine.Random.onUnitSphere), ForceMode.Force);
 		}
+        // I dont need to be rendered anymore
+        transform.gameObject.SetActive(false);
     }
 
     private Mesh CreateBoundaryMesh(Mesh mesh)

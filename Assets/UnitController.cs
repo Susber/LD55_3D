@@ -49,6 +49,11 @@ namespace Components
                 coin.GetComponent<Rigidbody>().AddForce(
                     3 * new Vector3((float) rnd.NextDouble() * 2 - 1, (float) rnd.NextDouble(), (float) rnd.NextDouble() * 2 - 1));
             }
+            CardboardDestroyer myRendererCardboardDestroyer = transform.GetComponentInChildren<CardboardDestroyer>();
+            if (myRendererCardboardDestroyer != null)
+            {
+                myRendererCardboardDestroyer.SpawnDestroyedCardboard(10);
+            }
             Destroy(this.gameObject);
         }
 

@@ -176,7 +176,15 @@ public class PlayerController : MonoBehaviour
         {
             upgrades.stats[UpgradeUIComponent.Health] = 0;
             currentState = PlayerState.DEAD;
-            return;
+
+			// spawn broken cardboard
+            CardboardDestroyer myRendererCardboardDestroyer = transform.GetComponentInChildren<CardboardDestroyer>();
+			if (myRendererCardboardDestroyer != null)
+			{
+				myRendererCardboardDestroyer.SpawnDestroyedCardboard(10);
+			}
+
+			return;
         }
         invulnerableTimeLeft = invulnerableTimeAfterHit;
         ArenaController.Instance.UpdateHud();
