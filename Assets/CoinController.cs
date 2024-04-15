@@ -34,6 +34,7 @@ public class CoinController : MonoBehaviour
         if (player == null)
             return;
         player.coins += 1;
+        ArenaController.Instance.UpdateHud();
         Destroy(this.gameObject);
     }
 }

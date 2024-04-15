@@ -73,5 +73,11 @@ public class PlayerController : MonoBehaviour
             upgrades.stats[UpgradeUIComponent.Health] = 0;
             // todo, death sequence!
         }
+        ArenaController.Instance.UpdateHud();
+    }
+
+    public int GetHealth()
+    {
+        return ArenaController.Instance.upgradeUi.stats[UpgradeUIComponent.Health];
     }
 }

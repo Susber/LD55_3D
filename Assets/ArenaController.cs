@@ -6,6 +6,7 @@ using Components.Levels;
 using Random = System.Random;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
+using UnityEngine.UI;
 using UnityEngine.XR;
 
 public class ArenaController : MonoBehaviour
@@ -42,8 +43,13 @@ public class ArenaController : MonoBehaviour
     public float spawnNextWaveTime;
 
     public int currentLevel;
+    public int maxLevel = 10;
 
     public UpgradeUIComponent upgradeUi;
+
+    public Text healthText;
+    public Text moneyText;
+    public Text levelText;
 
     private void Start()
     {
@@ -62,6 +68,7 @@ public class ArenaController : MonoBehaviour
         }
         
         upgradeUi.UpdateUI();
+        UpdateHud();
         upgradeUi.gameObject.SetActive(false);
     }
 
@@ -169,6 +176,7 @@ public class ArenaController : MonoBehaviour
                     if (enemyContainer.childCount == 0 && coinContainer.childCount == 0)
                     {
                         currentLevel += 1;
+                        UpdateHud();
                         SetStage(GameStage.UPGRADE);
                     }
                 }
@@ -225,5 +233,12 @@ public class ArenaController : MonoBehaviour
     {
         ArenaController.Instance.upgradeUi.gameObject.SetActive(false);
         SetStage(GameStage.IN_LEVEL);
+    }
+
+    public void UpdateHud()
+    {
+        healthText.text = "Health: " + PlayerController.Instance.GetHealth();
+        moneyText.text = "Money: " + PlayerController.Instance.coins;
+        levelText.text = "Level: " + currentLevel + "/" + maxLevel;
     }
 }
