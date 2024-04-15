@@ -43,13 +43,9 @@ public class FoxMovementController : MonoBehaviour
         }
     }
 
-    void FlipSprite()
-    {
-
-    }
     void FixedUpdate()
     {    
-        foxRigidbody.velocity *= 0.95f;
+        //foxRigidbody.velocity *= 0.95f;
         switch (currentState)
         {
             case FoxState.MoveTowardsPlayer:
@@ -82,6 +78,7 @@ public class FoxMovementController : MonoBehaviour
         await Task.Delay(300);
         SetTail(3);
         // shoot ...
+        // spawn fireball
         await Task.Delay(300);
         attackFinished = true;
         SetTail(2);

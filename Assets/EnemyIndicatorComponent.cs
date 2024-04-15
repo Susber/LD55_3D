@@ -7,7 +7,6 @@ using UnityEditor.Il2Cpp;
 using UnityEngine;
 using UnityEngine.UI;
 using Plane = UnityEngine.Plane;
-using Quaternion = UnityEngine.Quaternion;
 using Vector3 = UnityEngine.Vector3;
 
 public class EnemyIndicatorComponent : MonoBehaviour
@@ -19,34 +18,15 @@ public class EnemyIndicatorComponent : MonoBehaviour
     {
         indicator = Instantiate(indicatorPrefab, GameObject.Find("IndicatorPanel").transform);
     }
-
-    public float fullAlpha = 1f;
-    public float lastAlpha = 1f;
-
-    public bool HasEnemyOnScreen()
-    {
-        var playerCamera = PlayerController.Instance.playercamera;
-        foreach (var entity in ArenaController.Instance.enemyContainer.GetComponentsInChildren<UnitController>())
-        {
-            var vec = playerCamera.WorldToScreenPoint(entity.transform.position);
-            if (vec.x >= 0 && vec.y >= 0 && vec.x <= playerCamera.pixelWidth && vec.y <= playerCamera.pixelHeight)
-            {
-                return true;
-            }
-        }
-
-        return false;
-    }
     
     void Update()
     {
         var playerCamera = PlayerController.Instance.playercamera;
 
-        var playerScreen = playerCamera.WorldToScreenPoint(PlayerController.Instance.transform.position);
-        var toOrig = playerCamera.WorldToScreenPoint(transform.position) - playerScreen;
-        var to = toOrig + Vector3.zero;
+        var to = new Vector3(playerCamera.pixelWidth, playerCamera.pixelHeight, 0) - playerCamera.WorldToScreenPoint(transform.position);
         to.x /= 0.5f * playerCamera.pixelWidth;
         to.y /= 0.5f * playerCamera.pixelHeight;
+        to.y *= -1;  // y is flipped
         to.z = 0;
 
         var renderAt = new Vector3();
@@ -66,24 +46,10 @@ public class EnemyIndicatorComponent : MonoBehaviour
 
         if (indicator != null)
         {
-            // var pixelPos = new Vector3((renderAt.x / 2 + 0.5f) * playerCamera.pixelWidth,
-            // (renderAt.y / 2 + 0.5f) * playerCamera.pixelHeight, 0);
-            var pixelPos = playerScreen + 200 * toOrig.normalized;
-
+            var pixelPos = new Vector3((renderAt.x / 2 + 0.5f) * playerCamera.pixelWidth,
+                (renderAt.y / 2 + 0.5f) * playerCamera.pixelHeight, 0);
             indicator.transform.position = pixelPos;
-            var angle = Mathf.Atan2(toOrig.y, toOrig.x);
-            var image = indicator.GetComponentInChildren<Image>();
-            image.transform.rotation = Quaternion.Euler(0, 0, angle * 180 / Mathf.PI);
-
-            var alpha = HasEnemyOnScreen() ? 0f : fullAlpha;
-            alpha = Mathf.MoveTowards(lastAlpha, alpha, 4f * Time.deltaTime);
-            lastAlpha = alpha;
-            image.color = new Color(image.color.r, image.color.g, image.color.b, alpha);
+            // indicator.GetComponent<RectTransform>().anchoredPosition = ;
         }
-    }
-
-    private void OnDestroy()
-    {
-        Destroy(indicator);
     }
 }

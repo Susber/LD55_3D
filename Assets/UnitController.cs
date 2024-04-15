@@ -49,6 +49,11 @@ namespace Components
                 coin.GetComponent<Rigidbody>().AddForce(
                     3 * new Vector3((float) rnd.NextDouble() * 2 - 1, (float) rnd.NextDouble(), (float) rnd.NextDouble() * 2 - 1));
             }
+            CardboardDestroyer myRendererCardboardDestroyer = transform.GetComponentInChildren<CardboardDestroyer>();
+            if (myRendererCardboardDestroyer != null)
+            {
+                myRendererCardboardDestroyer.SpawnDestroyedCardboard(10);
+            }
             Destroy(this.gameObject);
         }
 
@@ -93,6 +98,9 @@ namespace Components
         {
             var incomingRigidbody = collision.gameObject.GetComponent<Rigidbody>();
             if (incomingRigidbody == null)
+                return;
+            var minion = unitRigidbody.gameObject.GetComponent<MinionController>();
+            if (minion != null)
                 return;
             GameObject obstracle = incomingRigidbody.gameObject;
             var player = obstracle.GetComponent<PlayerController>();
