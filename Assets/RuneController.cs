@@ -73,16 +73,14 @@ public class RuneController : MonoBehaviour
             var bombPrefab = ArenaController.Instance.bombPrefab;
             var mainExplosion = Instantiate(bombPrefab).GetComponent<BombController>();
             mainExplosion.transform.position = rune.transform.position;
-            mainExplosion.bombScale = (float) level;
-            mainExplosion.timeToExplode = 3f;
+            mainExplosion.Init(Mathf.Lerp(1.5f, 3f, (level - 1) / 5f), 3f);
             if (level > 2) {
                 await Task.Delay(200);
                 foreach (var line in rune.lineSegments)
                 {
                     var cornerExplosion = Instantiate(bombPrefab).GetComponent<BombController>();
                     cornerExplosion.transform.position = line.left;
-                    cornerExplosion.bombScale = (float) level - 1;
-                    cornerExplosion.timeToExplode = 3f;
+                    cornerExplosion.Init(Mathf.Lerp(1f, 2f, (level - 1) / 5f), 3f);
                 }
             }
             rune.summonEffectFinished = true;

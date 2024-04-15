@@ -15,7 +15,7 @@ public class BombController : MonoBehaviour
 
     public Transform renderingComponent;
 
-    void Init(float bombScale, float maxTimeToExplode)
+    public void Init(float bombScale, float maxTimeToExplode)
     {
         this.bombScale = bombScale;
         this.maxTimeToExplode = maxTimeToExplode;
