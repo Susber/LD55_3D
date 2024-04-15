@@ -5,6 +5,7 @@ using Components;
 using Unity.VisualScripting;
 using UnityEditor.UI;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class ExplosionController : MonoBehaviour
 {
@@ -14,21 +15,46 @@ public class ExplosionController : MonoBehaviour
     public float size = 5;
     public List<Rigidbody> AffectedObjects;
     public Vector3 ForceVector;
-    public ParticleSystem particlesystem;
+    public ParticleSystem sparkparticles;
+    public ParticleSystem smokeparticles;
 
     public SphereCollider spherecollider;
     
     public void Init(Vector3 pos, float size2, Color c)
     {
         spherecollider = GetComponent<SphereCollider>();
-        particlesystem = GetComponent<ParticleSystem>();
-        particlesystem.Stop();
-        var main = particlesystem.main;
-        main.startColor = new ParticleSystem.MinMaxGradient(c, Color.white);
+        sparkparticles = GetComponent<ParticleSystem>();
+        smokeparticles = GetComponentInChildren<ParticleSystem>();
+        sparkparticles.Stop();
+        smokeparticles.Stop();
+        
+        
+        
         this.spherecollider.radius = size2;
-        this.size = size2;
+        this.size = size2; //size scales the explosion size, default is which is represented by the default explosion animation
         transform.position = pos;
         timer = 0.1f;
+        
+        var sparkles_main = sparkparticles.main;
+        sparkles_main.startColor = new ParticleSystem.MinMaxGradient(c, Color.yellow); 
+        scaleParticleSpeed(sparkparticles, size / 5);
+        scaleParticleBurstCount(sparkparticles, size / 5);
+        
+        var smoke_main = smokeparticles.colorOverLifetime;
+        smoke_main.color = new ParticleSystem.MinMaxGradient(c, new Color(0.8f,0.8f, 0.8f));
+        scaleParticleSpeed(sparkparticles, size / 5);
+        scaleParticleBurstCount(sparkparticles, size / 5);
+    }
+
+    void scaleParticleBurstCount(ParticleSystem ps, float scale)
+    {
+        var burst = sparkparticles.emission.GetBurst(0);
+        burst.count = new ParticleSystem.MinMaxCurve((float) burst.count.constantMin * scale);
+    }
+    void scaleParticleSpeed(ParticleSystem ps, float scale)
+    {
+        var main = sparkparticles.main;
+        main.startSpeed = new ParticleSystem.MinMaxCurve(main.startSpeed.constantMin * scale, main.startSpeed.constantMax * scale);
     }
 
     void Update()
@@ -69,7 +95,8 @@ public class ExplosionController : MonoBehaviour
     private void explode()
     {
         exploded = true;
-        particlesystem.Play();
+        sparkparticles.Play();
+        smokeparticles.Play();
         for(int I =0; I < AffectedObjects.Count; I++)
         {
             var affectedrigidbody = AffectedObjects[I];
