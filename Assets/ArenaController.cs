@@ -397,4 +397,20 @@ public class ArenaController : MonoBehaviour
         moneyText.text = "Money: " + PlayerController.Instance.coins;
         levelText.text = "Level: " + (currentLevel + 1) + "/" + maxLevel;
     }
+
+    public UnitController GetClosestEnemyTo(Vector3 searchCenter)
+    {
+        float bestDistSqr = Mathf.Infinity;
+        UnitController closest = null;
+        foreach (var enemy in enemyContainer.GetComponents<UnitController>())
+        {
+            var currDistSqr = (enemy.transform.position - searchCenter).sqrMagnitude;
+            if (currDistSqr < bestDistSqr)
+            {
+                bestDistSqr = currDistSqr;
+                closest = enemy;
+            }
+        }
+        return closest;
+    }
 }
