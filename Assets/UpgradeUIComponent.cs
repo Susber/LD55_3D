@@ -13,6 +13,13 @@ public class UpgradeUIComponent : MonoBehaviour
     public Text titleText;
     public Text moneyText;
 
+    public const int Health = 0;
+    public const int Speed = 1;
+    public const int Weapon = 2;
+    public const int Meteor = 3;
+    public const int Minions = 4;
+    public const int Poop = 5;
+
     public void UpdateUI()
     {
         for (var statNum = 0; statNum < stats.Length; statNum++)

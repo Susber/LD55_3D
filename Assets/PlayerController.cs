@@ -20,7 +20,6 @@ public class PlayerController : MonoBehaviour
 
     public Rigidbody playerrigidbody;
 
-    private int lifes = 5;
     public int coins = 0;
 
     public PlayerController()
@@ -65,10 +64,14 @@ public class PlayerController : MonoBehaviour
     }
 
 
-    public void Damage(int damage)
+    public void Damage()
     {
-        lifes -= 1;
-        if(lifes <= 0)
-            Destroy(gameObject);
+        var upgrades = ArenaController.Instance.upgradeUi;
+        upgrades.stats[UpgradeUIComponent.Health] -= 1;
+        if (upgrades.stats[UpgradeUIComponent.Health] <= 0)
+        {
+            upgrades.stats[UpgradeUIComponent.Health] = 0;
+            // todo, death sequence!
+        }
     }
 }

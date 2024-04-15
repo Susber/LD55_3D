@@ -45,7 +45,7 @@ public class BulletController : MonoBehaviour
             var unit = obstracle.GetComponent<PlayerController>();
             if (unit != null)
             {
-                unit.Damage(5);
+                unit.Damage();
                 print("hit" + gameObject);
                 Destroy(gameObject);
                 n_to_hit -= 1;
