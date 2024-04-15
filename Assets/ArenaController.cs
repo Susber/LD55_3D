@@ -46,6 +46,8 @@ public class ArenaController : MonoBehaviour
     public GameObject treePrefab;
     public GameObject stonePrefab;
     public GameObject bombPrefab;
+    public GameObject gunPrefab;
+    public GameObject minionPrefab;
 
     public int num_grass = 5000;
     public int num_trees = 100;
@@ -291,7 +293,7 @@ public class ArenaController : MonoBehaviour
         {
             runeType = new RuneController.Pentagram(5, 8f);
             spawnType = UpgradeUIComponent.SummonGiant;
-            summonEffect = new RuneController.SummonGiantEffect();
+            summonEffect = new RuneController.SummonGiantEffect(upgradeUi.stats[spawnType]);
         }
         else
         {

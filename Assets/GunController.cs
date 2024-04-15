@@ -21,7 +21,7 @@ public class GunController : MonoBehaviour
     private Vector3 lastShotDir = new Vector3(0, 0, 0); //direction where the gun is pushed
 
     private Vector3 playerGunPosition = new Vector3(0, 1, -0.5f); // default gun position
-    private bool fromEnemy =  true;
+    public bool fromEnemy =  true;
 
     public float damage;
     public int shootAmount;
@@ -79,7 +79,7 @@ public class GunController : MonoBehaviour
             var spreadDirection2d = Util.Rotate2d(new Vector2(dir.x, dir.z), shotAngle);
             var spreadDirection = new Vector3(spreadDirection2d.x, 0, spreadDirection2d.y);
             var bullet = Instantiate(bulletPrefab).GetComponent<BulletController>();
-            bullet.Init(BulletController.BulletType.Bullet, transform.position, spreadDirection * 50, false );
+            bullet.Init(BulletController.BulletType.Bullet, transform.position, spreadDirection * 50, this.fromEnemy );
             // bullet.SetTeam(false);
             // bullet.bulletRigidbody.velocity = spreadDirection * 50;
             // bullet.lifetime = bulletLifetime;
@@ -148,7 +148,7 @@ public class GunController : MonoBehaviour
     {
         float distance;
         Plane plane = new Plane(Vector3.up, 0);
-        Ray ray = playerController.playercamera.ScreenPointToRay(Input.mousePosition);
+        Ray ray = PlayerController.Instance.playercamera.ScreenPointToRay(Input.mousePosition);
         if (plane.Raycast(ray, out distance))
         {
             Vector3 worldpos = ray.GetPoint(distance);
