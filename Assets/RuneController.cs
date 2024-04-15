@@ -62,6 +62,7 @@ public class RuneController : MonoBehaviour
     {
         public async void PlayEffect(RuneController rune)
         {
+            await Task.Delay(1000);
             var explosionPrefab = PlayerController.Instance.gun.explosionPrefab;
             foreach (var line in rune.lineSegments)
             {

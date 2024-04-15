@@ -63,6 +63,8 @@ public class ArenaController : MonoBehaviour
 
     public int numBigRunes;
     public int numSmallRunes;
+
+    public float spawnDistanceToPlayer;
     
     private void Start()
     {
@@ -150,26 +152,45 @@ public class ArenaController : MonoBehaviour
         return origin + new Vector3((float)rnd.NextDouble() * radius.x * 2,0, (float)rnd.NextDouble() * radius.z * 2);
     }
 
-    public Vector3 RandomEmptyPos(float freeCircleRadius, float distToPlayer)
+    public Vector3 RandomPosOnCircle(Vector3 origin, float radius, float distanceToBorder)
     {
-        var freeCircleRadiusSqr = freeCircleRadius * freeCircleRadius;
-        for (var numTry = 0; numTry < 20; numTry++)
+        while (true)
         {
-            var rndPos = RandomPosOnArena(freeCircleRadius);
-            var minDistSquared = Mathf.Infinity;
-            foreach (Transform child in enemyContainer.transform)
-            {
-                minDistSquared = Mathf.Min(minDistSquared, (child.localPosition - rndPos).sqrMagnitude);
-            }
+            float angle = (float)rnd.NextDouble() * 2 * Mathf.PI;
+            var vec = origin + radius * new Vector3(Mathf.Cos(angle), 0, Mathf.Sin(angle));
+            var vecD = vec - transform.position;
+            if (Mathf.Abs(vecD.x) >= arenaRadius.x - distanceToBorder ||
+                Mathf.Abs(vecD.z) >= arenaRadius.z - distanceToBorder)
+                continue;  // retry, not in arena.
+            return vec;
+        }
+    }
 
-            var playerDist = (PlayerController.Instance.transform.localPosition - rndPos).sqrMagnitude;
-            if (minDistSquared >= freeCircleRadiusSqr && playerDist >= distToPlayer)
+    public Vector3 RandomWavePos(float distToPlayer)
+    {
+        var existingEnemies = enemyContainer.GetComponentsInChildren<UnitController>();
+
+        Vector3 best = this.transform.position;
+        var bestDistSquared = 0f;
+        for (var i = 0; i < 20; i++)
+        {
+            var rndPos = RandomPosOnCircle(PlayerController.Instance.transform.position, distToPlayer, 20f);
+            
+            var minDistSquared = Mathf.Infinity;
+            foreach (var rune in existingEnemies)
             {
-                return rndPos;
+                var existingPos = rune.gameObject.transform.position;
+                minDistSquared = Mathf.Min((existingPos - rndPos).sqrMagnitude, minDistSquared);
+            }
+            
+            if (minDistSquared > bestDistSquared)
+            {
+                bestDistSquared = minDistSquared;
+                best = rndPos;
             }
         }
-        // fail, relax.
-        return RandomEmptyPos(freeCircleRadius - 3, distToPlayer - 3);
+
+        return best;
     }
 
     private void FixedUpdate()
@@ -310,7 +331,7 @@ public class ArenaController : MonoBehaviour
                 foreach (var rune in smallRuneContainer.GetComponentsInChildren<RuneController>())
                     rune.MaybeDestroyOnWaveBegin();
                 levelWaveQueue.Clear();
-                for (var n = 0; n < 1; n++)
+                for (var n = 0; n < 10; n++)
                 {
                     levelWaveQueue.Add(new Wave(5, sheepPrefab, 10));
                     levelWaveQueue.Add(new Wave(2, foxPrefab, 1));

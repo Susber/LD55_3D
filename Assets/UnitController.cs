@@ -81,7 +81,7 @@ namespace Components
         void OnCollisionEnter(Collision collision)
         {
             var incomingRigidbody = collision.gameObject.GetComponent<Rigidbody>();
-            if (incomingRigidbody is null)
+            if (incomingRigidbody == null)
                 return;
             GameObject obstracle = incomingRigidbody.gameObject;
             var player = obstracle.GetComponent<PlayerController>();
