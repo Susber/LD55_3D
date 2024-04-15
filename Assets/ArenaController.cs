@@ -403,17 +403,17 @@ public class ArenaController : MonoBehaviour
                 for (var n = 0; n < currentLevel + 1; n++)
                 {
                     levelWaveQueue.Add(new Wave(5, sheepPrefab, 10));
-                    if (currentLevel >= 2)
-                        levelWaveQueue.Add(new Wave(10, foxPrefab, 1));
-                    if (currentLevel >= 3)
-                        levelWaveQueue.Add(new Wave(10, dogPrefab, 1));
-                    if (currentLevel >= 3)
-                        levelWaveQueue.Add(new Wave(10, sheepPrefab, 10));
-                    if (currentLevel == 6 || currentLevel == 7)
-                        levelWaveQueue.Add(new Wave(10, foxPrefab, 3));
                 }
+                if (currentLevel >= 2)
+                    levelWaveQueue.Add(new Wave(10, foxPrefab, 1));
+                if (currentLevel >= 3)
+                    levelWaveQueue.Add(new Wave(10, dogPrefab, 1));
+                if (currentLevel >= 3)
+                    levelWaveQueue.Add(new Wave(10, sheepPrefab, 10));
+                if (currentLevel == 6 || currentLevel == 7)
+                    levelWaveQueue.Add(new Wave(10, foxPrefab, 3));
 
-                spawnNextWaveTime = 0;
+                    spawnNextWaveTime = 0;
                 break;
             }
             case GameStage.UPGRADE:
