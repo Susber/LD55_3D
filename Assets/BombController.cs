@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Components;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 
@@ -29,6 +30,8 @@ public class BombController : MonoBehaviour
         timeToExplode -= Time.fixedDeltaTime;
         float scale = Mathf.Lerp(1, this.bombScale, Mathf.Pow(1f - timeToExplode / maxTimeToExplode, 2));
         renderingComponent.localScale = new Vector3(scale, scale, scale);
+        var stage = Mathf.FloorToInt(bombSprites.Length * (timeToExplode / maxTimeToExplode));
+        
         if (timeToExplode < 0)
         {
             var explosionPrefab = PlayerController.Instance.gun.explosionPrefab;

@@ -157,7 +157,7 @@ public class PlayerController : MonoBehaviour
         playerrigidbody.velocity += traction * strength * dif;
     }
 
-    public async void Damage(Vector3 knockback)
+    public void Damage(Vector3 knockback)
     {
         if (AudioManager.Instance is not null)
             AudioManager.Instance.PlaySoundGotHit();
