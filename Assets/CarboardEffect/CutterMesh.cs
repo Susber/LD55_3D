@@ -30,6 +30,8 @@ public class IntersectionData
 
 public class CutterMesh : MonoBehaviour
 {
+    /*
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -194,24 +196,24 @@ public class CutterMesh : MonoBehaviour
                     {
                         visited[val] = true;
                         queue.Enqueue(val);
-                        componentIndex[val] = component
+                        componentIndex[val] = component;
                     }
                 }
             }
 
             while (visited[index_vertex])
             {
-                index_vertex++
+                index_vertex++;
             }
             visited[index_vertex] = true;
             queue.Enqueue(index_vertex);
 
-            component++
+            component++;
 
         }
 
-        res.vertexComponentIds = component
-        res.vertexComponentIds = componentIndex
+        res.vertexComponentIds = component;
+        res.vertexComponentIds = componentIndex;
 
         return res;
     }
@@ -401,4 +403,5 @@ public class CutterMesh : MonoBehaviour
         return -Vector3.Dot(point1, normal) / Vector3.Dot(distance, normal);
     }
 
+    */
 }
