@@ -14,11 +14,12 @@ public class BulletController : MonoBehaviour
     public Rigidbody bulletRigidbody;
     private bool shotFromEnemy =  true;
     private int n_to_hit = 1;
+    public float bulletdamage;
     private BulletType bullettype;
     public GameObject explosionPrefab;
     private ParticleSystem ps;
     private TrailRenderer tr;
-
+    private int level = 1;
     public enum BulletType
     {
         Bullet,
@@ -29,12 +30,13 @@ public class BulletController : MonoBehaviour
     {
     }
 
-    public void Init(BulletType type, Vector3 pos, Vector3 velocity, bool fromEnemy)
+    public void Init(BulletType type, Vector3 pos, Vector3 velocity,int strength2, bool fromEnemy)
     {
         transform.position = pos;
         bulletRigidbody.position = pos;
         bulletRigidbody.velocity = velocity;
         SetTeam(fromEnemy);
+        this.level = strength2;
         transform.rotation = Quaternion.LookRotation(velocity);
         ps = GetComponent<ParticleSystem>();
         tr = GetComponent<TrailRenderer>();
@@ -81,7 +83,7 @@ public class BulletController : MonoBehaviour
         if (bullettype == BulletType.Rocket)
         {
             var explosion = Instantiate(explosionPrefab).GetComponent<ExplosionController>();
-            explosion.Init(bulletRigidbody.position, 5, new Color(1f, 0.667f, 0f));
+            explosion.Init(bulletRigidbody.position, 3 + level * 2, new Color(1f, 0.667f, 0f));
         }
         ps.Stop();
         Destroy(gameObject);
@@ -101,7 +103,7 @@ public class BulletController : MonoBehaviour
         var unit = obstacle.GetComponent<UnitController>();
         if (unit != null)
         {
-            unit.Damage(PlayerController.Instance.gun.damage, bulletRigidbody.velocity.normalized * PlayerController.Instance.gun.knockback);
+            unit.Damage(bulletdamage + level/2f, bulletRigidbody.velocity.normalized * PlayerController.Instance.gun.knockback);
             OnHit();
         }
         else
