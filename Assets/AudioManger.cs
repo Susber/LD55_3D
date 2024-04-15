@@ -30,7 +30,7 @@ public class AudioManger : MonoBehaviour
         }
     }
 
-    void PlaySoundGun()
+    public void PlaySoundGun()
     {
         PlaySound(0, 0.1f);
     }
