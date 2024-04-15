@@ -57,8 +57,37 @@ public class RuneController : MonoBehaviour
     {
         public void PlayEffect(RuneController rune);
     }
-
+    
     public class SummonBombEffect : SummonEffect
+    {
+        private int level;  // within {1, ... 6}.
+
+        public SummonBombEffect(int level)
+        {
+            this.level = level;
+        }
+
+        public async void PlayEffect(RuneController rune)
+        {
+            // todo, animations!
+            var bombPrefab = ArenaController.Instance.bombPrefab;
+            var mainExplosion = Instantiate(bombPrefab).GetComponent<BombController>();
+            mainExplosion.transform.position = rune.transform.position;
+            mainExplosion.Init(Mathf.Lerp(1.5f, 3f, (level - 1) / 5f), 3f);
+            if (level > 2) {
+                await Task.Delay(200);
+                foreach (var line in rune.lineSegments)
+                {
+                    var cornerExplosion = Instantiate(bombPrefab).GetComponent<BombController>();
+                    cornerExplosion.transform.position = line.left;
+                    cornerExplosion.Init(Mathf.Lerp(1f, 2f, (level - 1) / 5f), 3f);
+                }
+            }
+            rune.summonEffectFinished = true;
+        }
+    }
+
+    public class SummonExplosionsEffect : SummonEffect
     {
         public async void PlayEffect(RuneController rune)
         {

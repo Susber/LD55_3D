@@ -8,7 +8,7 @@ public class BulletController : MonoBehaviour
 {
     // Start is called before the first frame update
 
-    private float lifetime = 2;
+    public float lifetime = 2;
     public Rigidbody bulletRigidbody;
     private bool enemyBullet =  true;
     private int n_to_hit = 1;
@@ -55,7 +55,7 @@ public class BulletController : MonoBehaviour
             var unit = obstacle.GetComponent<UnitController>();
             if (unit != null)
             {
-                unit.Damage(5, bulletRigidbody.velocity.normalized * PlayerController.Instance.gun.knockback);
+                unit.Damage(PlayerController.Instance.gun.damage, bulletRigidbody.velocity.normalized * PlayerController.Instance.gun.knockback);
                 Destroy(gameObject);
                 n_to_hit -= 1;
             }

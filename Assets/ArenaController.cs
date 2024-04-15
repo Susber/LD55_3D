@@ -37,9 +37,11 @@ public class ArenaController : MonoBehaviour
     // prefabs
     public GameObject sheepPrefab;
     public GameObject foxPrefab;
+    public GameObject dogPrefab;
     public GameObject grassPrefab;
     public GameObject treePrefab;
     public GameObject stonePrefab;
+    public GameObject bombPrefab;
 
     public int num_grass = 5000;
     public int num_trees = 100;
@@ -52,7 +54,7 @@ public class ArenaController : MonoBehaviour
     public AbstractWave waitForWaveToFinish = null;
     public float spawnNextWaveTime;
 
-    public int currentLevel;
+    public int currentLevel = 0;
     public int maxLevel = 10;
 
     public UpgradeUIComponent upgradeUi;
@@ -266,7 +268,7 @@ public class ArenaController : MonoBehaviour
         {
             runeType = new RuneController.Triangle(3, 3f);
             spawnType = UpgradeUIComponent.SummonBomb;
-            summonEffect = new RuneController.SummonBombEffect();
+            summonEffect = new RuneController.SummonBombEffect(upgradeUi.stats[spawnType]);
         }
 
         // check if unlocked
@@ -331,10 +333,12 @@ public class ArenaController : MonoBehaviour
                 foreach (var rune in smallRuneContainer.GetComponentsInChildren<RuneController>())
                     rune.MaybeDestroyOnWaveBegin();
                 levelWaveQueue.Clear();
-                for (var n = 0; n < 10; n++)
+                levelWaveQueue.Add(new Wave(0, sheepPrefab, 10));
+                for (var n = 0; n < currentLevel + 1; n++)
                 {
                     levelWaveQueue.Add(new Wave(5, sheepPrefab, 10));
                     levelWaveQueue.Add(new Wave(2, foxPrefab, 1));
+                    levelWaveQueue.Add(new Wave(2, dogPrefab, 1));
                 }
 
                 spawnNextWaveTime = 0;
