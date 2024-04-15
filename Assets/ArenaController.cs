@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Numerics;
 using Components;
-using Components.Levels;
 using UnityEditor.Rendering.Universal;
 using Random = System.Random;
 using UnityEngine;
@@ -27,7 +26,8 @@ public class ArenaController : MonoBehaviour
     
     public Transform enemyContainer;
     public Transform decorationContainer;
-    public Transform runeContainer;
+    public Transform bigRuneContainer;
+    public Transform smallRuneContainer;
     public Transform coinContainer;
     
     public GameStage currentStage = GameStage.IN_LEVEL;
@@ -55,7 +55,8 @@ public class ArenaController : MonoBehaviour
     public Text moneyText;
     public Text levelText;
 
-    public int numRunes;
+    public int numBigRunes;
+    public int numSmallRunes;
     
     private void Start()
     {
@@ -160,11 +161,10 @@ public class ArenaController : MonoBehaviour
             case GameStage.IN_LEVEL:
             {
                 // runes
-                if (runeContainer.childCount < numRunes)
-                {
-                    // spawn another rune.
-                    SpawnRune();
-                }
+                if (bigRuneContainer.childCount < numBigRunes)
+                    SpawnRune(true);
+                if (smallRuneContainer.childCount < numSmallRunes)
+                    SpawnRune(false);
                 
                 // waves
                 var hasNextWave = levelWaveQueue.Count > 0;
@@ -211,78 +211,64 @@ public class ArenaController : MonoBehaviour
         return enemy;
     }
 
-    public void SpawnRune()
+    public void SpawnRune(bool big)
     {
-        // bit hacky, but okay.
-        int spawnType = UpgradeUIComponent.Meteor;
-        if (upgradeUi.stats[UpgradeUIComponent.Minions] > 0 && upgradeUi.stats[UpgradeUIComponent.Poop] > 0)
+        int spawnType;
+        RuneController.RuneType runeType;
+        RuneController.SummonEffect summonEffect;
+
+        if (big)
         {
-            var r = rnd.NextDouble();
-            if (r > 0.66666)
-                spawnType = UpgradeUIComponent.Poop;
-            else if (r > 0.333333)
-                spawnType = UpgradeUIComponent.Minions;
-            else
-                spawnType = UpgradeUIComponent.Meteor;
-        } else if (upgradeUi.stats[UpgradeUIComponent.Minions] > 0)
-        {
-            spawnType = rnd.NextDouble() > 0.5 ? UpgradeUIComponent.Minions : UpgradeUIComponent.Meteor;
-        } else if (upgradeUi.stats[UpgradeUIComponent.Poop] > 0)
-        {
-            spawnType = rnd.NextDouble() > 0.5 ? UpgradeUIComponent.Poop : UpgradeUIComponent.Meteor;
+            runeType = new RuneController.Pentagram(5, 8f);
+            spawnType = UpgradeUIComponent.SummonGiant;
+            summonEffect = new RuneController.SummonGiantEffect();
         }
         else
         {
-            spawnType = UpgradeUIComponent.Meteor;
+            runeType = new RuneController.Triangle(3, 3f);
+            spawnType = UpgradeUIComponent.SummonBomb;
+            summonEffect = new RuneController.SummonBombEffect();
         }
 
-        float rad = 3f + (float)(rnd.NextDouble() * (upgradeUi.stats[spawnType] - 1) * 3 / 5f);
+        // check if unlocked
+        if (upgradeUi.stats[spawnType] == 0)
+            return;
+        
+        
+        // the actual spawning!!!
+        var edges = runeType.MakeEdges();
+        var position = ArenaController.Instance.RandomRunePos(edges.runeScale);
 
-        RuneController.RuneType runeType = null;
-        switch (spawnType)
-        {
-            case UpgradeUIComponent.Meteor:
-            {
-                runeType = new RuneController.Pentagram(5, rad);
-                break;
-            }
-            case UpgradeUIComponent.Minions:
-            {
-                runeType = new RuneController.Estate(rad);
-                break;
-            }
-            case UpgradeUIComponent.Poop:
-            {
-                // todooooo!
-                runeType = new RuneController.Estate(rad);
-                break;
-            }
-        }
-        new SpawnRune(0, runeType, new RuneController.SummonMeteoroidEffect()).DoSpawn();
+        var prefab = ArenaController.Instance.runePrefab;
+        var runeContainer =
+            big ? ArenaController.Instance.bigRuneContainer : ArenaController.Instance.smallRuneContainer;
+        var rune = Instantiate(prefab, runeContainer);
+        rune.transform.localPosition = position;
+        var runeController = rune.GetComponent<RuneController>();
+        runeController.MakeRuneFromEdges(edges, position);
+        runeController.needsToStartAtEnd = !edges.closedLoop;
+        runeController.summonEffect = summonEffect;
     }
 
-    public Vector3 RandomRunePos()
+    public Vector3 RandomRunePos(float newRuneScale)
     {
-        var existingRunes = new List<Vector3>();
-        foreach (var rune in runeContainer.GetComponentsInChildren<RuneController>())
-        {
-            existingRunes.Add(rune.gameObject.transform.position);
-        }
-        var origin = transform.position - this.arenaRadius;
-        existingRunes.Add(origin);
-        existingRunes.Add(origin + 2 * arenaRadius.x * Vector3.left);
-        existingRunes.Add(origin + 2 * arenaRadius.y * Vector3.forward);
-        existingRunes.Add(origin + 2 * arenaRadius.x * Vector3.left + 2 * arenaRadius.x * Vector3.left);
+        var existingRunes = new List<RuneController>();
+        foreach (var rune in bigRuneContainer.GetComponentsInChildren<RuneController>())
+            existingRunes.Add(rune);
+        foreach (var rune in smallRuneContainer.GetComponentsInChildren<RuneController>())
+            existingRunes.Add(rune);
 
-        Vector3 best = origin;
+        Vector3 best = this.transform.position;
         var bestDistSquared = 0f;
         for (var i = 0; i < 100; i++)
         {
             var rndPos = RandomPosOnArena(5f);
             var minDistSquared = Mathf.Infinity;
-            foreach (var existingPos in existingRunes)
+            foreach (var rune in existingRunes)
             {
-                minDistSquared = Mathf.Min((existingPos - rndPos).sqrMagnitude, minDistSquared);
+                var existingPos = rune.gameObject.transform.position;
+                var scale = rune.runeScale;
+                minDistSquared = Mathf.Min((existingPos - rndPos).sqrMagnitude - scale - newRuneScale, minDistSquared);
             }
             
             if (minDistSquared > bestDistSquared)
@@ -301,10 +287,10 @@ public class ArenaController : MonoBehaviour
         {
             case GameStage.IN_LEVEL:
             {
-                foreach (var rune in runeContainer.GetComponentsInChildren<RuneController>())
-                {
-                    Destroy(rune.gameObject);
-                }
+                foreach (var rune in bigRuneContainer.GetComponentsInChildren<RuneController>())
+                    rune.MaybeDestroyOnWaveBegin();
+                foreach (var rune in smallRuneContainer.GetComponentsInChildren<RuneController>())
+                    rune.MaybeDestroyOnWaveBegin();
                 levelWaveQueue.Clear();
                 for (var n = 0; n < 1; n++)
                 {
