@@ -41,7 +41,7 @@ public class SheepMovementController : MonoBehaviour
     }
     void FixedUpdate()
     {    
-        sheepRigidbody.velocity *= 0.99f;
+        sheepRigidbody.velocity *= 0.95f;
         stateTime += Time.fixedDeltaTime;
         if (stateTime > stateMaxTime)
         {
