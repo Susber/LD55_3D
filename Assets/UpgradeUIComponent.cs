@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -52,9 +53,31 @@ public class UpgradeUIComponent : MonoBehaviour
                 break;
             }
         }
-        ArenaController.Instance.upgradeUi.stats[myStatNum] += 1;
+        DoIncreaseStat(myStatNum);
         player.coins -= button.cost;
         UpdateUI();
         ArenaController.Instance.UpdateHud();
+    }
+
+    public void DoIncreaseStat(int statNum)
+    {
+        switch (statNum)
+        {
+            case Health:
+            case Meteor:
+            case Minions:
+            case Poop:
+                break; // these are handled indirectly
+            case Speed:
+                PlayerController.Instance.speed += 1.2f;
+                break;
+            case Weapon:
+                PlayerController.Instance.gun.cooldown = Mathf.Lerp(0.5f, 0.1f, (stats[Weapon] - 1) / 5f);
+                break;
+            default:
+                print("unknown stat? " + statNum);
+                break;
+        }
+        stats[statNum] += 1;
     }
 }

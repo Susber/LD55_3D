@@ -16,17 +16,21 @@ namespace Components
 
         public int coins;
 
+        public float pushKnockback;
+
         public float currentangle = 0;
         public float targetangle = 0;
         public float rotationmomentum = 0;
 
-        public void Damage(float damage)
+        public void Damage(float damage, Vector3 knockback)
         {
             life -= damage * armor_factor;
             if (life <= 0)
             {
                 Die();
             }
+            // knockback
+            unitRigidbody.AddForce(knockback);
         }
         
         
@@ -83,7 +87,7 @@ namespace Components
             var player = obstracle.GetComponent<PlayerController>();
             if (player == null)
                 return;
-            player.Damage();
+            player.Damage((incomingRigidbody.transform.position - this.transform.position).normalized * pushKnockback);
             // maybe play explosion to push away the enemies?
             // for now, we just remove the enemy so we don't get hurt again instantly. 
             if (player.invulnerableTimeLeft <= 0)

@@ -10,7 +10,9 @@ public class GunController : MonoBehaviour
     public GameObject bulletPrefab;
     public GameObject explosionPrefab;
 
-    private float cooldown = 0.50f;
+    public float cooldown = 0.50f;
+    public float knockback;
+    
     private float max_recoil = 0.4f;
     private Vector3 lastShotDir = new Vector3(0, 0, 0); //direction where the gun is pushed
 

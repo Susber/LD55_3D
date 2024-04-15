@@ -310,7 +310,6 @@ public class ArenaController : MonoBehaviour
                 {
                     levelWaveQueue.Add(new Wave(5, sheepPrefab, 10));
                     levelWaveQueue.Add(new Wave(2, foxPrefab, 1));
-                    levelWaveQueue.Add(new SpawnRune(1, new RuneController.Estate(2f)));
                 }
 
                 spawnNextWaveTime = 0;

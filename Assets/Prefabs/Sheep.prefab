@@ -53,6 +53,7 @@ MonoBehaviour:
   invertDirection: 1
   life: 5
   coins: 1
+  pushKnockback: 1000
   currentangle: 0
   targetangle: 0
   rotationmomentum: 0

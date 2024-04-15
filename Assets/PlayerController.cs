@@ -68,7 +68,7 @@ public class PlayerController : MonoBehaviour
         {
             foreach (var enemy in ArenaController.Instance.enemyContainer.GetComponentsInChildren<UnitController>())
             {
-                enemy.Damage(1000f);
+                enemy.Damage(1000f, Vector3.zero);
             }
         }
 
@@ -78,8 +78,9 @@ public class PlayerController : MonoBehaviour
     }
 
 
-    public void Damage()
+    public void Damage(Vector3 knockback)
     {
+        playerrigidbody.AddForce(knockback);
         if (invulnerableTimeLeft > 0)
         {
             return;

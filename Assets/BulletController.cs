@@ -43,7 +43,7 @@ public class BulletController : MonoBehaviour
             var unit = obstacle.GetComponent<PlayerController>();
             if (unit != null)
             {
-                unit.Damage();
+                unit.Damage(bulletRigidbody.velocity.normalized * PlayerController.Instance.gun.knockback);
                 print("hit" + gameObject);
                 Destroy(gameObject);
                 n_to_hit -= 1;
@@ -55,8 +55,7 @@ public class BulletController : MonoBehaviour
             var unit = obstacle.GetComponent<UnitController>();
             if (unit != null)
             {
-                unit.Damage(5);
- //               print("hit" + gameObject);
+                unit.Damage(5, bulletRigidbody.velocity.normalized * PlayerController.Instance.gun.knockback);
                 Destroy(gameObject);
                 n_to_hit -= 1;
             }
