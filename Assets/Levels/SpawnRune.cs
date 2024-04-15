@@ -5,10 +5,12 @@ namespace Components.Levels
     public class SpawnRune : AbstractWave
     {
         private RuneController.RuneType runeType;
+        private RuneController.SummonEffect runeEffect;
         
-        public SpawnRune(float spawnTime, RuneController.RuneType runeType) : base(spawnTime)
+        public SpawnRune(float spawnTime, RuneController.RuneType runeType, RuneController.SummonEffect runeEffect) : base(spawnTime)
         {
             this.runeType = runeType;
+            this.runeEffect = runeEffect;
         }
 
         public override void DoSpawn()
@@ -22,6 +24,7 @@ namespace Components.Levels
             var edges = runeType.MakeEdges();
             runeController.MakeRuneFromEdges(edges, position);
             runeController.needsToStartAtEnd = !edges.closedLoop;
+            runeController.summonEffect = runeEffect;
             finished = true;
         }
     }

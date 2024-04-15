@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Serialization;
+using System.Threading.Tasks;
 
 public class RuneController : MonoBehaviour
 {
@@ -10,6 +12,15 @@ public class RuneController : MonoBehaviour
 
     public bool startedDrawing = false;
     public bool needsToStartAtEnd = false;
+
+    public SummonEffect summonEffect;
+    public RuneLineController[] lineSegments = null;
+
+    private float prepareTimeLeft = 0;
+    public float maxPrepareTime = 1;
+    private bool summonEffectFinished = false;
+
+    [FormerlySerializedAs("state")] public RuneState currentState = RuneState.DRAWING;
 
     public class RuneEdges
     {
@@ -28,6 +39,35 @@ public class RuneController : MonoBehaviour
     public interface RuneType
     {
         public RuneEdges MakeEdges();
+    }
+
+    public enum RuneState
+    {
+        DRAWING,
+        PREPARE_SUMMON,
+        SUMMONING,
+        FINISHED
+    }
+
+    public interface SummonEffect
+    {
+        public void PlayEffect(RuneController rune);
+    }
+
+    public class SummonMeteoroidEffect : SummonEffect
+    {
+        public async void PlayEffect(RuneController rune)
+        {
+            var explosionPrefab = PlayerController.Instance.gun.explosionPrefab;
+            foreach (var line in rune.lineSegments)
+            {
+                var explosion = Instantiate(explosionPrefab).GetComponent<ExplosionController>();
+                explosion.Init(line.left, 5, Color.yellow);
+                await Task.Delay(100);
+            }
+            await Task.Delay(500);
+            rune.summonEffectFinished = true;
+        }
     }
 
     public class Pentagram : RuneType {
@@ -104,7 +144,7 @@ public class RuneController : MonoBehaviour
     }
 
     public void MakeRuneFromEdges(RuneEdges edges, Vector3 offset) {
-        RuneLineController[] lineSegments = new RuneLineController[edges.from.Length];
+        lineSegments = new RuneLineController[edges.from.Length];
         for (var i = 0; i < edges.from.Length; i++)
         {
             var from = edges.from[i] + offset;
@@ -144,5 +184,62 @@ public class RuneController : MonoBehaviour
             if (edges.closedLoop || i < edges.from.Length - 1)
                 lineSegments[i].rightNeighbor = lineSegments[(i + 1) % edges.from.Length];
         }
+    }
+
+    public void SetState(RuneState newState)
+    {
+        switch (newState)
+        {
+            case RuneState.PREPARE_SUMMON:
+                prepareTimeLeft = maxPrepareTime;
+                break;
+            case RuneState.SUMMONING:
+                summonEffectFinished = false;
+                summonEffect.PlayEffect(this);
+                break; 
+            case RuneState.FINISHED:
+                Destroy(this.gameObject);
+                break;
+        }
+        this.currentState = newState;
+    }
+
+    public void Update()
+    {
+        switch (currentState)
+        {
+            case RuneState.DRAWING:
+            {
+                if (lineSegments != null)
+                {
+                    var drawingComplete = true;
+                    foreach (var segment in lineSegments)
+                    {
+                        drawingComplete &= segment.IsComplete();
+                    }
+
+                    if (drawingComplete)
+                    {
+                        SetState(RuneState.PREPARE_SUMMON);
+                    }
+                }
+
+                break;
+            }
+            case RuneState.PREPARE_SUMMON:
+            {
+                prepareTimeLeft -= Time.deltaTime;
+                if (prepareTimeLeft < 0)
+                    SetState(RuneState.SUMMONING);
+                break;
+            }
+            case RuneState.SUMMONING:
+            {
+                if (summonEffectFinished)
+                    SetState(RuneState.FINISHED);
+                break;
+            }
+        }
+
     }
 }

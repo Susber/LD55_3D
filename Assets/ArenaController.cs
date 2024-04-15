@@ -276,7 +276,7 @@ public class ArenaController : MonoBehaviour
                 break;
             }
         }
-        new SpawnRune(0, runeType).DoSpawn();
+        new SpawnRune(0, runeType, new RuneController.SummonMeteoroidEffect()).DoSpawn();
     }
 
     public Vector3 RandomRunePos()
