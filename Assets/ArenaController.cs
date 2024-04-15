@@ -40,6 +40,7 @@ public class ArenaController : MonoBehaviour
     public GameObject grassPrefab;
     public GameObject treePrefab;
     public GameObject stonePrefab;
+    public GameObject bombPrefab;
 
     public int num_grass = 5000;
     public int num_trees = 100;
@@ -266,7 +267,7 @@ public class ArenaController : MonoBehaviour
         {
             runeType = new RuneController.Triangle(3, 3f);
             spawnType = UpgradeUIComponent.SummonBomb;
-            summonEffect = new RuneController.SummonBombEffect();
+            summonEffect = new RuneController.SummonBombEffect(upgradeUi.stats[spawnType]);
         }
 
         // check if unlocked

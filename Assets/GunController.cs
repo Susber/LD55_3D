@@ -18,6 +18,12 @@ public class GunController : MonoBehaviour
 
     private Vector3 playerGunPosition = new Vector3(0, 1, -0.5f); // default gun position
 
+    public float damage;
+    public int shootAmount;
+    public float shootHalfAngle;  // in degrees
+
+    public float bulletLifetime;
+
     private float timeout = 0; //current cooldown, 0 means shooting is possible
     // Start is called before the first frame update
     void Start()
@@ -32,9 +38,19 @@ public class GunController : MonoBehaviour
         direction = Vector3.Normalize(direction);
         //print("normalized: " + direction);
         lastShotDir = direction;
-        var bullet = Instantiate(bulletPrefab,transform.position, new Quaternion()).GetComponent<BulletController>();
-        bullet.SetTeam(false);
-        bullet.bulletRigidbody.velocity = direction * 100;
+
+        float shootHalfAngleInRad = shootHalfAngle / 360 * 2 * Mathf.PI;
+        for (var i = 0; i < shootAmount; i++)
+        {
+            float shotAngle = shootHalfAngleInRad * ((float) ArenaController.Instance.rnd.NextDouble() * 2 - 1);
+            var spreadDirection2d = Util.Rotate2d(new Vector2(direction.x, direction.z), shotAngle);
+            var spreadDirection = new Vector3(spreadDirection2d.x, 0, spreadDirection2d.y);
+            var bullet = Instantiate(bulletPrefab,transform.position, new Quaternion()).GetComponent<BulletController>();
+            bullet.SetTeam(false);
+            bullet.bulletRigidbody.velocity = spreadDirection * 100;
+            bullet.lifetime = bulletLifetime;
+        }
+
         timeout = cooldown;
     }
 

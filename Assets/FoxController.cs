@@ -40,7 +40,6 @@ public class FoxMovementController : MonoBehaviour
         {
             tails[i].SetActive(i == tailIndex);
         }
-        
     }
 
     void FlipSprite()
