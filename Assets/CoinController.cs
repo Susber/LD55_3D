@@ -33,6 +33,8 @@ public class CoinController : MonoBehaviour
         var player = obstracle.GetComponent<PlayerController>();
         if (player == null)
             return;
+        if (AudioManager.Instance is not null)
+            AudioManager.Instance.PlaySoundExp();
         player.coins += 1;
         ArenaController.Instance.UpdateHud();
         Destroy(this.gameObject);
