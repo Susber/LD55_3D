@@ -11,7 +11,6 @@ using UnityEngine.UI;
 using UnityEngine.XR;
 using Vector2 = UnityEngine.Vector2;
 using Vector3 = UnityEngine.Vector3;
-using UnityEngine;
 using UnityEngine.SceneManagement;
 
 
@@ -387,18 +386,17 @@ public class ArenaController : MonoBehaviour
                 for (var i = 0 ; i < numSmallRunes - smallRuneContainer.childCount; i++)
                     SpawnRune(false);
                 levelWaveQueue.Clear();
-                levelWaveQueue.Add(new Wave(0, sheepPrefab, 1));
-                // levelWaveQueue.Add(new Wave(0, sheepPrefab, 10));
-                // for (var n = 0; n < currentLevel + 1; n++)
-                // {
-                //     levelWaveQueue.Add(new Wave(5, sheepPrefab, 10));
-                //     levelWaveQueue.Add(new Wave(2, foxPrefab, 1));
-                //     levelWaveQueue.Add(new Wave(2, dogPrefab, 1));
-                // }
-
-                    spawnNextWaveTime = 0;
-                    break;
+                levelWaveQueue.Add(new Wave(0, sheepPrefab, 10));
+                for (var n = 0; n < currentLevel + 1; n++)
+                {
+                    levelWaveQueue.Add(new Wave(5, sheepPrefab, 10));
+                    levelWaveQueue.Add(new Wave(2, foxPrefab, 1));
+                    levelWaveQueue.Add(new Wave(2, dogPrefab, 1));
                 }
+
+                spawnNextWaveTime = 0;
+                break;
+            }
             case GameStage.UPGRADE:
                 {
                     upgradeUi.gameObject.SetActive(true);
