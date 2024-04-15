@@ -325,6 +325,8 @@ public class ArenaController : MonoBehaviour
                 var scale = rune.runeScale;
                 minDistSquared = Mathf.Min((existingPos - rndPos).sqrMagnitude - scale - newRuneScale, minDistSquared);
             }
+            minDistSquared = Mathf.Min((PlayerController.Instance.transform.position - rndPos).sqrMagnitude,
+                minDistSquared);
             
             if (minDistSquared > bestDistSquared)
             {
@@ -354,6 +356,12 @@ public class ArenaController : MonoBehaviour
                     rune.MaybeDestroyOnWaveBegin();
                 foreach (var rune in smallRuneContainer.GetComponentsInChildren<RuneController>())
                     rune.MaybeDestroyOnWaveBegin();
+                
+                // runes
+                for (var i = 0 ; i < numBigRunes - bigRuneContainer.childCount; i++)
+                    SpawnRune(true);
+                for (var i = 0 ; i < numSmallRunes - smallRuneContainer.childCount; i++)
+                    SpawnRune(false);
                 levelWaveQueue.Clear();
                 levelWaveQueue.Add(new Wave(0, sheepPrefab, 10));
                 for (var n = 0; n < currentLevel + 1; n++)
