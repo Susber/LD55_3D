@@ -8,13 +8,17 @@ namespace Components
     {
         public Rigidbody unitRigidbody;
         public Transform turntransform;
-        
+        public bool invertDirection;
 
         public float life = 100;
         private float armor_factor = 1;
         private float armor;
 
         public int coins;
+
+        public float currentangle = 0;
+        public float targetangle = 0;
+        public float rotationmomentum = 0;
 
         public void Damage(float damage)
         {
@@ -51,13 +55,22 @@ namespace Components
         //     //unitRigidbody.rotation.SetEulerAngles(new Vector3(0, 0, 0));
         //     unitRigidbody.velocity *= 0.99f;
         // }
-        public void Update()
+        public void FixedUpdate()
         {
-            if(turntransform is not null)
+            if (turntransform is not null)
+            {
+                targetangle = 0;
                 if (unitRigidbody.velocity.x < 0)
-                    turntransform.rotation.eulerAngles.Set(0,180,0);
-                else
-                    turntransform.rotation.eulerAngles.Set(0,0,0);
+                    targetangle = 180;
+                if (invertDirection)
+                    targetangle = 180 - targetangle;
+                rotationmomentum += 0.08f * (targetangle - currentangle);
+                currentangle += rotationmomentum;
+                rotationmomentum *= 0.80f;
+                
+                transform.rotation = Quaternion.Euler(0, currentangle, 0);
+            }
+            
             
         }
         

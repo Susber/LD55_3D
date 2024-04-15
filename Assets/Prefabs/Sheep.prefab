@@ -50,8 +50,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unitRigidbody: {fileID: 8525234114814371360}
   turntransform: {fileID: 1501704702682735912}
+  invertDirection: 1
   life: 5
   coins: 1
+  currentangle: 0
+  targetangle: 0
+  rotationmomentum: 0
 --- !u!54 &8525234114814371360
 Rigidbody:
   m_ObjectHideFlags: 0
