@@ -22,14 +22,11 @@ public class CardboardDestroyer : MonoBehaviour
         destroytimer += Time.deltaTime;
         if (destroytimer > 2)
         {
-			Collider myCollider = GetComponent<Collider>();
-			myCollider.enabled = false;
-			SpawnDestroyedCardboard(10);
-			Destroy(transform.gameObject);
+			SpawnDestroyedCardboard(10, new Vector3(0,0,0.5f));
 		}
     }
 
-    public void SpawnDestroyedCardboard(int targetNumPieces)
+    public void SpawnDestroyedCardboard(int targetNumPieces, Vector3 spawnOffset)
     {
         // Get object with correct mesh
         var frontFaceChild = transform.Find("CardboardFace");
