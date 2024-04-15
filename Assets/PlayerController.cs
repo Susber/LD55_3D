@@ -7,6 +7,7 @@ using UnityEditor.UI;
 using UnityEngine;
 using UnityEngine.Experimental.Rendering;
 using UnityEngine.Serialization;
+using UnityEngine.UIElements;
 
 public class PlayerController : MonoBehaviour
 {
@@ -22,6 +23,9 @@ public class PlayerController : MonoBehaviour
 
     public int coins = 0;
 
+    public float invulnerableTimeLeft = 0;
+    public float invulnerableTimeAfterHit;
+
     public PlayerController()
     {
         Instance = this;
@@ -36,6 +40,8 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate()
     {
         playerrigidbody.velocity *= 0.8f;
+        if (invulnerableTimeLeft > 0)
+            invulnerableTimeLeft -= Time.fixedDeltaTime;
     }
 
     void Update()
@@ -66,6 +72,10 @@ public class PlayerController : MonoBehaviour
 
     public void Damage()
     {
+        if (invulnerableTimeLeft > 0)
+        {
+            return;
+        }
         var upgrades = ArenaController.Instance.upgradeUi;
         upgrades.stats[UpgradeUIComponent.Health] -= 1;
         if (upgrades.stats[UpgradeUIComponent.Health] <= 0)
@@ -73,6 +83,7 @@ public class PlayerController : MonoBehaviour
             upgrades.stats[UpgradeUIComponent.Health] = 0;
             // todo, death sequence!
         }
+        invulnerableTimeLeft = invulnerableTimeAfterHit;
         ArenaController.Instance.UpdateHud();
     }
 

@@ -60,5 +60,23 @@ namespace Components
                     turntransform.rotation.eulerAngles.Set(0,0,0);
             
         }
+        
+        void OnCollisionEnter(Collision collision)
+        {
+            var incomingRigidbody = collision.gameObject.GetComponent<Rigidbody>();
+            if (incomingRigidbody is null)
+                return;
+            GameObject obstracle = incomingRigidbody.gameObject;
+            var player = obstracle.GetComponent<PlayerController>();
+            if (player == null)
+                return;
+            player.Damage();
+            // maybe play explosion to push away the enemies?
+            // for now, we just remove the enemy so we don't get hurt again instantly. 
+            if (player.invulnerableTimeLeft <= 0)
+            {
+                Destroy(this.gameObject);
+            }
+        }
     }
 }

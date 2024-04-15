@@ -3662,7 +3662,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   unitRigidbody: {fileID: 1139669377}
-  turnobject: {fileID: 0}
   turntransform: {fileID: 0}
   life: 5
   coins: 1
@@ -3784,7 +3783,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   unitRigidbody: {fileID: 1140909109}
-  turnobject: {fileID: 0}
   turntransform: {fileID: 0}
   life: 5
   coins: 1
@@ -4755,7 +4753,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   unitRigidbody: {fileID: 1258695202}
-  turnobject: {fileID: 0}
   turntransform: {fileID: 0}
   life: 5
   coins: 1
@@ -4877,7 +4874,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   unitRigidbody: {fileID: 1268705963}
-  turnobject: {fileID: 0}
   turntransform: {fileID: 0}
   life: 5
   coins: 1
@@ -5075,7 +5071,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   unitRigidbody: {fileID: 1517650983}
-  turnobject: {fileID: 0}
   turntransform: {fileID: 0}
   life: 5
   coins: 1
@@ -5197,7 +5192,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   unitRigidbody: {fileID: 1536939502}
-  turnobject: {fileID: 0}
   turntransform: {fileID: 0}
   life: 5
   coins: 1
@@ -5319,7 +5313,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   unitRigidbody: {fileID: 1543047435}
-  turnobject: {fileID: 0}
   turntransform: {fileID: 0}
   life: 5
   coins: 1
@@ -6282,6 +6275,8 @@ MonoBehaviour:
   suckCoinDistance: 10
   playerrigidbody: {fileID: 2020529208}
   coins: 0
+  invulnerableTimeLeft: 0
+  invulnerableTimeAfterHit: 3
 --- !u!114 &93356219154234879
 MonoBehaviour:
   m_ObjectHideFlags: 0
