@@ -16,6 +16,8 @@ public class BombController : MonoBehaviour
 
     public Transform renderingComponent;
 
+    public GameObject[] bombStates;
+
     public void Init(float bombScale, float maxTimeToExplode)
     {
         this.bombScale = bombScale;
@@ -30,7 +32,8 @@ public class BombController : MonoBehaviour
         timeToExplode -= Time.fixedDeltaTime;
         float scale = Mathf.Lerp(1, this.bombScale, Mathf.Pow(1f - timeToExplode / maxTimeToExplode, 2));
         renderingComponent.localScale = new Vector3(scale, scale, scale);
-        var stage = Mathf.FloorToInt(bombSprites.Length * (timeToExplode / maxTimeToExplode));
+        var stage = Mathf.FloorToInt(bombStates.Length * (timeToExplode / maxTimeToExplode));
+        // todo set stage!!
         
         if (timeToExplode < 0)
         {
