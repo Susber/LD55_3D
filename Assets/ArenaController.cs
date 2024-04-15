@@ -1,13 +1,17 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Numerics;
 using Components;
 using Components.Levels;
+using UnityEditor.Rendering.Universal;
 using Random = System.Random;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 using UnityEngine.UI;
 using UnityEngine.XR;
+using Vector2 = UnityEngine.Vector2;
+using Vector3 = UnityEngine.Vector3;
 
 public class ArenaController : MonoBehaviour
 {
@@ -51,6 +55,8 @@ public class ArenaController : MonoBehaviour
     public Text moneyText;
     public Text levelText;
 
+    public int numRunes;
+    
     private void Start()
     {
         SetStage(GameStage.IN_LEVEL);
@@ -58,7 +64,7 @@ public class ArenaController : MonoBehaviour
         for (var x = 0; x < 5000; x++)
         {
             var enemy = Instantiate(grassPrefab, decorationContainer.transform);
-            var randomPos = RandomPosOnArena();
+            var randomPos = RandomPosOnArena(1f);
             enemy.transform.localPosition = new Vector3(randomPos.x, 0.2f, randomPos.z);
         }
 
@@ -118,10 +124,11 @@ public class ArenaController : MonoBehaviour
     }
     
     
-    public Vector3 RandomPosOnArena()
+    public Vector3 RandomPosOnArena(float distanceToBorder)
     {
-        var origin = transform.position - this.arenaRadius;
-        return origin + new Vector3((float)rnd.NextDouble() * arenaRadius.x * 2,0, (float)rnd.NextDouble() * arenaRadius.z * 2);
+        var origin = transform.position - this.arenaRadius + new Vector3(distanceToBorder, 0, distanceToBorder);
+        var radius = arenaRadius - 2 * new Vector3(distanceToBorder, 0, distanceToBorder);
+        return origin + new Vector3((float)rnd.NextDouble() * radius.x * 2,0, (float)rnd.NextDouble() * radius.z * 2);
     }
 
     public Vector3 RandomEmptyPos(float freeCircleRadius, float distToPlayer)
@@ -129,7 +136,7 @@ public class ArenaController : MonoBehaviour
         var freeCircleRadiusSqr = freeCircleRadius * freeCircleRadius;
         for (var numTry = 0; numTry < 20; numTry++)
         {
-            var rndPos = RandomPosOnArena();
+            var rndPos = RandomPosOnArena(freeCircleRadius);
             var minDistSquared = Mathf.Infinity;
             foreach (Transform child in enemyContainer.transform)
             {
@@ -152,6 +159,14 @@ public class ArenaController : MonoBehaviour
         {
             case GameStage.IN_LEVEL:
             {
+                // runes
+                if (runeContainer.childCount < numRunes)
+                {
+                    // spawn another rune.
+                    SpawnRune();
+                }
+                
+                // waves
                 var hasNextWave = levelWaveQueue.Count > 0;
                 if (hasNextWave)
                 {
@@ -196,18 +211,101 @@ public class ArenaController : MonoBehaviour
         return enemy;
     }
 
+    public void SpawnRune()
+    {
+        // bit hacky, but okay.
+        int spawnType = UpgradeUIComponent.Meteor;
+        if (upgradeUi.stats[UpgradeUIComponent.Minions] > 0 && upgradeUi.stats[UpgradeUIComponent.Poop] > 0)
+        {
+            var r = rnd.NextDouble();
+            if (r > 0.66666)
+                spawnType = UpgradeUIComponent.Poop;
+            else if (r > 0.333333)
+                spawnType = UpgradeUIComponent.Minions;
+            else
+                spawnType = UpgradeUIComponent.Meteor;
+        } else if (upgradeUi.stats[UpgradeUIComponent.Minions] > 0)
+        {
+            spawnType = rnd.NextDouble() > 0.5 ? UpgradeUIComponent.Minions : UpgradeUIComponent.Meteor;
+        } else if (upgradeUi.stats[UpgradeUIComponent.Poop] > 0)
+        {
+            spawnType = rnd.NextDouble() > 0.5 ? UpgradeUIComponent.Poop : UpgradeUIComponent.Meteor;
+        }
+        else
+        {
+            spawnType = UpgradeUIComponent.Meteor;
+        }
+
+        float rad = 3f + (float)(rnd.NextDouble() * (upgradeUi.stats[spawnType] - 1) * 3 / 5f);
+
+        RuneController.RuneType runeType = null;
+        switch (spawnType)
+        {
+            case UpgradeUIComponent.Meteor:
+            {
+                runeType = new RuneController.Pentagram(5, rad);
+                break;
+            }
+            case UpgradeUIComponent.Minions:
+            {
+                runeType = new RuneController.Estate(rad);
+                break;
+            }
+            case UpgradeUIComponent.Poop:
+            {
+                // todooooo!
+                runeType = new RuneController.Estate(rad);
+                break;
+            }
+        }
+        new SpawnRune(0, runeType).DoSpawn();
+    }
+
+    public Vector3 RandomRunePos()
+    {
+        var existingRunes = new List<Vector3>();
+        foreach (var rune in runeContainer.GetComponentsInChildren<RuneController>())
+        {
+            existingRunes.Add(rune.gameObject.transform.position);
+        }
+        var origin = transform.position - this.arenaRadius;
+        existingRunes.Add(origin);
+        existingRunes.Add(origin + 2 * arenaRadius.x * Vector3.left);
+        existingRunes.Add(origin + 2 * arenaRadius.y * Vector3.forward);
+        existingRunes.Add(origin + 2 * arenaRadius.x * Vector3.left + 2 * arenaRadius.x * Vector3.left);
+
+        Vector3 best = origin;
+        var bestDistSquared = 0f;
+        for (var i = 0; i < 100; i++)
+        {
+            var rndPos = RandomPosOnArena(5f);
+            var minDistSquared = Mathf.Infinity;
+            foreach (var existingPos in existingRunes)
+            {
+                minDistSquared = Mathf.Min((existingPos - rndPos).sqrMagnitude, minDistSquared);
+            }
+            
+            if (minDistSquared > bestDistSquared)
+            {
+                bestDistSquared = minDistSquared;
+                best = rndPos;
+            }
+        }
+
+        return best;
+    }
+
     public void SetStage(GameStage newStage)
     {
         switch (newStage)
         {
             case GameStage.IN_LEVEL:
             {
-                levelWaveQueue.Clear();
-                for (var n = 0; n < 5; n++)
+                foreach (var rune in runeContainer.GetComponentsInChildren<RuneController>())
                 {
-                    levelWaveQueue.Add(new SpawnRune(0, new RuneController.Pentagram(5, 5f)));
+                    Destroy(rune.gameObject);
                 }
-
+                levelWaveQueue.Clear();
                 for (var n = 0; n < 1; n++)
                 {
                     levelWaveQueue.Add(new Wave(5, sheepPrefab, 10));
@@ -239,6 +337,6 @@ public class ArenaController : MonoBehaviour
     {
         healthText.text = "Health: " + PlayerController.Instance.GetHealth();
         moneyText.text = "Money: " + PlayerController.Instance.coins;
-        levelText.text = "Level: " + currentLevel + "/" + maxLevel;
+        levelText.text = "Level: " + (currentLevel + 1) + "/" + maxLevel;
     }
 }

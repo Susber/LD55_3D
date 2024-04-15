@@ -13,7 +13,7 @@ namespace Components.Levels
 
         public override void DoSpawn()
         {
-            var position = ArenaController.Instance.RandomEmptyPos(5f, 3f);
+            var position = ArenaController.Instance.RandomRunePos();
 
             var prefab = ArenaController.Instance.runePrefab;
             var rune = Object.Instantiate(prefab, ArenaController.Instance.runeContainer);

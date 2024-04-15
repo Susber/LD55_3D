@@ -64,6 +64,14 @@ public class PlayerController : MonoBehaviour
             force += -speed * new Vector3(0,0,1);
         }
 
+        if (Input.GetKey(KeyCode.R))
+        {
+            foreach (var enemy in ArenaController.Instance.enemyContainer.GetComponentsInChildren<UnitController>())
+            {
+                enemy.Damage(1000f);
+            }
+        }
+
         this.transform.position += Time.deltaTime * force;
         // playerrigidbody.AddForce(force);  // a bit cursed?
         playercamera.transform.position = new Vector3(this.transform.position.x, this.playercamera.transform.position.y, this.transform.position.z-12);
