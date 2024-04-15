@@ -18,7 +18,7 @@ public class Wave : AbstractWave
 
     public override async void DoSpawn()
     {
-        var spawnCenter3d = ArenaController.Instance.RandomEmptyPos(4, 10);
+        var spawnCenter3d = ArenaController.Instance.RandomWavePos(ArenaController.Instance.spawnDistanceToPlayer);
         var spawnCenter = new Vector2(spawnCenter3d.x, spawnCenter3d.z);
 
         var playerPos3d = PlayerController.Instance.transform.position;
