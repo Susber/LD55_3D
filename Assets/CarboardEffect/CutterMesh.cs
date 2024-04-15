@@ -11,32 +11,53 @@ using static UnityEditor.Searcher.SearcherWindow.Alignment;
 
 public class MeshConnectedComponents
 {
-    public List<int> vertexComponentIds = new List<int>();
-    public int numComponents = 0;
+    public List<int> vertexComponentIds;
+    public int numComponents;
+
+    public MeshConnectedComponents()
+    {
+        vertexComponentIds = new List<int>();
+        numComponents = 0;
+    }
 }
 
 public class MeshBuildingData
 {
-    public List<Vector3> verts = new List<Vector3>();
-    public List<Vector2> uvs = new List<Vector2>();
-    public List<int> triangle_indices = new List<int>();
-    public int next_id = 0;
+    public List<Vector3> verts;
+    public List<Vector2> uvs;
+    public List<int> triangle_indices;
+    public int next_id;
+
+    public MeshBuildingData()
+    {
+        verts = new List<Vector3>();
+        uvs = new List<Vector2>();
+        triangle_indices = new List<int>();
+        next_id = 0;
+    }
 }
 
 public class IntersectionData
 {
-    public Vector3 pos = new Vector3();
-    public Vector2 uv = new Vector2();
-    public Dictionary<int, int> class_id_to_vertex_id = new Dictionary<int, int>();
+    public Vector3 pos;
+    public Vector2 uv;
+    public Dictionary<int, int> class_id_to_vertex_id;
+
+    public IntersectionData()
+    {
+        pos = new Vector3();
+        uv = new Vector2();
+        class_id_to_vertex_id = new Dictionary<int, int>();
+    }
 }
 
 public class CutterMesh : MonoBehaviour
 {
-    
+
     // Start is called before the first frame update
     void Start()
     {
-        OneCut();
+        TestCutting(100);
     }
 
     // Update is called once per frame
@@ -45,13 +66,64 @@ public class CutterMesh : MonoBehaviour
 
     }
 
+    private void TestCutting(int numPieces)
+    {
+        Mesh mymesh = GetComponent<MeshFilter>().mesh;
+        Material myMat = GetComponent<MeshRenderer>().material;
+
+        Vector3 cuttingTangent = new Vector3(0, 1, 0);
+
+        List<Mesh> pieces = RecursiveCutting(mymesh, numPieces, cuttingTangent);
+    }
+
+    private void CreateDebugMesh(Mesh mesh, float offset)
+    {
+        Material myMat = GetComponent<MeshRenderer>().material;
+        GameObject obj = new GameObject("Debug Mesh");
+        obj.transform.parent = transform;
+        obj.transform.localPosition = new Vector3(0, offset, 0);
+        obj.transform.localEulerAngles = Vector3.zero;
+        obj.transform.localScale = Vector3.one;
+        MeshFilter meshFilter = obj.AddComponent<MeshFilter>();
+        MeshRenderer renderer = obj.AddComponent<MeshRenderer>();
+        meshFilter.mesh = mesh;
+        renderer.material = myMat;
+    }
+
+    public List<Mesh> RecursiveCutting(Mesh mesh, int pieceCountTarget, Vector3 cuttingPlaneTangent)
+    {
+        List<Mesh> pieces = new();
+        pieces.Add(mesh);
+
+        float debugOffset = 0.2f;
+        while (pieces.Count < pieceCountTarget)
+        {
+            List<Mesh> newPieces = new List<Mesh>();
+
+            foreach (Mesh m in pieces)
+            {
+                List<Mesh> cutM = RandomCenterCut(m, cuttingPlaneTangent);
+                newPieces.AddRange(cutM);
+            }
+            pieces.Clear();
+            foreach (var m in newPieces)
+            {
+                pieces.Add(m);
+                CreateDebugMesh(m, debugOffset);
+            }
+            debugOffset += 0.2f;
+        }
+
+        return pieces;
+    }
+
     private void OneCut()
     {
         Mesh mymesh = GetComponent<MeshFilter>().mesh;
         Material myMat = GetComponent<MeshRenderer>().material;
 
-        Vector3 planeCenter = new Vector3(0,0,0);
-        Vector3 cuttingDir = new Vector3(1,0,2);
+        Vector3 planeCenter = new Vector3(0, 0, 0);
+        Vector3 cuttingDir = new Vector3(1, 0, 2);
         cuttingDir.Normalize();
 
         // do the cut 
@@ -62,19 +134,19 @@ public class CutterMesh : MonoBehaviour
         int i = 0;
         foreach (var mesh in meshesAfterCut)
         {
-			GameObject obj = new GameObject("Cut" + i.ToString());
-			obj.transform.parent = transform;
-			obj.transform.localPosition = new Vector3(0, 0.2f, 0);
-			obj.transform.localEulerAngles = Vector3.zero;
-			obj.transform.localScale = Vector3.one;
-			MeshFilter meshFilter = obj.AddComponent<MeshFilter>();
-			MeshRenderer renderer = obj.AddComponent<MeshRenderer>();
-			meshFilter.mesh = mesh;
+            GameObject obj = new GameObject("Cut" + i.ToString());
+            obj.transform.parent = transform;
+            obj.transform.localPosition = new Vector3(0, 0.2f, 0);
+            obj.transform.localEulerAngles = Vector3.zero;
+            obj.transform.localScale = Vector3.one;
+            MeshFilter meshFilter = obj.AddComponent<MeshFilter>();
+            MeshRenderer renderer = obj.AddComponent<MeshRenderer>();
+            meshFilter.mesh = mesh;
             renderer.material = myMat;
             i++;
         }
     }
-    private void RandomCenterCut(Mesh mesh, Vector3 cuttingPlaneTangent)
+    private List<Mesh> RandomCenterCut(Mesh mesh, Vector3 cuttingPlaneTangent)
     {
         // compute cog
         Vector3 cog = Vector3.zero;
@@ -83,21 +155,35 @@ public class CutterMesh : MonoBehaviour
             cog += v;
         }
         cog /= mesh.vertexCount;
-        
-        // random dir
+
+        Vector2 refDir = AnyOrthogonal(cuttingPlaneTangent.normalized);
+        float randnagle = UnityEngine.Random.Range(0, 180);
+        Vector3 cuttingNormal = Quaternion.AngleAxis(randnagle, cuttingPlaneTangent.normalized) * refDir;
+
+        return CutMesh(mesh, cog, cuttingNormal);
     }
 
     public class AdjacencyList
     {
         private Dictionary<int, List<int>> adjList = new Dictionary<int, List<int>>();
 
+
+        public void AddVertex(int key)
+        {
+            if (!adjList.ContainsKey(key))
+            {
+                adjList[key] = new List<int>();
+            }
+
+        }
+
         public void AddEdge(int startKey, int endKey)
         {
             if (!adjList.ContainsKey(startKey))
             {
-                adjList[startKey]  = new List<int>();
+                adjList[startKey] = new List<int>();
             }
-            if (!adjList.ContainsKey(endKey)) 
+            if (!adjList.ContainsKey(endKey))
             {
                 adjList[endKey] = new List<int>();
             }
@@ -106,11 +192,11 @@ public class CutterMesh : MonoBehaviour
             {
                 adjList[startKey].Add(endKey);
             }
-			if (!adjList[endKey].Contains(startKey))
-			{
-				adjList[endKey].Add(startKey);
-			}
-		}
+            if (!adjList[endKey].Contains(startKey))
+            {
+                adjList[endKey].Add(startKey);
+            }
+        }
 
         public List<int> GetNeighbours(int key)
         {
@@ -127,6 +213,8 @@ public class CutterMesh : MonoBehaviour
 
         AdjacencyList adjacencyList = new AdjacencyList();
 
+        // Add all mesh vertices
+
         // über jedes Dreieck iterieren
         for (int i = 0; i < mesh.triangles.Length; i += 3)
         {
@@ -140,6 +228,10 @@ public class CutterMesh : MonoBehaviour
             float sign1 = Mathf.Sign(dot1);
             float sign2 = Mathf.Sign(dot2);
             float sign3 = Mathf.Sign(dot3);
+
+            adjacencyList.AddVertex(mesh.triangles[i]);
+            adjacencyList.AddVertex(mesh.triangles[i + 1]);
+            adjacencyList.AddVertex(mesh.triangles[i + 2]);
 
             if (sign1 == sign2 && sign1 != sign3)
             {
@@ -166,8 +258,8 @@ public class CutterMesh : MonoBehaviour
 
         // do BFS to find components
         int n = mesh.vertexCount;
-		// Mark all the vertices as not visited
-		bool[] visited = new bool[n];
+        // Mark all the vertices as not visited
+        bool[] visited = new bool[n];
         for (int i = 0; i < n; i++)
             visited[i] = false;
 
@@ -178,18 +270,18 @@ public class CutterMesh : MonoBehaviour
         for (int start_index = 0; start_index < n; start_index++)
         {
             if (visited[start_index]) { continue; }
-			// start bfs
+            // start bfs
 
-			// Create a queue for BFS
-			Queue<int> queue = new Queue<int>();
-			queue.Enqueue(start_index);
+            // Create a queue for BFS
+            Queue<int> queue = new Queue<int>();
+            queue.Enqueue(start_index);
 
-            while(queue.Any())
+            while (queue.Any())
             {
-				// Dequeue a vertex from queue
-				// and print it
-				int curr_index = queue.First();
-				queue.Dequeue();
+                // Dequeue a vertex from queue
+                // and print it
+                int curr_index = queue.First();
+                queue.Dequeue();
 
                 componentIndex[curr_index] = component;
                 visited[curr_index] = true;
@@ -208,7 +300,7 @@ public class CutterMesh : MonoBehaviour
                 }
             }
             component++;
-		}
+        }
 
         res.vertexComponentIds = componentIndex.ToList();
         res.numComponents = component;
@@ -220,9 +312,8 @@ public class CutterMesh : MonoBehaviour
     {
         MeshConnectedComponents component_prediction = ComputeConnectedComponentsAfterCut(mesh, cutting_point, cutting_normal);
 
-        Debug.Log(component_prediction.numComponents);
-
         List<MeshBuildingData> mesh_data = new List<MeshBuildingData>(component_prediction.numComponents);
+
         for (int i = 0; i < component_prediction.numComponents; i++)
         {
             mesh_data.Add(new MeshBuildingData());
@@ -307,9 +398,9 @@ public class CutterMesh : MonoBehaviour
                 Vector3 cutPos = Vector3.Lerp(corners[c1], corners[c2], intersection1);
                 Vector2 cutUV = Vector2.Lerp(uvs[c1], uvs[c2], intersection1);
                 // add vertices
-                mesh_data[smaller_component_id].verts.Add(cutPos);
+                mesh_data[smaller_component_id].verts.Add(cutPos + cutting_point);
                 mesh_data[smaller_component_id].next_id++;
-                mesh_data[larger_component_id].verts.Add(cutPos);
+                mesh_data[larger_component_id].verts.Add(cutPos + cutting_point);
                 mesh_data[larger_component_id].next_id++;
                 // add uvs in both meshes
                 mesh_data[smaller_component_id].uvs.Add(cutUV);
@@ -327,9 +418,9 @@ public class CutterMesh : MonoBehaviour
                 Vector3 cutPos = Vector3.Lerp(corners[c1], corners[c3], intersection2);
                 Vector2 cutUV = Vector2.Lerp(uvs[c1], uvs[c3], intersection2);
                 // add vertices
-                mesh_data[smaller_component_id].verts.Add(cutPos);
+                mesh_data[smaller_component_id].verts.Add(cutPos + cutting_point);
                 mesh_data[smaller_component_id].next_id++;
-                mesh_data[larger_component_id].verts.Add(cutPos);
+                mesh_data[larger_component_id].verts.Add(cutPos + cutting_point);
                 mesh_data[larger_component_id].next_id++;
                 // add uvs in both meshes
                 mesh_data[smaller_component_id].uvs.Add(cutUV);
@@ -340,7 +431,7 @@ public class CutterMesh : MonoBehaviour
                 i2Data.class_id_to_vertex_id.Add(larger_component_id, mesh_data[larger_component_id].next_id - 1);
                 intersection_dict.Add(i2key, i2Data);
             }
-            
+
             // Erstelle neue Dreiecke für genau zwei Meshes
 
             // kleine Seite
@@ -349,7 +440,7 @@ public class CutterMesh : MonoBehaviour
                 old_to_new_ids[ids[one_side_index]] = mesh_data[smaller_component_id].next_id;
                 mesh_data[smaller_component_id].next_id++;
                 // create vertex
-                mesh_data[smaller_component_id].verts.Add(corners[one_side_index]);
+                mesh_data[smaller_component_id].verts.Add(corners[one_side_index] + cutting_point);
                 // create uvs
                 mesh_data[smaller_component_id].uvs.Add(uvs[one_side_index]);
             }
@@ -358,19 +449,13 @@ public class CutterMesh : MonoBehaviour
             mesh_data[smaller_component_id].triangle_indices.Add(intersection_dict[i1key].class_id_to_vertex_id[smaller_component_id]);
             mesh_data[smaller_component_id].triangle_indices.Add(intersection_dict[i2key].class_id_to_vertex_id[smaller_component_id]);
 
-            Debug.Log("One Triangle on small side");
-            Debug.Log(old_to_new_ids[ids[c1]]);
-            Debug.Log(intersection_dict[i1key].class_id_to_vertex_id[smaller_component_id]);
-			Debug.Log(intersection_dict[i2key].class_id_to_vertex_id[smaller_component_id]);
-
-
-			// gro�e Seite
-			if (old_to_new_ids[ids[c2]] == -1)
+            // gro�e Seite
+            if (old_to_new_ids[ids[c2]] == -1)
             {
                 old_to_new_ids[ids[c2]] = mesh_data[larger_component_id].next_id;
                 mesh_data[larger_component_id].next_id++;
                 // create vertex
-                mesh_data[larger_component_id].verts.Add(corners[c2]);
+                mesh_data[larger_component_id].verts.Add(corners[c2] + cutting_point);
                 // create uvs
                 mesh_data[larger_component_id].uvs.Add(uvs[c2]);
             }
@@ -379,7 +464,7 @@ public class CutterMesh : MonoBehaviour
                 old_to_new_ids[ids[c3]] = mesh_data[larger_component_id].next_id;
                 mesh_data[larger_component_id].next_id++;
                 // create vertex
-                mesh_data[larger_component_id].verts.Add(corners[c3]);
+                mesh_data[larger_component_id].verts.Add(corners[c3] + cutting_point);
                 // create uvs
                 mesh_data[larger_component_id].uvs.Add(uvs[c3]);
             }
@@ -390,16 +475,7 @@ public class CutterMesh : MonoBehaviour
             mesh_data[larger_component_id].triangle_indices.Add(intersection_dict[i1key].class_id_to_vertex_id[larger_component_id]);
             mesh_data[larger_component_id].triangle_indices.Add(old_to_new_ids[ids[c3]]);
             mesh_data[larger_component_id].triangle_indices.Add(intersection_dict[i2key].class_id_to_vertex_id[larger_component_id]);
-
-			Debug.Log("Two Triangles on large side");
-			Debug.Log(old_to_new_ids[ids[c2]]);
-			Debug.Log(old_to_new_ids[ids[c3]]);
-			Debug.Log(intersection_dict[i1key].class_id_to_vertex_id[larger_component_id]);
-			Debug.Log(intersection_dict[i1key].class_id_to_vertex_id[larger_component_id]);
-			Debug.Log(old_to_new_ids[ids[c3]]);
-			Debug.Log(intersection_dict[i2key].class_id_to_vertex_id[larger_component_id]);
-
-		}
+        }
 
         // create meshes
         var meshes = new List<Mesh>();
@@ -414,6 +490,15 @@ public class CutterMesh : MonoBehaviour
             meshes.Add(m);
         }
         return meshes;
+    }
+
+    private Vector3 AnyOrthogonal(Vector3 normal)
+    {
+        if (Mathf.Approximately(normal.z, 1))
+        {
+            return new Vector3(0, -normal.z, normal.y);
+        }
+        return new Vector3(normal.y, -normal.x, 0);
     }
 
     private float ComputeIntersection(Vector3 point1, Vector3 point2, Vector3 normal)
