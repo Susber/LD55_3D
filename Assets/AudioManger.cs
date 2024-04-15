@@ -21,7 +21,6 @@ public class AudioManger : MonoBehaviour
 
     public AudioSource audioSource;
     public AudioClip[] audioClips;
-    public float volume = 0.5f;
 
     void Update()
     {
@@ -33,7 +32,7 @@ public class AudioManger : MonoBehaviour
 
     void PlaySoundGun()
     {
-        PlaySound(0, 0.2f);
+        PlaySound(0, 0.1f);
     }
 
 
