@@ -29,7 +29,7 @@ public class EnemyIndicatorComponent : MonoBehaviour
         foreach (var entity in ArenaController.Instance.enemyContainer.GetComponentsInChildren<UnitController>())
         {
             var vec = playerCamera.WorldToScreenPoint(entity.transform.position);
-            Debug.Log(vec);
+            // Debug.Log(vec);
             if (vec.x >= 0 && vec.y >= 0 && vec.x <= playerCamera.pixelWidth && vec.y <= playerCamera.pixelHeight)
             {
                 return true;
@@ -44,10 +44,14 @@ public class EnemyIndicatorComponent : MonoBehaviour
         var playerCamera = PlayerController.Instance.playercamera;
 
         var playerScreen = playerCamera.WorldToScreenPoint(PlayerController.Instance.transform.position);
-        var toOrig = playerCamera.WorldToScreenPoint(transform.position) - playerScreen;
+        var worldScreen = playerCamera.WorldToScreenPoint(transform.position);
+        if (worldScreen.z < 0)
+            worldScreen *= -1;
+        var toOrig = worldScreen - playerScreen;
         var to = toOrig + Vector3.zero;
         to.x /= 0.5f * playerCamera.pixelWidth;
         to.y /= 0.5f * playerCamera.pixelHeight;
+        
         to.z = 0;
 
         var renderAt = new Vector3();
@@ -74,6 +78,8 @@ public class EnemyIndicatorComponent : MonoBehaviour
             indicator.transform.position = pixelPos;
             var angle = Mathf.Atan2(toOrig.y, toOrig.x);
             var image = indicator.GetComponentInChildren<Image>();
+            if (angle < 0)
+                angle += 2 * Mathf.PI;
             image.transform.rotation = Quaternion.Euler(0, 0, angle * 180 / Mathf.PI);
 
             var alpha = HasEnemyOnScreen() ? 0f : fullAlpha;
