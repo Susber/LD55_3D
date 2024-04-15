@@ -15,9 +15,6 @@ public class ExplosionController : MonoBehaviour
     public ParticleSystem particlesystem;
 
     public SphereCollider spherecollider;
-    void Start(float size2)
-    {
-    }
     
     public void Init(Vector3 pos, float size2, Color c)
     {
