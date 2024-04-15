@@ -38,8 +38,8 @@ public class ExplosionController : MonoBehaviour
         
         var smoke_main = smokeparticles.colorOverLifetime;
         smoke_main.color = new ParticleSystem.MinMaxGradient(c, new Color(0.8f,0.8f, 0.8f));
-        scaleParticleSpeed(sparkparticles, size / 5);
-        scaleParticleBurstCount(sparkparticles, size / 5);
+        scaleParticleSpeed(smokeparticles, size / 5);
+        scaleParticleBurstCount(smokeparticles, size / 5);
     }
 
     void scaleParticleBurstCount(ParticleSystem ps, float scale)

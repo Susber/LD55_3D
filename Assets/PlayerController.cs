@@ -1,10 +1,15 @@
 using Components;
+using Unity.VisualScripting;
 using UnityEngine;
+using System.Threading;
+using UnityEngine;
+using UnityEngine.SceneManagement;
+
 
 public class PlayerController : MonoBehaviour
 {
     public static PlayerController Instance;
-    
+
     public float speed;
     public Camera playercamera;
     public GameObject gunPrefab;
@@ -28,7 +33,9 @@ public class PlayerController : MonoBehaviour
     public void Start()
     {
         gun = Instantiate(gunPrefab, renderingContainer).GetComponent<GunController>();
-        gun.holder = this;
+        gun.Init(this.playerrigidbody);
+        gun.SetGuntype(GunController.Guntype.Rocketlauncher);
+        gun.guntype = GunController.Guntype.Rocketlauncher;
     }
 
     private void FixedUpdate()
@@ -41,23 +48,29 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        Vector3 force = new Vector3(0,0,0);
+        Vector3 direction = new Vector3(0, 0, 0);
         if (Input.GetKey(KeyCode.W))
         {
-            force += speed * new Vector3(0,0,1);
+            direction += new Vector3(0, 0, 1);
         }
+
         if (Input.GetKey(KeyCode.A))
         {
-            force += -speed * new Vector3(1,0,0);
+            direction += -new Vector3(1, 0, 0);
         }
+
         if (Input.GetKey(KeyCode.D))
         {
-            force += +speed * new Vector3(1,0,0);
+            direction += new Vector3(1, 0, 0);
         }
+
         if (Input.GetKey(KeyCode.S))
         {
-            force += -speed * new Vector3(0,0,1);
+            direction += -new Vector3(0, 0, 1);
         }
+
+        direction = Vector3.Normalize(direction);
+        Walk(direction * speed, 0.8f);
 
         if (Input.GetKey(KeyCode.R))
         {
@@ -66,7 +79,26 @@ public class PlayerController : MonoBehaviour
                 enemy.Damage(1000f, Vector3.zero);
             }
         }
-        Walk(force, 0.8f);
+
+        //cheats
+        if (Input.GetKey(KeyCode.LeftControl))
+        {
+            if (Input.GetKey(KeyCode.T))
+            {
+                gun.SetGuntype(GunController.Guntype.Rocketlauncher);
+            }
+
+            if (Input.GetKey(KeyCode.Z))
+            {
+                gun.SetGuntype(GunController.Guntype.Shotgun);
+            }
+
+            if (Input.GetKey(KeyCode.H))
+            {
+                var upgrades = ArenaController.Instance.upgradeUi;
+                upgrades.stats[UpgradeUIComponent.Health] += 100;
+            }
+        }
 
         //this.transform.position += Time.deltaTime * force;
         //playerrigidbody.AddForce(force);
@@ -80,7 +112,7 @@ public class PlayerController : MonoBehaviour
         var traction = 1 / (Vector3.Magnitude(dif) + 1); // the larger the speed difference, the lower the traction
         //print("speed_scale " + traction);
         //speed_scale = speed_scale * speed_scale * speed_scale;
-        playerrigidbody.velocity += traction  * strength * dif;
+        playerrigidbody.velocity += traction * strength * dif;
     }
 
     public void Damage(Vector3 knockback)
@@ -95,7 +127,9 @@ public class PlayerController : MonoBehaviour
         if (upgrades.stats[UpgradeUIComponent.Health] <= 0)
         {
             upgrades.stats[UpgradeUIComponent.Health] = 0;
-            // todo, death sequence!
+            Thread.Sleep(5000);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+
         }
         invulnerableTimeLeft = invulnerableTimeAfterHit;
         ArenaController.Instance.UpdateHud();

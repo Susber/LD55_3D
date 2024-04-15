@@ -4,7 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1c1d15bd-9ebc-406e-a8b4-ae065e33b06d" name="Changes" comment="collider sizes" />
+    <list default="true" id="1c1d15bd-9ebc-406e-a8b4-ae065e33b06d" name="Changes" comment="collider sizes">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.LD55_3D/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.LD55_3D/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BulletController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/BulletController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ExplosionController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ExplosionController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/GunController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GunController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/PlayerController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/PlayerController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Bullet.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Bullet.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Explosion.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Explosion.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Shading/CardboardFaceMat.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Shading/CardboardFaceMat.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Shading/billboardMat.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Shading/billboardMat.mat" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -63,6 +73,8 @@
     <setting file="file://$PROJECT_DIR$/Assets/SheepMovementController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/UnitController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Util.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://diff.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://diff.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="false" />
   <component name="ProjectColorInfo">{
@@ -382,7 +394,15 @@
       <option name="project" value="LOCAL" />
       <updated>1713194814250</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="collider sizes">
+      <option name="closed" value="true" />
+      <created>1713195053576</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1713195053576</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
