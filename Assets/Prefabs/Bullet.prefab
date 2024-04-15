@@ -147,6 +147,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 945b5828e5d3a44e9b7e9bb0fb696703, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lifetime: 0
+  lifetime: 3
   bulletRigidbody: {fileID: 5053093279220131840}
-  enemyBullet: 1

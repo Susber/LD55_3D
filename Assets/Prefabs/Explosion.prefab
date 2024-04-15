@@ -52,7 +52,8 @@ MonoBehaviour:
   exploded: 0
   lifetime: 5
   size: 5
-  affectedObjects: []
+  AffectedObjects: []
+  ForceVector: {x: 0, y: 0, z: 0}
   particlesystem: {fileID: 0}
   spherecollider: {fileID: 0}
 --- !u!135 &9192530816029049075
@@ -84,7 +85,7 @@ ParticleSystem:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6593172532142632681}
   serializedVersion: 8
-  lengthInSec: 5
+  lengthInSec: 3
   simulationSpeed: 1
   stopAction: 0
   cullingMode: 0
@@ -213,7 +214,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 3
       scalar: 30
-      minScalar: 10
+      minScalar: 4
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -330,7 +331,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1
+      scalar: 0.4
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -654,7 +655,7 @@ ParticleSystem:
     gravityModifier:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1
+      scalar: 2
       minScalar: 0
       maxCurve:
         serializedVersion: 2

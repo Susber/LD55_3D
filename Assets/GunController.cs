@@ -25,9 +25,6 @@ public class GunController : MonoBehaviour
 
     void ShootAt(Vector3 worldpos)
     {
-        var explosion = Instantiate(explosionPrefab).GetComponent<ExplosionController>();
-        explosion.Init(worldpos, 5, Color.yellow);
-        
         var direction = worldpos - transform.position;
         direction.y = 0;
         direction = Vector3.Normalize(direction);
@@ -53,6 +50,11 @@ public class GunController : MonoBehaviour
                 {
                     Vector3 worldpos = ray.GetPoint(distance);
                     ShootAt(worldpos);
+                    if (right)
+                    {
+                        var explosion = Instantiate(explosionPrefab).GetComponent<ExplosionController>();
+                        explosion.Init(worldpos, 5, Color.yellow);
+                    }
                 }
             }
         }
