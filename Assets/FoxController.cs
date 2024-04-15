@@ -82,6 +82,7 @@ public class FoxMovementController : MonoBehaviour
         await Task.Delay(300);
         SetTail(3);
         // shoot ...
+        // spawn fireball
         await Task.Delay(300);
         attackFinished = true;
         SetTail(2);
