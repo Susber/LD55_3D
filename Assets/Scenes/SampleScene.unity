@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44998837, g: 0.50004864, b: 0.575523, a: 1}
+  m_IndirectSpecularColor: {r: 0.44998872, g: 0.50004894, b: 0.57552326, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -56298,7 +56298,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b2b00aa581d734438d2cd91807456cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
+  speed: 5
   playercamera: {fileID: 330585545}
   gunPrefab: {fileID: 78443743957162545, guid: eb422325e4a5e4d6cb67386aa8cbceb1, type: 3}
   minionPrefab: {fileID: 2803500051409867777, guid: bac055eae138f4347ab61405701ea72d, type: 3}
