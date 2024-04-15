@@ -15,10 +15,12 @@ public class ExplosionController : MonoBehaviour
     public ParticleSystem particlesystem;
 
     public SphereCollider spherecollider;
-    void Start(float size2)
+
+    void Start()
     {
-        this.spherecollider.radius = size2;
-        this.size = size2;
+        // frithjof: todo, i commented this out @susber
+        // this.spherecollider.radius = size2;
+        // this.size = size2;
     }
 
     void Update()

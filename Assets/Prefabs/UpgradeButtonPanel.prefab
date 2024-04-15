@@ -78,7 +78,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: X
+  m_Text: 10
 --- !u!1 &6222237804282808207
 GameObject:
   m_ObjectHideFlags: 0
@@ -214,6 +214,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   upgradeLevel: 0
+  cost: 10
+  text: {fileID: 1724708869183889672}
 --- !u!1 &8441693068617306593
 GameObject:
   m_ObjectHideFlags: 0

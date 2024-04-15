@@ -3,20 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UpgradeButtonComponent : MonoBehaviour
+public class NextLevelButtonComponent : MonoBehaviour
 {
-    public int upgradeLevel;
-    public int cost;
-    public Text text;
-
     void Start()
     {
         GetComponent<Button>().onClick.AddListener(DoClick);
-        text.text = "" + cost;
     }
 
     void DoClick()
     {
-        ArenaController.Instance.upgradeUi.HandleClick(this);
+        ArenaController.Instance.upgradeUi.gameObject.SetActive(false);
+        ArenaController.Instance.StartPlayingNextLevel();
     }
 }
