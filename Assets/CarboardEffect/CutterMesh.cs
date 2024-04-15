@@ -53,7 +53,7 @@ public class IntersectionData
 
 public class CutterMesh : MonoBehaviour
 {
-    
+
     // Start is called before the first frame update
     void Start()
     {
@@ -68,32 +68,32 @@ public class CutterMesh : MonoBehaviour
 
     private void TestCutting(int numPieces)
     {
-		Mesh mymesh = GetComponent<MeshFilter>().mesh;
-		Material myMat = GetComponent<MeshRenderer>().material;
+        Mesh mymesh = GetComponent<MeshFilter>().mesh;
+        Material myMat = GetComponent<MeshRenderer>().material;
 
-        Vector3 cuttingTangent = new Vector3(0,1,0);
+        Vector3 cuttingTangent = new Vector3(0, 1, 0);
 
         List<Mesh> pieces = RecursiveCutting(mymesh, numPieces, cuttingTangent);
-	}
+    }
 
     private void CreateDebugMesh(Mesh mesh, float offset)
     {
-		Material myMat = GetComponent<MeshRenderer>().material;
-		GameObject obj = new GameObject("Debug Mesh");
-		obj.transform.parent = transform;
-		obj.transform.localPosition = new Vector3(0, offset, 0);
-		obj.transform.localEulerAngles = Vector3.zero;
-		obj.transform.localScale = Vector3.one;
-		MeshFilter meshFilter = obj.AddComponent<MeshFilter>();
-		MeshRenderer renderer = obj.AddComponent<MeshRenderer>();
-		meshFilter.mesh = mesh;
-		renderer.material = myMat;
-	}
+        Material myMat = GetComponent<MeshRenderer>().material;
+        GameObject obj = new GameObject("Debug Mesh");
+        obj.transform.parent = transform;
+        obj.transform.localPosition = new Vector3(0, offset, 0);
+        obj.transform.localEulerAngles = Vector3.zero;
+        obj.transform.localScale = Vector3.one;
+        MeshFilter meshFilter = obj.AddComponent<MeshFilter>();
+        MeshRenderer renderer = obj.AddComponent<MeshRenderer>();
+        meshFilter.mesh = mesh;
+        renderer.material = myMat;
+    }
 
     public List<Mesh> RecursiveCutting(Mesh mesh, int pieceCountTarget, Vector3 cuttingPlaneTangent)
     {
         List<Mesh> pieces = new();
-		pieces.Add(mesh);
+        pieces.Add(mesh);
 
         float debugOffset = 0.2f;
         while (pieces.Count < pieceCountTarget)
@@ -122,8 +122,8 @@ public class CutterMesh : MonoBehaviour
         Mesh mymesh = GetComponent<MeshFilter>().mesh;
         Material myMat = GetComponent<MeshRenderer>().material;
 
-        Vector3 planeCenter = new Vector3(0,0,0);
-        Vector3 cuttingDir = new Vector3(1,0,2);
+        Vector3 planeCenter = new Vector3(0, 0, 0);
+        Vector3 cuttingDir = new Vector3(1, 0, 2);
         cuttingDir.Normalize();
 
         // do the cut 
@@ -134,14 +134,14 @@ public class CutterMesh : MonoBehaviour
         int i = 0;
         foreach (var mesh in meshesAfterCut)
         {
-			GameObject obj = new GameObject("Cut" + i.ToString());
-			obj.transform.parent = transform;
-			obj.transform.localPosition = new Vector3(0, 0.2f, 0);
-			obj.transform.localEulerAngles = Vector3.zero;
-			obj.transform.localScale = Vector3.one;
-			MeshFilter meshFilter = obj.AddComponent<MeshFilter>();
-			MeshRenderer renderer = obj.AddComponent<MeshRenderer>();
-			meshFilter.mesh = mesh;
+            GameObject obj = new GameObject("Cut" + i.ToString());
+            obj.transform.parent = transform;
+            obj.transform.localPosition = new Vector3(0, 0.2f, 0);
+            obj.transform.localEulerAngles = Vector3.zero;
+            obj.transform.localScale = Vector3.one;
+            MeshFilter meshFilter = obj.AddComponent<MeshFilter>();
+            MeshRenderer renderer = obj.AddComponent<MeshRenderer>();
+            meshFilter.mesh = mesh;
             renderer.material = myMat;
             i++;
         }
@@ -167,13 +167,23 @@ public class CutterMesh : MonoBehaviour
     {
         private Dictionary<int, List<int>> adjList = new Dictionary<int, List<int>>();
 
+
+        public void AddVertex(int key)
+        {
+            if (!adjList.ContainsKey(key))
+            {
+                adjList[key] = new List<int>();
+            }
+
+        }
+
         public void AddEdge(int startKey, int endKey)
         {
             if (!adjList.ContainsKey(startKey))
             {
-                adjList[startKey]  = new List<int>();
+                adjList[startKey] = new List<int>();
             }
-            if (!adjList.ContainsKey(endKey)) 
+            if (!adjList.ContainsKey(endKey))
             {
                 adjList[endKey] = new List<int>();
             }
@@ -182,11 +192,11 @@ public class CutterMesh : MonoBehaviour
             {
                 adjList[startKey].Add(endKey);
             }
-			if (!adjList[endKey].Contains(startKey))
-			{
-				adjList[endKey].Add(startKey);
-			}
-		}
+            if (!adjList[endKey].Contains(startKey))
+            {
+                adjList[endKey].Add(startKey);
+            }
+        }
 
         public List<int> GetNeighbours(int key)
         {
@@ -219,6 +229,10 @@ public class CutterMesh : MonoBehaviour
             float sign2 = Mathf.Sign(dot2);
             float sign3 = Mathf.Sign(dot3);
 
+            adjacencyList.AddVertex(mesh.triangles[i]);
+            adjacencyList.AddVertex(mesh.triangles[i + 1]);
+            adjacencyList.AddVertex(mesh.triangles[i + 2]);
+
             if (sign1 == sign2 && sign1 != sign3)
             {
                 adjacencyList.AddEdge(mesh.triangles[i], mesh.triangles[i + 1]);
@@ -244,8 +258,8 @@ public class CutterMesh : MonoBehaviour
 
         // do BFS to find components
         int n = mesh.vertexCount;
-		// Mark all the vertices as not visited
-		bool[] visited = new bool[n];
+        // Mark all the vertices as not visited
+        bool[] visited = new bool[n];
         for (int i = 0; i < n; i++)
             visited[i] = false;
 
@@ -256,18 +270,18 @@ public class CutterMesh : MonoBehaviour
         for (int start_index = 0; start_index < n; start_index++)
         {
             if (visited[start_index]) { continue; }
-			// start bfs
+            // start bfs
 
-			// Create a queue for BFS
-			Queue<int> queue = new Queue<int>();
-			queue.Enqueue(start_index);
+            // Create a queue for BFS
+            Queue<int> queue = new Queue<int>();
+            queue.Enqueue(start_index);
 
-            while(queue.Any())
+            while (queue.Any())
             {
-				// Dequeue a vertex from queue
-				// and print it
-				int curr_index = queue.First();
-				queue.Dequeue();
+                // Dequeue a vertex from queue
+                // and print it
+                int curr_index = queue.First();
+                queue.Dequeue();
 
                 componentIndex[curr_index] = component;
                 visited[curr_index] = true;
@@ -286,7 +300,7 @@ public class CutterMesh : MonoBehaviour
                 }
             }
             component++;
-		}
+        }
 
         res.vertexComponentIds = componentIndex.ToList();
         res.numComponents = component;
@@ -417,7 +431,7 @@ public class CutterMesh : MonoBehaviour
                 i2Data.class_id_to_vertex_id.Add(larger_component_id, mesh_data[larger_component_id].next_id - 1);
                 intersection_dict.Add(i2key, i2Data);
             }
-            
+
             // Erstelle neue Dreiecke für genau zwei Meshes
 
             // kleine Seite
@@ -435,8 +449,8 @@ public class CutterMesh : MonoBehaviour
             mesh_data[smaller_component_id].triangle_indices.Add(intersection_dict[i1key].class_id_to_vertex_id[smaller_component_id]);
             mesh_data[smaller_component_id].triangle_indices.Add(intersection_dict[i2key].class_id_to_vertex_id[smaller_component_id]);
 
-			// gro�e Seite
-			if (old_to_new_ids[ids[c2]] == -1)
+            // gro�e Seite
+            if (old_to_new_ids[ids[c2]] == -1)
             {
                 old_to_new_ids[ids[c2]] = mesh_data[larger_component_id].next_id;
                 mesh_data[larger_component_id].next_id++;
@@ -461,7 +475,7 @@ public class CutterMesh : MonoBehaviour
             mesh_data[larger_component_id].triangle_indices.Add(intersection_dict[i1key].class_id_to_vertex_id[larger_component_id]);
             mesh_data[larger_component_id].triangle_indices.Add(old_to_new_ids[ids[c3]]);
             mesh_data[larger_component_id].triangle_indices.Add(intersection_dict[i2key].class_id_to_vertex_id[larger_component_id]);
-		}
+        }
 
         // create meshes
         var meshes = new List<Mesh>();
@@ -480,7 +494,7 @@ public class CutterMesh : MonoBehaviour
 
     private Vector3 AnyOrthogonal(Vector3 normal)
     {
-        if(Mathf.Approximately(normal.z, 1))
+        if (Mathf.Approximately(normal.z, 1))
         {
             return new Vector3(0, -normal.z, normal.y);
         }
