@@ -32,7 +32,6 @@ public class IntersectionData
 
 public class CutterMesh : MonoBehaviour
 {
-    /*
     
     // Start is called before the first frame update
     void Start()
@@ -399,6 +398,4 @@ public class CutterMesh : MonoBehaviour
         Vector3 distance = Vector3.Normalize(point2 - point1);
         return -Vector3.Dot(point1, normal) / Vector3.Dot(distance, normal);
     }
-
-    */
 }
