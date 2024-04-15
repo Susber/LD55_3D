@@ -5220,6 +5220,7 @@ MonoBehaviour:
   coins: 500
   invulnerableTimeLeft: 0
   invulnerableTimeAfterHit: 3
+  renderingContainer: {fileID: 488186448}
 --- !u!95 &2020529210
 Animator:
   serializedVersion: 5
