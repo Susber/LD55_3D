@@ -4,11 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8fd0fe12-69a8-4dfd-9394-ff892a1b4efa" name="Changes" comment="turn gun">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.ld55-3d/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ld55-3d/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ArenaController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ArenaController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/PlayerController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/PlayerController.cs" afterDir="false" />
-    </list>
+    <list default="true" id="8fd0fe12-69a8-4dfd-9394-ff892a1b4efa" name="Changes" comment="please no infinite loop" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -19,7 +15,12 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="mock:///Users/frithjof/Documents/dev/unity/ld55-3d/Assets/ArenaController.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Users/frithjof/Documents/dev/unity/ld55-3d/Assets/ArenaController.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Users/frithjof/Documents/dev/unity/ld55-3d/Assets/ArenaController.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Users/frithjof/Documents/dev/unity/ld55-3d/Assets/ArenaController.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Users/frithjof/Documents/dev/unity/ld55-3d/Assets/Levels/Wave.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Users/frithjof/Documents/dev/unity/ld55-3d/Assets/PlayerController.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Users/frithjof/Documents/dev/unity/ld55-3d/Assets/PlayerController.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Users/frithjof/Documents/dev/unity/ld55-3d/Assets/Prefabs/Sheep.prefab" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Users/frithjof/Documents/dev/unity/ld55-3d/Assets/Scenes/SampleScene.unity" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Users/frithjof/Documents/dev/unity/ld55-3d/Assets/Scenes/SampleScene.unity" root0="SKIP_HIGHLIGHTING" />
@@ -135,15 +136,7 @@
       <workItem from="1713193662193" duration="6848000" />
       <workItem from="1713200551253" duration="2716000" />
       <workItem from="1713207433853" duration="852000" />
-      <workItem from="1713208342900" duration="5507000" />
-    </task>
-    <task id="LOCAL-00006" summary="add more">
-      <option name="closed" value="true" />
-      <created>1713088902161</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1713088902161</updated>
+      <workItem from="1713208342900" duration="5569000" />
     </task>
     <task id="LOCAL-00007" summary="fix orientation of coordinate systems">
       <option name="closed" value="true" />
@@ -529,7 +522,15 @@
       <option name="project" value="LOCAL" />
       <updated>1713211774578</updated>
     </task>
-    <option name="localTasksCounter" value="55" />
+    <task id="LOCAL-00055" summary="please no infinite loop">
+      <option name="closed" value="true" />
+      <created>1713214024007</created>
+      <option name="number" value="00055" />
+      <option name="presentableId" value="LOCAL-00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1713214024007</updated>
+    </task>
+    <option name="localTasksCounter" value="56" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -556,7 +557,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="reload hud after buying health" />
     <MESSAGE value="kockback" />
     <MESSAGE value="cleanup scene" />
     <MESSAGE value="explosions are shit" />
@@ -581,7 +581,8 @@
     <MESSAGE value="tut more" />
     <MESSAGE value="more sstuffs" />
     <MESSAGE value="turn gun" />
-    <option name="LAST_COMMIT_MESSAGE" value="turn gun" />
+    <MESSAGE value="please no infinite loop" />
+    <option name="LAST_COMMIT_MESSAGE" value="please no infinite loop" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
