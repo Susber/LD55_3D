@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 
 [RequireComponent(typeof(PolygonCollider2D))]
-public class Cardboarder : MonoBehaviour {
+public class Cardboarder : MonoBehaviour
+{
 
 	public float TextureTileScale = 1f;
 	public float CardboardTickness = 0.1f;
@@ -21,7 +22,7 @@ public class Cardboarder : MonoBehaviour {
 	private void FindAndDestroyChild(string name)
 	{
 		Transform c = transform.Find(name);
-		if (c != null) 
+		if (c != null)
 		{
 			Debug.Log("Found object " + c.ToString());
 			Destroy(c.gameObject);
@@ -172,7 +173,7 @@ public class Cardboarder : MonoBehaviour {
 		msh.vertices = poly;
 		msh.triangles = indices;
 
-		if(invert)
+		if (invert)
 		{
 			List<int> test = new List<int>();
 			test.AddRange(msh.triangles);
