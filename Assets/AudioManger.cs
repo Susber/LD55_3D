@@ -32,7 +32,7 @@ public class AudioManger : MonoBehaviour
 
     void PlaySoundGun()
     {
-        PlaySound(0, 1f);
+        PlaySound(0, 0.1f);
     }
 
 
