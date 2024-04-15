@@ -53,7 +53,7 @@ public class ArenaController : MonoBehaviour
     public AbstractWave waitForWaveToFinish = null;
     public float spawnNextWaveTime;
 
-    public int currentLevel;
+    public int currentLevel = 0;
     public int maxLevel = 10;
 
     public UpgradeUIComponent upgradeUi;
@@ -332,7 +332,8 @@ public class ArenaController : MonoBehaviour
                 foreach (var rune in smallRuneContainer.GetComponentsInChildren<RuneController>())
                     rune.MaybeDestroyOnWaveBegin();
                 levelWaveQueue.Clear();
-                for (var n = 0; n < 10; n++)
+                levelWaveQueue.Add(new Wave(0, sheepPrefab, 10));
+                for (var n = 0; n < currentLevel + 1; n++)
                 {
                     levelWaveQueue.Add(new Wave(5, sheepPrefab, 10));
                     levelWaveQueue.Add(new Wave(2, foxPrefab, 1));
