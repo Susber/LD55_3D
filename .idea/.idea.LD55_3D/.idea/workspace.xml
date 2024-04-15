@@ -4,12 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1c1d15bd-9ebc-406e-a8b4-ae065e33b06d" name="Changes" comment="explosion and bullets despawning fix">
+    <list default="true" id="1c1d15bd-9ebc-406e-a8b4-ae065e33b06d" name="Changes" comment="sorry for the debug spam, removed here">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.LD55_3D/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.LD55_3D/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/BulletController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/BulletController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GunController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GunController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Shading/billboardMat.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Shading/billboardMat.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Sheep.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Sheep.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UnitController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UnitController.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -266,7 +264,15 @@
       <option name="project" value="LOCAL" />
       <updated>1713142608733</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="sorry for the debug spam, removed here">
+      <option name="closed" value="true" />
+      <created>1713143165938</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1713143165938</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="UnityCheckinConfiguration" checkUnsavedScenes="false" />
@@ -296,6 +302,7 @@
     <MESSAGE value="missing prefab fix" />
     <MESSAGE value="fix" />
     <MESSAGE value="explosion and bullets despawning fix" />
-    <option name="LAST_COMMIT_MESSAGE" value="explosion and bullets despawning fix" />
+    <MESSAGE value="sorry for the debug spam, removed here" />
+    <option name="LAST_COMMIT_MESSAGE" value="sorry for the debug spam, removed here" />
   </component>
 </project>
