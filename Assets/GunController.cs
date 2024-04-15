@@ -60,7 +60,7 @@ public class GunController : MonoBehaviour
     void shootRocket(Vector3 dir)
     {
         var bullet = Instantiate(bulletPrefab).GetComponent<BulletController>();
-        bullet.Init(BulletController.BulletType.Rocket, transform.position, dir * 10,level, fromEnemy);
+        bullet.Init(BulletController.BulletType.Rocket, transform.position, dir * 15,level, fromEnemy);
     }
 
     public void SetLevel(int level2)

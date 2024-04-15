@@ -4,15 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1c1d15bd-9ebc-406e-a8b4-ae065e33b06d" name="Changes" comment="explosion damage">
+    <list default="true" id="1c1d15bd-9ebc-406e-a8b4-ae065e33b06d" name="Changes" comment="shotgun is back babies">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.LD55_3D/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.LD55_3D/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/BulletController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/BulletController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ExplosionController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ExplosionController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/GunController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GunController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/JC_StylizedRocks_Lite/JC_StylizedRocks_Lite_2022.3.1_HDRP_v1.0.unitypackage.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/JC_StylizedRocks_Lite/JC_StylizedRocks_Lite_2022.3.1_URP_v1.0.unitypackage.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/PlayerController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/PlayerController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Bullet.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Bullet.prefab" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -383,7 +377,15 @@
       <option name="project" value="LOCAL" />
       <updated>1713219584618</updated>
     </task>
-    <option name="localTasksCounter" value="33" />
+    <task id="LOCAL-00033" summary="shotgun is back babies">
+      <option name="closed" value="true" />
+      <created>1713221076084</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1713221076084</updated>
+    </task>
+    <option name="localTasksCounter" value="34" />
     <servers />
   </component>
   <component name="UnityCheckinConfiguration" checkUnsavedScenes="false" />
@@ -423,6 +425,7 @@
     <MESSAGE value="collider sizes" />
     <MESSAGE value="fixes" />
     <MESSAGE value="explosion damage" />
-    <option name="LAST_COMMIT_MESSAGE" value="explosion damage" />
+    <MESSAGE value="shotgun is back babies" />
+    <option name="LAST_COMMIT_MESSAGE" value="shotgun is back babies" />
   </component>
 </project>
