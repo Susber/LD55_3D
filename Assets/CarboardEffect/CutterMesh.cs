@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Unity.Mathematics;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class MeshConnectedComponents
@@ -31,7 +32,6 @@ public class MeshBuildingData
         next_id = 0;
     }
 }
-
 public class IntersectionData
 {
     public Vector3 pos;
@@ -432,7 +432,7 @@ public class CutterMesh
 
     private static Vector3 AnyOrthogonal(Vector3 normal)
     {
-        if (Mathf.Approximately(normal.z, 1))
+        if (Mathf.Approximately(Mathf.Abs(normal.z), 1))
         {
             return new Vector3(0, -normal.z, normal.y);
         }
@@ -443,5 +443,34 @@ public class CutterMesh
     {
         Vector3 distance = Vector3.Normalize(point2 - point1);
         return -Vector3.Dot(point1, normal) / Vector3.Dot(distance, normal);
+    }
+
+    public static Mesh InvertedMesh(Mesh mesh)
+    {
+        List<Vector3> verts = new List<Vector3>();
+        List<Vector2> uvs = new List<Vector2>();
+        List<int> tris = new List<int>();
+
+        foreach (Vector3 v in mesh.vertices)
+        {
+            verts.Add(v);
+        }
+
+        foreach (Vector2 uv in mesh.uv)
+        {
+            uvs.Add(uv);
+        }
+
+        tris.AddRange(mesh.triangles);
+        tris.Reverse();
+
+        Mesh res = new Mesh();
+        res.vertices = verts.ToArray();
+        res.uv = uvs.ToArray();
+        res.triangles = tris.ToArray();
+        res.RecalculateNormals();
+        res.RecalculateBounds();
+
+        return res;
     }
 }
