@@ -21,7 +21,8 @@ public class Debris : MonoBehaviour
 			{
 				Destroy(transform.GetChild(i).gameObject);
 			}
-			// explosion TODO
+			ParticleSystem ps = GetComponent<ParticleSystem>();
+			ps.Play();
 		}
 
 		if (myTimer > selfEndTime && !deleted)

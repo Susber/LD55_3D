@@ -4,12 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1c1d15bd-9ebc-406e-a8b4-ae065e33b06d" name="Changes" comment="faster rockets babies!">
+    <list default="true" id="1c1d15bd-9ebc-406e-a8b4-ae065e33b06d" name="Changes" comment="rune 3">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.LD55_3D/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.LD55_3D/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/EnemyIndicatorComponent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/EnemyIndicatorComponent.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GunController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GunController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/MinionController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MinionController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/PlayerController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/PlayerController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Debris.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Debris.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/XPCardboard.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/XPCardboard.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Shading/CardboardFaceMat.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Shading/CardboardFaceMat.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Shading/billboardMat.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Shading/billboardMat.mat" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,14 +36,16 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/c5ed782439084ef1bc2ad85eec89e9fe175a00/4c/4b0af9f7/Color.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://F:/spieleentwicklung/LD55_3D/Assets/ArenaController.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/ArenaController.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock://F:/spieleentwicklung/LD55_3D/Assets/BulletController.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/BulletController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://F:/spieleentwicklung/LD55_3D/Assets/BulletController.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://F:/spieleentwicklung/LD55_3D/Assets/EnemyIndicatorComponent.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://F:/spieleentwicklung/LD55_3D/Assets/ExplosionController.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://F:/spieleentwicklung/LD55_3D/Assets/ExplosionController.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://F:/spieleentwicklung/LD55_3D/Assets/GunController.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Levels/AbstractWave.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Levels/Wave.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/PlayerController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://F:/spieleentwicklung/LD55_3D/Assets/RuneController.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://F:/spieleentwicklung/LD55_3D/Assets/Scenes/SampleScene.unity" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://F:/spieleentwicklung/LD55_3D/Assets/Scenes/SampleScene.unity" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://F:/spieleentwicklung/LD55_3D/Assets/Scenes/SampleScene.unity" root0="SKIP_HIGHLIGHTING" />
@@ -397,7 +399,23 @@
       <option name="project" value="LOCAL" />
       <updated>1713221175619</updated>
     </task>
-    <option name="localTasksCounter" value="35" />
+    <task id="LOCAL-00035" summary="temp rocketlauncher, less debug spam">
+      <option name="closed" value="true" />
+      <created>1713222439990</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1713222439990</updated>
+    </task>
+    <task id="LOCAL-00036" summary="rune 3">
+      <option name="closed" value="true" />
+      <created>1713222758554</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1713222758554</updated>
+    </task>
+    <option name="localTasksCounter" value="37" />
     <servers />
   </component>
   <component name="UnityCheckinConfiguration" checkUnsavedScenes="false" />
@@ -415,7 +433,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="stuff" />
     <MESSAGE value="bullet fix" />
     <MESSAGE value="collider fix" />
     <MESSAGE value="scene fix" />
@@ -439,6 +456,8 @@
     <MESSAGE value="explosion damage" />
     <MESSAGE value="shotgun is back babies" />
     <MESSAGE value="faster rockets babies!" />
-    <option name="LAST_COMMIT_MESSAGE" value="faster rockets babies!" />
+    <MESSAGE value="temp rocketlauncher, less debug spam" />
+    <MESSAGE value="rune 3" />
+    <option name="LAST_COMMIT_MESSAGE" value="rune 3" />
   </component>
 </project>
