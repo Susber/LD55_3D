@@ -57,8 +57,15 @@ namespace Components
         //     //unitRigidbody.rotation.SetEulerAngles(new Vector3(0, 0, 0));
         //     unitRigidbody.velocity *= 0.99f;
         // }
+        public void Walk(Vector3 speed, float strength)
+        { 
+           var dif = speed - unitRigidbody.velocity;
+           var traction = 1 / (Vector3.Magnitude(dif) + 1); // the larger the speed difference, the lower the traction
+           unitRigidbody.velocity += traction  * strength * dif;
+        }
         public void FixedUpdate()
         {
+            unitRigidbody.velocity *= 0.998f;
             if (turntransform is not null)
             {
                 targetangle = 0;

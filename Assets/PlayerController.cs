@@ -33,7 +33,8 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        playerrigidbody.velocity *= 0.8f;
+        playerrigidbody.velocity *= 0.998f;
+        //playerrigidbody.velocity *= 0.8f;
         if (invulnerableTimeLeft > 0)
             invulnerableTimeLeft -= Time.fixedDeltaTime;
     }
@@ -65,12 +66,22 @@ public class PlayerController : MonoBehaviour
                 enemy.Damage(1000f, Vector3.zero);
             }
         }
+        Walk(force, 0.8f);
 
-        this.transform.position += Time.deltaTime * force;
-        // playerrigidbody.AddForce(force);  // a bit cursed?
+        //this.transform.position += Time.deltaTime * force;
+        //playerrigidbody.AddForce(force);
         playercamera.transform.position = new Vector3(this.transform.position.x, this.playercamera.transform.position.y, this.transform.position.z - 17);
     }
-
+    void Walk(Vector3 speed, float strength)
+    {
+        var dif = speed - playerrigidbody.velocity;
+        //var speed_scale = (float)Vector3.Magnitude(speed) / (Vector3.Magnitude(dif) + Vector3.Magnitude(speed));
+        //var speed_scale = 1.5f + (float)(Vector3.Dot(dif ,speed) / (Vector3.Magnitude(dif) * Vector3.Magnitude(speed) + 0.001));
+        var traction = 1 / (Vector3.Magnitude(dif) + 1); // the larger the speed difference, the lower the traction
+        //print("speed_scale " + traction);
+        //speed_scale = speed_scale * speed_scale * speed_scale;
+        playerrigidbody.velocity += traction  * strength * dif;
+    }
 
     public void Damage(Vector3 knockback)
     {
