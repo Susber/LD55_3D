@@ -9,6 +9,9 @@ public class GunController : MonoBehaviour
     
     public GameObject bulletPrefab;
     public GameObject explosionPrefab;
+    public GameObject smoke;
+
+    public ParticleSystem ps;
 
     public float cooldown = 0.50f;
     public float knockback;
@@ -29,6 +32,7 @@ public class GunController : MonoBehaviour
     void Start()
     {
         UpdateGunPosition();
+        ps = GetComponentInChildren<ParticleSystem>();
     }
 
     void ShootAt(Vector3 worldpos)
@@ -36,9 +40,12 @@ public class GunController : MonoBehaviour
         var direction = worldpos - transform.position;
         direction.y = 0;
         direction = Vector3.Normalize(direction);
+        //float angle = Mathf.Atan2(direction.y, direction.z);
+        this.smoke.transform.rotation = Quaternion.LookRotation(direction);//.Euler(0, angle, 0);
         //print("normalized: " + direction);
         lastShotDir = direction;
         AudioManger.Instance.PlaySoundGun();
+        this.ps.Play();
 
         float shootHalfAngleInRad = shootHalfAngle / 360 * 2 * Mathf.PI;
         for (var i = 0; i < shootAmount; i++)
@@ -48,7 +55,7 @@ public class GunController : MonoBehaviour
             var spreadDirection = new Vector3(spreadDirection2d.x, 0, spreadDirection2d.y);
             var bullet = Instantiate(bulletPrefab,transform.position, new Quaternion()).GetComponent<BulletController>();
             bullet.SetTeam(false);
-            bullet.bulletRigidbody.velocity = spreadDirection * 100;
+            bullet.bulletRigidbody.velocity = spreadDirection * 50;
             bullet.lifetime = bulletLifetime;
         }
 
