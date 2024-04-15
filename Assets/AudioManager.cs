@@ -35,9 +35,22 @@ public class AudioManager : MonoBehaviour
 
         // Start with menu music muted and game music playing
         menuMusic.volume = 0;
-        gameMusic.volume = 1;
+        gameMusic.volume = 0.3f;
         menuMusic.Play();
         gameMusic.Play();
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            FadeToMenuMusic();
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            FadeToGameMusic();
+        }
     }
 
     // Call this to fade to menu music
@@ -57,7 +70,7 @@ public class AudioManager : MonoBehaviour
     IEnumerator FadeAudio(AudioSource audioSource, bool fadeIn)
     {
         float startVolume = fadeIn ? 0 : audioSource.volume;
-        float endVolume = fadeIn ? 1 : 0;
+        float endVolume = fadeIn ? 0.3f : 0;
         float currentTime = 0;
 
         while (currentTime < fadeTime)
@@ -73,7 +86,7 @@ public class AudioManager : MonoBehaviour
         }
         else
         {
-            audioSource.volume = 1; // Ensure volume is set to max after fading in
+            audioSource.volume = 0.3f; // Ensure volume is set to max after fading in
         }
     }
 
