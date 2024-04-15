@@ -58,11 +58,12 @@ public class Cardboarder : MonoBehaviour {
 				spriteRenderer.color = originalSpriteRenderer.color;
 				spriteRenderer.flipX = originalSpriteRenderer.flipX;
 				spriteRenderer.flipY = originalSpriteRenderer.flipY;
+				spriteRenderer.material = originalSpriteRenderer.material;
 			}
 		}
 	}
 
-	private void RedrawCardboard()
+	public void RedrawCardboard()
 	{
 		// Find and delete existing stuff
 		FindAndDestroyChild("CardboardLine");

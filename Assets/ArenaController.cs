@@ -38,6 +38,12 @@ public class ArenaController : MonoBehaviour
     public GameObject sheepPrefab;
     public GameObject foxPrefab;
     public GameObject grassPrefab;
+    public GameObject treePrefab;
+    public GameObject stonePrefab;
+
+    public int num_grass = 5000;
+    public int num_trees = 100;
+    public int num_stones = 200;
 
     public GameObject runePrefab;
     public GameObject coinPrefab;
@@ -62,14 +68,26 @@ public class ArenaController : MonoBehaviour
     {
         SetStage(GameStage.IN_LEVEL);
         
-        for (var x = 0; x < 5000; x++)
+        for (var x = 0; x < num_grass; x++)
         {
             var enemy = Instantiate(grassPrefab, decorationContainer.transform);
             var randomPos = RandomPosOnArena(1f);
-            enemy.transform.localPosition = new Vector3(randomPos.x, 0.2f, randomPos.z);
+            enemy.transform.localPosition = new Vector3(randomPos.x, 0, randomPos.z);
         }
+        for (int i = 0; i < num_trees; i++)
+        {
+            var tree = Instantiate(treePrefab, decorationContainer.transform);
+            var randomPos = RandomPosOnArena(2f);
+            tree.transform.localPosition = new Vector3(randomPos.x, 0, randomPos.z);
+        }
+		for (int i = 0; i < num_stones; i++)
+		{
+			var stone = Instantiate(stonePrefab, decorationContainer.transform);
+			var randomPos = RandomPosOnArena(2f);
+			stone.transform.localPosition = new Vector3(randomPos.x, 0, randomPos.z);
+		}
 
-        foreach (Transform t in enemyContainer)
+		foreach (Transform t in enemyContainer)
         {
             Destroy(t.gameObject);
         }

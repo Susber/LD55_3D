@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44998837, g: 0.50004864, b: 0.575523, a: 1}
+  m_IndirectSpecularColor: {r: 0.44998896, g: 0.50004935, b: 0.57552373, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1046,7 +1046,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.2, y: 0.2, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1886359223}
@@ -1656,7 +1656,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 3, y: 1, z: 3}
+  m_LocalScale: {x: 40, y: 1, z: 40}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1827268862}
@@ -3872,7 +3872,12 @@ MonoBehaviour:
   currentStage: 0
   sheepPrefab: {fileID: 2803500051409867777, guid: 9eb6d85379b1c3d429183805285ed6cc, type: 3}
   foxPrefab: {fileID: 2938945773274849202, guid: 33137d0d85baa8849aeff5d6bbae406f, type: 3}
-  grassPrefab: {fileID: 2781580127000154396, guid: dad9cf64e56c9ca4c97065777e9ab0c7, type: 3}
+  grassPrefab: {fileID: 3827537363293424983, guid: 46fd151acd17ebc41879b9cfe5a8757c, type: 3}
+  treePrefab: {fileID: 3827537363293424983, guid: 6508f7cdf2eafb14e9f8327a54761dfd, type: 3}
+  stonePrefab: {fileID: 3827537363293424983, guid: eeedd701c009aaa4ba9f4f4b34279fb7, type: 3}
+  num_grass: 5000
+  num_trees: 100
+  num_stones: 200
   runePrefab: {fileID: 8721840526022088290, guid: 70fba3cee298745c99ccf7cc87cf7026, type: 3}
   coinPrefab: {fileID: 3081014807101979079, guid: b1555eba47bc246ce8106c0833decdf0, type: 3}
   spawnNextWaveTime: 0
@@ -4080,8 +4085,8 @@ PolygonCollider2D:
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.40703556, y: 0.07264951}
-    oldSize: {x: 6.64, y: 8}
+    pivot: {x: 0.37646532, y: 0.05323674}
+    oldSize: {x: 1.27, y: 1.69}
     newSize: {x: 6.64, y: 8}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -4309,7 +4314,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: a8cce8d8c7ae02d4fba8c58c05fc1537, type: 3}
+  m_Sprite: {fileID: -1503444939, guid: 5098d0d5c517c084bad2f5044d2b63e8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

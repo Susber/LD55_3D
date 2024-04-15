@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 5352100900037371708}
   - component: {fileID: 9157240664416866700}
+  - component: {fileID: 6096552135434257274}
+  - component: {fileID: 6074937412739023471}
   m_Layer: 0
   m_Name: plantrenderer
   m_TagString: Untagged
@@ -73,7 +75,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 1877768014, guid: fd455d7dc9f791c47ad09e3206911e10, type: 3}
+  m_Sprite: {fileID: -212061925, guid: 6964b82c84907e943b8107559d1ea443, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -84,3 +86,86 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!60 &6096552135434257274
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5286886440268558435}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.45803574, y: 0.09948012}
+    oldSize: {x: 0.59, y: 0.68}
+    newSize: {x: 4.46, y: 2.79}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.21975891, y: 0.25235352}
+      - {x: 0.3197589, y: 0.4023535}
+      - {x: 0.3197589, y: 0.52235353}
+      - {x: 0.09975891, y: 0.6123535}
+      - {x: 0.03975891, y: 0.6123535}
+      - {x: 0.009758911, y: 0.5723535}
+      - {x: -0.15024109, y: 0.4223535}
+      - {x: -0.15024109, y: 0.3723535}
+      - {x: -0.12024108, y: 0.3223535}
+      - {x: -0.050241087, y: 0.25235352}
+      - {x: -0.20024109, y: 0.2923535}
+      - {x: -0.27024108, y: 0.2623535}
+      - {x: -0.27024108, y: 0.18235351}
+      - {x: -0.21024108, y: 0.032353517}
+      - {x: -0.09024109, y: -0.06764648}
+      - {x: 0.04975891, y: -0.06764648}
+      - {x: 0.05975891, y: -0.057646483}
+      - {x: 0.08975891, y: 0.19235352}
+      - {x: 0.1497589, y: 0.18235351}
+  m_UseDelaunayMesh: 0
+--- !u!114 &6074937412739023471
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5286886440268558435}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad9e048db1c913f458bd7585770e4661, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TextureTileScale: 1
+  CardboardTickness: 0.1
+  DoubleSided: 1
+  DuplicateSpriteOnBackFace: 1
+  CardboardLineMaterial: {fileID: 2100000, guid: 34000f52b6e8f9f41960347ae81e0859, type: 2}
+  CardboardFaceMaterial: {fileID: -876546973899608171, guid: fa580a2bdafff7a4f9d5d4cb0ed9dc7e, type: 3}
+  FaceFillColor: {r: 1, g: 1, b: 1, a: 0}
