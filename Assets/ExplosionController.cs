@@ -90,6 +90,8 @@ public class ExplosionController : MonoBehaviour
     }
     private void explode()
     {
+        if (AudioManager.Instance is not null)
+            AudioManager.Instance.PlaySoundExplosion();
         exploded = true;
         sparkparticles.Play();
         smokeparticles.Play();

@@ -37,7 +37,7 @@ public class AudioManager : MonoBehaviour
 
     public void PlaySoundExplosion()
     {
-        PlaySound(1, 0.5f);
+        PlaySound(1, 0.3f);
     }
 
     public void PlaySoundDestroyEnemy()
