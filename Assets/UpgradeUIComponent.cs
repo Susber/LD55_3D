@@ -55,5 +55,6 @@ public class UpgradeUIComponent : MonoBehaviour
         ArenaController.Instance.upgradeUi.stats[myStatNum] += 1;
         player.coins -= button.cost;
         UpdateUI();
+        ArenaController.Instance.UpdateHud();
     }
 }
