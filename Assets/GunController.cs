@@ -90,6 +90,8 @@ public class GunController : MonoBehaviour
     {
         
         if(timeout <= 0){
+            if (AudioManager.Instance is not null)
+                AudioManager.Instance.PlaySoundGun();
             var direction = worldpos - transform.position;
             direction.y = 0;
             direction = Vector3.Normalize(direction);
