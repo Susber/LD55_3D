@@ -16,6 +16,7 @@ public class ArenaController : MonoBehaviour
 {
     public enum GameStage
     {
+        TUTORIAL,
         IN_LEVEL,
         UPGRADE
     }
@@ -30,7 +31,7 @@ public class ArenaController : MonoBehaviour
     public Transform smallRuneContainer;
     public Transform coinContainer;
     
-    public GameStage currentStage = GameStage.IN_LEVEL;
+    public GameStage currentStage = GameStage.TUTORIAL;
 
     public Random rnd = new Random();
 
@@ -66,11 +67,16 @@ public class ArenaController : MonoBehaviour
     public int numBigRunes;
     public int numSmallRunes;
 
+    public float tutorialRuneRadius;
+
     public float spawnDistanceToPlayer;
+
+    public GameObject tutorialHud;
+    public GameObject inLevelHud;
     
     private void Start()
     {
-        SetStage(GameStage.IN_LEVEL);
+        SetStage(GameStage.IN_LEVEL); // todo, change back to TUTORIAL
         
         for (var x = 0; x < num_grass; x++)
         {
@@ -80,9 +86,12 @@ public class ArenaController : MonoBehaviour
         }
         for (int i = 0; i < num_trees; i++)
         {
-            var tree = Instantiate(treePrefab, decorationContainer.transform);
             var randomPos = RandomPosOnArena(2f);
-            tree.transform.localPosition = new Vector3(randomPos.x, 0, randomPos.z);
+            if ((randomPos - transform.position).magnitude >= tutorialRuneRadius * 1.5f)
+            {
+                var tree = Instantiate(treePrefab, decorationContainer.transform);
+                tree.transform.localPosition = new Vector3(randomPos.x, 0, randomPos.z);
+            }
         }
 		for (int i = 0; i < num_stones; i++)
 		{
@@ -151,7 +160,8 @@ public class ArenaController : MonoBehaviour
     {
         var origin = transform.position - this.arenaRadius + new Vector3(distanceToBorder, 0, distanceToBorder);
         var radius = arenaRadius - 2 * new Vector3(distanceToBorder, 0, distanceToBorder);
-        return origin + new Vector3((float)rnd.NextDouble() * radius.x * 2,0, (float)rnd.NextDouble() * radius.z * 2);
+        var vec = origin + new Vector3((float)rnd.NextDouble() * radius.x * 2,0, (float)rnd.NextDouble() * radius.z * 2);
+        return vec;
     }
 
     public Vector3 RandomPosOnCircle(Vector3 origin, float radius, float distanceToBorder)
@@ -199,6 +209,10 @@ public class ArenaController : MonoBehaviour
     {
         switch (currentStage)
         {
+            case GameStage.TUTORIAL:
+            {
+                break;
+            }
             case GameStage.IN_LEVEL:
             {
                 // runes
@@ -275,14 +289,17 @@ public class ArenaController : MonoBehaviour
         if (upgradeUi.stats[spawnType] == 0)
             return;
         
-        
         // the actual spawning!!!
         var edges = runeType.MakeEdges();
         var position = ArenaController.Instance.RandomRunePos(edges.runeScale);
-
-        var prefab = ArenaController.Instance.runePrefab;
         var runeContainer =
             big ? ArenaController.Instance.bigRuneContainer : ArenaController.Instance.smallRuneContainer;
+        ActualSpawnRune(runeContainer, position, edges, summonEffect);
+    }
+
+    public static void ActualSpawnRune(Transform runeContainer, Vector3 position, RuneController.RuneEdges edges, RuneController.SummonEffect summonEffect)
+    {
+        var prefab = ArenaController.Instance.runePrefab;
         var rune = Instantiate(prefab, runeContainer);
         rune.transform.localPosition = position;
         var runeController = rune.GetComponent<RuneController>();
@@ -311,6 +328,8 @@ public class ArenaController : MonoBehaviour
                 var scale = rune.runeScale;
                 minDistSquared = Mathf.Min((existingPos - rndPos).sqrMagnitude - scale - newRuneScale, minDistSquared);
             }
+            minDistSquared = Mathf.Min((PlayerController.Instance.transform.position - rndPos).sqrMagnitude,
+                minDistSquared);
             
             if (minDistSquared > bestDistSquared)
             {
@@ -324,14 +343,33 @@ public class ArenaController : MonoBehaviour
 
     public void SetStage(GameStage newStage)
     {
+        inLevelHud.SetActive(false);
+        tutorialHud.SetActive(false);
+
         switch (newStage)
         {
+            case GameStage.TUTORIAL:
+            {
+                tutorialHud.SetActive(true);
+                var runeType = new RuneController.Pentagram(5, tutorialRuneRadius);
+                var edges = runeType.MakeEdges();
+                ActualSpawnRune(
+                    this.transform, this.transform.position, edges, new RuneController.TutorialRuneEffect());
+                break;
+            }
             case GameStage.IN_LEVEL:
             {
+                inLevelHud.SetActive(true);
                 foreach (var rune in bigRuneContainer.GetComponentsInChildren<RuneController>())
                     rune.MaybeDestroyOnWaveBegin();
                 foreach (var rune in smallRuneContainer.GetComponentsInChildren<RuneController>())
                     rune.MaybeDestroyOnWaveBegin();
+                
+                // runes
+                for (var i = 0 ; i < numBigRunes - bigRuneContainer.childCount; i++)
+                    SpawnRune(true);
+                for (var i = 0 ; i < numSmallRunes - smallRuneContainer.childCount; i++)
+                    SpawnRune(false);
                 levelWaveQueue.Clear();
                 levelWaveQueue.Add(new Wave(0, sheepPrefab, 10));
                 for (var n = 0; n < currentLevel + 1; n++)
@@ -366,5 +404,21 @@ public class ArenaController : MonoBehaviour
         healthText.text = "Health: " + PlayerController.Instance.GetHealth();
         moneyText.text = "Money: " + PlayerController.Instance.coins;
         levelText.text = "Level: " + (currentLevel + 1) + "/" + maxLevel;
+    }
+
+    public UnitController GetClosestEnemyTo(Vector3 searchCenter)
+    {
+        float bestDistSqr = Mathf.Infinity;
+        UnitController closest = null;
+        foreach (var enemy in enemyContainer.GetComponents<UnitController>())
+        {
+            var currDistSqr = (enemy.transform.position - searchCenter).sqrMagnitude;
+            if (currDistSqr < bestDistSqr)
+            {
+                bestDistSqr = currDistSqr;
+                closest = enemy;
+            }
+        }
+        return closest;
     }
 }

@@ -114,6 +114,17 @@ public class RuneController : MonoBehaviour
         }
     }
 
+    public class TutorialRuneEffect : SummonEffect
+    {
+        public async void PlayEffect(RuneController rune)
+        {
+            // todo, play some very very very cool effects
+            await Task.Delay(500);
+            rune.summonEffectFinished = true;
+            ArenaController.Instance.SetStage(ArenaController.GameStage.IN_LEVEL);
+        }
+    }
+
     public class Pentagram : RuneType {
         int n;
         float radius;

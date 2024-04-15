@@ -30,6 +30,7 @@ public class SheepMovementController : MonoBehaviour
     {
         currentState = SheepState.Idle;
         spriteRenderer = GetComponentsInChildren < SpriteRenderer>()[0];
+        unitcontroller = GetComponent<UnitController>();
     }
     
     void FlipSprite(bool right)
@@ -41,7 +42,7 @@ public class SheepMovementController : MonoBehaviour
     }
     void FixedUpdate()
     {    
-        sheepRigidbody.velocity *= 0.95f;
+        //sheepRigidbody.velocity *= 0.95f;
         stateTime += Time.fixedDeltaTime;
         if (stateTime > stateMaxTime)
         {
@@ -72,7 +73,7 @@ public class SheepMovementController : MonoBehaviour
                     return;
                 }
                 var dir = (to - from).normalized;
-                sheepRigidbody.AddForce(speed * dir);
+                unitcontroller.Walk(speed * dir, 0.5f);
                 break;
         }
     }

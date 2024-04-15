@@ -30,6 +30,7 @@ public class FoxMovementController : MonoBehaviour
 
     private void Start()
     {
+        unitcontroller = GetComponent<UnitController>();
         currentState = FoxState.MoveTowardsPlayer;
         SetTail(0);
     }
@@ -48,7 +49,7 @@ public class FoxMovementController : MonoBehaviour
     }
     void FixedUpdate()
     {    
-        foxRigidbody.velocity *= 0.99f;
+        foxRigidbody.velocity *= 0.95f;
         switch (currentState)
         {
             case FoxState.MoveTowardsPlayer:
@@ -62,7 +63,7 @@ public class FoxMovementController : MonoBehaviour
                     return;
                 }
                 var dir = (to - from).normalized;
-                foxRigidbody.AddForce(speed * dir);
+                unitcontroller.Walk(speed * dir,0.5f);
                 break;
             case FoxState.Attack:
                 if (attackFinished)
