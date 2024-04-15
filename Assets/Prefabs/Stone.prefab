@@ -10,8 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 3692471626409462064}
   - component: {fileID: 5577001704317640027}
+  - component: {fileID: 7021762264560830568}
   m_Layer: 0
-  m_Name: Plant
+  m_Name: Stone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -46,12 +47,29 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   plantSprites:
-  - {fileID: 1687846653, guid: 6964b82c84907e943b8107559d1ea443, type: 3}
-  - {fileID: 1827709970, guid: 6964b82c84907e943b8107559d1ea443, type: 3}
-  - {fileID: -733261563, guid: 6964b82c84907e943b8107559d1ea443, type: 3}
-  - {fileID: -212061925, guid: 6964b82c84907e943b8107559d1ea443, type: 3}
-  - {fileID: 1207370203, guid: 6964b82c84907e943b8107559d1ea443, type: 3}
-  - {fileID: 201077154, guid: 6964b82c84907e943b8107559d1ea443, type: 3}
+  - {fileID: -1474915506, guid: 6964b82c84907e943b8107559d1ea443, type: 3}
+  - {fileID: 1630359695, guid: 6964b82c84907e943b8107559d1ea443, type: 3}
+--- !u!65 &7021762264560830568
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3827537363293424983}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 1
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 0.1}
+  m_Center: {x: 0, y: 0.5, z: 0.05}
 --- !u!1001 &4009824435716843714
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -114,32 +132,32 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6074937412739023471, guid: afd78319d0811af42877c335ce657fe1, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6096552135434257274, guid: afd78319d0811af42877c335ce657fe1, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6096552135434257274, guid: afd78319d0811af42877c335ce657fe1, type: 3}
       propertyPath: m_SpriteTilingProperty.pivot.x
-      value: 0.48124418
+      value: 0.47987106
       objectReference: {fileID: 0}
     - target: {fileID: 6096552135434257274, guid: afd78319d0811af42877c335ce657fe1, type: 3}
       propertyPath: m_SpriteTilingProperty.pivot.y
-      value: 0.061225217
+      value: 0.17350216
       objectReference: {fileID: 0}
     - target: {fileID: 6096552135434257274, guid: afd78319d0811af42877c335ce657fe1, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
-      value: 0.44
+      value: 0.82
       objectReference: {fileID: 0}
     - target: {fileID: 6096552135434257274, guid: afd78319d0811af42877c335ce657fe1, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.y
-      value: 0.79
+      value: 0.91
       objectReference: {fileID: 0}
     - target: {fileID: 9157240664416866700, guid: afd78319d0811af42877c335ce657fe1, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 1687846653, guid: 6964b82c84907e943b8107559d1ea443, type: 3}
+      objectReference: {fileID: -1474915506, guid: 6964b82c84907e943b8107559d1ea443, type: 3}
     - target: {fileID: 9157240664416866700, guid: afd78319d0811af42877c335ce657fe1, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
