@@ -28,7 +28,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 1, z: -0.1}
-  m_LocalScale: {x: 0.15, y: 0.15, z: 0.15}
+  m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7967820902005001810}
@@ -100,6 +100,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   holder: {fileID: 0}
+  playerController: {fileID: 0}
   bulletPrefab: {fileID: 3081014807101979079, guid: ad76d7c6d3f90b5439db3191d096ae8c, type: 3}
   explosionPrefab: {fileID: 6593172532142632681, guid: 991e576b0511bb94794eb0dd6aa8fd7a, type: 3}
   smoke: {fileID: 8847896168246100584}
@@ -110,6 +111,7 @@ MonoBehaviour:
   shootAmount: 5
   shootHalfAngle: 20
   bulletLifetime: 1
+  guntype: 0
 --- !u!1 &6263036144966523764
 GameObject:
   m_ObjectHideFlags: 0
@@ -139,7 +141,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.15, y: 0.15, z: 0.15}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7967820902005001810}
@@ -315,7 +317,7 @@ Transform:
   m_GameObject: {fileID: 8619900398259402455}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -1, z: 0.016666668}
+  m_LocalPosition: {x: 0, y: 0, z: 0.016666668}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

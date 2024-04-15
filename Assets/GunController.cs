@@ -118,11 +118,11 @@ public class GunController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(timeout <= 0){
-        bool left = Input.GetKey(KeyCode.Mouse0);
-        bool right = Input.GetKey(KeyCode.Mouse1);
-        if (playerController is not null)
-            if (left || right)
+        MaybeTurnGun();
+        if (timeout <= 0) {
+            bool left = Input.GetKey(KeyCode.Mouse0);
+            bool right = Input.GetKey(KeyCode.Mouse1);
+            if (playerController != null && (left || right))
             {
                 float distance;
                 Plane plane = new Plane(Vector3.up, 0);
@@ -138,10 +138,21 @@ public class GunController : MonoBehaviour
                     }
                 }
             }
-
-        }else{
+        } else {
             timeout -= Time.deltaTime;
             UpdateGunPosition();
+        }
+    }
+
+    private void MaybeTurnGun()
+    {
+        float distance;
+        Plane plane = new Plane(Vector3.up, 0);
+        Ray ray = playerController.playercamera.ScreenPointToRay(Input.mousePosition);
+        if (plane.Raycast(ray, out distance))
+        {
+            Vector3 worldpos = ray.GetPoint(distance);
+            transform.localScale = new Vector3(worldpos.x < transform.position.x ? 1 : -1, 1, 1);
         }
     }
 
