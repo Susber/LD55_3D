@@ -4,6 +4,7 @@ using Components;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
+using Color = UnityEngine.Color;
 
 public class BulletController : MonoBehaviour
 {
@@ -80,7 +81,7 @@ public class BulletController : MonoBehaviour
         if (bullettype == BulletType.Rocket)
         {
             var explosion = Instantiate(explosionPrefab).GetComponent<ExplosionController>();
-            explosion.Init(bulletRigidbody.position, 5, Color.red);
+            explosion.Init(bulletRigidbody.position, 5, new Color(1f, 0.667f, 0f));
         }
         ps.Stop();
         Destroy(gameObject);
