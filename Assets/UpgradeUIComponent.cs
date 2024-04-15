@@ -19,7 +19,6 @@ public class UpgradeUIComponent : MonoBehaviour
     public const int Weapon = 2;
     public const int SummonGiant = 3;
     public const int SummonBomb = 4;
-    public const int NotYetDecidedSmallAttack = 5;
 
     public void UpdateUI()
     {
@@ -66,7 +65,6 @@ public class UpgradeUIComponent : MonoBehaviour
             case Health:
             case SummonGiant:
             case SummonBomb:
-            case NotYetDecidedSmallAttack:
                 break; // these are handled indirectly
             case Speed:
                 PlayerController.Instance.speed += 1.2f;

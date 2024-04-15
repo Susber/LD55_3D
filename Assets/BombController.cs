@@ -5,6 +5,7 @@ using Components;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
+using System.Threading.Tasks;
 
 public class BombController : MonoBehaviour
 {
@@ -23,9 +24,26 @@ public class BombController : MonoBehaviour
         this.bombScale = bombScale;
         this.maxTimeToExplode = maxTimeToExplode;
         this.timeToExplode = maxTimeToExplode;
+        SetStage(0);
     }
-    
-    void FixedUpdate()
+
+    void SetStage(int bombStateIndex)
+    {
+        for (var i = 0; i < bombStates.Length; i++)
+        {
+            bombStates[i].SetActive(i == bombStateIndex);
+        }
+    }
+
+    public async void Explode(int time)
+    {
+        await Task.Delay(time);
+        SetStage(1);
+        await Task.Delay(time);
+        SetStage(2);
+    }
+
+void FixedUpdate()
     {
         if (exploded)
             return;
@@ -34,6 +52,7 @@ public class BombController : MonoBehaviour
         renderingComponent.localScale = new Vector3(scale, scale, scale);
         var stage = Mathf.FloorToInt(bombStates.Length * (timeToExplode / maxTimeToExplode));
         // todo set stage!!
+        Explode(100);
         
         if (timeToExplode < 0)
         {
