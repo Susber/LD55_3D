@@ -70,10 +70,13 @@ public class ArenaController : MonoBehaviour
     public float tutorialRuneRadius;
 
     public float spawnDistanceToPlayer;
+
+    public GameObject tutorialHud;
+    public GameObject inLevelHud;
     
     private void Start()
     {
-        SetStage(GameStage.TUTORIAL);
+        SetStage(GameStage.IN_LEVEL); // todo, change back to TUTORIAL
         
         for (var x = 0; x < num_grass; x++)
         {
@@ -340,10 +343,14 @@ public class ArenaController : MonoBehaviour
 
     public void SetStage(GameStage newStage)
     {
+        inLevelHud.SetActive(false);
+        tutorialHud.SetActive(false);
+
         switch (newStage)
         {
             case GameStage.TUTORIAL:
             {
+                tutorialHud.SetActive(true);
                 var runeType = new RuneController.Pentagram(5, tutorialRuneRadius);
                 var edges = runeType.MakeEdges();
                 ActualSpawnRune(
@@ -352,6 +359,7 @@ public class ArenaController : MonoBehaviour
             }
             case GameStage.IN_LEVEL:
             {
+                inLevelHud.SetActive(true);
                 foreach (var rune in bigRuneContainer.GetComponentsInChildren<RuneController>())
                     rune.MaybeDestroyOnWaveBegin();
                 foreach (var rune in smallRuneContainer.GetComponentsInChildren<RuneController>())
