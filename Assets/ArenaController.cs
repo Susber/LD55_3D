@@ -12,6 +12,8 @@ using UnityEngine.XR;
 using Vector2 = UnityEngine.Vector2;
 using Vector3 = UnityEngine.Vector3;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
 
 public class ArenaController : MonoBehaviour
 {
@@ -21,18 +23,18 @@ public class ArenaController : MonoBehaviour
         IN_LEVEL,
         UPGRADE
     }
-    
+
     public static ArenaController Instance;
 
     public Vector3 arenaRadius;
-    
+
     public Transform enemyContainer;
     public Transform friendContainer;
     public Transform decorationContainer;
     public Transform bigRuneContainer;
     public Transform smallRuneContainer;
     public Transform coinContainer;
-    
+
     public GameStage currentStage = GameStage.TUTORIAL;
 
     public Random rnd = new Random();
@@ -75,11 +77,11 @@ public class ArenaController : MonoBehaviour
 
     public GameObject tutorialHud;
     public GameObject inLevelHud;
-    
+
     private void Start()
     {
         SetStage(GameStage.IN_LEVEL); // todo, change back to TUTORIAL
-        
+
         for (var x = 0; x < num_grass; x++)
         {
             var enemy = Instantiate(grassPrefab, decorationContainer.transform);
@@ -95,18 +97,18 @@ public class ArenaController : MonoBehaviour
                 tree.transform.localPosition = new Vector3(randomPos.x, 0, randomPos.z);
             }
         }
-		for (int i = 0; i < num_stones; i++)
-		{
-			var stone = Instantiate(stonePrefab, decorationContainer.transform);
-			var randomPos = RandomPosOnArena(2f);
-			stone.transform.localPosition = new Vector3(randomPos.x, 0, randomPos.z);
-		}
+        for (int i = 0; i < num_stones; i++)
+        {
+            var stone = Instantiate(stonePrefab, decorationContainer.transform);
+            var randomPos = RandomPosOnArena(2f);
+            stone.transform.localPosition = new Vector3(randomPos.x, 0, randomPos.z);
+        }
 
-		foreach (Transform t in enemyContainer)
+        foreach (Transform t in enemyContainer)
         {
             Destroy(t.gameObject);
         }
-        
+
         upgradeUi.UpdateUI();
         UpdateHud();
         upgradeUi.gameObject.SetActive(false);
@@ -117,11 +119,11 @@ public class ArenaController : MonoBehaviour
     {
         Instance = this;
     }
-    
+
     Vector3 RandomBorderPos()
     {
-        var bottomLeft = (Vector2) (transform.localPosition - this.transform.localScale / 2);
-        var topRight = (Vector2) (transform.localPosition + this.transform.localScale / 2);
+        var bottomLeft = (Vector2)(transform.localPosition - this.transform.localScale / 2);
+        var topRight = (Vector2)(transform.localPosition + this.transform.localScale / 2);
         var randomPos = new Vector2(0, 0);
         int numX = rnd.Next(0, 2);
         int numY = rnd.Next(0, 2);
@@ -150,19 +152,19 @@ public class ArenaController : MonoBehaviour
             {
                 randomPos.y = topRight.y;
             }
-            distance = (topRight.x - bottomLeft.x) * (float) multiplier;
+            distance = (topRight.x - bottomLeft.x) * (float)multiplier;
             randomPos.x = bottomLeft.x + distance;
         }
 
         return randomPos;
     }
-    
-    
+
+
     public Vector3 RandomPosOnArena(float distanceToBorder)
     {
         var origin = transform.position - this.arenaRadius + new Vector3(distanceToBorder, 0, distanceToBorder);
         var radius = arenaRadius - 2 * new Vector3(distanceToBorder, 0, distanceToBorder);
-        var vec = origin + new Vector3((float)rnd.NextDouble() * radius.x * 2,0, (float)rnd.NextDouble() * radius.z * 2);
+        var vec = origin + new Vector3((float)rnd.NextDouble() * radius.x * 2, 0, (float)rnd.NextDouble() * radius.z * 2);
         return vec;
     }
 
@@ -189,14 +191,14 @@ public class ArenaController : MonoBehaviour
         for (var i = 0; i < 20; i++)
         {
             var rndPos = RandomPosOnCircle(PlayerController.Instance.transform.position, distToPlayer, 20f);
-            
+
             var minDistSquared = Mathf.Infinity;
             foreach (var rune in existingEnemies)
             {
                 var existingPos = rune.gameObject.transform.position;
                 minDistSquared = Mathf.Min((existingPos - rndPos).sqrMagnitude, minDistSquared);
             }
-            
+
             if (minDistSquared > bestDistSquared)
             {
                 bestDistSquared = minDistSquared;
@@ -212,53 +214,62 @@ public class ArenaController : MonoBehaviour
         switch (currentStage)
         {
             case GameStage.TUTORIAL:
-            {
-                break;
-            }
+                {
+                    break;
+                }
             case GameStage.IN_LEVEL:
-            {
-                // runes
-                if (bigRuneContainer.childCount < numBigRunes)
-                    SpawnRune(true);
-                if (smallRuneContainer.childCount < numSmallRunes)
-                    SpawnRune(false);
-                
-                // waves
-                var hasNextWave = levelWaveQueue.Count > 0;
-                if (hasNextWave)
                 {
-                    var nextWave = levelWaveQueue[0];
-                    if (waitForWaveToFinish != null && !waitForWaveToFinish.finished)
+                    // runes
+                    if (bigRuneContainer.childCount < numBigRunes)
+                        SpawnRune(true);
+                    if (smallRuneContainer.childCount < numSmallRunes)
+                        SpawnRune(false);
+
+                    // waves
+                    var hasNextWave = levelWaveQueue.Count > 0;
+                    if (hasNextWave)
                     {
-                        return;
+                        var nextWave = levelWaveQueue[0];
+                        if (waitForWaveToFinish != null && !waitForWaveToFinish.finished)
+                        {
+                            return;
+                        }
+                        spawnNextWaveTime += Time.fixedDeltaTime;
+                        if (spawnNextWaveTime >= nextWave.spawnTime)
+                        {
+                            // spawn next wave
+                            levelWaveQueue.RemoveAt(0);
+                            nextWave.DoSpawn();
+                            waitForWaveToFinish = nextWave;
+                            spawnNextWaveTime = 0;
+                        }
                     }
-                    spawnNextWaveTime += Time.fixedDeltaTime;
-                    if (spawnNextWaveTime >= nextWave.spawnTime)
+                    else
                     {
-                        // spawn next wave
-                        levelWaveQueue.RemoveAt(0);
-                        nextWave.DoSpawn();
-                        waitForWaveToFinish = nextWave;
-                        spawnNextWaveTime = 0;
+                        // all waves finished, wait for all enemies to be dead and all coins to be collected.
+                        if (enemyContainer.childCount == 0 && coinContainer.childCount == 0)
+                        {
+                            currentLevel += 1;
+                            // todo, if level is >= 10, then play win screen!
+                            if (currentLevel >= 10)
+                            {
+                                SceneManager.LoadScene(3);
+                            }
+                            else
+                            {
+                                UpdateHud();
+                                SetStage(GameStage.UPGRADE);
+                            }
+
+
+                        }
                     }
+                    break;
                 }
-                else
-                {
-                    // all waves finished, wait for all enemies to be dead and all coins to be collected.
-                    if (enemyContainer.childCount == 0 && coinContainer.childCount == 0)
-                    {
-                        currentLevel += 1;
-                        // todo, if level is >= 10, then play win screen!
-                        UpdateHud();
-                        SetStage(GameStage.UPGRADE);
-                    }
-                }
-                break;
-            }
             case GameStage.UPGRADE:
-            {
-                break;
-            }
+                {
+                    break;
+                }
         }
     }
 
@@ -291,7 +302,7 @@ public class ArenaController : MonoBehaviour
         // check if unlocked
         if (upgradeUi.stats[spawnType] == 0)
             return;
-        
+
         // the actual spawning!!!
         var edges = runeType.MakeEdges();
         var position = ArenaController.Instance.RandomRunePos(edges.runeScale);
@@ -333,7 +344,7 @@ public class ArenaController : MonoBehaviour
             }
             minDistSquared = Mathf.Min((PlayerController.Instance.transform.position - rndPos).sqrMagnitude,
                 minDistSquared);
-            
+
             if (minDistSquared > bestDistSquared)
             {
                 bestDistSquared = minDistSquared;
@@ -352,46 +363,46 @@ public class ArenaController : MonoBehaviour
         switch (newStage)
         {
             case GameStage.TUTORIAL:
-            {
-                tutorialHud.SetActive(true);
-                var runeType = new RuneController.Pentagram(5, tutorialRuneRadius);
-                var edges = runeType.MakeEdges();
-                ActualSpawnRune(
-                    this.transform, this.transform.position, edges, new RuneController.TutorialRuneEffect());
-                break;
-            }
+                {
+                    tutorialHud.SetActive(true);
+                    var runeType = new RuneController.Pentagram(5, tutorialRuneRadius);
+                    var edges = runeType.MakeEdges();
+                    ActualSpawnRune(
+                        this.transform, this.transform.position, edges, new RuneController.TutorialRuneEffect());
+                    break;
+                }
             case GameStage.IN_LEVEL:
-            {
-                inLevelHud.SetActive(true);
-                foreach (var rune in bigRuneContainer.GetComponentsInChildren<RuneController>())
-                    rune.MaybeDestroyOnWaveBegin();
-                foreach (var rune in smallRuneContainer.GetComponentsInChildren<RuneController>())
-                    rune.MaybeDestroyOnWaveBegin();
-                
-                // runes
-                for (var i = 0 ; i < numBigRunes - bigRuneContainer.childCount; i++)
-                    SpawnRune(true);
-                for (var i = 0 ; i < numSmallRunes - smallRuneContainer.childCount; i++)
-                    SpawnRune(false);
-                levelWaveQueue.Clear();
-                levelWaveQueue.Add(new Wave(0, sheepPrefab, 1));
-                // levelWaveQueue.Add(new Wave(0, sheepPrefab, 10));
-                // for (var n = 0; n < currentLevel + 1; n++)
-                // {
-                //     levelWaveQueue.Add(new Wave(5, sheepPrefab, 10));
-                //     levelWaveQueue.Add(new Wave(2, foxPrefab, 1));
-                //     levelWaveQueue.Add(new Wave(2, dogPrefab, 1));
-                // }
+                {
+                    inLevelHud.SetActive(true);
+                    foreach (var rune in bigRuneContainer.GetComponentsInChildren<RuneController>())
+                        rune.MaybeDestroyOnWaveBegin();
+                    foreach (var rune in smallRuneContainer.GetComponentsInChildren<RuneController>())
+                        rune.MaybeDestroyOnWaveBegin();
 
-                spawnNextWaveTime = 0;
-                break;
-            }
+                    // runes
+                    for (var i = 0; i < numBigRunes - bigRuneContainer.childCount; i++)
+                        SpawnRune(true);
+                    for (var i = 0; i < numSmallRunes - smallRuneContainer.childCount; i++)
+                        SpawnRune(false);
+                    levelWaveQueue.Clear();
+                    levelWaveQueue.Add(new Wave(0, sheepPrefab, 1));
+                    // levelWaveQueue.Add(new Wave(0, sheepPrefab, 10));
+                    // for (var n = 0; n < currentLevel + 1; n++)
+                    // {
+                    //     levelWaveQueue.Add(new Wave(5, sheepPrefab, 10));
+                    //     levelWaveQueue.Add(new Wave(2, foxPrefab, 1));
+                    //     levelWaveQueue.Add(new Wave(2, dogPrefab, 1));
+                    // }
+
+                    spawnNextWaveTime = 0;
+                    break;
+                }
             case GameStage.UPGRADE:
-            {
-                upgradeUi.gameObject.SetActive(true);
-                upgradeUi.UpdateUI();
-                break;
-            }
+                {
+                    upgradeUi.gameObject.SetActive(true);
+                    upgradeUi.UpdateUI();
+                    break;
+                }
         }
 
         currentStage = newStage;
