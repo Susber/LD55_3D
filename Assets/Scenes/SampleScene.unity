@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641258, b: 0.5748172, a: 1}
+  m_IndirectSpecularColor: {r: 0.44998837, g: 0.50004864, b: 0.575523, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -4563,6 +4563,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   indicatorPrefab: {fileID: 5472028992003191506, guid: 52430cf08dc204677ae07b1b20f6bdbc, type: 3}
   indicator: {fileID: 0}
+  fullAlpha: 1
+  lastAlpha: 1
 --- !u!136 &89710194
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -12148,6 +12150,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   indicatorPrefab: {fileID: 5472028992003191506, guid: 52430cf08dc204677ae07b1b20f6bdbc, type: 3}
   indicator: {fileID: 0}
+  fullAlpha: 1
+  lastAlpha: 1
 --- !u!136 &266536290
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -15954,6 +15958,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   indicatorPrefab: {fileID: 5472028992003191506, guid: 52430cf08dc204677ae07b1b20f6bdbc, type: 3}
   indicator: {fileID: 0}
+  fullAlpha: 1
+  lastAlpha: 1
 --- !u!136 &353290466
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -17802,6 +17808,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   indicatorPrefab: {fileID: 5472028992003191506, guid: 52430cf08dc204677ae07b1b20f6bdbc, type: 3}
   indicator: {fileID: 0}
+  fullAlpha: 1
+  lastAlpha: 1
 --- !u!136 &385900471
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -18887,6 +18895,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   indicatorPrefab: {fileID: 5472028992003191506, guid: 52430cf08dc204677ae07b1b20f6bdbc, type: 3}
   indicator: {fileID: 0}
+  fullAlpha: 1
+  lastAlpha: 1
 --- !u!136 &405481578
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -26532,6 +26542,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   indicatorPrefab: {fileID: 5472028992003191506, guid: 52430cf08dc204677ae07b1b20f6bdbc, type: 3}
   indicator: {fileID: 0}
+  fullAlpha: 1
+  lastAlpha: 1
 --- !u!136 &560868942
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -26881,6 +26893,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   indicatorPrefab: {fileID: 5472028992003191506, guid: 52430cf08dc204677ae07b1b20f6bdbc, type: 3}
   indicator: {fileID: 0}
+  fullAlpha: 1
+  lastAlpha: 1
 --- !u!136 &567632668
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -27138,6 +27152,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   indicatorPrefab: {fileID: 5472028992003191506, guid: 52430cf08dc204677ae07b1b20f6bdbc, type: 3}
   indicator: {fileID: 0}
+  fullAlpha: 1
+  lastAlpha: 1
 --- !u!136 &569081927
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -29757,6 +29773,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   indicatorPrefab: {fileID: 5472028992003191506, guid: 52430cf08dc204677ae07b1b20f6bdbc, type: 3}
   indicator: {fileID: 0}
+  fullAlpha: 1
+  lastAlpha: 1
 --- !u!136 &626999926
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -32999,6 +33017,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   indicatorPrefab: {fileID: 5472028992003191506, guid: 52430cf08dc204677ae07b1b20f6bdbc, type: 3}
   indicator: {fileID: 0}
+  fullAlpha: 1
+  lastAlpha: 1
 --- !u!136 &697092472
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -37171,6 +37191,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   indicatorPrefab: {fileID: 5472028992003191506, guid: 52430cf08dc204677ae07b1b20f6bdbc, type: 3}
   indicator: {fileID: 0}
+  fullAlpha: 1
+  lastAlpha: 1
 --- !u!136 &776700541
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -37890,6 +37912,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   indicatorPrefab: {fileID: 5472028992003191506, guid: 52430cf08dc204677ae07b1b20f6bdbc, type: 3}
   indicator: {fileID: 0}
+  fullAlpha: 1
+  lastAlpha: 1
 --- !u!136 &800595822
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -56599,6 +56623,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   indicatorPrefab: {fileID: 5472028992003191506, guid: 52430cf08dc204677ae07b1b20f6bdbc, type: 3}
   indicator: {fileID: 0}
+  fullAlpha: 1
+  lastAlpha: 1
 --- !u!136 &1221991380
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -71712,6 +71738,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   indicatorPrefab: {fileID: 5472028992003191506, guid: 52430cf08dc204677ae07b1b20f6bdbc, type: 3}
   indicator: {fileID: 0}
+  fullAlpha: 1
+  lastAlpha: 1
 --- !u!136 &1555352306
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -81246,6 +81274,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   indicatorPrefab: {fileID: 5472028992003191506, guid: 52430cf08dc204677ae07b1b20f6bdbc, type: 3}
   indicator: {fileID: 0}
+  fullAlpha: 1
+  lastAlpha: 1
 --- !u!136 &1776957303
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -84286,6 +84316,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   indicatorPrefab: {fileID: 5472028992003191506, guid: 52430cf08dc204677ae07b1b20f6bdbc, type: 3}
   indicator: {fileID: 0}
+  fullAlpha: 1
+  lastAlpha: 1
 --- !u!136 &1831975351
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -85306,6 +85338,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   indicatorPrefab: {fileID: 5472028992003191506, guid: 52430cf08dc204677ae07b1b20f6bdbc, type: 3}
   indicator: {fileID: 0}
+  fullAlpha: 1
+  lastAlpha: 1
 --- !u!136 &1851178354
 CapsuleCollider:
   m_ObjectHideFlags: 0

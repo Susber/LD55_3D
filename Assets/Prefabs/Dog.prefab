@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 961643452244982083}
   - component: {fileID: 2328345754043487920}
   - component: {fileID: 6779986340217445703}
+  - component: {fileID: 213897228600940613}
   m_Layer: 0
   m_Name: Dog
   m_TagString: Untagged
@@ -126,6 +127,22 @@ MonoBehaviour:
   - {fileID: 2017254196648172909}
   - {fileID: 1332339799806068793}
   rageDistance: 20
+--- !u!114 &213897228600940613
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2614679989190484250}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f45ba2e5161d413a8b0f23751d733f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  indicatorPrefab: {fileID: 5472028992003191506, guid: 52430cf08dc204677ae07b1b20f6bdbc, type: 3}
+  indicator: {fileID: 0}
+  fullAlpha: 1
+  lastAlpha: 1
 --- !u!1 &5884058744004297811
 GameObject:
   m_ObjectHideFlags: 0
