@@ -26,6 +26,8 @@ public class PlayerController : MonoBehaviour
     public float invulnerableTimeLeft = 0;
     public float invulnerableTimeAfterHit;
 
+    public Transform renderingContainer;
+
     public PlayerController()
     {
         Instance = this;
@@ -33,7 +35,7 @@ public class PlayerController : MonoBehaviour
 
     public void Start()
     {
-        gun = Instantiate(gunPrefab,this.transform).GetComponent<GunController>();
+        gun = Instantiate(gunPrefab, renderingContainer).GetComponent<GunController>();
         gun.holder = this;
     }
 
