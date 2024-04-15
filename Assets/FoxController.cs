@@ -45,7 +45,7 @@ public class FoxMovementController : MonoBehaviour
 
     void FixedUpdate()
     {    
-        foxRigidbody.velocity *= 0.95f;
+        //foxRigidbody.velocity *= 0.95f;
         switch (currentState)
         {
             case FoxState.MoveTowardsPlayer:

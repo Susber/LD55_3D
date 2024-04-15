@@ -47,9 +47,7 @@ public class EnemyIndicatorComponent : MonoBehaviour
         if (indicator != null)
         {
             var pixelPos = new Vector3((renderAt.x / 2 + 0.5f) * playerCamera.pixelWidth,
-            (renderAt.y / 2 + 0.5f) * playerCamera.pixelHeight, 0);
-
-            Debug.Log(renderAt);
+                (renderAt.y / 2 + 0.5f) * playerCamera.pixelHeight, 0);
             indicator.transform.position = pixelPos;
             // indicator.GetComponent<RectTransform>().anchoredPosition = ;
         }

@@ -11,7 +11,6 @@ using UnityEngine.UI;
 public class MinionController : MonoBehaviour
 {
     
-    public GameObject gunPrefab;
     public Transform renderingContainer;
     public SpriteRenderer spriteRenderer;
 
@@ -32,13 +31,14 @@ public class MinionController : MonoBehaviour
     public GunController gun;
 
     private float lifetime = 100;
+    private Boolean invincible = false;
 
     private void Start()
     {
         
     }
 
-    public void Init(int strength2, Vector3 pos)
+    public void Init(int strength2, Vector3 pos, float lifetime)
     {
         this.minionrigidbody = GetComponent<Rigidbody>();
         spriteRenderer = GetComponentsInChildren < SpriteRenderer>()[0];
@@ -48,10 +48,12 @@ public class MinionController : MonoBehaviour
         unitcontroller.life = strength2 * 1000;
         
         this.minionrigidbody.position = pos;
-        gun = Instantiate(gunPrefab, renderingContainer).GetComponent<GunController>();
-        gun.Init(this.minionrigidbody, false);
+        gun = Instantiate(ArenaController.Instance.gunPrefab, renderingContainer).GetComponent<GunController>();
+        gun.Init(this.minionrigidbody, false, GunController.Guntype.Rocketlauncher);
         gun.SetGuntype(GunController.Guntype.Rocketlauncher);
         gun.SetLevel(strength);
+        if (this.lifetime < 0)
+            invincible = true;
     }
     
     void FixedUpdate()
@@ -71,8 +73,11 @@ public class MinionController : MonoBehaviour
             var dif = (to - from);
             var dir = dif.normalized;
             var dist_sqr = dif.sqrMagnitude;
+            
+            var walkspeed = new Vector3(0, 0, 0);
             if(dist_sqr > 3*3)
-                unitcontroller.Walk(speed * dir, 0.3f);
+                walkspeed = speed * dir;
+            unitcontroller.Walk(walkspeed, 0.3f);
         }
 
         if (target.IsDestroyed())

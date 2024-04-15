@@ -33,13 +33,6 @@ public class SheepMovementController : MonoBehaviour
         unitcontroller = GetComponent<UnitController>();
     }
     
-    void FlipSprite(bool right)
-    {
-        // default: left
-        if (right)
-        {transform.Rotate(Vector3.up, Mathf.PI);}
-
-    }
     void FixedUpdate()
     {    
         //sheepRigidbody.velocity *= 0.95f;
@@ -66,8 +59,6 @@ public class SheepMovementController : MonoBehaviour
                 var from = this.transform.position;
                 var to = PlayerController.Instance.transform.position;
                 
-                //FlipSprite(sheepRigidbody.velocity.x > 0);
-
                 if ((to - from).sqrMagnitude < 1)
                 {
                     return;
