@@ -397,12 +397,20 @@ public class ArenaController : MonoBehaviour
                 for (var i = 0 ; i < numSmallRunes - smallRuneContainer.childCount; i++)
                     SpawnRune(false);
                 levelWaveQueue.Clear();
+ 
+                
                 levelWaveQueue.Add(new Wave(0, sheepPrefab, 10));
                 for (var n = 0; n < currentLevel + 1; n++)
                 {
                     levelWaveQueue.Add(new Wave(5, sheepPrefab, 10));
-                    levelWaveQueue.Add(new Wave(2, foxPrefab, 1));
-                    levelWaveQueue.Add(new Wave(2, dogPrefab, 1));
+                    if (currentLevel >= 2)
+                        levelWaveQueue.Add(new Wave(10, foxPrefab, 1));
+                    if (currentLevel >= 3)
+                        levelWaveQueue.Add(new Wave(10, dogPrefab, 1));
+                    if (currentLevel >= 3)
+                        levelWaveQueue.Add(new Wave(10, sheepPrefab, 10));
+                    if (currentLevel == 6 || currentLevel == 7)
+                        levelWaveQueue.Add(new Wave(10, foxPrefab, 3));
                 }
 
                 spawnNextWaveTime = 0;
