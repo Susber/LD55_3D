@@ -167,13 +167,15 @@ public class ArenaController : MonoBehaviour
 
     public Vector3 RandomPosOnCircle(Vector3 origin, float radius, float distanceToBorder)
     {
+        var maxTries = 0;
         while (true)
         {
+            maxTries += 1;
             float angle = (float)rnd.NextDouble() * 2 * Mathf.PI;
             var vec = origin + radius * new Vector3(Mathf.Cos(angle), 0, Mathf.Sin(angle));
             var vecD = vec - transform.position;
-            if (Mathf.Abs(vecD.x) >= arenaRadius.x - distanceToBorder ||
-                Mathf.Abs(vecD.z) >= arenaRadius.z - distanceToBorder)
+            if ((Mathf.Abs(vecD.x) >= arenaRadius.x - distanceToBorder ||
+                Mathf.Abs(vecD.z) >= arenaRadius.z - distanceToBorder) && maxTries < 1000)
                 continue;  // retry, not in arena.
             return vec;
         }
@@ -373,14 +375,13 @@ public class ArenaController : MonoBehaviour
                 for (var i = 0 ; i < numSmallRunes - smallRuneContainer.childCount; i++)
                     SpawnRune(false);
                 levelWaveQueue.Clear();
-                levelWaveQueue.Add(new Wave(0, sheepPrefab, 1));
-                // levelWaveQueue.Add(new Wave(0, sheepPrefab, 10));
-                // for (var n = 0; n < currentLevel + 1; n++)
-                // {
-                //     levelWaveQueue.Add(new Wave(5, sheepPrefab, 10));
-                //     levelWaveQueue.Add(new Wave(2, foxPrefab, 1));
-                //     levelWaveQueue.Add(new Wave(2, dogPrefab, 1));
-                // }
+                levelWaveQueue.Add(new Wave(0, sheepPrefab, 10));
+                for (var n = 0; n < currentLevel + 1; n++)
+                {
+                    levelWaveQueue.Add(new Wave(5, sheepPrefab, 10));
+                    levelWaveQueue.Add(new Wave(2, foxPrefab, 1));
+                    levelWaveQueue.Add(new Wave(2, dogPrefab, 1));
+                }
 
                 spawnNextWaveTime = 0;
                 break;

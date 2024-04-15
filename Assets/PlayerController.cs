@@ -1,8 +1,13 @@
+using System;
+using System.Numerics;
 using Components;
 using Unity.VisualScripting;
 using UnityEngine;
 using System.Threading;
+using System.Threading.Tasks;
 using UnityEngine.SceneManagement;
+using Quaternion = UnityEngine.Quaternion;
+using Vector3 = UnityEngine.Vector3;
 
 
 public class PlayerController : MonoBehaviour
@@ -25,6 +30,16 @@ public class PlayerController : MonoBehaviour
 
     public Transform renderingContainer;
 
+    public PlayerState currentState = PlayerState.ALIVE;
+    
+    public float deathTicks = 0;
+
+    public enum PlayerState
+    {
+        ALIVE,
+        DEAD
+    }
+
     public PlayerController()
     {
         Instance = this;
@@ -41,69 +56,89 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate()
     {
         playerrigidbody.velocity *= 0.998f;
-        //playerrigidbody.velocity *= 0.8f;
         if (invulnerableTimeLeft > 0)
             invulnerableTimeLeft -= Time.fixedDeltaTime;
     }
 
     void Update()
     {
-        Vector3 direction = new Vector3(0, 0, 0);
-        if (Input.GetKey(KeyCode.W))
+        switch (this.currentState)
         {
-            direction += new Vector3(0, 0, 1);
-        }
-
-        if (Input.GetKey(KeyCode.A))
-        {
-            direction += -new Vector3(1, 0, 0);
-        }
-
-        if (Input.GetKey(KeyCode.D))
-        {
-            direction += new Vector3(1, 0, 0);
-        }
-
-        if (Input.GetKey(KeyCode.S))
-        {
-            direction += -new Vector3(0, 0, 1);
-        }
-
-        direction = Vector3.Normalize(direction);
-        Walk(direction * speed, 0.8f);
-
-        if (Input.GetKey(KeyCode.R))
-        {
-            foreach (var enemy in ArenaController.Instance.enemyContainer.GetComponentsInChildren<UnitController>())
+            case PlayerState.ALIVE:
             {
-                enemy.Damage(1000f, Vector3.zero);
+                Vector3 direction = new Vector3(0, 0, 0);
+                if (Input.GetKey(KeyCode.W))
+                {
+                    direction += new Vector3(0, 0, 1);
+                }
+        
+                if (Input.GetKey(KeyCode.A))
+                {
+                    direction += -new Vector3(1, 0, 0);
+                }
+        
+                if (Input.GetKey(KeyCode.D))
+                {
+                    direction += new Vector3(1, 0, 0);
+                }
+        
+                if (Input.GetKey(KeyCode.S))
+                {
+                    direction += -new Vector3(0, 0, 1);
+                }
+        
+                direction = Vector3.Normalize(direction);
+                Walk(direction * speed, 0.8f);
+        
+                if (Input.GetKey(KeyCode.R))
+                {
+                    foreach (var enemy in ArenaController.Instance.enemyContainer.GetComponentsInChildren<UnitController>())
+                    {
+                        enemy.Damage(1000f, Vector3.zero);
+                    }
+                }
+        
+                //cheats
+                if (Input.GetKey(KeyCode.LeftControl))
+                {
+                    if (Input.GetKey(KeyCode.T))
+                    {
+                        gun.SetGuntype(GunController.Guntype.Rocketlauncher);
+                    }
+        
+                    if (Input.GetKey(KeyCode.Z))
+                    {
+                        gun.SetGuntype(GunController.Guntype.Shotgun);
+                    }
+        
+                    if (Input.GetKey(KeyCode.H))
+                    {
+                        var upgrades = ArenaController.Instance.upgradeUi;
+                        upgrades.stats[UpgradeUIComponent.Health] += 100;
+                    }
+                    
+                    
+                    if (Input.GetKey(KeyCode.M))
+                    {
+                        MinionController minion = Instantiate(minionPrefab, ArenaController.Instance.friendContainer).GetComponent<MinionController>();
+                        minion.Init(3,playerrigidbody.position);
+                    }
+                }
+
+                break;
             }
-        }
-
-        //cheats
-        if (Input.GetKey(KeyCode.LeftControl))
-        {
-            if (Input.GetKey(KeyCode.T))
+            case PlayerState.DEAD:
             {
-                gun.SetGuntype(GunController.Guntype.Rocketlauncher);
-            }
-
-            if (Input.GetKey(KeyCode.Z))
-            {
-                gun.SetGuntype(GunController.Guntype.Shotgun);
-            }
-
-            if (Input.GetKey(KeyCode.H))
-            {
-                var upgrades = ArenaController.Instance.upgradeUi;
-                upgrades.stats[UpgradeUIComponent.Health] += 100;
-            }
-            
-            
-            if (Input.GetKey(KeyCode.M))
-            {
-                MinionController minion = Instantiate(minionPrefab, ArenaController.Instance.friendContainer).GetComponent<MinionController>();
-                minion.Init(3,playerrigidbody.position);
+                Walk(Vector3.zero, 0.8f);
+                GetComponent<Animator>().enabled = false;
+                deathTicks += Time.deltaTime;
+                float deathTickAnim = Mathf.Clamp(deathTicks, 0, 1) * Mathf.PI;
+                renderingContainer.rotation = Quaternion.Euler(0, 0, deathTickAnim);
+                if (deathTickAnim >= 3f)
+                {
+                    SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+                }
+                break;
             }
         }
 
@@ -122,8 +157,10 @@ public class PlayerController : MonoBehaviour
         playerrigidbody.velocity += traction * strength * dif;
     }
 
-    public void Damage(Vector3 knockback)
+    public async void Damage(Vector3 knockback)
     {
+        if (currentState != PlayerState.ALIVE)
+            return;
         playerrigidbody.AddForce(knockback);
         if (invulnerableTimeLeft > 0)
         {
@@ -134,9 +171,8 @@ public class PlayerController : MonoBehaviour
         if (upgrades.stats[UpgradeUIComponent.Health] <= 0)
         {
             upgrades.stats[UpgradeUIComponent.Health] = 0;
-            Thread.Sleep(5000);
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-
+            currentState = PlayerState.DEAD;
+            return;
         }
         invulnerableTimeLeft = invulnerableTimeAfterHit;
         ArenaController.Instance.UpdateHud();
