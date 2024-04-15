@@ -55,7 +55,7 @@ public class GunController : MonoBehaviour
                     if (right)
                     {
                         var explosion = Instantiate(explosionPrefab).GetComponent<ExplosionController>();
-                        explosion.Init(worldpos, 5, Color.yellow);
+                        explosion.Init(worldpos, 5, Color.red);
                     }
                 }
             }
