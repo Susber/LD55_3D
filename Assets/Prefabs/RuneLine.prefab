@@ -157,6 +157,6 @@ MonoBehaviour:
   rightAlphaActive: 1
   leftNeighbor: {fileID: 0}
   rightNeighbor: {fileID: 0}
-  inactiveColor: {r: 0.5754717, g: 0.52932537, b: 0.52932537, a: 0}
-  activeColor: {r: 1, g: 0, b: 0.16184282, a: 0}
+  inactiveColor: {r: 0.7735849, g: 0.7423079, b: 0.74074405, a: 0}
+  activeColor: {r: 1, g: 0, b: 0.32082558, a: 0}
   drawThreshold: 1
