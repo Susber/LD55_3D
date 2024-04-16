@@ -14,7 +14,9 @@ public class CoinController : MonoBehaviour
         var player = PlayerController.Instance;
         if ((transform.position - player.transform.position).magnitude <= player.suckCoinDistance)
         {
-            this.GetComponent<Rigidbody>().AddForce(suckForce * (player.transform.position - transform.position).normalized);
+            var rigidbody = this.GetComponent<Rigidbody>();
+            rigidbody.AddForce(suckForce * (player.transform.position - transform.position).normalized);
+            rigidbody.velocity *= 0.98f;
         }
 
         aliveTicks += Time.deltaTime;

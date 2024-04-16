@@ -64,6 +64,6 @@ public class UpgradeUIComponent : MonoBehaviour
     {
         PlayerController.Instance.speed = Mathf.Lerp((ArenaController.Instance.upgradeUi.stats[UpgradeUIComponent.Speed] - 1) / 5f, 4, 10);
         if (PlayerController.Instance.gun != null)
-            PlayerController.Instance.gun.cooldown = Mathf.Lerp(0.5f, 0.1f, (stats[Weapon] - 1) / 5f);
+            PlayerController.Instance.gun.SetLevel(stats[Weapon]);//cooldown = Mathf.Lerp(0.5f, 0.1f, (stats[Weapon] - 1) / 5f));
     }
 }
