@@ -298,7 +298,7 @@ public class ArenaController : MonoBehaviour
         {
             runeType = new RuneController.Pentagram(5, 8f);
             spawnType = UpgradeUIComponent.SummonGiant;
-            summonEffect = new RuneController.SummonGiantEffect(upgradeUi.stats[spawnType]);
+            summonEffect = new RuneController.SummonGiantEffect();
         }
         else
         {
@@ -306,13 +306,13 @@ public class ArenaController : MonoBehaviour
             {
                 runeType = new RuneController.Triangle(3, 3f);
                 spawnType = UpgradeUIComponent.SummonBomb;
-                summonEffect = new RuneController.SummonBombEffect(upgradeUi.stats[spawnType]);
+                summonEffect = new RuneController.SummonBombEffect();
             }
             else
             {
                 runeType = new RuneController.Estate(3f);
                 spawnType = UpgradeUIComponent.SummonShotgun;
-                summonEffect = new RuneController.SummonRocketsEffect(upgradeUi.stats[spawnType]);
+                summonEffect = new RuneController.SummonRocketsEffect();
             }
         }
 

@@ -59,16 +59,10 @@ public class RuneController : MonoBehaviour
     
     public class SummonBombEffect : SummonEffect
     {
-        private int level;  // within {1, ... 6}.
-
-        public SummonBombEffect(int level)
-        {
-            this.level = level;
-        }
-
         public void PlayEffect(RuneController rune)
         {
             // todo, animations!
+            int level = ArenaController.Instance.upgradeUi.stats[UpgradeUIComponent.SummonBomb];
             var bombPrefab = ArenaController.Instance.bombPrefab;
             var mainExplosion = Instantiate(bombPrefab).GetComponent<BombController>();
             mainExplosion.transform.position = rune.transform.position;
@@ -101,16 +95,11 @@ public class RuneController : MonoBehaviour
     
     public class SummonGiantEffect : SummonEffect
     {
-        int level = 0;
-        public SummonGiantEffect(int level)
-        {
-            this.level = level;
-        }
-        
         public void PlayEffect(RuneController rune)
         {
             var pos = rune.transform.position;
             float radius = rune.runeScale/2;
+            int level = ArenaController.Instance.upgradeUi.stats[UpgradeUIComponent.SummonGiant];
             int n_minions = ((int)level/2)+1;
 
             for (int i = 0; i < level; i++)
@@ -128,16 +117,10 @@ public class RuneController : MonoBehaviour
     
     public class SummonRocketsEffect : SummonEffect
     {
-        int level = 0;
-        public SummonRocketsEffect(int level)
-        {
-            this.level = level;
-        }
-        
         public void PlayEffect(RuneController rune)
         {
+            int level = ArenaController.Instance.upgradeUi.stats[UpgradeUIComponent.SummonShotgun];
             PlayerController.Instance.gun.ChargeWithRockets(3 + level * 4);
-            
             
             rune.summonEffectFinished = true;
         }
