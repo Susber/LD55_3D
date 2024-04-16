@@ -11,11 +11,14 @@ public class GunController : MonoBehaviour
     public GameObject bulletPrefab;
     public GameObject explosionPrefab;
     public GameObject smoke;
+    public Light myLight;
 
     public ParticleSystem ps;
 
     public float cooldown = 0.50f;
     public float knockback;
+    private float light_timer = 1f;
+    private float light_duration = 0.1f;
     
     private float max_recoil = 0.4f;
     private Vector3 lastShotDir = new Vector3(0, 0, 0); //direction where the gun is pushed
@@ -42,11 +45,11 @@ public class GunController : MonoBehaviour
         Rocketlauncher, Shotgun
     };
     
-    
     void Start()
     {
         UpdateGunPosition();
         ps = GetComponentInChildren<ParticleSystem>();
+        light_timer = light_duration + 1;
     }
 
     public void ChargeWithRockets(int n_rockets)
@@ -107,8 +110,9 @@ public class GunController : MonoBehaviour
     {
         
         if(timeout <= 0){
-            if (AudioManager.Instance is not null)
-                AudioManager.Instance.PlaySoundGun();
+            if (AudioManager.Instance is not null) { AudioManager.Instance.PlaySoundGun(); };
+            myLight.enabled = true;
+            light_timer = 0;
             var direction = worldpos - transform.position;
             direction.y = 0;
             direction = Vector3.Normalize(direction);
@@ -169,6 +173,12 @@ public class GunController : MonoBehaviour
         } else {
             timeout -= Time.deltaTime;
             UpdateGunPosition();
+        }
+
+        light_timer += Time.deltaTime;
+        if (light_timer > light_duration)
+        {
+            myLight.enabled = false;
         }
     }
 
