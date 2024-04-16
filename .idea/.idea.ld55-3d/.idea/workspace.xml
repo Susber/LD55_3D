@@ -4,9 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8fd0fe12-69a8-4dfd-9394-ff892a1b4efa" name="Changes" comment="xx">
+    <list default="true" id="8fd0fe12-69a8-4dfd-9394-ff892a1b4efa" name="Changes" comment="arena wip">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.ld55-3d/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ld55-3d/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/PlayerController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/PlayerController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ArenaController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ArenaController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Shading/CardboardFaceMat.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Shading/CardboardFaceMat.mat" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/UpgradeUIComponent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UpgradeUIComponent.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -26,6 +28,7 @@
     <setting file="mock:///Users/frithjof/Documents/dev/unity/ld55-3d/Assets/ArenaController.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Users/frithjof/Documents/dev/unity/ld55-3d/Assets/EnemyIndicatorComponent.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Users/frithjof/Documents/dev/unity/ld55-3d/Assets/EnemyIndicatorComponent.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Users/frithjof/Documents/dev/unity/ld55-3d/Assets/PlayerController.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Users/frithjof/Documents/dev/unity/ld55-3d/Assets/PlayerController.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Users/frithjof/Documents/dev/unity/ld55-3d/Assets/Scenes/SampleScene.unity" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Users/frithjof/Documents/dev/unity/ld55-3d/Assets/Scenes/SampleScene.unity" root0="SKIP_HIGHLIGHTING" />
@@ -148,23 +151,7 @@
       <workItem from="1713200551253" duration="2716000" />
       <workItem from="1713207433853" duration="852000" />
       <workItem from="1713208342900" duration="13018000" />
-      <workItem from="1713221965173" duration="4025000" />
-    </task>
-    <task id="LOCAL-00023" summary="disable ui by default">
-      <option name="closed" value="true" />
-      <created>1713136416675</created>
-      <option name="number" value="00023" />
-      <option name="presentableId" value="LOCAL-00023" />
-      <option name="project" value="LOCAL" />
-      <updated>1713136416675</updated>
-    </task>
-    <task id="LOCAL-00024" summary="ui, somewhat functional">
-      <option name="closed" value="true" />
-      <created>1713138889724</created>
-      <option name="number" value="00024" />
-      <option name="presentableId" value="LOCAL-00024" />
-      <option name="project" value="LOCAL" />
-      <updated>1713138889724</updated>
+      <workItem from="1713221965173" duration="5701000" />
     </task>
     <task id="LOCAL-00025" summary="more">
       <option name="closed" value="true" />
@@ -542,7 +529,23 @@
       <option name="project" value="LOCAL" />
       <updated>1713225926829</updated>
     </task>
-    <option name="localTasksCounter" value="72" />
+    <task id="LOCAL-00072" summary="xx">
+      <option name="closed" value="true" />
+      <created>1713226010475</created>
+      <option name="number" value="00072" />
+      <option name="presentableId" value="LOCAL-00072" />
+      <option name="project" value="LOCAL" />
+      <updated>1713226010475</updated>
+    </task>
+    <task id="LOCAL-00073" summary="arena wip">
+      <option name="closed" value="true" />
+      <created>1713226700091</created>
+      <option name="number" value="00073" />
+      <option name="presentableId" value="LOCAL-00073" />
+      <option name="project" value="LOCAL" />
+      <updated>1713226700091</updated>
+    </task>
+    <option name="localTasksCounter" value="74" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -569,7 +572,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="tutorial wip" />
     <MESSAGE value="remove doggo" />
     <MESSAGE value="merge" />
     <MESSAGE value="more, fix for markus" />
@@ -594,7 +596,8 @@
     <MESSAGE value="intro" />
     <MESSAGE value="upgrades more" />
     <MESSAGE value="xx" />
-    <option name="LAST_COMMIT_MESSAGE" value="xx" />
+    <MESSAGE value="arena wip" />
+    <option name="LAST_COMMIT_MESSAGE" value="arena wip" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
