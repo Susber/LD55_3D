@@ -54,13 +54,13 @@ public class BulletController : MonoBehaviour
         {
             case BulletType.Bullet:
                 transform.localScale = new Vector3(1, 1, 1);
-                lifetime = 0.5f;
+                lifetime = 0.3f;
                 break;
             case BulletType.Rocket:
                 transform.localScale = new Vector3(2, 2, 2);
                 ps.Play();
                 tr.enabled = false;
-                lifetime = 5f;
+                lifetime = 2f;
                 break;
             case BulletType.Fireball:
                 transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
