@@ -4,11 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8fd0fe12-69a8-4dfd-9394-ff892a1b4efa" name="Changes" comment="dog fix">
+    <list default="true" id="8fd0fe12-69a8-4dfd-9394-ff892a1b4efa" name="Changes" comment="fixx">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.ld55-3d/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ld55-3d/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/FoxController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/FoxController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Fox.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Fox.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/IntroScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/IntroScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/RuneController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/RuneController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Shading/CardboardFaceMat.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Shading/CardboardFaceMat.mat" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -156,15 +156,7 @@
       <workItem from="1713207433853" duration="852000" />
       <workItem from="1713208342900" duration="13018000" />
       <workItem from="1713221965173" duration="15532000" />
-      <workItem from="1713295618085" duration="3061000" />
-    </task>
-    <task id="LOCAL-00038" summary="new gun">
-      <option name="closed" value="true" />
-      <created>1713185220814</created>
-      <option name="number" value="00038" />
-      <option name="presentableId" value="LOCAL-00038" />
-      <option name="project" value="LOCAL" />
-      <updated>1713185220814</updated>
+      <workItem from="1713295618085" duration="4125000" />
     </task>
     <task id="LOCAL-00039" summary="bomb explosion">
       <option name="closed" value="true" />
@@ -550,7 +542,15 @@
       <option name="project" value="LOCAL" />
       <updated>1713299125753</updated>
     </task>
-    <option name="localTasksCounter" value="87" />
+    <task id="LOCAL-00087" summary="fixx">
+      <option name="closed" value="true" />
+      <created>1713299697891</created>
+      <option name="number" value="00087" />
+      <option name="presentableId" value="LOCAL-00087" />
+      <option name="project" value="LOCAL" />
+      <updated>1713299697891</updated>
+    </task>
+    <option name="localTasksCounter" value="88" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -577,7 +577,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="new dogs" />
     <MESSAGE value="fixxx" />
     <MESSAGE value="more" />
     <MESSAGE value="fixess!!!" />
@@ -602,7 +601,8 @@
     <MESSAGE value="more fixes" />
     <MESSAGE value="fixes" />
     <MESSAGE value="dog fix" />
-    <option name="LAST_COMMIT_MESSAGE" value="dog fix" />
+    <MESSAGE value="fixx" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixx" />
   </component>
   <component name="XDebuggerManager">
     <watches-manager>

@@ -18,7 +18,6 @@ public class FoxMovementController : MonoBehaviour
 
     public FoxState currentState;
 
-    public bool attackFinished = false;
     public float shootDistance;
 
     public Rigidbody foxRigidbody;
@@ -32,6 +31,8 @@ public class FoxMovementController : MonoBehaviour
     public FoxAttackState currentAttackState;
 
     public float shouldWaitTicks = 0f;
+
+    public Transform fireballSpawnpoint;
 
     public enum FoxAttackState
     {
@@ -64,33 +65,24 @@ public class FoxMovementController : MonoBehaviour
     void FixedUpdate()
     {    
         //foxRigidbody.velocity *= 0.95f;
-        switch (currentState)
+        var from = this.transform.position;
+        var to = PlayerController.Instance.transform.position;
+        if ((to - from).sqrMagnitude < shootDistance)
         {
-            case FoxState.MoveTowardsPlayer:
-                var from = this.transform.position;
-                var to = PlayerController.Instance.transform.position;
-                if ((to - from).sqrMagnitude < shootDistance)
-                {
-                    currentState = FoxState.Attack;
-                    attackFinished = false;
-                    if (shouldWaitTicks >= 0)
-                    {
-                        shouldWaitTicks -= Time.fixedDeltaTime;
-                        return;
-                    }
-                    DoAttack();
-                    return;
-                }
-                var dir = (to - from).normalized;
-                unitcontroller.Walk(speed * dir,0.5f);
-                break;
-            case FoxState.Attack:
-                if (attackFinished)
-                {
-                    currentState = FoxState.MoveTowardsPlayer;
-                }
-                break;
+            if (shouldWaitTicks >= 0)
+            {
+                shouldWaitTicks -= Time.fixedDeltaTime;
+                return;
+            }
+            DoAttack();
+            return;
         }
+        else
+        {
+            SetTail(0);
+        }
+        var dir = (to - from).normalized;
+        unitcontroller.Walk(speed * dir,0.5f);
     }
 
     public void DoAttack()
@@ -112,7 +104,7 @@ public class FoxMovementController : MonoBehaviour
                 var fireball = Instantiate(bulletPrefab, ArenaController.Instance.decorationContainer).GetComponent<BulletController>();
                 var velocity = PlayerController.Instance.transform.position - this.transform.position;
                 velocity = Vector3.Normalize(velocity);
-                fireball.Init(BulletController.BulletType.Fireball, transform.position, velocity * 6, strength2:1, fromEnemy:true);
+                fireball.Init(BulletController.BulletType.Fireball, fireballSpawnpoint.position, velocity * 10, strength2:1, fromEnemy:true);
 
                 shouldWaitTicks = 0.3f;
                 currentAttackState = FoxAttackState.POST_ATTACK_1;
