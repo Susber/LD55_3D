@@ -52,7 +52,7 @@ namespace Components
             CardboardDestroyer myRendererCardboardDestroyer = transform.GetComponentInChildren<CardboardDestroyer>();
             if (myRendererCardboardDestroyer != null)
             {
-                myRendererCardboardDestroyer.SpawnDestroyedCardboard(20, knockBack);
+                myRendererCardboardDestroyer.SpawnDestroyedCardboard(5, knockBack);
             }
             Destroy(this.gameObject);
         }
