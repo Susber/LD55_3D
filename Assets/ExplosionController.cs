@@ -15,7 +15,7 @@ public class ExplosionController : MonoBehaviour
     public ParticleSystem smokeparticles;
 
     public SphereCollider spherecollider;
-    private float explosion_range_nerf = 1.5f;
+    private float explosion_range_nerf = 2.5f;
     
     public void Init(Vector3 pos, float size2, Color c)
     {
@@ -78,16 +78,16 @@ public class ExplosionController : MonoBehaviour
     {
         var displacement = rigidbody.position - this.transform.position;
         var dir = Vector3.Normalize(displacement);
-        var distance = Vector3.Magnitude(displacement)-explosion_range_nerf;
-        var force_magnitude = (size - distance) / size; // one at center, 0 at border of explosion (distance = size)
-        var knockback = force_magnitude * size * 200 * dir;
+        var distance = Vector3.Magnitude(displacement);
+        var force_magnitude = ((size-explosion_range_nerf) - distance) / (size-explosion_range_nerf); // one at center, 0 at border of explosion (distance = size)
+        var knockback = force_magnitude * (size-explosion_range_nerf) * 120 * dir;
         
         PlayerController playerController = rigidbody.gameObject.GetComponent<PlayerController>();
         if (playerController is not null)
             playerController.playerrigidbody.AddForce(knockback);
         UnitController unitController = rigidbody.gameObject.GetComponent<UnitController>();
         if (unitController is not null)
-            unitController.Damage(force_magnitude * size * 3, knockback);
+            unitController.Damage(force_magnitude * (size-explosion_range_nerf) * 3, knockback);
     }
     private void explode()
     {
