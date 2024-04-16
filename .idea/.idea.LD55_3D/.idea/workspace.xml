@@ -4,12 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1c1d15bd-9ebc-406e-a8b4-ae065e33b06d" name="Changes" comment="cheats, cheat fix und mehr">
+    <list default="true" id="1c1d15bd-9ebc-406e-a8b4-ae065e33b06d" name="Changes" comment="balance">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.LD55_3D/.idea/shelf/Uncommitted_changes_before_Update_at_16_04_2024_02_38__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.LD55_3D/.idea/shelf/Uncommitted_changes_before_Update_at_16_04_2024_02_38__Changes_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.LD55_3D/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.LD55_3D/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/BulletController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/BulletController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ExplosionController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ExplosionController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GunController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GunController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Coin.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Coin.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/RuneController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/RuneController.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,7 +36,11 @@
     <setting file="file://$PROJECT_DIR$/Assets/ArenaController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/BulletController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="mock://F:/spieleentwicklung/LD55_3D/Assets/BulletController.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://F:/spieleentwicklung/LD55_3D/Assets/BulletController.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://F:/spieleentwicklung/LD55_3D/Assets/BulletController.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://F:/spieleentwicklung/LD55_3D/Assets/EnemyIndicatorComponent.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://F:/spieleentwicklung/LD55_3D/Assets/ExplosionController.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://F:/spieleentwicklung/LD55_3D/Assets/ExplosionController.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://F:/spieleentwicklung/LD55_3D/Assets/ExplosionController.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://F:/spieleentwicklung/LD55_3D/Assets/ExplosionController.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://F:/spieleentwicklung/LD55_3D/Assets/GunController.cs" root0="SKIP_HIGHLIGHTING" />
@@ -46,6 +48,8 @@
     <setting file="file://$PROJECT_DIR$/Assets/Levels/AbstractWave.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Levels/Wave.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/PlayerController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://F:/spieleentwicklung/LD55_3D/Assets/Prefabs/Fox.prefab" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://F:/spieleentwicklung/LD55_3D/Assets/Prefabs/Fox.prefab" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://F:/spieleentwicklung/LD55_3D/Assets/RuneController.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://F:/spieleentwicklung/LD55_3D/Assets/Scenes/SampleScene.unity" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://F:/spieleentwicklung/LD55_3D/Assets/Scenes/SampleScene.unity" root0="SKIP_HIGHLIGHTING" />
@@ -53,7 +57,17 @@
     <setting file="mock://F:/spieleentwicklung/LD55_3D/Assets/Scenes/SampleScene.unity" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/SheepMovementController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/UnitController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://F:/spieleentwicklung/LD55_3D/Assets/UpgradeUIComponent.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://F:/spieleentwicklung/LD55_3D/Assets/UpgradeUIComponent.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://F:/spieleentwicklung/LD55_3D/Assets/UpgradeUIComponent.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://F:/spieleentwicklung/LD55_3D/Assets/UpgradeUIComponent.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://F:/spieleentwicklung/LD55_3D/Assets/UpgradeUIComponent.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://F:/spieleentwicklung/LD55_3D/Assets/UpgradeUIComponent.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://F:/spieleentwicklung/LD55_3D/Assets/UpgradeUIComponent.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://F:/spieleentwicklung/LD55_3D/Assets/UpgradeUIComponent.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Util.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://diff.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://diff.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://diff.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://diff.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://diff.cs" root0="SKIP_HIGHLIGHTING" />
@@ -432,7 +446,23 @@
       <option name="project" value="LOCAL" />
       <updated>1713225838833</updated>
     </task>
-    <option name="localTasksCounter" value="39" />
+    <task id="LOCAL-00039" summary="explosion nerf">
+      <option name="closed" value="true" />
+      <created>1713227310750</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1713227310750</updated>
+    </task>
+    <task id="LOCAL-00040" summary="balance">
+      <option name="closed" value="true" />
+      <created>1713230164224</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1713230164224</updated>
+    </task>
+    <option name="localTasksCounter" value="41" />
     <servers />
   </component>
   <component name="UnityCheckinConfiguration" checkUnsavedScenes="false" />
@@ -450,8 +480,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="scene fix" />
-    <MESSAGE value="gun" />
     <MESSAGE value="gun recoil" />
     <MESSAGE value="jo pusht bitte keinen müll" />
     <MESSAGE value="jo vllt was neues kp einfach syncron machen" />
@@ -475,6 +503,8 @@
     <MESSAGE value="rune 3" />
     <MESSAGE value="puff. wenn anton das ließt: bitte puff sagen." />
     <MESSAGE value="cheats, cheat fix und mehr" />
-    <option name="LAST_COMMIT_MESSAGE" value="cheats, cheat fix und mehr" />
+    <MESSAGE value="explosion nerf" />
+    <MESSAGE value="balance" />
+    <option name="LAST_COMMIT_MESSAGE" value="balance" />
   </component>
 </project>

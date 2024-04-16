@@ -116,7 +116,7 @@ public class RuneController : MonoBehaviour
         {
             var pos = rune.transform.position;
             float radius = rune.runeScale/2;
-            int n_minions = level;
+            int n_minions = ((int)level/2)+1;
 
             for (int i = 0; i < level; i++)
             {
