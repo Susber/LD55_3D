@@ -23,7 +23,8 @@ public class BulletController : MonoBehaviour
     public enum BulletType
     {
         Bullet,
-        Rocket
+        Rocket,
+        Fireball
     };
     
     void Start()
@@ -37,7 +38,10 @@ public class BulletController : MonoBehaviour
         bulletRigidbody.velocity = velocity;
         SetTeam(fromEnemy);
         this.level = strength2;
-        transform.rotation = Quaternion.LookRotation(velocity);
+        if (type!= BulletType.Fireball)
+        {
+            transform.rotation = Quaternion.LookRotation(velocity);
+        }
         ps = GetComponent<ParticleSystem>();
         tr = GetComponent<TrailRenderer>();
         setType(type);
@@ -56,6 +60,10 @@ public class BulletController : MonoBehaviour
                 ps.Play();
                 tr.enabled = false;
                 break;
+            case BulletType.Fireball:
+                transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
+                break;
+                
         }
         if (type == BulletType.Rocket)
             lifetime = 10;

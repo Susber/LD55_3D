@@ -174,10 +174,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9fd4198667cc714999036082723731c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 8
+  speed: 5
   currentState: 0
   attackFinished: 0
-  shootDistance: 20
+  shootDistance: 100
   foxRigidbody: {fileID: -4712540684494118786}
   unitcontroller: {fileID: 0}
   tails:
@@ -185,6 +185,7 @@ MonoBehaviour:
   - {fileID: 3042629455029813780}
   - {fileID: 7918238601994019925}
   - {fileID: 4090779142319498529}
+  bulletPrefab: {fileID: 3081014807101979079, guid: ae14e51e7ae8aa74f89c970e781bbf47, type: 3}
 --- !u!1001 &2951574058315477860
 PrefabInstance:
   m_ObjectHideFlags: 0
