@@ -32,7 +32,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 2.8372982, y: 9.589043, z: 0}
-  m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2784971239079146169}
@@ -98,7 +98,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 945b5828e5d3a44e9b7e9bb0fb696703, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lifetime: 3
+  lifetime: 100
   bulletRigidbody: {fileID: 5053093279220131840}
   bulletdamage: 1
   explosionPrefab: {fileID: 6593172532142632681, guid: 991e576b0511bb94794eb0dd6aa8fd7a, type: 3}
