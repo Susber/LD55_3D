@@ -130,7 +130,7 @@ LineRenderer:
     numCapVertices: 0
     alignment: 1
     textureMode: 1
-    textureScale: {x: 1, y: 1}
+    textureScale: {x: 0.16574, y: 1}
     shadowBias: 0.5
     generateLightingData: 0
   m_MaskInteraction: 0
@@ -157,6 +157,6 @@ MonoBehaviour:
   rightAlphaActive: 1
   leftNeighbor: {fileID: 0}
   rightNeighbor: {fileID: 0}
-  inactiveColor: {r: 0.5849056, g: 0.48714706, b: 0.32831967, a: 1}
-  activeColor: {r: 0.8113208, g: 0.13076907, b: 0.10332859, a: 0}
+  inactiveColor: {r: 0, g: 0, b: 0, a: 0}
+  activeColor: {r: 1, g: 0, b: 0, a: 1}
   drawThreshold: 1
