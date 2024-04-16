@@ -35,7 +35,7 @@ public class AudioManager : MonoBehaviour
 
         // Start with menu music muted and game music playing
         menuMusic.volume = 0;
-        gameMusic.volume = 0.3f;
+        gameMusic.volume = 0.4f;
         menuMusic.Play();
         gameMusic.Play();
     }
@@ -58,7 +58,7 @@ public class AudioManager : MonoBehaviour
     IEnumerator FadeAudio(AudioSource audioSource, bool fadeIn)
     {
         float startVolume = fadeIn ? 0 : audioSource.volume;
-        float endVolume = fadeIn ? 0.3f : 0;
+        float endVolume = fadeIn ? 0.4f : 0;
         float currentTime = 0;
 
         while (currentTime < fadeTime)
@@ -74,7 +74,7 @@ public class AudioManager : MonoBehaviour
         }
         else
         {
-            audioSource.volume = 0.3f; // Ensure volume is set to max after fading in
+            audioSource.volume = 0.4f; // Ensure volume is set to max after fading in
         }
     }
 
@@ -85,7 +85,7 @@ public class AudioManager : MonoBehaviour
 
     public void PlaySoundExplosion()
     {
-        PlaySound(1, 0.3f);
+        PlaySound(1, 0.4f);
     }
 
     public void PlaySoundDestroyEnemy()
@@ -122,7 +122,7 @@ public class AudioManager : MonoBehaviour
     }
     public void PlaySoundEnd()
     {
-        PlaySound(16, 0.3f);
+        PlaySound(16, 0.4f);
     }
 
     public void PlaySoundPentagram()
