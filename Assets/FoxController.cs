@@ -87,7 +87,7 @@ public class FoxMovementController : MonoBehaviour
         var fireball = Instantiate(bulletPrefab).GetComponent<BulletController>();
         var velocity = PlayerController.Instance.transform.position - this.transform.position;
         velocity = Vector3.Normalize(velocity);
-        fireball.Init(BulletController.BulletType.Fireball, transform.position, velocity * 8, strength2:1, fromEnemy:true);
+        fireball.Init(BulletController.BulletType.Fireball, transform.position, velocity * 6, strength2:1, fromEnemy:true);
         
         await Task.Delay(300);
         attackFinished = true;
