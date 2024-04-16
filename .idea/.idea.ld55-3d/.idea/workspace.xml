@@ -4,10 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8fd0fe12-69a8-4dfd-9394-ff892a1b4efa" name="Changes" comment="xx">
+    <list default="true" id="8fd0fe12-69a8-4dfd-9394-ff892a1b4efa" name="Changes" comment="neue preise">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.ld55-3d/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ld55-3d/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/PlayerController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/PlayerController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/UpgradeUIComponent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UpgradeUIComponent.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,8 +22,12 @@
     <setting file="mock:///Users/frithjof/Documents/dev/unity/ld55-3d/Assets/ArenaController.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Users/frithjof/Documents/dev/unity/ld55-3d/Assets/ArenaController.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Users/frithjof/Documents/dev/unity/ld55-3d/Assets/ArenaController.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Users/frithjof/Documents/dev/unity/ld55-3d/Assets/ArenaController.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Users/frithjof/Documents/dev/unity/ld55-3d/Assets/ArenaController.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Users/frithjof/Documents/dev/unity/ld55-3d/Assets/ArenaController.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Users/frithjof/Documents/dev/unity/ld55-3d/Assets/EnemyIndicatorComponent.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Users/frithjof/Documents/dev/unity/ld55-3d/Assets/EnemyIndicatorComponent.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Users/frithjof/Documents/dev/unity/ld55-3d/Assets/PlayerController.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Users/frithjof/Documents/dev/unity/ld55-3d/Assets/PlayerController.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Users/frithjof/Documents/dev/unity/ld55-3d/Assets/Scenes/SampleScene.unity" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Users/frithjof/Documents/dev/unity/ld55-3d/Assets/Scenes/SampleScene.unity" root0="SKIP_HIGHLIGHTING" />
@@ -148,47 +150,7 @@
       <workItem from="1713200551253" duration="2716000" />
       <workItem from="1713207433853" duration="852000" />
       <workItem from="1713208342900" duration="13018000" />
-      <workItem from="1713221965173" duration="4025000" />
-    </task>
-    <task id="LOCAL-00023" summary="disable ui by default">
-      <option name="closed" value="true" />
-      <created>1713136416675</created>
-      <option name="number" value="00023" />
-      <option name="presentableId" value="LOCAL-00023" />
-      <option name="project" value="LOCAL" />
-      <updated>1713136416675</updated>
-    </task>
-    <task id="LOCAL-00024" summary="ui, somewhat functional">
-      <option name="closed" value="true" />
-      <created>1713138889724</created>
-      <option name="number" value="00024" />
-      <option name="presentableId" value="LOCAL-00024" />
-      <option name="project" value="LOCAL" />
-      <updated>1713138889724</updated>
-    </task>
-    <task id="LOCAL-00025" summary="more">
-      <option name="closed" value="true" />
-      <created>1713139464133</created>
-      <option name="number" value="00025" />
-      <option name="presentableId" value="LOCAL-00025" />
-      <option name="project" value="LOCAL" />
-      <updated>1713139464133</updated>
-    </task>
-    <task id="LOCAL-00026" summary="sorry pals!">
-      <option name="closed" value="true" />
-      <created>1713139471331</created>
-      <option name="number" value="00026" />
-      <option name="presentableId" value="LOCAL-00026" />
-      <option name="project" value="LOCAL" />
-      <updated>1713139471331</updated>
-    </task>
-    <task id="LOCAL-00027" summary="hud">
-      <option name="closed" value="true" />
-      <created>1713140320378</created>
-      <option name="number" value="00027" />
-      <option name="presentableId" value="LOCAL-00027" />
-      <option name="project" value="LOCAL" />
-      <updated>1713140320378</updated>
+      <workItem from="1713221965173" duration="6738000" />
     </task>
     <task id="LOCAL-00028" summary="health hit autsch">
       <option name="closed" value="true" />
@@ -542,7 +504,47 @@
       <option name="project" value="LOCAL" />
       <updated>1713225926829</updated>
     </task>
-    <option name="localTasksCounter" value="72" />
+    <task id="LOCAL-00072" summary="xx">
+      <option name="closed" value="true" />
+      <created>1713226010475</created>
+      <option name="number" value="00072" />
+      <option name="presentableId" value="LOCAL-00072" />
+      <option name="project" value="LOCAL" />
+      <updated>1713226010475</updated>
+    </task>
+    <task id="LOCAL-00073" summary="arena wip">
+      <option name="closed" value="true" />
+      <created>1713226700091</created>
+      <option name="number" value="00073" />
+      <option name="presentableId" value="LOCAL-00073" />
+      <option name="project" value="LOCAL" />
+      <updated>1713226700091</updated>
+    </task>
+    <task id="LOCAL-00074" summary="upgrades">
+      <option name="closed" value="true" />
+      <created>1713227692091</created>
+      <option name="number" value="00074" />
+      <option name="presentableId" value="LOCAL-00074" />
+      <option name="project" value="LOCAL" />
+      <updated>1713227692091</updated>
+    </task>
+    <task id="LOCAL-00075" summary="fix">
+      <option name="closed" value="true" />
+      <created>1713227961703</created>
+      <option name="number" value="00075" />
+      <option name="presentableId" value="LOCAL-00075" />
+      <option name="project" value="LOCAL" />
+      <updated>1713227961703</updated>
+    </task>
+    <task id="LOCAL-00076" summary="neue preise">
+      <option name="closed" value="true" />
+      <created>1713228711113</created>
+      <option name="number" value="00076" />
+      <option name="presentableId" value="LOCAL-00076" />
+      <option name="project" value="LOCAL" />
+      <updated>1713228711113</updated>
+    </task>
+    <option name="localTasksCounter" value="77" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -569,10 +571,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="tutorial wip" />
-    <MESSAGE value="remove doggo" />
-    <MESSAGE value="merge" />
-    <MESSAGE value="more, fix for markus" />
     <MESSAGE value="tutorial more" />
     <MESSAGE value="getclosest to enemy" />
     <MESSAGE value="tut more" />
@@ -594,7 +592,11 @@
     <MESSAGE value="intro" />
     <MESSAGE value="upgrades more" />
     <MESSAGE value="xx" />
-    <option name="LAST_COMMIT_MESSAGE" value="xx" />
+    <MESSAGE value="arena wip" />
+    <MESSAGE value="upgrades" />
+    <MESSAGE value="fix" />
+    <MESSAGE value="neue preise" />
+    <option name="LAST_COMMIT_MESSAGE" value="neue preise" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

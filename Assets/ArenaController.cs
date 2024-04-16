@@ -347,7 +347,7 @@ public class ArenaController : MonoBehaviour
         var bestDistSquared = 0f;
         for (var i = 0; i < 100; i++)
         {
-            var rndPos = RandomPosOnArena(5f);
+            var rndPos = RandomPosOnArena(10f);
             var minDistSquared = Mathf.Infinity;
             foreach (var rune in existingRunes)
             {
