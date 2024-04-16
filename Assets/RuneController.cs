@@ -66,13 +66,13 @@ public class RuneController : MonoBehaviour
             var bombPrefab = ArenaController.Instance.bombPrefab;
             var mainExplosion = Instantiate(bombPrefab).GetComponent<BombController>();
             mainExplosion.transform.position = rune.transform.position;
-            mainExplosion.Init(Mathf.Lerp(5f, 10f, (level - 1) / 5f), 3f);
+            mainExplosion.Init(Mathf.Lerp(1.5f, 3f, (level - 1) / 5f), 3f);
             if (level > 2) {
                 foreach (var line in rune.lineSegments)
                 {
                     var cornerExplosion = Instantiate(bombPrefab).GetComponent<BombController>();
                     cornerExplosion.transform.position = line.left;
-                    cornerExplosion.Init(Mathf.Lerp(3f, 8f, (level - 1) / 5f), 3f);
+                    cornerExplosion.Init(Mathf.Lerp(1f, 2f, (level - 1) / 5f), 3f);
                 }
             }
             rune.summonEffectFinished = true;

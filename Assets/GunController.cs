@@ -69,7 +69,7 @@ public class GunController : MonoBehaviour
         int bonus = 0;
         if (ischarged)
             bonus = 2;
-        bullet.Init(BulletController.BulletType.Rocket, transform.position, dir * rocketSpeed,level + bonus, fromEnemy);
+        bullet.Init(BulletController.BulletType.Rocket, transform.position, dir * rocketSpeed,2 + level + bonus, fromEnemy);
     }
     public Guntype GetGuntype()
     {
@@ -96,7 +96,7 @@ public class GunController : MonoBehaviour
                 cooldown = Mathf.Lerp(0.5f, 0.1f, (level - 1) / 5f);//2f / (1 + level);//
                 break;
             case Guntype.Rocketlauncher:
-                cooldown = 6f / (1 + level);
+                cooldown = 4f / (1 + level);
                 break;
         }
     }
