@@ -80,7 +80,7 @@ public class ExplosionController : MonoBehaviour
         var dir = Vector3.Normalize(displacement);
         var distance = Vector3.Magnitude(displacement);
         var force_magnitude = ((size-explosion_range_nerf) - distance) / (size-explosion_range_nerf); // one at center, 0 at border of explosion (distance = size)
-        var knockback = force_magnitude * (size-explosion_range_nerf) * 200 * dir;
+        var knockback = force_magnitude * (size-explosion_range_nerf) * 120 * dir;
         
         PlayerController playerController = rigidbody.gameObject.GetComponent<PlayerController>();
         if (playerController is not null)
