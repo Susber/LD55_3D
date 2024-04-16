@@ -96,7 +96,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c6a9904e8415419c97dc9ee9badb551, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  suckForce: 1
+  suckForce: 4
   aliveTicks: 0
   maxLifetime: 20
 --- !u!1 &3246031330237382930

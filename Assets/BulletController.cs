@@ -54,19 +54,20 @@ public class BulletController : MonoBehaviour
         {
             case BulletType.Bullet:
                 transform.localScale = new Vector3(1, 1, 1);
+                lifetime = 0.5f;
                 break;
             case BulletType.Rocket:
                 transform.localScale = new Vector3(2, 2, 2);
                 ps.Play();
                 tr.enabled = false;
+                lifetime = 5f;
                 break;
             case BulletType.Fireball:
                 transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
                 break;
                 
         }
-        if (type == BulletType.Rocket)
-            lifetime = 10;
+        
     }
 
     // Update is called once per frame
