@@ -400,8 +400,8 @@ public class ArenaController : MonoBehaviour
                     SpawnRune(false);
                 levelWaveQueue.Clear();
 
-                levelWaveQueue.Add(new Wave(0, sheepPrefab, 1));
-                levelWaveQueue.Add(new Wave(1000, sheepPrefab, 1));
+                // levelWaveQueue.Add(new Wave(0, sheepPrefab, 1));
+                // levelWaveQueue.Add(new Wave(1000, sheepPrefab, 1));
 
                 levelWaveQueue.Add(new Wave(0, sheepPrefab, 10));
                 for (var n = 0; n < currentLevel + 1; n++)
