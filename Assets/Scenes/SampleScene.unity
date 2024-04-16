@@ -49789,7 +49789,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Go draw the pentagram on the floor!
+  m_Text: Draw the pentagram on the floor!
 --- !u!222 &1490192433
 CanvasRenderer:
   m_ObjectHideFlags: 0

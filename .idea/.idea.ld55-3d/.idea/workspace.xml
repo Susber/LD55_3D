@@ -4,17 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8fd0fe12-69a8-4dfd-9394-ff892a1b4efa" name="Changes" comment="">
+    <list default="true" id="8fd0fe12-69a8-4dfd-9394-ff892a1b4efa" name="Changes" comment="potential post fix, prevent y-fighting">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.ld55-3d/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ld55-3d/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ArenaController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ArenaController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/BombController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/BombController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/DogController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/DogController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/FoxController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/FoxController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Levels/Wave.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Levels/Wave.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/RuneController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/RuneController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/RuneLine.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/RuneLine.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/DeathMenu.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/DeathMenu.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Menu.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Menu.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Shading/CardboardFaceMat.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Shading/CardboardFaceMat.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Shading/billboardMat.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Shading/billboardMat.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Shading/RuneLineMaterial.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Shading/RuneLineMaterial.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites/pentagramdrawing.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/pentagramdrawing.png" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,26 +23,14 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Users/frithjof/Documents/dev/unity/ld55-3d/Assets/ArenaController.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Users/frithjof/Documents/dev/unity/ld55-3d/Assets/ArenaController.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Users/frithjof/Documents/dev/unity/ld55-3d/Assets/ArenaController.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Users/frithjof/Documents/dev/unity/ld55-3d/Assets/ArenaController.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Users/frithjof/Documents/dev/unity/ld55-3d/Assets/ArenaController.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Users/frithjof/Documents/dev/unity/ld55-3d/Assets/ArenaController.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Users/frithjof/Documents/dev/unity/ld55-3d/Assets/ArenaController.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Users/frithjof/Documents/dev/unity/ld55-3d/Assets/ArenaController.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Users/frithjof/Documents/dev/unity/ld55-3d/Assets/CarboardEffect/Cardboarder.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Users/frithjof/Documents/dev/unity/ld55-3d/Assets/EnemyIndicatorComponent.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Users/frithjof/Documents/dev/unity/ld55-3d/Assets/EnemyIndicatorComponent.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Users/frithjof/Documents/dev/unity/ld55-3d/Assets/PlayerController.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Users/frithjof/Documents/dev/unity/ld55-3d/Assets/PlayerController.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Users/frithjof/Documents/dev/unity/ld55-3d/Assets/Scenes/SampleScene.unity" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Users/frithjof/Documents/dev/unity/ld55-3d/Assets/Scenes/SampleScene.unity" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Users/frithjof/Documents/dev/unity/ld55-3d/Assets/Scenes/SampleScene.unity" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Users/frithjof/Documents/dev/unity/ld55-3d/Assets/Scenes/SampleScene.unity" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Users/frithjof/Documents/dev/unity/ld55-3d/Assets/UpgradeUIComponent.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Users/frithjof/Documents/dev/unity/ld55-3d/Assets/BombController.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Users/frithjof/Documents/dev/unity/ld55-3d/Assets/DogController.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Users/frithjof/Documents/dev/unity/ld55-3d/Assets/FoxController.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Users/frithjof/Documents/dev/unity/ld55-3d/Assets/FoxController.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Users/frithjof/Documents/dev/unity/ld55-3d/Assets/FoxController.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Users/frithjof/Documents/dev/unity/ld55-3d/Assets/FoxController.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Users/frithjof/Documents/dev/unity/ld55-3d/Assets/Levels/Wave.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Users/frithjof/Documents/dev/unity/ld55-3d/Assets/RuneController.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.2d.sprite@1.0.0/Editor/SpriteEditorModule/SpriteOutlineModule.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.2d.tilemap@1.0.0/Editor/GridEditorUtility.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ads@4.4.2/Editor/PostProcessBuildPlist.cs" root0="SKIP_HIGHLIGHTING" />
@@ -73,6 +59,7 @@
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.sysroot@2.0.7/Editor/NiceIO.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.textmeshpro@3.0.6/Scripts/Editor/TMP_SpriteAssetImporter.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Editor/EventSystem/EventTriggerEditor.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/UI/Core/FontUpdateTracker.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/UI/Core/Layout/CanvasScaler.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Tests/Editor/InputField/ContentValidation.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Tests/Runtime/Canvas/NoActiveCameraInSceneDoesNotCrashEditor.cs" root0="SKIP_HIGHLIGHTING" />
@@ -171,22 +158,7 @@
       <workItem from="1713207433853" duration="852000" />
       <workItem from="1713208342900" duration="13018000" />
       <workItem from="1713221965173" duration="15532000" />
-    </task>
-    <task id="LOCAL-00033" summary="explosions are shit">
-      <option name="closed" value="true" />
-      <created>1713172939305</created>
-      <option name="number" value="00033" />
-      <option name="presentableId" value="LOCAL-00033" />
-      <option name="project" value="LOCAL" />
-      <updated>1713172939305</updated>
-    </task>
-    <task id="LOCAL-00034" summary="new rune system">
-      <option name="closed" value="true" />
-      <created>1713177491075</created>
-      <option name="number" value="00034" />
-      <option name="presentableId" value="LOCAL-00034" />
-      <option name="project" value="LOCAL" />
-      <updated>1713177491075</updated>
+      <workItem from="1713295618085" duration="1502000" />
     </task>
     <task id="LOCAL-00035" summary="delay">
       <option name="closed" value="true" />
@@ -564,7 +536,23 @@
       <option name="project" value="LOCAL" />
       <updated>1713234832172</updated>
     </task>
-    <option name="localTasksCounter" value="82" />
+    <task id="LOCAL-00082" summary="remove the tasks">
+      <option name="closed" value="true" />
+      <created>1713295663792</created>
+      <option name="number" value="00082" />
+      <option name="presentableId" value="LOCAL-00082" />
+      <option name="project" value="LOCAL" />
+      <updated>1713295663792</updated>
+    </task>
+    <task id="LOCAL-00083" summary="potential post fix, prevent y-fighting">
+      <option name="closed" value="true" />
+      <created>1713295826009</created>
+      <option name="number" value="00083" />
+      <option name="presentableId" value="LOCAL-00083" />
+      <option name="project" value="LOCAL" />
+      <updated>1713295826009</updated>
+    </task>
+    <option name="localTasksCounter" value="84" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -591,8 +579,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="turn gun" />
-    <MESSAGE value="please no infinite loop" />
     <MESSAGE value="bomb controller" />
     <MESSAGE value="mm" />
     <MESSAGE value="shitty arrows" />
@@ -616,7 +602,9 @@
     <MESSAGE value="fix" />
     <MESSAGE value="fixxess" />
     <MESSAGE value="hot fix after deadline" />
-    <option name="LAST_COMMIT_MESSAGE" value="hot fix after deadline" />
+    <MESSAGE value="remove the tasks" />
+    <MESSAGE value="potential post fix, prevent y-fighting" />
+    <option name="LAST_COMMIT_MESSAGE" value="potential post fix, prevent y-fighting" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
