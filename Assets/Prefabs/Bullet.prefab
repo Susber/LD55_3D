@@ -98,9 +98,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 945b5828e5d3a44e9b7e9bb0fb696703, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lifetime: 3
+  lifetime: 0
   bulletRigidbody: {fileID: 5053093279220131840}
-  bulletdamage: 1
+  bulletdamage: 0.5
   explosionPrefab: {fileID: 6593172532142632681, guid: 991e576b0511bb94794eb0dd6aa8fd7a, type: 3}
 --- !u!96 &4695275575198648406
 TrailRenderer:

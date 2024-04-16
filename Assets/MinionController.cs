@@ -77,9 +77,11 @@ public class MinionController : MonoBehaviour
         if (target is not null)
         {
             var targetposition = target.transform.position;
-            gun.TryShootAt(targetposition);
-            float distance = (this.minionrigidbody.position - targetposition).sqrMagnitude;
-            if (distance > 20 * 20)
+            float distance_sqrt = (this.minionrigidbody.position - targetposition).sqrMagnitude;
+            var maxdistance = GunController.rocketSpeed * BulletController.rocketLifetime;
+            if(distance_sqrt < (maxdistance * maxdistance))
+                gun.TryShootAt(targetposition);
+            else
                 target = null;
         }
         else

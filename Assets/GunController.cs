@@ -15,7 +15,7 @@ public class GunController : MonoBehaviour
 
     public ParticleSystem ps;
 
-    public float cooldown = 0.50f;
+    private float cooldown = 0.50f;
     public float knockback;
     private float light_timer = 1f;
     private float light_duration = 0.1f;
@@ -31,7 +31,8 @@ public class GunController : MonoBehaviour
 
     public int level = 1;
 
-    public float bulletLifetime;
+    public static float rocketSpeed = 15;
+    public static float bulletSpeed = 50;
 
     private float timeout = 0; //current cooldown, 0 means shooting is possible
     // Start is called before the first frame update
@@ -39,6 +40,8 @@ public class GunController : MonoBehaviour
     private Guntype guntype;
     private int n_chargedrockets = 0;
     private bool ischarged = false;
+    
+    
 
     public enum Guntype
     {
@@ -59,15 +62,6 @@ public class GunController : MonoBehaviour
         this.SetGuntype(Guntype.Rocketlauncher);
     }
 
-    public void SetGuntype(Guntype gunType2)
-    {
-        guntype = gunType2;
-    }
-
-    public Guntype GetGuntype()
-    {
-        return guntype;
-    }
 
     void shootRocket(Vector3 dir)
     {
@@ -75,19 +69,34 @@ public class GunController : MonoBehaviour
         int bonus = 0;
         if (ischarged)
             bonus = 2;
-        bullet.Init(BulletController.BulletType.Rocket, transform.position, dir * 15,level + bonus, fromEnemy);
+        bullet.Init(BulletController.BulletType.Rocket, transform.position, dir * rocketSpeed,level + bonus, fromEnemy);
     }
+    public Guntype GetGuntype()
+    {
+        return guntype;
+    }
+    public void SetGuntype(Guntype gunType2)
+    {
+        guntype = gunType2;
+        UpdateGunStats();
+    }
+
 
     public void SetLevel(int level2)
     {
         this.level = level2;
+        UpdateGunStats();
+    }
+
+    private void UpdateGunStats()
+    {
         switch (guntype)
         {
             case Guntype.Shotgun:
-                cooldown = Mathf.Lerp(0.5f, 0.1f, (level - 1) / 5f);//2f / (1 + level);
+                cooldown = Mathf.Lerp(0.5f, 0.1f, (level - 1) / 5f);//2f / (1 + level);//
                 break;
             case Guntype.Rocketlauncher:
-                cooldown = 4f / (1 + level);
+                cooldown = 6f / (1 + level);
                 break;
         }
     }
@@ -101,7 +110,7 @@ public class GunController : MonoBehaviour
             var spreadDirection2d = Util.Rotate2d(new Vector2(dir.x, dir.z), shotAngle);
             var spreadDirection = new Vector3(spreadDirection2d.x, 0, spreadDirection2d.y);
             var bullet = Instantiate(bulletPrefab).GetComponent<BulletController>();
-            bullet.Init(BulletController.BulletType.Bullet, transform.position, spreadDirection * 50,level, this.fromEnemy );
+            bullet.Init(BulletController.BulletType.Bullet, transform.position, spreadDirection * bulletSpeed,level, this.fromEnemy );
             // bullet.SetTeam(false);
             // bullet.bulletRigidbody.velocity = spreadDirection * 50;
             // bullet.lifetime = bulletLifetime;

@@ -20,6 +20,9 @@ public class BulletController : MonoBehaviour
     private ParticleSystem ps;
     private TrailRenderer tr;
     private int level = 1;
+
+    public static float rocketLifetime = 1.5f;
+    public static float bulletLifetime = 0.25f;
     public enum BulletType
     {
         Bullet,
@@ -54,13 +57,13 @@ public class BulletController : MonoBehaviour
         {
             case BulletType.Bullet:
                 transform.localScale = new Vector3(1, 1, 1);
-                lifetime = 0.3f;
+                lifetime = bulletLifetime;
                 break;
             case BulletType.Rocket:
                 transform.localScale = new Vector3(2, 2, 2);
                 ps.Play();
                 tr.enabled = false;
-                lifetime = 2f;
+                lifetime = rocketLifetime;
                 break;
             case BulletType.Fireball:
                 transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
@@ -92,7 +95,7 @@ public class BulletController : MonoBehaviour
         if (bullettype == BulletType.Rocket)
         {
             var explosion = Instantiate(explosionPrefab).GetComponent<ExplosionController>();
-            explosion.Init(bulletRigidbody.position, 3 + level * 2, new Color(1f, 0.667f, 0f));
+            explosion.Init(bulletRigidbody.position, 3 + level * 1, new Color(1f, 0.667f, 0f));
         }
         ps.Stop();
         Destroy(gameObject);
@@ -112,7 +115,7 @@ public class BulletController : MonoBehaviour
         var unit = obstacle.GetComponent<UnitController>();
         if (unit != null)
         {
-            unit.Damage(bulletdamage + level/2f, bulletRigidbody.velocity.normalized * PlayerController.Instance.gun.knockback);
+            unit.Damage(bulletdamage + level/3f, bulletRigidbody.velocity.normalized * PlayerController.Instance.gun.knockback);
             OnHit();
         }
         else
