@@ -137,6 +137,11 @@ public class AudioManager : MonoBehaviour
         PlaySound(16, 0.3f);
     }
 
+    public void PlaySoundPentagram()
+    {
+        PlaySound(17, 0.6f);
+    }
+
 
     // Function to play a specific sound from the array
     public void PlaySound(int index, float volume)
