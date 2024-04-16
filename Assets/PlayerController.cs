@@ -44,6 +44,7 @@ public class PlayerController : MonoBehaviour
     {
         gun = Instantiate(gunPrefab, renderingContainer).GetComponent<GunController>();
         gun.Init(this.playerrigidbody, false, GunController.Guntype.Shotgun);
+        ArenaController.Instance.upgradeUi.DoUpdateStats();
     }
 
     private void FixedUpdate()
