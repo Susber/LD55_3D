@@ -81,7 +81,7 @@ public class ArenaController : MonoBehaviour
 
     private void Start()
     {
-        SetStage(GameStage.IN_LEVEL); // todo, change back to TUTORIAL
+        SetStage(GameStage.TUTORIAL); // todo, change back to TUTORIAL
 
         for (var x = 0; x < num_grass; x++)
         {
