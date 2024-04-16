@@ -53,13 +53,14 @@ public class UpgradeUIComponent : MonoBehaviour
                 break;
             }
         }
-        DoIncreaseStat(myStatNum);
+        stats[myStatNum] += 1;
+        DoUpdateStats();
         player.coins -= button.cost;
         UpdateUI();
         ArenaController.Instance.UpdateHud();
     }
 
-    public void DoIncreaseStat(int statNum)
+    public void DoUpdateStats()
     {
         switch (statNum)
         {
@@ -68,7 +69,7 @@ public class UpgradeUIComponent : MonoBehaviour
             case SummonBomb:
                 break; // these are handled indirectly
             case Speed:
-                PlayerController.Instance.speed += 1.2f;
+                PlayerController.Instance.speed = Mathf.Lerp((ArenaController.Instance.upgradeUi.stats[UpgradeUIComponent.Speed] - 1) / 5f, 4, 10);
                 break;
             case Weapon:
                 PlayerController.Instance.gun.cooldown = Mathf.Lerp(0.5f, 0.1f, (stats[Weapon] - 1) / 5f);
@@ -77,6 +78,5 @@ public class UpgradeUIComponent : MonoBehaviour
                 print("unknown stat? " + statNum);
                 break;
         }
-        stats[statNum] += 1;
     }
 }

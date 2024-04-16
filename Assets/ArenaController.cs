@@ -82,6 +82,7 @@ public class ArenaController : MonoBehaviour
     private void Start()
     {
         SetStage(GameStage.TUTORIAL); // todo, change back to TUTORIAL
+        upgradeUi.DoUpdateStats();
 
         for (var x = 0; x < num_grass; x++)
         {

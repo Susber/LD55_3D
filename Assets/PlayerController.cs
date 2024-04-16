@@ -55,7 +55,6 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        speed = Mathf.Lerp((ArenaController.Instance.upgradeUi.stats[UpgradeUIComponent.Speed] - 1) / 5f, 4, 10);
         switch (this.currentState)
         {
             case PlayerState.ALIVE:
