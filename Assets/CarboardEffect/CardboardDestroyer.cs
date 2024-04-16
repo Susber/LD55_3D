@@ -16,7 +16,7 @@ public class CardboardDestroyer : MonoBehaviour
 	public float CardboardTexScale = 1f;
 	public Color cardboardColor;
 
-    public void SpawnDestroyedCardboard(int targetNumPieces)
+    public void SpawnDestroyedCardboard(int targetNumPieces, Vector3 killingKnockback)
     {
         // Get object with correct mesh
         var frontFaceChild = transform.Find("renderer/CardboardFace");
@@ -49,6 +49,7 @@ public class CardboardDestroyer : MonoBehaviour
             GameObject xpPiece = GameObject.Instantiate(cardboardPiece, coinContainer);
             MeshCollider xpCollider = xpPiece.GetComponent<MeshCollider>();
             Rigidbody xpBody = xpPiece.GetComponent<Rigidbody>();
+            Debris xpBodyControlScript = xpPiece.GetComponent<Debris>();
             xpPiece.transform.position = transform.position;
             xpPiece.transform.rotation = transform.rotation;
             xpPiece.transform.localScale = transform.localScale;
@@ -87,10 +88,20 @@ public class CardboardDestroyer : MonoBehaviour
 			// Set xp collider and add random force
 			xpCollider.sharedMesh = null;
 			xpCollider.sharedMesh = frontFilter_side.mesh;
-            float forceIntensity = UnityEngine.Random.Range(0.1f, 1f);
-            xpBody.mass = 0.2f;
-            //xpBody.AddForce(forceIntensity * (Vector3.up + UnityEngine.Random.onUnitSphere).normalized, ForceMode.Impulse);
+            float forceIntensity = UnityEngine.Random.Range(0.5f, 2f);
+            xpBody.mass = 1f;
+            Vector3 force = forceIntensity * UnityEngine.Random.onUnitSphere + killingKnockback;
+            xpBody.AddForce(force, ForceMode.Force);
             xpBody.AddTorque(forceIntensity * (UnityEngine.Random.onUnitSphere), ForceMode.Force);
+
+			// set debris center for particle effect
+			Vector3 cog = Vector3.zero;
+			foreach (Vector3 v in boundary.vertices)
+			{
+				cog += v;
+			}
+			cog /= boundary.vertexCount;
+            xpBodyControlScript.debrisCenter = cog;
 		}
         // I dont need to be rendered anymore
         transform.gameObject.SetActive(false);

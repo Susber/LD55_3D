@@ -4,9 +4,12 @@ using UnityEngine;
 
 public class Debris : MonoBehaviour
 {
+	public GameObject poofParticles;
+	public Vector3 debrisCenter;
+
 	float myTimer = 0;
-	float explosionTime = 3;
-	float selfEndTime = 6;
+	float explosionTime = 3f;
+	float selfEndTime = 6f;
 	bool exploded = false;
 	bool deleted = false;
 
@@ -21,8 +24,9 @@ public class Debris : MonoBehaviour
 			{
 				Destroy(transform.GetChild(i).gameObject);
 			}
-			ParticleSystem ps = GetComponent<ParticleSystem>();
-			ps.Play();
+			var poof = Instantiate(poofParticles, transform);
+			poof.transform.localPosition = debrisCenter;
+			poof.transform.rotation = Quaternion.identity;
 		}
 
 		if (myTimer > selfEndTime && !deleted)
@@ -35,6 +39,8 @@ public class Debris : MonoBehaviour
 
 	private void Awake()
 	{
-		myTimer = 0; 		
+		myTimer = 0;
+		explosionTime = explosionTime + Random.Range(-0.1f, 0.1f);
+		selfEndTime = explosionTime + 2;
 	}
 }

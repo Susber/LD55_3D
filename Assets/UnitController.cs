@@ -27,7 +27,7 @@ namespace Components
             {
                 if (AudioManager.Instance is not null)
                     AudioManager.Instance.PlaySoundDestroyEnemy();
-                Die();
+                Die(knockback);
             } else
             {
                 if (AudioManager.Instance is not null)
@@ -39,7 +39,7 @@ namespace Components
         
         
 
-        void Die()
+        void Die(Vector3 knockBack)
         {
             for (var i = 0; i < coins; i++)
             {
@@ -52,7 +52,7 @@ namespace Components
             CardboardDestroyer myRendererCardboardDestroyer = transform.GetComponentInChildren<CardboardDestroyer>();
             if (myRendererCardboardDestroyer != null)
             {
-                myRendererCardboardDestroyer.SpawnDestroyedCardboard(10);
+                myRendererCardboardDestroyer.SpawnDestroyedCardboard(10, knockBack);
             }
             Destroy(this.gameObject);
         }
