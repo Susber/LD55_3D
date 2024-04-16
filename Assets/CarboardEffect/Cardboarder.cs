@@ -24,7 +24,7 @@ public class Cardboarder : MonoBehaviour
 		Transform c = transform.Find(name);
 		if (c != null)
 		{
-			Debug.Log("Found object " + c.ToString());
+			// Debug.Log("Found object " + c.ToString());
 			Destroy(c.gameObject);
 		}
 	}

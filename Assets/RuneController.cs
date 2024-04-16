@@ -112,7 +112,7 @@ public class RuneController : MonoBehaviour
             this.level = level;
         }
         
-        public async void PlayEffect(RuneController rune)
+        public void PlayEffect(RuneController rune)
         {
             var pos = rune.transform.position;
             float radius = rune.runeScale/2;
@@ -139,7 +139,7 @@ public class RuneController : MonoBehaviour
             this.level = level;
         }
         
-        public async void PlayEffect(RuneController rune)
+        public void PlayEffect(RuneController rune)
         {
             PlayerController.Instance.gun.ChargeWithRockets(3 + level * 4);
             

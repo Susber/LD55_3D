@@ -27,8 +27,10 @@ public class IntroSystem : MonoBehaviour
             {
                 SceneManager.LoadScene(1);
             }
-            stories[nextStory].SetActive(true);
-            nextStory++;
+            else {
+                stories[nextStory].SetActive(true);
+                nextStory++;
+            }
         }
     }
 }

@@ -4,10 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8fd0fe12-69a8-4dfd-9394-ff892a1b4efa" name="Changes" comment="fix">
+    <list default="true" id="8fd0fe12-69a8-4dfd-9394-ff892a1b4efa" name="Changes" comment="fixxess">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.ld55-3d/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ld55-3d/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/EnemyIndicatorComponent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/EnemyIndicatorComponent.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/IntroSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/IntroSystem.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/MinionController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MinionController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/RuneController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/RuneController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Shading/CardboardFaceMat.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Shading/CardboardFaceMat.mat" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -154,15 +155,7 @@
       <workItem from="1713200551253" duration="2716000" />
       <workItem from="1713207433853" duration="852000" />
       <workItem from="1713208342900" duration="13018000" />
-      <workItem from="1713221965173" duration="10829000" />
-    </task>
-    <task id="LOCAL-00031" summary="kockback">
-      <option name="closed" value="true" />
-      <created>1713169993231</created>
-      <option name="number" value="00031" />
-      <option name="presentableId" value="LOCAL-00031" />
-      <option name="project" value="LOCAL" />
-      <updated>1713169993231</updated>
+      <workItem from="1713221965173" duration="12715000" />
     </task>
     <task id="LOCAL-00032" summary="cleanup scene">
       <option name="closed" value="true" />
@@ -548,7 +541,15 @@
       <option name="project" value="LOCAL" />
       <updated>1713232504075</updated>
     </task>
-    <option name="localTasksCounter" value="80" />
+    <task id="LOCAL-00080" summary="fixxess">
+      <option name="closed" value="true" />
+      <created>1713233134230</created>
+      <option name="number" value="00080" />
+      <option name="presentableId" value="LOCAL-00080" />
+      <option name="project" value="LOCAL" />
+      <updated>1713233134230</updated>
+    </task>
+    <option name="localTasksCounter" value="81" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -575,7 +576,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="tut more" />
     <MESSAGE value="more sstuffs" />
     <MESSAGE value="turn gun" />
     <MESSAGE value="please no infinite loop" />
@@ -600,7 +600,8 @@
     <MESSAGE value="f" />
     <MESSAGE value="preise und mehr" />
     <MESSAGE value="fix" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix" />
+    <MESSAGE value="fixxess" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixxess" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

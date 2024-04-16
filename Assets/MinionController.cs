@@ -26,7 +26,6 @@ public class MinionController : MonoBehaviour
     public GunController gun;
 
     private float lifetime = 100;
-    private Boolean invincible = false;
 
     private void Start()
     {
@@ -47,13 +46,10 @@ public class MinionController : MonoBehaviour
         gun.Init(this.minionrigidbody, false, GunController.Guntype.Rocketlauncher);
         gun.SetGuntype(GunController.Guntype.Rocketlauncher);
         gun.SetLevel(strength);
-        if (this.lifetime < 0)
-            invincible = true;
     }
     
     void FixedUpdate()
-    {    
-        
+    {
         if (PlayerController.Instance is not null)
         {
             var from = this.transform.position;
