@@ -4,15 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8fd0fe12-69a8-4dfd-9394-ff892a1b4efa" name="Changes" comment="potential post fix, prevent y-fighting">
+    <list default="true" id="8fd0fe12-69a8-4dfd-9394-ff892a1b4efa" name="Changes" comment="dog fix">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.ld55-3d/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ld55-3d/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/RuneLine.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/RuneLine.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/DeathMenu.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/DeathMenu.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Menu.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Menu.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Fox.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Fox.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/IntroScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/IntroScene.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Shading/CardboardFaceMat.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Shading/CardboardFaceMat.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Shading/RuneLineMaterial.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Shading/RuneLineMaterial.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/pentagramdrawing.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/pentagramdrawing.png" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,6 +27,7 @@
     <setting file="mock:///Users/frithjof/Documents/dev/unity/ld55-3d/Assets/FoxController.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Users/frithjof/Documents/dev/unity/ld55-3d/Assets/FoxController.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Users/frithjof/Documents/dev/unity/ld55-3d/Assets/Levels/Wave.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Users/frithjof/Documents/dev/unity/ld55-3d/Assets/Prefabs/Dog.prefab" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Users/frithjof/Documents/dev/unity/ld55-3d/Assets/RuneController.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.2d.sprite@1.0.0/Editor/SpriteEditorModule/SpriteOutlineModule.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.2d.tilemap@1.0.0/Editor/GridEditorUtility.cs" root0="SKIP_HIGHLIGHTING" />
@@ -127,10 +125,10 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="90379">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" />
+      <option name="pid" value="90379" />
       <option name="projectPathOnTarget" />
       <option name="selectedOptions">
         <list />
@@ -158,31 +156,7 @@
       <workItem from="1713207433853" duration="852000" />
       <workItem from="1713208342900" duration="13018000" />
       <workItem from="1713221965173" duration="15532000" />
-      <workItem from="1713295618085" duration="1502000" />
-    </task>
-    <task id="LOCAL-00035" summary="delay">
-      <option name="closed" value="true" />
-      <created>1713178810379</created>
-      <option name="number" value="00035" />
-      <option name="presentableId" value="LOCAL-00035" />
-      <option name="project" value="LOCAL" />
-      <updated>1713178810379</updated>
-    </task>
-    <task id="LOCAL-00036" summary="fix error messages">
-      <option name="closed" value="true" />
-      <created>1713179659309</created>
-      <option name="number" value="00036" />
-      <option name="presentableId" value="LOCAL-00036" />
-      <option name="project" value="LOCAL" />
-      <updated>1713179659309</updated>
-    </task>
-    <task id="LOCAL-00037" summary="spawn enemies in circle around player">
-      <option name="closed" value="true" />
-      <created>1713180848759</created>
-      <option name="number" value="00037" />
-      <option name="presentableId" value="LOCAL-00037" />
-      <option name="project" value="LOCAL" />
-      <updated>1713180848759</updated>
+      <workItem from="1713295618085" duration="3061000" />
     </task>
     <task id="LOCAL-00038" summary="new gun">
       <option name="closed" value="true" />
@@ -552,7 +526,31 @@
       <option name="project" value="LOCAL" />
       <updated>1713295826009</updated>
     </task>
-    <option name="localTasksCounter" value="84" />
+    <task id="LOCAL-00084" summary="more fixes">
+      <option name="closed" value="true" />
+      <created>1713298156446</created>
+      <option name="number" value="00084" />
+      <option name="presentableId" value="LOCAL-00084" />
+      <option name="project" value="LOCAL" />
+      <updated>1713298156446</updated>
+    </task>
+    <task id="LOCAL-00085" summary="fixes">
+      <option name="closed" value="true" />
+      <created>1713298772383</created>
+      <option name="number" value="00085" />
+      <option name="presentableId" value="LOCAL-00085" />
+      <option name="project" value="LOCAL" />
+      <updated>1713298772383</updated>
+    </task>
+    <task id="LOCAL-00086" summary="dog fix">
+      <option name="closed" value="true" />
+      <created>1713299125753</created>
+      <option name="number" value="00086" />
+      <option name="presentableId" value="LOCAL-00086" />
+      <option name="project" value="LOCAL" />
+      <updated>1713299125753</updated>
+    </task>
+    <option name="localTasksCounter" value="87" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -579,9 +577,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="bomb controller" />
-    <MESSAGE value="mm" />
-    <MESSAGE value="shitty arrows" />
     <MESSAGE value="new dogs" />
     <MESSAGE value="fixxx" />
     <MESSAGE value="more" />
@@ -604,26 +599,12 @@
     <MESSAGE value="hot fix after deadline" />
     <MESSAGE value="remove the tasks" />
     <MESSAGE value="potential post fix, prevent y-fighting" />
-    <option name="LAST_COMMIT_MESSAGE" value="potential post fix, prevent y-fighting" />
+    <MESSAGE value="more fixes" />
+    <MESSAGE value="fixes" />
+    <MESSAGE value="dog fix" />
+    <option name="LAST_COMMIT_MESSAGE" value="dog fix" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/EnemyIndicatorComponent.cs</url>
-          <line>80</line>
-          <properties documentPath="$PROJECT_DIR$/Assets/EnemyIndicatorComponent.cs" containingFunctionPresentation="Method 'Update'">
-            <startOffsets>
-              <option value="2765" />
-            </startOffsets>
-            <endOffsets>
-              <option value="2830" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
     <watches-manager>
       <configuration name="UNITY_DEBUG_RUN_CONFIGURATION">
         <watch expression="(randomPos - transform.position).magnitude" language="C#" />
