@@ -102,10 +102,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   holder: {fileID: 0}
   playerController: {fileID: 0}
-  bulletPrefab: {fileID: 3081014807101979079, guid: ad76d7c6d3f90b5439db3191d096ae8c,
-    type: 3}
-  explosionPrefab: {fileID: 6593172532142632681, guid: 991e576b0511bb94794eb0dd6aa8fd7a,
-    type: 3}
+  bulletPrefab: {fileID: 3081014807101979079, guid: ad76d7c6d3f90b5439db3191d096ae8c, type: 3}
+  explosionPrefab: {fileID: 6593172532142632681, guid: 991e576b0511bb94794eb0dd6aa8fd7a, type: 3}
   smoke: {fileID: 8847896168246100584}
   myLight: {fileID: 2182355203564418239}
   ps: {fileID: 0}
@@ -276,8 +274,8 @@ SpriteRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6263036144966523764}
   m_Enabled: 1
-  m_CastShadows: 0
-  m_ReceiveShadows: 0
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
   m_MotionVectors: 1
@@ -411,10 +409,8 @@ MonoBehaviour:
   CardboardTickness: 0.1
   DoubleSided: 1
   DuplicateSpriteOnBackFace: 1
-  CardboardLineMaterial: {fileID: 2100000, guid: 34000f52b6e8f9f41960347ae81e0859,
-    type: 2}
-  CardboardFaceMaterial: {fileID: 2100000, guid: 1403fc2ab19269c4caa83692d9ade743,
-    type: 2}
+  CardboardLineMaterial: {fileID: 2100000, guid: 34000f52b6e8f9f41960347ae81e0859, type: 2}
+  CardboardFaceMaterial: {fileID: 2100000, guid: 1403fc2ab19269c4caa83692d9ade743, type: 2}
   FaceFillColor: {r: 0.3301887, g: 0.108720176, b: 0.04516733, a: 0}
 --- !u!1 &8619900398259402455
 GameObject:
