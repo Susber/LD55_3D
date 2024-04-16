@@ -25,7 +25,7 @@ public class IntroSystem : MonoBehaviour
         {
             if (nextStory == 4)
             {
-                SceneManager.LoadScene(0);
+                SceneManager.LoadScene(1);
             }
             stories[nextStory].SetActive(true);
             nextStory++;
