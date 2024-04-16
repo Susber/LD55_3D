@@ -40,18 +40,6 @@ public class AudioManager : MonoBehaviour
         gameMusic.Play();
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            FadeToMenuMusic();
-        }
-
-        if (Input.GetKeyDown(KeyCode.Alpha1))
-        {
-            FadeToGameMusic();
-        }
-    }
 
     // Call this to fade to menu music
     public void FadeToMenuMusic()
