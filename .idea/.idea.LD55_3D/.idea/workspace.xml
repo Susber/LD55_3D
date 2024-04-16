@@ -4,12 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1c1d15bd-9ebc-406e-a8b4-ae065e33b06d" name="Changes" comment="puff. wenn anton das ließt: bitte puff sagen.">
+    <list default="true" id="1c1d15bd-9ebc-406e-a8b4-ae065e33b06d" name="Changes" comment="cheats, cheat fix und mehr">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.LD55_3D/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.LD55_3D/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/JC_StylizedRocks_Lite/JC_StylizedRocks_Lite_2022.3.1_HDRP_v1.0.unitypackage.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/JC_StylizedRocks_Lite/JC_StylizedRocks_Lite_2022.3.1_URP_v1.0.unitypackage.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/PlayerController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/PlayerController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/XPCardboard.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/XPCardboard.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BulletController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/BulletController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ExplosionController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ExplosionController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/GunController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GunController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Coin.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Coin.prefab" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,6 +41,7 @@
     <setting file="mock://F:/spieleentwicklung/LD55_3D/Assets/EnemyIndicatorComponent.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://F:/spieleentwicklung/LD55_3D/Assets/ExplosionController.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://F:/spieleentwicklung/LD55_3D/Assets/ExplosionController.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://F:/spieleentwicklung/LD55_3D/Assets/GunController.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://F:/spieleentwicklung/LD55_3D/Assets/GunController.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Levels/AbstractWave.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Levels/Wave.cs" root0="FORCE_HIGHLIGHTING" />
@@ -423,7 +424,15 @@
       <option name="project" value="LOCAL" />
       <updated>1713225013630</updated>
     </task>
-    <option name="localTasksCounter" value="38" />
+    <task id="LOCAL-00038" summary="cheats, cheat fix und mehr">
+      <option name="closed" value="true" />
+      <created>1713225838833</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1713225838833</updated>
+    </task>
+    <option name="localTasksCounter" value="39" />
     <servers />
   </component>
   <component name="UnityCheckinConfiguration" checkUnsavedScenes="false" />
@@ -441,7 +450,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="collider fix" />
     <MESSAGE value="scene fix" />
     <MESSAGE value="gun" />
     <MESSAGE value="gun recoil" />
@@ -466,6 +474,7 @@
     <MESSAGE value="temp rocketlauncher, less debug spam" />
     <MESSAGE value="rune 3" />
     <MESSAGE value="puff. wenn anton das ließt: bitte puff sagen." />
-    <option name="LAST_COMMIT_MESSAGE" value="puff. wenn anton das ließt: bitte puff sagen." />
+    <MESSAGE value="cheats, cheat fix und mehr" />
+    <option name="LAST_COMMIT_MESSAGE" value="cheats, cheat fix und mehr" />
   </component>
 </project>

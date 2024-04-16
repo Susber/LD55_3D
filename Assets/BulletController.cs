@@ -50,15 +50,15 @@ public class BulletController : MonoBehaviour
         {
             case BulletType.Bullet:
                 transform.localScale = new Vector3(1, 1, 1);
+                lifetime = 1f;
                 break;
             case BulletType.Rocket:
                 transform.localScale = new Vector3(2, 2, 2);
                 ps.Play();
                 tr.enabled = false;
+                lifetime = 6f;
                 break;
         }
-        if (type == BulletType.Rocket)
-            lifetime = 10;
     }
 
     // Update is called once per frame

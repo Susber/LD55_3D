@@ -149,4 +149,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   suckForce: 1
   aliveTicks: 0
-  maxLifetime: 10
+  maxLifetime: 20
