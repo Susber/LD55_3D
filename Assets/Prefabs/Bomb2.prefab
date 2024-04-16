@@ -180,7 +180,7 @@ GameObject:
   - component: {fileID: 3271169488725055913}
   - component: {fileID: 1003258140033608434}
   m_Layer: 0
-  m_Name: Bomb
+  m_Name: Bomb2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
