@@ -85,7 +85,7 @@ public class GunController : MonoBehaviour
         switch (guntype)
         {
             case Guntype.Shotgun:
-                cooldown = 2f / (1 + level);
+                cooldown = Mathf.Lerp(0.5f, 0.1f, (level - 1) / 5f);//2f / (1 + level);
                 break;
             case Guntype.Rocketlauncher:
                 cooldown = 4f / (1 + level);

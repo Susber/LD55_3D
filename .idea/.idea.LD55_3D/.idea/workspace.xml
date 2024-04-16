@@ -4,11 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1c1d15bd-9ebc-406e-a8b4-ae065e33b06d" name="Changes" comment="fireball speed" />
+    <list default="true" id="1c1d15bd-9ebc-406e-a8b4-ae065e33b06d" name="Changes" comment="balance">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.LD55_3D/.idea/shelf/Uncommitted_changes_before_Update_at_16_04_2024_02_38__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.LD55_3D/.idea/shelf/Uncommitted_changes_before_Update_at_16_04_2024_02_38__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.LD55_3D/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.LD55_3D/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/RuneController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/RuneController.cs" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
   &quot;lastFilter&quot;: {
@@ -24,33 +31,47 @@
 }</component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/1ef406b3fd3a4bfbac8a7b76b99d890b1fe00/1d/c376d154/Rigidbody.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Sylwia/RiderProjects/LD55_3D/Assets/ArenaController.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Sylwia/RiderProjects/LD55_3D/Assets/ArenaController.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Sylwia/RiderProjects/LD55_3D/Assets/ArenaController.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Sylwia/RiderProjects/LD55_3D/Assets/ArenaController.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Sylwia/RiderProjects/LD55_3D/Assets/ArenaController.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Sylwia/RiderProjects/LD55_3D/Assets/ArenaController.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/c5ed782439084ef1bc2ad85eec89e9fe175a00/4c/4b0af9f7/Color.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://F:/spieleentwicklung/LD55_3D/Assets/ArenaController.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/ArenaController.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Sylwia/RiderProjects/LD55_3D/Assets/ArenaController.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/BombController.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Sylwia/RiderProjects/LD55_3D/Assets/BulletController.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/BulletController.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Sylwia/RiderProjects/LD55_3D/Assets/FoxController.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Sylwia/RiderProjects/LD55_3D/Assets/FoxController.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://F:/spieleentwicklung/LD55_3D/Assets/BulletController.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://F:/spieleentwicklung/LD55_3D/Assets/BulletController.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://F:/spieleentwicklung/LD55_3D/Assets/BulletController.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://F:/spieleentwicklung/LD55_3D/Assets/EnemyIndicatorComponent.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://F:/spieleentwicklung/LD55_3D/Assets/ExplosionController.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://F:/spieleentwicklung/LD55_3D/Assets/ExplosionController.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://F:/spieleentwicklung/LD55_3D/Assets/ExplosionController.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://F:/spieleentwicklung/LD55_3D/Assets/ExplosionController.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://F:/spieleentwicklung/LD55_3D/Assets/GunController.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://F:/spieleentwicklung/LD55_3D/Assets/GunController.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Levels/AbstractWave.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Levels/Wave.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/PlayerController.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Sylwia/RiderProjects/LD55_3D/Assets/Prefabs/Bomb.prefab" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Sylwia/RiderProjects/LD55_3D/Assets/Prefabs/Fireball.prefab" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Sylwia/RiderProjects/LD55_3D/Assets/Prefabs/Fireball.prefab" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Sylwia/RiderProjects/LD55_3D/Assets/Scenes/SampleScene.unity" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Sylwia/RiderProjects/LD55_3D/Assets/Scenes/SampleScene.unity" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://F:/spieleentwicklung/LD55_3D/Assets/Prefabs/Fox.prefab" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://F:/spieleentwicklung/LD55_3D/Assets/Prefabs/Fox.prefab" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://F:/spieleentwicklung/LD55_3D/Assets/RuneController.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://F:/spieleentwicklung/LD55_3D/Assets/Scenes/SampleScene.unity" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://F:/spieleentwicklung/LD55_3D/Assets/Scenes/SampleScene.unity" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://F:/spieleentwicklung/LD55_3D/Assets/Scenes/SampleScene.unity" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://F:/spieleentwicklung/LD55_3D/Assets/Scenes/SampleScene.unity" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/SheepMovementController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/UnitController.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/UpgradeUIComponent.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://F:/spieleentwicklung/LD55_3D/Assets/UpgradeUIComponent.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://F:/spieleentwicklung/LD55_3D/Assets/UpgradeUIComponent.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://F:/spieleentwicklung/LD55_3D/Assets/UpgradeUIComponent.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://F:/spieleentwicklung/LD55_3D/Assets/UpgradeUIComponent.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://F:/spieleentwicklung/LD55_3D/Assets/UpgradeUIComponent.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://F:/spieleentwicklung/LD55_3D/Assets/UpgradeUIComponent.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://F:/spieleentwicklung/LD55_3D/Assets/UpgradeUIComponent.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://F:/spieleentwicklung/LD55_3D/Assets/UpgradeUIComponent.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Util.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ide.visualstudio@2.0.22/Editor/Image.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.purchasing@4.11.0/Samples~/Apple App Store - 12 UpgradeDowngradeSubscription/UpgradeDowngradeSubscription.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://diff.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://diff.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://diff.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://diff.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://diff.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://diff.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="false" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -76,7 +97,7 @@
 }</component>
   <component name="RunManager" selected="Standalone Player.Start Unity">
     <configuration name="Start Unity" type="RunUnityExe" factoryName="Unity Executable">
-      <option name="EXE_PATH" value="C:\Program Files\Unity 2022.3.24f1\Editor\Unity.exe" />
+      <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\2022.3.24f1\Editor\Unity.exe" />
       <option name="PROGRAM_PARAMETERS" value="-projectPath F:\spieleentwicklung\LD55_3D -debugCodeOptimization" />
       <option name="WORKING_DIRECTORY" value="F:\spieleentwicklung\LD55_3D" />
       <option name="PASS_PARENT_ENVS" value="1" />
@@ -84,7 +105,7 @@
       <method v="2" />
     </configuration>
     <configuration name="Unit Tests (batch mode)" type="RunUnityExe" factoryName="Unity Executable">
-      <option name="EXE_PATH" value="C:\Program Files\Unity 2022.3.24f1\Editor\Unity.exe" />
+      <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\2022.3.24f1\Editor\Unity.exe" />
       <option name="PROGRAM_PARAMETERS" value="-runTests -batchmode -projectPath F:\spieleentwicklung\LD55_3D -testResults Logs/results.xml -testPlatform EditMode -debugCodeOptimization" />
       <option name="WORKING_DIRECTORY" value="F:\spieleentwicklung\LD55_3D" />
       <option name="PASS_PARENT_ENVS" value="1" />
@@ -385,23 +406,63 @@
       <option name="project" value="LOCAL" />
       <updated>1713221076084</updated>
     </task>
-    <task id="LOCAL-00034" summary="arenacontroller">
+    <task id="LOCAL-00034" summary="faster rockets babies!">
       <option name="closed" value="true" />
-      <created>1713228076694</created>
+      <created>1713221175619</created>
       <option name="number" value="00034" />
       <option name="presentableId" value="LOCAL-00034" />
       <option name="project" value="LOCAL" />
-      <updated>1713228076694</updated>
+      <updated>1713221175619</updated>
     </task>
-    <task id="LOCAL-00035" summary="fireball speed">
+    <task id="LOCAL-00035" summary="temp rocketlauncher, less debug spam">
       <option name="closed" value="true" />
-      <created>1713228568940</created>
+      <created>1713222439990</created>
       <option name="number" value="00035" />
       <option name="presentableId" value="LOCAL-00035" />
       <option name="project" value="LOCAL" />
-      <updated>1713228568940</updated>
+      <updated>1713222439990</updated>
     </task>
-    <option name="localTasksCounter" value="36" />
+    <task id="LOCAL-00036" summary="rune 3">
+      <option name="closed" value="true" />
+      <created>1713222758554</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1713222758554</updated>
+    </task>
+    <task id="LOCAL-00037" summary="puff. wenn anton das ließt: bitte puff sagen.">
+      <option name="closed" value="true" />
+      <created>1713225013630</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1713225013630</updated>
+    </task>
+    <task id="LOCAL-00038" summary="cheats, cheat fix und mehr">
+      <option name="closed" value="true" />
+      <created>1713225838833</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1713225838833</updated>
+    </task>
+    <task id="LOCAL-00039" summary="explosion nerf">
+      <option name="closed" value="true" />
+      <created>1713227310750</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1713227310750</updated>
+    </task>
+    <task id="LOCAL-00040" summary="balance">
+      <option name="closed" value="true" />
+      <created>1713230164224</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1713230164224</updated>
+    </task>
+    <option name="localTasksCounter" value="41" />
     <servers />
   </component>
   <component name="UnityCheckinConfiguration" checkUnsavedScenes="false" />
@@ -419,11 +480,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="stuff" />
-    <MESSAGE value="bullet fix" />
-    <MESSAGE value="collider fix" />
-    <MESSAGE value="scene fix" />
-    <MESSAGE value="gun" />
     <MESSAGE value="gun recoil" />
     <MESSAGE value="jo pusht bitte keinen müll" />
     <MESSAGE value="jo vllt was neues kp einfach syncron machen" />
@@ -442,8 +498,13 @@
     <MESSAGE value="fixes" />
     <MESSAGE value="explosion damage" />
     <MESSAGE value="shotgun is back babies" />
-    <MESSAGE value="arenacontroller" />
-    <MESSAGE value="fireball speed" />
-    <option name="LAST_COMMIT_MESSAGE" value="fireball speed" />
+    <MESSAGE value="faster rockets babies!" />
+    <MESSAGE value="temp rocketlauncher, less debug spam" />
+    <MESSAGE value="rune 3" />
+    <MESSAGE value="puff. wenn anton das ließt: bitte puff sagen." />
+    <MESSAGE value="cheats, cheat fix und mehr" />
+    <MESSAGE value="explosion nerf" />
+    <MESSAGE value="balance" />
+    <option name="LAST_COMMIT_MESSAGE" value="balance" />
   </component>
 </project>
