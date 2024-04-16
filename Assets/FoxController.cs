@@ -5,7 +5,6 @@ using System.Collections.Generic;
 using Components;
 using UnityEngine;
 using UnityEngine.UI;
-using System.Threading.Tasks;
 using Unity.VisualScripting;
 
 public class FoxMovementController : MonoBehaviour
@@ -29,6 +28,20 @@ public class FoxMovementController : MonoBehaviour
     public GameObject[] tails;
     
     public GameObject bulletPrefab;
+
+    public FoxAttackState currentAttackState;
+
+    public float shouldWaitTicks = 0f;
+
+    public enum FoxAttackState
+    {
+        PRE_ATTACK_1,
+        PRE_ATTACK_2,
+        ATTACK,
+        POST_ATTACK_1,
+        POST_ATTACK_2,
+        POST_ATTACK_3
+    }
 
     private void Start()
     {
@@ -60,6 +73,11 @@ public class FoxMovementController : MonoBehaviour
                 {
                     currentState = FoxState.Attack;
                     attackFinished = false;
+                    if (shouldWaitTicks >= 0)
+                    {
+                        shouldWaitTicks -= Time.fixedDeltaTime;
+                        return;
+                    }
                     DoAttack();
                     return;
                 }
@@ -75,28 +93,45 @@ public class FoxMovementController : MonoBehaviour
         }
     }
 
-    public async void DoAttack()
+    public void DoAttack()
     {
-        SetTail(1);
-        await Task.Delay(300);
-        SetTail(2);
-        await Task.Delay(300);
-        SetTail(3);
-        // shoot ...
-        // spawn fireball
-        var fireball = Instantiate(bulletPrefab, ArenaController.Instance.decorationContainer).GetComponent<BulletController>();
-        var velocity = PlayerController.Instance.transform.position - this.transform.position;
-        velocity = Vector3.Normalize(velocity);
-        fireball.Init(BulletController.BulletType.Fireball, transform.position, velocity * 6, strength2:1, fromEnemy:true);
-        
-        await Task.Delay(300);
-        attackFinished = true;
-        SetTail(2);
-        await Task.Delay(300);
-        SetTail(1);
-        await Task.Delay(300);
-        SetTail(0);
-        await Task.Delay(300);
+        switch (currentAttackState)
+        {
+            case FoxAttackState.PRE_ATTACK_1:
+                SetTail(1);
+                shouldWaitTicks = 0.3f;
+                currentAttackState = FoxAttackState.PRE_ATTACK_2;
+                break;
+            case FoxAttackState.PRE_ATTACK_2:
+                SetTail(2);
+                shouldWaitTicks = 0.3f;
+                currentAttackState = FoxAttackState.ATTACK;
+                break;
+            case FoxAttackState.ATTACK:
+                SetTail(3);
+                var fireball = Instantiate(bulletPrefab, ArenaController.Instance.decorationContainer).GetComponent<BulletController>();
+                var velocity = PlayerController.Instance.transform.position - this.transform.position;
+                velocity = Vector3.Normalize(velocity);
+                fireball.Init(BulletController.BulletType.Fireball, transform.position, velocity * 6, strength2:1, fromEnemy:true);
 
+                shouldWaitTicks = 0.3f;
+                currentAttackState = FoxAttackState.POST_ATTACK_1;
+                break;
+            case FoxAttackState.POST_ATTACK_1:
+                SetTail(2);
+                shouldWaitTicks = 0.3f;
+                currentAttackState = FoxAttackState.POST_ATTACK_2;
+                break;
+            case FoxAttackState.POST_ATTACK_2:
+                SetTail(1);
+                shouldWaitTicks = 0.3f;
+                currentAttackState = FoxAttackState.POST_ATTACK_3;
+                break;
+            case FoxAttackState.POST_ATTACK_3:
+                SetTail(0);
+                shouldWaitTicks = 0.3f;
+                currentAttackState = FoxAttackState.PRE_ATTACK_1;
+                break;
+        }
     }
 }

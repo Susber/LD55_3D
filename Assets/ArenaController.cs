@@ -467,7 +467,7 @@ public class ArenaController : MonoBehaviour
     {
         if (currentStage == GameStage.TUTORIAL)
         {
-            if (tutorialRune != null)
+            if (tutorialRune != null && tutorialRune.gameObject != null)
             {
                 Destroy(tutorialRune.gameObject);
                 tutorialRune = null;

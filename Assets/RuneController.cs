@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Serialization;
-using System.Threading.Tasks;
 
 public class RuneController : MonoBehaviour
 {
@@ -67,7 +66,7 @@ public class RuneController : MonoBehaviour
             this.level = level;
         }
 
-        public async void PlayEffect(RuneController rune)
+        public void PlayEffect(RuneController rune)
         {
             // todo, animations!
             var bombPrefab = ArenaController.Instance.bombPrefab;
@@ -75,7 +74,6 @@ public class RuneController : MonoBehaviour
             mainExplosion.transform.position = rune.transform.position;
             mainExplosion.Init(Mathf.Lerp(1.5f, 3f, (level - 1) / 5f), 3f);
             if (level > 2) {
-                await Task.Delay(200);
                 foreach (var line in rune.lineSegments)
                 {
                     var cornerExplosion = Instantiate(bombPrefab).GetComponent<BombController>();
@@ -89,17 +87,14 @@ public class RuneController : MonoBehaviour
 
     public class SummonExplosionsEffect : SummonEffect
     {
-        public async void PlayEffect(RuneController rune)
+        public void PlayEffect(RuneController rune)
         {
-            await Task.Delay(1000);
             var explosionPrefab = PlayerController.Instance.gun.explosionPrefab;
             foreach (var line in rune.lineSegments)
             {
                 var explosion = Instantiate(explosionPrefab).GetComponent<ExplosionController>();
                 explosion.Init(line.left, 5, Color.yellow);
-                await Task.Delay(100);
             }
-            await Task.Delay(500);
             rune.summonEffectFinished = true;
         }
     }
@@ -150,10 +145,8 @@ public class RuneController : MonoBehaviour
 
     public class TutorialRuneEffect : SummonEffect
     {
-        public async void PlayEffect(RuneController rune)
+        public void PlayEffect(RuneController rune)
         {
-            // todo, play some very very very cool effects
-            await Task.Delay(500);
             rune.summonEffectFinished = true;
             ArenaController.Instance.SetStage(ArenaController.GameStage.IN_LEVEL);
         }

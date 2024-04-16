@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Threading.Tasks;
 using Microsoft.Win32.SafeHandles;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -16,7 +15,7 @@ public class Wave : AbstractWave
         this.enemyAmount = enemyAmount;
     }
 
-    public override async void DoSpawn()
+    public override void DoSpawn()
     {
         var spawnCenter3d = ArenaController.Instance.RandomWavePos(ArenaController.Instance.spawnDistanceToPlayer);
         var spawnCenter = new Vector2(spawnCenter3d.x, spawnCenter3d.z);
@@ -37,7 +36,6 @@ public class Wave : AbstractWave
                 spawnPos = spawnCenter + Util.Rotate2d(spawnPos, angle);
                 ArenaController.Instance.SpawnEnemy(enemyPrefab, new Vector3(spawnPos.x, 0, spawnPos.y));
                 n++;
-                await Task.Delay(200);
             }
         }
 

@@ -5,7 +5,6 @@ using System.Collections.Generic;
 using Components;
 using UnityEngine;
 using UnityEngine.UI;
-using System.Threading.Tasks;
 using Unity.VisualScripting;
 
 public class DogController : MonoBehaviour
