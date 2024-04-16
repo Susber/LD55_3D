@@ -1,12 +1,6 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Numerics;
 using Components;
-using UnityEditor.Il2Cpp;
 using UnityEngine;
 using UnityEngine.UI;
-using Plane = UnityEngine.Plane;
 using Quaternion = UnityEngine.Quaternion;
 using Vector3 = UnityEngine.Vector3;
 
