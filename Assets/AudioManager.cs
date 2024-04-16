@@ -55,6 +55,12 @@ public class AudioManager : MonoBehaviour
         StartCoroutine(FadeAudio(gameMusic, true));
     }
 
+    public void EndMusic()
+    {
+        StartCoroutine(FadeAudio(menuMusic, false));
+        StartCoroutine(FadeAudio(gameMusic, false));
+    }
+
     IEnumerator FadeAudio(AudioSource audioSource, bool fadeIn)
     {
         float startVolume = fadeIn ? 0 : audioSource.volume;
@@ -122,7 +128,7 @@ public class AudioManager : MonoBehaviour
     }
     public void PlaySoundEnd()
     {
-        PlaySound(16, 0.4f);
+        PlaySound(16, 0.8f);
     }
 
     public void PlaySoundPentagram()
