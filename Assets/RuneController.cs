@@ -102,7 +102,7 @@ public class RuneController : MonoBehaviour
             int level = ArenaController.Instance.upgradeUi.stats[UpgradeUIComponent.SummonGiant];
             int n_minions = ((int)level/2)+1;
 
-            for (int i = 0; i < level; i++)
+            for (int i = 0; i < n_minions; i++)
             {
                 float angle = 360f / n_minions * i;
                 var vec = pos + radius * new Vector3(Mathf.Cos(angle), 0, Mathf.Sin(angle));
