@@ -311,13 +311,9 @@ public class RuneController : MonoBehaviour
         switch (newState)
         {
             case RuneState.PREPARE_SUMMON:
-                if (AudioManager.Instance is not null)
-                    AudioManager.Instance.PlaySoundPentagram();
                 prepareTimeLeft = maxPrepareTime;
                 break;
             case RuneState.SUMMONING:
-                if (AudioManager.Instance is not null)
-                    AudioManager.Instance.PlaySoundDeath();
                 summonEffectFinished = false;
                 summonEffect.PlayEffect(this);
                 break; 

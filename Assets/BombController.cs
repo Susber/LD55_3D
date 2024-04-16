@@ -35,14 +35,6 @@ public class BombController : MonoBehaviour
         }
     }
 
-    public async void Explode(int time)
-    {
-        await Task.Delay(time);
-        SetStage(1);
-        await Task.Delay(time);
-        SetStage(2);
-    }
-
 void FixedUpdate()
     {
         if (exploded)
@@ -52,7 +44,7 @@ void FixedUpdate()
         renderingComponent.localScale = new Vector3(scale, scale, scale);
         var stage = Mathf.FloorToInt(bombStates.Length * (timeToExplode / maxTimeToExplode));
         // todo set stage!!
-        Explode(100);
+        SetStage(stage);
         
         if (timeToExplode < 0)
         {

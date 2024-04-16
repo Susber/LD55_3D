@@ -27,6 +27,8 @@ public class FoxMovementController : MonoBehaviour
     public UnitController unitcontroller;
 
     public GameObject[] tails;
+    
+    public GameObject bulletPrefab;
 
     private void Start()
     {
@@ -82,6 +84,11 @@ public class FoxMovementController : MonoBehaviour
         SetTail(3);
         // shoot ...
         // spawn fireball
+        var fireball = Instantiate(bulletPrefab).GetComponent<BulletController>();
+        var velocity = PlayerController.Instance.transform.position - this.transform.position;
+        velocity = Vector3.Normalize(velocity);
+        fireball.Init(BulletController.BulletType.Fireball, transform.position, velocity * 6, strength2:1, fromEnemy:true);
+        
         await Task.Delay(300);
         attackFinished = true;
         SetTail(2);

@@ -428,7 +428,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7153677073515907509, guid: e1d59128e8b2742d5adfba491475f967, type: 3}
       propertyPath: cost
-      value: 200
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 7153677073515907509, guid: e1d59128e8b2742d5adfba491475f967, type: 3}
       propertyPath: upgradeLevel
@@ -538,7 +538,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7153677073515907509, guid: e1d59128e8b2742d5adfba491475f967, type: 3}
       propertyPath: cost
-      value: 50
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 7153677073515907509, guid: e1d59128e8b2742d5adfba491475f967, type: 3}
       propertyPath: upgradeLevel
@@ -646,6 +646,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7153677073515907509, guid: e1d59128e8b2742d5adfba491475f967, type: 3}
+      propertyPath: cost
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 8441693068617306593, guid: e1d59128e8b2742d5adfba491475f967, type: 3}
       propertyPath: m_Name
       value: UpgradeButtonPanel
@@ -750,7 +754,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7153677073515907509, guid: e1d59128e8b2742d5adfba491475f967, type: 3}
       propertyPath: cost
-      value: 20
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7153677073515907509, guid: e1d59128e8b2742d5adfba491475f967, type: 3}
       propertyPath: upgradeLevel
@@ -860,7 +864,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7153677073515907509, guid: e1d59128e8b2742d5adfba491475f967, type: 3}
       propertyPath: cost
-      value: 150
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 7153677073515907509, guid: e1d59128e8b2742d5adfba491475f967, type: 3}
       propertyPath: upgradeLevel
@@ -970,7 +974,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7153677073515907509, guid: e1d59128e8b2742d5adfba491475f967, type: 3}
       propertyPath: cost
-      value: 100
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 7153677073515907509, guid: e1d59128e8b2742d5adfba491475f967, type: 3}
       propertyPath: upgradeLevel

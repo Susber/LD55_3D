@@ -75,7 +75,7 @@ public class GunController : MonoBehaviour
         var bullet = Instantiate(bulletPrefab).GetComponent<BulletController>();
         int bonus = 0;
         if (ischarged)
-            bonus = 1;
+            bonus = 2;
         bullet.Init(BulletController.BulletType.Rocket, transform.position, dir * 15,level + bonus, fromEnemy);
     }
 

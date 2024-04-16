@@ -215,7 +215,6 @@ public class ArenaController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        upgradeUi.DoUpdateStats();
         switch (currentStage)
         {
             case GameStage.TUTORIAL:
@@ -348,7 +347,7 @@ public class ArenaController : MonoBehaviour
         var bestDistSquared = 0f;
         for (var i = 0; i < 100; i++)
         {
-            var rndPos = RandomPosOnArena(5f);
+            var rndPos = RandomPosOnArena(10f);
             var minDistSquared = Mathf.Infinity;
             foreach (var rune in existingRunes)
             {
@@ -399,25 +398,23 @@ public class ArenaController : MonoBehaviour
                 for (var i = 0 ; i < numSmallRunes - smallRuneContainer.childCount; i++)
                     SpawnRune(false);
                 levelWaveQueue.Clear();
-
-                // levelWaveQueue.Add(new Wave(0, sheepPrefab, 1));
-                // levelWaveQueue.Add(new Wave(1000, sheepPrefab, 1));
-
+ 
+                
                 levelWaveQueue.Add(new Wave(0, sheepPrefab, 10));
                 for (var n = 0; n < currentLevel + 1; n++)
                 {
                     levelWaveQueue.Add(new Wave(5, sheepPrefab, 10));
                 }
-                if (currentLevel >= 1)
-                {
-                    levelWaveQueue.Add(new Wave(10, foxPrefab, currentLevel + 2));
-                    for (var n = 0; n < currentLevel + 1; n++)
-                    {
-                        levelWaveQueue.Add(new Wave(5, sheepPrefab, 10));
-                        if (currentLevel >= 4)
-                            levelWaveQueue.Add(new Wave(10, dogPrefab, currentLevel));
-                    }
-                }
+                if (currentLevel >= 2)
+                    levelWaveQueue.Add(new Wave(10, foxPrefab, 1));
+                if (currentLevel >= 3)
+                    levelWaveQueue.Add(new Wave(10, dogPrefab, 1));
+                if (currentLevel >= 3)
+                    levelWaveQueue.Add(new Wave(10, sheepPrefab, 10));
+                if (currentLevel == 6 || currentLevel == 7)
+                    levelWaveQueue.Add(new Wave(10, foxPrefab, 3));
+
+                    spawnNextWaveTime = 0;
                 break;
             }
             case GameStage.UPGRADE:
