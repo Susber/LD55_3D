@@ -127,7 +127,7 @@ MonoBehaviour:
   graphicStates:
   - {fileID: 5616468548750240602}
   - {fileID: 4707581009098791228}
-  rageDistance: 20
+  rageDistance: 10
 --- !u!114 &213897228600940613
 MonoBehaviour:
   m_ObjectHideFlags: 0

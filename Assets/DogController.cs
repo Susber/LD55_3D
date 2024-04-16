@@ -35,7 +35,7 @@ public class DogController : MonoBehaviour
         GetComponent<Rigidbody>().velocity *= 0.99f;
         var from = this.transform.position;
         var to = PlayerController.Instance.transform.position;
-        inRage = (to - from).sqrMagnitude < rageDistance;
+        inRage = (to - from).magnitude < rageDistance;
         SetGraphicState(inRage ? 1 : 0);
         var currentSpeed = inRage ? rageSpeed : normalSpeed;
         
