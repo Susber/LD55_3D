@@ -98,7 +98,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   suckForce: 1
   aliveTicks: 0
-  maxLifetime: 10
+  maxLifetime: 20
 --- !u!1 &3246031330237382930
 GameObject:
   m_ObjectHideFlags: 0

@@ -123,7 +123,7 @@ public class RuneController : MonoBehaviour
                 float angle = 360f / n_minions * i;
                 var vec = pos + radius * new Vector3(Mathf.Cos(angle), 0, Mathf.Sin(angle));
                 MinionController minion = Instantiate(ArenaController.Instance.minionPrefab, ArenaController.Instance.friendContainer).GetComponent<MinionController>();
-                minion.Init(level,vec, 10 + level * 5);
+                minion.Init(level, vec, 10 + level * 5);
             }
             
             
@@ -311,9 +311,13 @@ public class RuneController : MonoBehaviour
         switch (newState)
         {
             case RuneState.PREPARE_SUMMON:
+                if (AudioManager.Instance is not null)
+                    AudioManager.Instance.PlaySoundPentagram();
                 prepareTimeLeft = maxPrepareTime;
                 break;
             case RuneState.SUMMONING:
+                if (AudioManager.Instance is not null)
+                    AudioManager.Instance.PlaySoundDeath();
                 summonEffectFinished = false;
                 summonEffect.PlayEffect(this);
                 break; 

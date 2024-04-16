@@ -4,19 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8fd0fe12-69a8-4dfd-9394-ff892a1b4efa" name="Changes" comment="fixxx">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.LD55_3D/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.LD55_3D/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/BulletController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/BulletController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/CarboardEffect/CardboardDestroyer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CarboardEffect/CardboardDestroyer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ExplosionController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ExplosionController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GunController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GunController.cs" afterDir="false" />
+    <list default="true" id="8fd0fe12-69a8-4dfd-9394-ff892a1b4efa" name="Changes" comment="xx">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.ld55-3d/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ld55-3d/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/PlayerController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/PlayerController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Bullet.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Bullet.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Dog.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Dog.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Fox.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Fox.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Shading/CardboardFaceMat.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Shading/CardboardFaceMat.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Shading/billboardMat.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Shading/billboardMat.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UpgradeUIComponent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UpgradeUIComponent.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,17 +18,30 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Users/frithjof/Documents/dev/unity/ld55-3d/Assets/ArenaController.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Users/frithjof/Documents/dev/unity/ld55-3d/Assets/ArenaController.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Users/frithjof/Documents/dev/unity/ld55-3d/Assets/ArenaController.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Users/frithjof/Documents/dev/unity/ld55-3d/Assets/ArenaController.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Users/frithjof/Documents/dev/unity/ld55-3d/Assets/EnemyIndicatorComponent.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Users/frithjof/Documents/dev/unity/ld55-3d/Assets/EnemyIndicatorComponent.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Users/frithjof/Documents/dev/unity/ld55-3d/Assets/PlayerController.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Users/frithjof/Documents/dev/unity/ld55-3d/Assets/Scenes/SampleScene.unity" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Users/frithjof/Documents/dev/unity/ld55-3d/Assets/Scenes/SampleScene.unity" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Users/frithjof/Documents/dev/unity/ld55-3d/Assets/Scenes/SampleScene.unity" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Users/frithjof/Documents/dev/unity/ld55-3d/Assets/Scenes/SampleScene.unity" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Users/frithjof/Documents/dev/unity/ld55-3d/Assets/UpgradeUIComponent.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.2d.sprite@1.0.0/Editor/SpriteEditorModule/SpriteOutlineModule.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.2d.tilemap@1.0.0/Editor/GridEditorUtility.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ads@4.4.2/Editor/PostProcessBuildPlist.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ads@4.4.2/Runtime/Advertisement/Advertisement.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ads@4.4.2/Runtime/Advertisement/Utilities/MiniJSON.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ads@4.4.2/Tests/Runtime/Advertisement/Utilities/UnityLifecycleManagerTests.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.burst@1.8.13/Editor/BurstDisassembler.Core.ARM64.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.burst@1.8.13/Editor/BurstDisassembler.Core.x86.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.burst@1.8.13/Runtime/BurstString.Float.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.burst@1.8.13/Tests/Editor/BurstInspectorGUITests.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.burst@1.8.13/Tests/Runtime/Shared/055-TestStackalloc.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.burst@1.8.13/Unity.Burst.CodeGen/AssemblyResolver.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ide.vscode@1.2.5/Editor/VSCodeDiscovery.cs" root0="SKIP_HIGHLIGHTING" />
@@ -71,7 +75,7 @@
     "Attach to Unity Editor.Attach to Unity Editor & Play.executor": "Debug",
     "Attach to Unity Editor.Attach to Unity Editor.executor": "Debug",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "Merging master",
+    "git-widget-placeholder": "master",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -114,10 +118,10 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="73050">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" />
+      <option name="pid" value="73050" />
       <option name="projectPathOnTarget" />
       <option name="selectedOptions">
         <list />
@@ -144,87 +148,7 @@
       <workItem from="1713200551253" duration="2716000" />
       <workItem from="1713207433853" duration="852000" />
       <workItem from="1713208342900" duration="13018000" />
-      <workItem from="1713221965173" duration="24000" />
-    </task>
-    <task id="LOCAL-00013" summary="voll nice runen">
-      <option name="closed" value="true" />
-      <created>1713100618624</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1713100618624</updated>
-    </task>
-    <task id="LOCAL-00014" summary="more">
-      <option name="closed" value="true" />
-      <created>1713102730124</created>
-      <option name="number" value="00014" />
-      <option name="presentableId" value="LOCAL-00014" />
-      <option name="project" value="LOCAL" />
-      <updated>1713102730124</updated>
-    </task>
-    <task id="LOCAL-00015" summary="more pentagram">
-      <option name="closed" value="true" />
-      <created>1713114510747</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1713114510747</updated>
-    </task>
-    <task id="LOCAL-00016" summary="penta kill">
-      <option name="closed" value="true" />
-      <created>1713115285914</created>
-      <option name="number" value="00016" />
-      <option name="presentableId" value="LOCAL-00016" />
-      <option name="project" value="LOCAL" />
-      <updated>1713115285914</updated>
-    </task>
-    <task id="LOCAL-00017" summary="sehr nices penta gram stuff">
-      <option name="closed" value="true" />
-      <created>1713116143988</created>
-      <option name="number" value="00017" />
-      <option name="presentableId" value="LOCAL-00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1713116143988</updated>
-    </task>
-    <task id="LOCAL-00018" summary="spawn runes at random pos">
-      <option name="closed" value="true" />
-      <created>1713117315434</created>
-      <option name="number" value="00018" />
-      <option name="presentableId" value="LOCAL-00018" />
-      <option name="project" value="LOCAL" />
-      <updated>1713117315434</updated>
-    </task>
-    <task id="LOCAL-00019" summary="fix }">
-      <option name="closed" value="true" />
-      <created>1713123454758</created>
-      <option name="number" value="00019" />
-      <option name="presentableId" value="LOCAL-00019" />
-      <option name="project" value="LOCAL" />
-      <updated>1713123454758</updated>
-    </task>
-    <task id="LOCAL-00020" summary="y-fighting fix">
-      <option name="closed" value="true" />
-      <created>1713124330545</created>
-      <option name="number" value="00020" />
-      <option name="presentableId" value="LOCAL-00020" />
-      <option name="project" value="LOCAL" />
-      <updated>1713124330545</updated>
-    </task>
-    <task id="LOCAL-00021" summary="coins">
-      <option name="closed" value="true" />
-      <created>1713131009545</created>
-      <option name="number" value="00021" />
-      <option name="presentableId" value="LOCAL-00021" />
-      <option name="project" value="LOCAL" />
-      <updated>1713131009545</updated>
-    </task>
-    <task id="LOCAL-00022" summary="ui">
-      <option name="closed" value="true" />
-      <created>1713136203895</created>
-      <option name="number" value="00022" />
-      <option name="presentableId" value="LOCAL-00022" />
-      <option name="project" value="LOCAL" />
-      <updated>1713136203895</updated>
+      <workItem from="1713221965173" duration="4025000" />
     </task>
     <task id="LOCAL-00023" summary="disable ui by default">
       <option name="closed" value="true" />
@@ -538,7 +462,87 @@
       <option name="project" value="LOCAL" />
       <updated>1713220554926</updated>
     </task>
-    <option name="localTasksCounter" value="62" />
+    <task id="LOCAL-00062" summary="more">
+      <option name="closed" value="true" />
+      <created>1713221998607</created>
+      <option name="number" value="00062" />
+      <option name="presentableId" value="LOCAL-00062" />
+      <option name="project" value="LOCAL" />
+      <updated>1713221998608</updated>
+    </task>
+    <task id="LOCAL-00063" summary="fixess!!!">
+      <option name="closed" value="true" />
+      <created>1713223158865</created>
+      <option name="number" value="00063" />
+      <option name="presentableId" value="LOCAL-00063" />
+      <option name="project" value="LOCAL" />
+      <updated>1713223158866</updated>
+    </task>
+    <task id="LOCAL-00064" summary="shotgun rune">
+      <option name="closed" value="true" />
+      <created>1713223648078</created>
+      <option name="number" value="00064" />
+      <option name="presentableId" value="LOCAL-00064" />
+      <option name="project" value="LOCAL" />
+      <updated>1713223648078</updated>
+    </task>
+    <task id="LOCAL-00065" summary="waves">
+      <option name="closed" value="true" />
+      <created>1713223827877</created>
+      <option name="number" value="00065" />
+      <option name="presentableId" value="LOCAL-00065" />
+      <option name="project" value="LOCAL" />
+      <updated>1713223827877</updated>
+    </task>
+    <task id="LOCAL-00066" summary="no idea what this is">
+      <option name="closed" value="true" />
+      <created>1713224682322</created>
+      <option name="number" value="00066" />
+      <option name="presentableId" value="LOCAL-00066" />
+      <option name="project" value="LOCAL" />
+      <updated>1713224682322</updated>
+    </task>
+    <task id="LOCAL-00067" summary="so geil">
+      <option name="closed" value="true" />
+      <created>1713225181642</created>
+      <option name="number" value="00067" />
+      <option name="presentableId" value="LOCAL-00067" />
+      <option name="project" value="LOCAL" />
+      <updated>1713225181642</updated>
+    </task>
+    <task id="LOCAL-00068" summary="smaller minions">
+      <option name="closed" value="true" />
+      <created>1713225369569</created>
+      <option name="number" value="00068" />
+      <option name="presentableId" value="LOCAL-00068" />
+      <option name="project" value="LOCAL" />
+      <updated>1713225369569</updated>
+    </task>
+    <task id="LOCAL-00069" summary="intro">
+      <option name="closed" value="true" />
+      <created>1713225667248</created>
+      <option name="number" value="00069" />
+      <option name="presentableId" value="LOCAL-00069" />
+      <option name="project" value="LOCAL" />
+      <updated>1713225667248</updated>
+    </task>
+    <task id="LOCAL-00070" summary="upgrades more">
+      <option name="closed" value="true" />
+      <created>1713225869798</created>
+      <option name="number" value="00070" />
+      <option name="presentableId" value="LOCAL-00070" />
+      <option name="project" value="LOCAL" />
+      <updated>1713225869798</updated>
+    </task>
+    <task id="LOCAL-00071" summary="xx">
+      <option name="closed" value="true" />
+      <created>1713225926829</created>
+      <option name="number" value="00071" />
+      <option name="presentableId" value="LOCAL-00071" />
+      <option name="project" value="LOCAL" />
+      <updated>1713225926829</updated>
+    </task>
+    <option name="localTasksCounter" value="72" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -565,15 +569,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="spawn enemies in circle around player" />
-    <MESSAGE value="new gun" />
-    <MESSAGE value="bomb explosion" />
-    <MESSAGE value="level balancing" />
-    <MESSAGE value="remove sheep" />
-    <MESSAGE value="doggy" />
-    <MESSAGE value="undo markus scene" />
-    <MESSAGE value="ok?" />
-    <MESSAGE value="build options, cleanup imports" />
     <MESSAGE value="tutorial wip" />
     <MESSAGE value="remove doggo" />
     <MESSAGE value="merge" />
@@ -584,18 +579,45 @@
     <MESSAGE value="more sstuffs" />
     <MESSAGE value="turn gun" />
     <MESSAGE value="please no infinite loop" />
-    <MESSAGE value="more" />
     <MESSAGE value="bomb controller" />
     <MESSAGE value="mm" />
     <MESSAGE value="shitty arrows" />
     <MESSAGE value="new dogs" />
     <MESSAGE value="fixxx" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixxx" />
+    <MESSAGE value="more" />
+    <MESSAGE value="fixess!!!" />
+    <MESSAGE value="shotgun rune" />
+    <MESSAGE value="waves" />
+    <MESSAGE value="no idea what this is" />
+    <MESSAGE value="so geil" />
+    <MESSAGE value="smaller minions" />
+    <MESSAGE value="intro" />
+    <MESSAGE value="upgrades more" />
+    <MESSAGE value="xx" />
+    <option name="LAST_COMMIT_MESSAGE" value="xx" />
   </component>
   <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/EnemyIndicatorComponent.cs</url>
+          <line>86</line>
+          <properties documentPath="$PROJECT_DIR$/Assets/EnemyIndicatorComponent.cs" containingFunctionPresentation="Method 'Update'">
+            <startOffsets>
+              <option value="2921" />
+            </startOffsets>
+            <endOffsets>
+              <option value="2986" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
     <watches-manager>
       <configuration name="UNITY_DEBUG_RUN_CONFIGURATION">
         <watch expression="(randomPos - transform.position).magnitude" language="C#" />
+        <watch expression="playerCamera.WorldToScreenPoint(transform.position)" language="C#" />
       </configuration>
     </watches-manager>
   </component>

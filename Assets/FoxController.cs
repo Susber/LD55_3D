@@ -37,9 +37,12 @@ public class FoxMovementController : MonoBehaviour
 
     void SetTail(int tailIndex)
     {
+        if (tails == null)
+            return;
         for (var i = 0; i < tails.Length; i++)
         {
-            tails[i].SetActive(i == tailIndex);
+            if (tails[i] != null)
+                tails[i].SetActive(i == tailIndex);
         }
     }
 
