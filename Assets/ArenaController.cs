@@ -73,15 +73,18 @@ public class ArenaController : MonoBehaviour
     public int numSmallRunes;
 
     public float tutorialRuneRadius;
+    public RuneController tutorialRune = null;
 
     public float spawnDistanceToPlayer;
 
     public GameObject tutorialHud;
     public GameObject inLevelHud;
 
+    public Button skipIntroButton;
+
     private void Start()
     {
-        SetStage(GameStage.TUTORIAL); // todo, change back to TUTORIAL
+        SetStage(GameStage.TUTORIAL);
         upgradeUi.DoUpdateStats();
 
         for (var x = 0; x < num_grass; x++)
@@ -114,6 +117,7 @@ public class ArenaController : MonoBehaviour
         upgradeUi.UpdateUI();
         UpdateHud();
         upgradeUi.gameObject.SetActive(false);
+        skipIntroButton.onClick.AddListener(OnClickSkipIntroButton);
     }
 
 
@@ -324,7 +328,7 @@ public class ArenaController : MonoBehaviour
         ActualSpawnRune(runeContainer, position, edges, summonEffect);
     }
 
-    public static void ActualSpawnRune(Transform runeContainer, Vector3 position, RuneController.RuneEdges edges, RuneController.SummonEffect summonEffect)
+    public static RuneController ActualSpawnRune(Transform runeContainer, Vector3 position, RuneController.RuneEdges edges, RuneController.SummonEffect summonEffect)
     {
         var prefab = ArenaController.Instance.runePrefab;
         var rune = Instantiate(prefab, runeContainer);
@@ -333,6 +337,7 @@ public class ArenaController : MonoBehaviour
         runeController.MakeRuneFromEdges(edges, position);
         runeController.needsToStartAtEnd = !edges.closedLoop;
         runeController.summonEffect = summonEffect;
+        return runeController;
     }
 
     public Vector3 RandomRunePos(float newRuneScale)
@@ -380,8 +385,9 @@ public class ArenaController : MonoBehaviour
                     tutorialHud.SetActive(true);
                     var runeType = new RuneController.Pentagram(5, tutorialRuneRadius);
                     var edges = runeType.MakeEdges();
-                    ActualSpawnRune(
+                    tutorialRune = ActualSpawnRune(
                         this.transform, this.transform.position, edges, new RuneController.TutorialRuneEffect());
+                    Debug.Log("spawn rune");
                     break;
                 }
             case GameStage.IN_LEVEL:
@@ -455,5 +461,18 @@ public class ArenaController : MonoBehaviour
             }
         }
         return closest;
+    }
+
+    public void OnClickSkipIntroButton()
+    {
+        if (currentStage == GameStage.TUTORIAL)
+        {
+            if (tutorialRune != null)
+            {
+                Destroy(tutorialRune.gameObject);
+                tutorialRune = null;
+            }
+            SetStage(GameStage.IN_LEVEL);
+        }
     }
 }

@@ -62,7 +62,6 @@ public class GunController : MonoBehaviour
     public void SetGuntype(Guntype gunType2)
     {
         guntype = gunType2;
-        print("set guntype" + gunType2);
     }
 
     public Guntype GetGuntype()
