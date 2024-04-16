@@ -123,8 +123,25 @@ public class RuneController : MonoBehaviour
                 float angle = 360f / n_minions * i;
                 var vec = pos + radius * new Vector3(Mathf.Cos(angle), 0, Mathf.Sin(angle));
                 MinionController minion = Instantiate(ArenaController.Instance.minionPrefab, ArenaController.Instance.friendContainer).GetComponent<MinionController>();
-                minion.Init(level,vec, 10 + level * 5);
+                minion.Init(level, vec, 10 + level * 5);
             }
+            
+            
+            rune.summonEffectFinished = true;
+        }
+    }
+    
+    public class SummonRocketsEffect : SummonEffect
+    {
+        int level = 0;
+        public SummonRocketsEffect(int level)
+        {
+            this.level = level;
+        }
+        
+        public async void PlayEffect(RuneController rune)
+        {
+            PlayerController.Instance.gun.ChargeWithRockets(3 + level * 4);
             
             
             rune.summonEffectFinished = true;

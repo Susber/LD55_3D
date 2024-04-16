@@ -44,6 +44,7 @@ public class PlayerController : MonoBehaviour
     {
         gun = Instantiate(gunPrefab, renderingContainer).GetComponent<GunController>();
         gun.Init(this.playerrigidbody, false, GunController.Guntype.Shotgun);
+        ArenaController.Instance.upgradeUi.DoUpdateStats();
     }
 
     private void FixedUpdate()
@@ -51,7 +52,6 @@ public class PlayerController : MonoBehaviour
         playerrigidbody.velocity *= 0.998f;
         if (invulnerableTimeLeft > 0)
             invulnerableTimeLeft -= Time.fixedDeltaTime;
-        print(gun.GetGuntype());
     }
 
     void Update()
@@ -95,27 +95,41 @@ public class PlayerController : MonoBehaviour
                 //cheats
                 if (Input.GetKey(KeyCode.LeftControl))
                 {
-                    if (Input.GetKey(KeyCode.T))
+                    if (Input.GetKeyDown(KeyCode.T))
                     {
                         gun.SetGuntype(GunController.Guntype.Rocketlauncher);
                     }
         
-                    if (Input.GetKey(KeyCode.Z))
+                    if (Input.GetKeyDown(KeyCode.Z))
                     {
                         gun.SetGuntype(GunController.Guntype.Shotgun);
                     }
-        
-                    if (Input.GetKey(KeyCode.H))
+                    
+                    if (Input.GetKeyDown(KeyCode.Z))
                     {
-                        var upgrades = ArenaController.Instance.upgradeUi;
-                        upgrades.stats[UpgradeUIComponent.Health] += 100;
+                        coins += 10;
                     }
                     
+                    if (Input.GetKeyDown(KeyCode.U))
+                    {
+                        ArenaController.Instance.SetStage(ArenaController.GameStage.UPGRADE);
+                    }
+        
+                    if (Input.GetKeyDown(KeyCode.H))
+                    {
+                        var upgrades = ArenaController.Instance.upgradeUi;
+                        upgrades.stats[UpgradeUIComponent.Health] += 10;
+                    }
                     
-                    if (Input.GetKey(KeyCode.M))
+                    if (Input.GetKeyDown(KeyCode.M))
                     {
                         MinionController minion = Instantiate(minionPrefab, ArenaController.Instance.friendContainer).GetComponent<MinionController>();
                         minion.Init(3,playerrigidbody.position,60);
+                    }
+                    
+                    if (Input.GetKeyDown(KeyCode.C))
+                    {
+                        gun.ChargeWithRockets(5);
                     }
                 }
 
@@ -126,9 +140,7 @@ public class PlayerController : MonoBehaviour
                 Walk(Vector3.zero, 0.8f);
                 GetComponent<Animator>().enabled = false;
                 deathTicks += Time.deltaTime;
-                float deathTickAnim = Mathf.Clamp(deathTicks, 0, 1) * Mathf.PI;
-                renderingContainer.rotation = Quaternion.Euler(0, 0, deathTickAnim);
-                if (deathTickAnim >= 3f)
+                if (deathTicks >= 3f)
                 {
                     SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
                 }
@@ -138,7 +150,10 @@ public class PlayerController : MonoBehaviour
 
         //this.transform.position += Time.deltaTime * force;
         //playerrigidbody.AddForce(force);
-        playercamera.transform.position = new Vector3(this.transform.position.x, this.playercamera.transform.position.y, this.transform.position.z - 17);
+        if (currentState != PlayerState.DEAD)
+        {
+			playercamera.transform.position = new Vector3(this.transform.position.x, this.playercamera.transform.position.y, this.transform.position.z - 17);
+		}
     }
     void Walk(Vector3 speed, float strength)
     {
@@ -166,12 +181,13 @@ public class PlayerController : MonoBehaviour
         }
         var upgrades = ArenaController.Instance.upgradeUi;
         upgrades.stats[UpgradeUIComponent.Health] -= 1;
+        ArenaController.Instance.UpdateHud();
         if (upgrades.stats[UpgradeUIComponent.Health] <= 0)
         {
             upgrades.stats[UpgradeUIComponent.Health] = 0;
             currentState = PlayerState.DEAD;
 
-            //spawn broken cardboard
+            // spawn broken cardboard
             CardboardDestroyer myRendererCardboardDestroyer = transform.GetComponentInChildren<CardboardDestroyer>();
             if (myRendererCardboardDestroyer != null)
             {
@@ -181,7 +197,6 @@ public class PlayerController : MonoBehaviour
             return;
         }
         invulnerableTimeLeft = invulnerableTimeAfterHit;
-        ArenaController.Instance.UpdateHud();
     }
 
     public int GetHealth()
