@@ -191,7 +191,7 @@ public class PlayerController : MonoBehaviour
             CardboardDestroyer myRendererCardboardDestroyer = transform.GetComponentInChildren<CardboardDestroyer>();
             if (myRendererCardboardDestroyer != null)
             {
-                myRendererCardboardDestroyer.SpawnDestroyedCardboard(10, knockback);
+                myRendererCardboardDestroyer.SpawnDestroyedCardboard(20, knockback);
             }
 
             return;
