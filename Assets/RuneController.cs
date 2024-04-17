@@ -120,7 +120,7 @@ public class RuneController : MonoBehaviour
         public void PlayEffect(RuneController rune)
         {
             int level = ArenaController.Instance.upgradeUi.stats[UpgradeUIComponent.SummonShotgun];
-            PlayerController.Instance.gun.ChargeWithRockets(3 + level * 4);
+            PlayerController.Instance.gun.ChargeWithRockets(1 + level * 2);
             
             rune.summonEffectFinished = true;
         }

@@ -105,7 +105,7 @@ public class PlayerController : MonoBehaviour
                         gun.SetGuntype(GunController.Guntype.Shotgun);
                     }
                     
-                    if (Input.GetKeyDown(KeyCode.Z))
+                    if (Input.GetKeyDown(KeyCode.K))
                     {
                         coins += 10;
                     }

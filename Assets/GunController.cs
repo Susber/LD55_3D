@@ -218,6 +218,8 @@ public class GunController : MonoBehaviour
         var player = rigidbody.gameObject.GetComponent<PlayerController>();
         if (player is not null)
             this.playerController = player;
+        else
+            playerGunPosition = playerGunPosition + 0.2f * Vector3.up;
         this.fromEnemy = fromEnemy2;
         this.SetGuntype(guntype);
 
