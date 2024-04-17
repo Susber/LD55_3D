@@ -201,7 +201,7 @@ public class GunController : MonoBehaviour
         if (plane.Raycast(ray, out distance))
         {
             Vector3 worldpos = ray.GetPoint(distance);
-            transform.localScale = new Vector3(worldpos.x < transform.position.x ? 1 : -1, 1, 1);
+            transform.localRotation = worldpos.x < transform.position.x ? Quaternion.identity : Quaternion.Euler(new Vector3(0, 180, 0));
         }
     }
 

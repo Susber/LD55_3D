@@ -90,8 +90,11 @@ public class MinionController : MonoBehaviour
         }
 
         lifetime -= Time.deltaTime;
-        if(lifetime <= 0)
-            Destroy(this.gameObject);
-
+        if (lifetime <= 0)
+        {
+			CardboardDestroyer myDestroyer = transform.GetComponentInChildren<CardboardDestroyer>();
+            myDestroyer.SpawnDestroyedCardboard(10, Vector3.zero);
+			Destroy(this.gameObject);
+		}
     }
 }
