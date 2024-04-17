@@ -95,7 +95,7 @@ public class BulletController : MonoBehaviour
         if (bullettype == BulletType.Rocket)
         {
             var explosion = Instantiate(explosionPrefab).GetComponent<ExplosionController>();
-            explosion.Init(bulletRigidbody.position, 3 + level * 1, new Color(1f, 0.667f, 0f));
+            explosion.Init(bulletRigidbody.position, 4 + level * 1, new Color(1f, 0.667f, 0f));
         }
         ps.Stop();
         Destroy(gameObject);
