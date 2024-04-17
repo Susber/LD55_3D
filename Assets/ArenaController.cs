@@ -409,10 +409,10 @@ public class ArenaController : MonoBehaviour
                     for (var n = 0; n < currentLevel + 1; n++)
                     {
                         if (n + 1 % 2 == 0)
-                            levelWaveQueue.Add(new Wave(10, foxPrefab, 1));
+                            levelWaveQueue.Add(new Wave(5, foxPrefab, 1));
                         levelWaveQueue.Add(new Wave(5, sheepPrefab, 10));
                         if (currentLevel >= 3)
-                            levelWaveQueue.Add(new Wave(5, dogPrefab, 1));
+                            levelWaveQueue.Add(new Wave(5, dogPrefab, currentLevel >= 5 ? 3 : 1));
                     }
                     if (currentLevel >= 3)
                         levelWaveQueue.Add(new Wave(10, dogPrefab, 1));
