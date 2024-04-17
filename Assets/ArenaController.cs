@@ -268,8 +268,6 @@ public class ArenaController : MonoBehaviour
                                 UpdateHud();
                                 SetStage(GameStage.UPGRADE);
                             }
-
-
                         }
                     }
                     break;
@@ -377,6 +375,7 @@ public class ArenaController : MonoBehaviour
     {
         inLevelHud.SetActive(false);
         tutorialHud.SetActive(false);
+        upgradeUi.DoUpdateStats();
 
         switch (newStage)
         {
@@ -409,16 +408,18 @@ public class ArenaController : MonoBehaviour
                     levelWaveQueue.Add(new Wave(0, sheepPrefab, 10));
                     for (var n = 0; n < currentLevel + 1; n++)
                     {
+                        if (n + 1 % 2 == 0)
+                            levelWaveQueue.Add(new Wave(10, foxPrefab, 1));
                         levelWaveQueue.Add(new Wave(5, sheepPrefab, 10));
+                        if (currentLevel >= 3)
+                            levelWaveQueue.Add(new Wave(5, dogPrefab, 1));
                     }
-                    if (currentLevel >= 2)
-                        levelWaveQueue.Add(new Wave(10, foxPrefab, 1));
                     if (currentLevel >= 3)
                         levelWaveQueue.Add(new Wave(10, dogPrefab, 1));
                     if (currentLevel >= 3)
                         levelWaveQueue.Add(new Wave(10, sheepPrefab, 10));
-                    if (currentLevel == 6 || currentLevel == 7)
-                        levelWaveQueue.Add(new Wave(10, foxPrefab, 3));
+                    if (currentLevel >= 5)
+                        levelWaveQueue.Add(new Wave(10, foxPrefab, 5));
 
                     spawnNextWaveTime = 0;
                     break;
