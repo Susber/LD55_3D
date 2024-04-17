@@ -79,6 +79,11 @@ public class BulletController : MonoBehaviour
         lifetime -= Time.deltaTime;
         if (lifetime <= 0)
         {
+            if (bullettype == BulletType.Rocket)
+            {
+                var explosion = Instantiate(explosionPrefab).GetComponent<ExplosionController>();
+                explosion.Init(bulletRigidbody.position, 4 + level * 1, new Color(1f, 0.667f, 0f));
+            }
             Destroy(this.gameObject);
         }
     }
