@@ -54,7 +54,7 @@ MonoBehaviour:
   turntransform: {fileID: 5608928395515774256}
   invertDirection: 0
   life: 20
-  coins: 10
+  coins: 3
   pushKnockback: 1500
   currentangle: 0
   targetangle: 0
