@@ -480,7 +480,10 @@ public class CutterMesh
     private static float ComputeIntersection(Vector3 point1, Vector3 point2, Vector3 normal)
     {
         Vector3 distance = Vector3.Normalize(point2 - point1);
-        return -Vector3.Dot(point1, normal) / Vector3.Dot(distance, normal);
+        float exact_res = -Vector3.Dot(point1, normal) / Vector3.Dot(distance, normal);
+        float nudged_res = exact_res + UnityEngine.Random.Range(-0.1f, 0.1f);
+        nudged_res = Mathf.Clamp(nudged_res, 0, 1);
+		return exact_res;
     }
 
     public static Mesh InvertedMesh(Mesh mesh)

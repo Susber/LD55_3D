@@ -105,7 +105,7 @@ public class PlayerController : MonoBehaviour
                         gun.SetGuntype(GunController.Guntype.Shotgun);
                     }
                     
-                    if (Input.GetKeyDown(KeyCode.Z))
+                    if (Input.GetKeyDown(KeyCode.K))
                     {
                         coins += 10;
                     }
@@ -191,7 +191,7 @@ public class PlayerController : MonoBehaviour
             CardboardDestroyer myRendererCardboardDestroyer = transform.GetComponentInChildren<CardboardDestroyer>();
             if (myRendererCardboardDestroyer != null)
             {
-                myRendererCardboardDestroyer.SpawnDestroyedCardboard(10, knockback);
+                myRendererCardboardDestroyer.SpawnDestroyedCardboard(20, knockback);
             }
 
             return;

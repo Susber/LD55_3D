@@ -4,15 +4,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1c1d15bd-9ebc-406e-a8b4-ae065e33b06d" name="Changes" comment="Gun extreme cooldown bug fix">
+    <list default="true" id="1c1d15bd-9ebc-406e-a8b4-ae065e33b06d" name="Changes" comment="fix bullets beeing the biggest object in the game making their explosions almost useless">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.LD55_3D/.idea/shelf/Uncommitted_changes_before_Update_at_16_04_2024_22_51__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.LD55_3D/.idea/shelf/Uncommitted_changes_before_Update_at_16_04_2024_22_51__Changes_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.LD55_3D/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.LD55_3D/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/BulletController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/BulletController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/GunController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GunController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MinionController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MinionController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/PlayerController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/PlayerController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Minion.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Minion.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Shading/CardboardFaceMat.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Shading/CardboardFaceMat.mat" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
   &quot;lastFilter&quot;: {
@@ -31,15 +38,10 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/c5ed782439084ef1bc2ad85eec89e9fe175a00/4c/4b0af9f7/Color.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/ArenaController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/BulletController.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock://F:/spieleentwicklung/LD55_3D/Assets/ExplosionController.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://F:/spieleentwicklung/LD55_3D/Assets/ExplosionController.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://F:/spieleentwicklung/LD55_3D/Assets/GunController.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Levels/AbstractWave.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Levels/Wave.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock://F:/spieleentwicklung/LD55_3D/Assets/MinionController.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/PlayerController.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock://F:/spieleentwicklung/LD55_3D/Assets/Prefabs/Bullet.prefab" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://F:/spieleentwicklung/LD55_3D/Assets/RuneController.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://F:/spieleentwicklung/LD55_3D/Assets/Prefabs/Minion.prefab" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/SheepMovementController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/UnitController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Util.cs" root0="FORCE_HIGHLIGHTING" />
@@ -59,6 +61,7 @@
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;Standalone Player.Start Unity.executor&quot;: &quot;Run&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -322,6 +325,8 @@
       <updated>1713178077399</updated>
       <workItem from="1713178080027" duration="13145000" />
       <workItem from="1713287696328" duration="8483000" />
+      <workItem from="1713357348262" duration="3402000" />
+      <workItem from="1713382328753" duration="1344000" />
     </task>
     <task id="LOCAL-00026" summary="rauch">
       <option name="closed" value="true" />
@@ -491,7 +496,23 @@
       <option name="project" value="LOCAL" />
       <updated>1713302363659</updated>
     </task>
-    <option name="localTasksCounter" value="47" />
+    <task id="LOCAL-00047" summary="fix">
+      <option name="closed" value="true" />
+      <created>1713357491580</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1713357491580</updated>
+    </task>
+    <task id="LOCAL-00048" summary="fix bullets beeing the biggest object in the game making their explosions almost useless">
+      <option name="closed" value="true" />
+      <created>1713367823642</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1713367823642</updated>
+    </task>
+    <option name="localTasksCounter" value="49" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -517,7 +538,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="recoil fix" />
     <MESSAGE value="explosions!" />
     <MESSAGE value="missing prefab fix" />
     <MESSAGE value="explosion and bullets despawning fix" />
@@ -540,8 +560,9 @@
     <MESSAGE value="balance" />
     <MESSAGE value="bullet time" />
     <MESSAGE value="fix fix fix please" />
-    <MESSAGE value="fix" />
     <MESSAGE value="Gun extreme cooldown bug fix" />
-    <option name="LAST_COMMIT_MESSAGE" value="Gun extreme cooldown bug fix" />
+    <MESSAGE value="fix" />
+    <MESSAGE value="fix bullets beeing the biggest object in the game making their explosions almost useless" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix bullets beeing the biggest object in the game making their explosions almost useless" />
   </component>
 </project>

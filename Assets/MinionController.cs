@@ -42,7 +42,7 @@ public class MinionController : MonoBehaviour
         unitcontroller.life = strength2 * 1000;
         
         this.minionrigidbody.position = pos;
-        gun = Instantiate(ArenaController.Instance.gunPrefab, renderingContainer).GetComponent<GunController>();
+        gun = Instantiate(ArenaController.Instance.gunPrefab, this.transform).GetComponent<GunController>();//, renderingContainer
         gun.Init(this.minionrigidbody, false, GunController.Guntype.Rocketlauncher);
         gun.SetGuntype(GunController.Guntype.Rocketlauncher);
         gun.SetLevel(strength);

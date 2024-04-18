@@ -86,7 +86,7 @@ public class AudioManager : MonoBehaviour
 
     public void PlaySoundGun()
     {
-        PlaySound(0, 0.1f);
+        PlaySound(0, 0.4f);
     }
 
     public void PlaySoundExplosion()

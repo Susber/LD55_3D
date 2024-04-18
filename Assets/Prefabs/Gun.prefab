@@ -54,7 +54,7 @@ MonoBehaviour:
   smoke: {fileID: 8847896168246100584}
   myLight: {fileID: 2182355203564418239}
   ps: {fileID: 0}
-  knockback: 250
+  knockback: 300
   fromEnemy: 1
   shootAmount: 5
   shootHalfAngle: 20
