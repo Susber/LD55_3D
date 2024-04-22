@@ -100,11 +100,11 @@ public class RuneController : MonoBehaviour
             var pos = rune.transform.position;
             float radius = rune.runeScale/2;
             int level = ArenaController.Instance.upgradeUi.stats[UpgradeUIComponent.SummonGiant];
-            int n_minions = ((int)level/2)+1;
+            int n_minions = level >= 4 ? 2 : 1;
 
             for (int i = 0; i < n_minions; i++)
             {
-                float angle = 360f / n_minions * i;
+                float angle = 2 * Mathf.PI / n_minions * i;
                 var vec = pos + radius * new Vector3(Mathf.Cos(angle), 0, Mathf.Sin(angle));
                 MinionController minion = Instantiate(ArenaController.Instance.minionPrefab, ArenaController.Instance.friendContainer).GetComponent<MinionController>();
                 minion.Init(level, vec, 10 + level * 5);

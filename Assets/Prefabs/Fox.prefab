@@ -50,7 +50,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cardboardPiece: {fileID: 9186086360536189253, guid: 7f07d26212f45496898c7fd1a003f444, type: 3}
+  cardboardPiece: {fileID: 9186086360536189253, guid: 7f07d26212f45496898c7fd1a003f444, type: 3}
   cardboardMaterial: {fileID: 2100000, guid: ce9f6a58e82aa3349bd3775fff79fa80, type: 2}
+  cardboardSideMaterial: {fileID: 2100000, guid: 34000f52b6e8f9f41960347ae81e0859, type: 2}
   cardboardSideMaterial: {fileID: 2100000, guid: 34000f52b6e8f9f41960347ae81e0859, type: 2}
   cardboardWidth: 0.1
   CardboardTexScale: 1
@@ -110,7 +112,7 @@ MonoBehaviour:
   turntransform: {fileID: 4920337512153496020}
   invertDirection: 0
   life: 20
-  coins: 10
+  coins: 3
   pushKnockback: 1500
   currentangle: 0
   targetangle: 0
@@ -323,6 +325,7 @@ PrefabInstance:
       propertyPath: m_SpriteTilingProperty.pivot.x
       value: 0.035028674
       objectReference: {fileID: 0}
+    - target: {fileID: 4078777312041198230, guid: d6d0103cdf318944f81fc4e39247186d, type: 3}
     - target: {fileID: 4078777312041198230, guid: d6d0103cdf318944f81fc4e39247186d, type: 3}
       propertyPath: m_SpriteTilingProperty.pivot.y
       value: 0.044365056

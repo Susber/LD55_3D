@@ -22,7 +22,7 @@ public class BulletController : MonoBehaviour
     private int level = 1;
 
     public static float rocketLifetime = 1.5f;
-    public static float bulletLifetime = 0.25f;
+    public static float bulletLifetime = 0.3f;
     public enum BulletType
     {
         Bullet,

@@ -4,7 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8fd0fe12-69a8-4dfd-9394-ff892a1b4efa" name="Changes" comment="more fixes" />
+    <list default="true" id="8fd0fe12-69a8-4dfd-9394-ff892a1b4efa" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.ld55-3d/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ld55-3d/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BulletController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/BulletController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Dog.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Dog.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Fox.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Fox.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/RuneController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/RuneController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Shading/CardboardFaceMat.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Shading/CardboardFaceMat.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UpgradeUIComponent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UpgradeUIComponent.cs" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -14,15 +22,6 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="mock:///Users/frithjof/Documents/dev/unity/ld55-3d/Assets/BombController.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Users/frithjof/Documents/dev/unity/ld55-3d/Assets/DogController.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Users/frithjof/Documents/dev/unity/ld55-3d/Assets/FoxController.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Users/frithjof/Documents/dev/unity/ld55-3d/Assets/FoxController.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Users/frithjof/Documents/dev/unity/ld55-3d/Assets/FoxController.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Users/frithjof/Documents/dev/unity/ld55-3d/Assets/FoxController.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Users/frithjof/Documents/dev/unity/ld55-3d/Assets/Levels/Wave.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Users/frithjof/Documents/dev/unity/ld55-3d/Assets/Prefabs/Dog.prefab" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Users/frithjof/Documents/dev/unity/ld55-3d/Assets/RuneController.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.2d.sprite@1.0.0/Editor/SpriteEditorModule/SpriteOutlineModule.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.2d.tilemap@1.0.0/Editor/GridEditorUtility.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ads@4.4.2/Editor/PostProcessBuildPlist.cs" root0="SKIP_HIGHLIGHTING" />
@@ -50,6 +49,7 @@
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.searcher@4.9.2/Editor/Searcher/SearcherTreeUtility.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.sysroot@2.0.7/Editor/NiceIO.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.textmeshpro@3.0.6/Scripts/Editor/TMP_SpriteAssetImporter.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.timeline@1.7.6/Samples~/Customization/Video/VideoTrack.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Editor/EventSystem/EventTriggerEditor.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/UI/Core/FontUpdateTracker.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/UI/Core/Layout/CanvasScaler.cs" root0="SKIP_HIGHLIGHTING" />
@@ -119,10 +119,10 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="90379">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" value="90379" />
+      <option name="pid" />
       <option name="projectPathOnTarget" />
       <option name="selectedOptions">
         <list />
@@ -150,31 +150,10 @@
       <workItem from="1713207433853" duration="852000" />
       <workItem from="1713208342900" duration="13018000" />
       <workItem from="1713221965173" duration="15532000" />
-      <workItem from="1713295618085" duration="4443000" />
-    </task>
-    <task id="LOCAL-00040" summary="level balancing">
-      <option name="closed" value="true" />
-      <created>1713186102623</created>
-      <option name="number" value="00040" />
-      <option name="presentableId" value="LOCAL-00040" />
-      <option name="project" value="LOCAL" />
-      <updated>1713186102623</updated>
-    </task>
-    <task id="LOCAL-00041" summary="remove sheep">
-      <option name="closed" value="true" />
-      <created>1713186176720</created>
-      <option name="number" value="00041" />
-      <option name="presentableId" value="LOCAL-00041" />
-      <option name="project" value="LOCAL" />
-      <updated>1713186176720</updated>
-    </task>
-    <task id="LOCAL-00042" summary="doggy">
-      <option name="closed" value="true" />
-      <created>1713188336540</created>
-      <option name="number" value="00042" />
-      <option name="presentableId" value="LOCAL-00042" />
-      <option name="project" value="LOCAL" />
-      <updated>1713188336540</updated>
+      <workItem from="1713295618085" duration="6034000" />
+      <workItem from="1713364409373" duration="2043000" />
+      <workItem from="1713366988993" duration="10000" />
+      <workItem from="1713461876289" duration="490000" />
     </task>
     <task id="LOCAL-00043" summary="undo markus scene">
       <option name="closed" value="true" />
@@ -544,7 +523,31 @@
       <option name="project" value="LOCAL" />
       <updated>1713301048947</updated>
     </task>
-    <option name="localTasksCounter" value="89" />
+    <task id="LOCAL-00089" summary="no more fox">
+      <option name="closed" value="true" />
+      <created>1713301092158</created>
+      <option name="number" value="00089" />
+      <option name="presentableId" value="LOCAL-00089" />
+      <option name="project" value="LOCAL" />
+      <updated>1713301092158</updated>
+    </task>
+    <task id="LOCAL-00090" summary="more fixes">
+      <option name="closed" value="true" />
+      <created>1713366502275</created>
+      <option name="number" value="00090" />
+      <option name="presentableId" value="LOCAL-00090" />
+      <option name="project" value="LOCAL" />
+      <updated>1713366502275</updated>
+    </task>
+    <task id="LOCAL-00091" summary="fix">
+      <option name="closed" value="true" />
+      <created>1713366779201</created>
+      <option name="number" value="00091" />
+      <option name="presentableId" value="LOCAL-00091" />
+      <option name="project" value="LOCAL" />
+      <updated>1713366779201</updated>
+    </task>
+    <option name="localTasksCounter" value="92" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -571,7 +574,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="fixxx" />
     <MESSAGE value="more" />
     <MESSAGE value="fixess!!!" />
     <MESSAGE value="shotgun rune" />
@@ -587,7 +589,6 @@
     <MESSAGE value="neue preise" />
     <MESSAGE value="f" />
     <MESSAGE value="preise und mehr" />
-    <MESSAGE value="fix" />
     <MESSAGE value="fixxess" />
     <MESSAGE value="hot fix after deadline" />
     <MESSAGE value="remove the tasks" />
@@ -595,8 +596,10 @@
     <MESSAGE value="fixes" />
     <MESSAGE value="dog fix" />
     <MESSAGE value="fixx" />
+    <MESSAGE value="no more fox" />
     <MESSAGE value="more fixes" />
-    <option name="LAST_COMMIT_MESSAGE" value="more fixes" />
+    <MESSAGE value="fix" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix" />
   </component>
   <component name="XDebuggerManager">
     <watches-manager>
