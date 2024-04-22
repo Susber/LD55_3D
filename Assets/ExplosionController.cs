@@ -13,6 +13,7 @@ public class ExplosionController : MonoBehaviour
     public Vector3 ForceVector;
     public ParticleSystem sparkparticles;
     public ParticleSystem smokeparticles;
+    public ParticleSystem lightParticles;
 
     public SphereCollider spherecollider;
     private float explosion_range_nerf = 2.0f;
@@ -24,8 +25,7 @@ public class ExplosionController : MonoBehaviour
         smokeparticles = GetComponentInChildren<ParticleSystem>();
         sparkparticles.Stop();
         smokeparticles.Stop();
-        
-        
+        lightParticles.Stop();
         
         this.spherecollider.radius = size2-explosion_range_nerf;
         this.size = size2; //size scales the explosion size, default is which is represented by the default explosion animation
@@ -41,6 +41,10 @@ public class ExplosionController : MonoBehaviour
         smoke_main.color = new ParticleSystem.MinMaxGradient(c, new Color(0.8f,0.8f, 0.8f));
         scaleParticleSpeed(smokeparticles, Mathf.Sqrt(size / 5));
         scaleParticleBurstCount(smokeparticles, Mathf.Sqrt(size / 5));
+
+
+        var lightColors = lightParticles.colorOverLifetime;
+		lightColors.color = new ParticleSystem.MinMaxGradient(c, new Color(c.r, c.g, c.b, 0));
     }
 
     void scaleParticleBurstCount(ParticleSystem ps, float scale)
@@ -69,7 +73,7 @@ public class ExplosionController : MonoBehaviour
             lifetime -= Time.deltaTime;
             if (lifetime <= 0)
             {
-                Destroy(this);
+                Destroy(this.gameObject);
             }
         }
     }
@@ -96,6 +100,7 @@ public class ExplosionController : MonoBehaviour
         exploded = true;
         sparkparticles.Play();
         smokeparticles.Play();
+        lightParticles.Play(); 
         for(int I =0; I < AffectedObjects.Count; I++)
         {
             var affectedrigidbody = AffectedObjects[I];

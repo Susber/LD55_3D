@@ -182,7 +182,8 @@ public class PlayerController : MonoBehaviour
         var upgrades = ArenaController.Instance.upgradeUi;
         upgrades.stats[UpgradeUIComponent.Health] -= 1;
         ArenaController.Instance.UpdateHud();
-        if (upgrades.stats[UpgradeUIComponent.Health] <= 0)
+
+		if (upgrades.stats[UpgradeUIComponent.Health] <= 0)
         {
             upgrades.stats[UpgradeUIComponent.Health] = 0;
             currentState = PlayerState.DEAD;

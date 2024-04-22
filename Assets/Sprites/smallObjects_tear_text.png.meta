@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: fd455d7dc9f791c47ad09e3206911e10
+guid: 7921f3ee7152f244d8d3171c40e16f94
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -110,148 +110,253 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: fox_0
+      name: smallObjects_0
       rect:
         serializedVersion: 2
-        x: 134
-        y: 899
-        width: 237
-        height: 350
+        x: 728
+        y: 844
+        width: 97
+        height: 109
       alignment: 9
-      pivot: {x: 0.9235438, y: 0.049314838}
+      pivot: {x: 0.44895008, y: 0.42428392}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e5aa0989eef720e42b15212b24ac7dcf
-      internalID: -602888912
+      spriteID: ee925558aeed52f48ba0ba0a3c5f318f
+      internalID: 456614439
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: fox_1
+      name: smallObjects_1
       rect:
         serializedVersion: 2
-        x: 434
-        y: 896
-        width: 166
-        height: 388
+        x: 875
+        y: 802
+        width: 69
+        height: 99
       alignment: 9
-      pivot: {x: 0.4244131, y: 0.042635888}
+      pivot: {x: 0.44019526, y: 0.06650181}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f194532c96ff42148b6c58db8193f0bd
-      internalID: -1337642470
+      spriteID: 6a60171cf6957a3419eff18a013916aa
+      internalID: 1219988348
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: fox_2
+      name: smallObjects_2
       rect:
         serializedVersion: 2
-        x: 660
-        y: 894
-        width: 251
-        height: 370
+        x: 1040
+        y: 848
+        width: 111
+        height: 126
       alignment: 9
-      pivot: {x: 0.12150446, y: 0.049453158}
+      pivot: {x: 0.44795406, y: 0.37554833}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f6319e448f3d707419b957d45e4a6041
-      internalID: -1838683821
+      spriteID: a2a55d0a94e43444fb870dab67d72658
+      internalID: 401332070
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: fox_3
+      name: smallObjects_3
       rect:
         serializedVersion: 2
-        x: 925
-        y: 695
-        width: 319
-        height: 470
+        x: 619
+        y: 663
+        width: 58
+        height: 84
       alignment: 9
-      pivot: {x: 0.044851847, y: 0.05759628}
+      pivot: {x: 0.41462338, y: 0.038217455}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 12c2144894d014c4c8eca53a610b33f6
-      internalID: -487867730
+      spriteID: 7e33228641d91f14d8e954814395bd75
+      internalID: 201077154
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: fox_4
+      name: smallObjects_4
       rect:
         serializedVersion: 2
-        x: 1298
-        y: 778
-        width: 266
-        height: 358
+        x: 785
+        y: 663
+        width: 43
+        height: 84
       alignment: 9
-      pivot: {x: 0.035028674, y: 0.044365056}
+      pivot: {x: 0.15451972, y: 0.06769308}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5f5b667b916786748bc6a8107b805c90
-      internalID: -1114589689
+      spriteID: 5e5b540a92918cb4cbc1cd7ff1cdc9c3
+      internalID: 1207370203
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: fox_5
+      name: smallObjects_5
       rect:
         serializedVersion: 2
-        x: 1617
+        x: 976
         y: 714
-        width: 188
-        height: 410
+        width: 82
+        height: 91
       alignment: 9
-      pivot: {x: 0.15675582, y: 0.062805474}
+      pivot: {x: 0.47987106, y: 0.17350216}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d1b6067de452fb3479140e3e76a4c912
-      internalID: 1198703819
+      spriteID: 1221f4072466e6a4ca96563ed846edf7
+      internalID: -1474915506
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: fox_6
+      name: smallObjects_6
       rect:
         serializedVersion: 2
-        x: 686
-        y: 277
-        width: 446
-        height: 279
+        x: 1135
+        y: 713
+        width: 114
+        height: 130
       alignment: 9
-      pivot: {x: 0.06996148, y: 0.50642467}
+      pivot: {x: 0.48552182, y: 0.4111206}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 053cdf87a96c4394c9ad8ff384909e4d
-      internalID: 1877768014
+      spriteID: a2c97f765a1706e45bd038d2527f4426
+      internalID: -1418013133
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: smallObjects_7
+      rect:
+        serializedVersion: 2
+        x: 682
+        y: 603
+        width: 59
+        height: 68
+      alignment: 9
+      pivot: {x: 0.45803574, y: 0.09948012}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 47b053d6aa5024b489f2d14cd87893c3
+      internalID: -212061925
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: smallObjects_8
+      rect:
+        serializedVersion: 2
+        x: 816
+        y: 563
+        width: 44
+        height: 79
+      alignment: 9
+      pivot: {x: 0.48124418, y: 0.061225217}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e14f2d922c736994cb5cd29a5d783c46
+      internalID: 1687846653
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: smallObjects_9
+      rect:
+        serializedVersion: 2
+        x: 943
+        y: 617
+        width: 57
+        height: 68
+      alignment: 9
+      pivot: {x: 0.5152848, y: 0.11161804}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e700bd25db4898f47abf3423ac3cdaa2
+      internalID: 1827709970
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: smallObjects_10
+      rect:
+        serializedVersion: 2
+        x: 1056
+        y: 539
+        width: 37
+        height: 84
+      alignment: 9
+      pivot: {x: 0.45539156, y: 0.05786714}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 436f1fdcbcdbd4a4282353c38a7a0189
+      internalID: -733261563
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: smallObjects_11
+      rect:
+        serializedVersion: 2
+        x: 1173
+        y: 525
+        width: 115
+        height: 87
+      alignment: 9
+      pivot: {x: 0.47846997, y: 0.120545834}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ca9f8c3ee9c46a64d9cfd1cd4f70c6be
+      internalID: 1630359695
       vertices: []
       indices: 
       edges: []
@@ -259,7 +364,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 908b478ea66c2264c90b178c753cb04d
+    spriteID: 9aa3de35b70e425408d5e50f180772f9
     internalID: 0
     vertices: []
     indices: 
@@ -267,14 +372,18 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      fox_0: -602888912
-      fox_1: -1337642470
-      fox_2: -1838683821
-      fox_3: -487867730
-      fox_4: -1114589689
-      fox_5: 1198703819
-      fox_6: 1877768014
-      fox_7: -379692239
+      smallObjects_0: 456614439
+      smallObjects_1: 1219988348
+      smallObjects_10: -733261563
+      smallObjects_11: 1630359695
+      smallObjects_2: 401332070
+      smallObjects_3: 201077154
+      smallObjects_4: 1207370203
+      smallObjects_5: -1474915506
+      smallObjects_6: -1418013133
+      smallObjects_7: -212061925
+      smallObjects_8: 1687846653
+      smallObjects_9: 1827709970
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

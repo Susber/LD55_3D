@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: fd455d7dc9f791c47ad09e3206911e10
+guid: 175af76dfa3a028489c884b3624e9e04
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -110,148 +110,85 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: fox_0
+      name: chickkii_0
       rect:
         serializedVersion: 2
-        x: 134
-        y: 899
-        width: 237
-        height: 350
+        x: 734
+        y: 828
+        width: 124
+        height: 165
       alignment: 9
-      pivot: {x: 0.9235438, y: 0.049314838}
+      pivot: {x: 0.38929158, y: 0.08400583}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e5aa0989eef720e42b15212b24ac7dcf
-      internalID: -602888912
+      spriteID: a1636ecc22b2d20429c47f2e6dab2862
+      internalID: -310772628
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: fox_1
+      name: chickkii_1
       rect:
         serializedVersion: 2
-        x: 434
-        y: 896
-        width: 166
-        height: 388
+        x: 930
+        y: 831
+        width: 150
+        height: 170
       alignment: 9
-      pivot: {x: 0.4244131, y: 0.042635888}
+      pivot: {x: 0.49346313, y: 0.05586512}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f194532c96ff42148b6c58db8193f0bd
-      internalID: -1337642470
+      spriteID: ebbfe6f51205b8143a13f41a763d4fa0
+      internalID: 1136215295
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: fox_2
+      name: chickkii_2
       rect:
         serializedVersion: 2
-        x: 660
-        y: 894
-        width: 251
-        height: 370
+        x: 724
+        y: 611
+        width: 127
+        height: 169
       alignment: 9
-      pivot: {x: 0.12150446, y: 0.049453158}
+      pivot: {x: 0.37646532, y: 0.05323674}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f6319e448f3d707419b957d45e4a6041
-      internalID: -1838683821
+      spriteID: a926e8f7e56fd9a45a35e1c60daf8cf6
+      internalID: -1503444939
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: fox_3
+      name: chickkii_3
       rect:
         serializedVersion: 2
-        x: 925
-        y: 695
-        width: 319
-        height: 470
+        x: 945
+        y: 617
+        width: 148
+        height: 172
       alignment: 9
-      pivot: {x: 0.044851847, y: 0.05759628}
+      pivot: {x: 0.31448942, y: 0.049627613}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 12c2144894d014c4c8eca53a610b33f6
-      internalID: -487867730
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: fox_4
-      rect:
-        serializedVersion: 2
-        x: 1298
-        y: 778
-        width: 266
-        height: 358
-      alignment: 9
-      pivot: {x: 0.035028674, y: 0.044365056}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 5f5b667b916786748bc6a8107b805c90
-      internalID: -1114589689
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: fox_5
-      rect:
-        serializedVersion: 2
-        x: 1617
-        y: 714
-        width: 188
-        height: 410
-      alignment: 9
-      pivot: {x: 0.15675582, y: 0.062805474}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d1b6067de452fb3479140e3e76a4c912
-      internalID: 1198703819
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: fox_6
-      rect:
-        serializedVersion: 2
-        x: 686
-        y: 277
-        width: 446
-        height: 279
-      alignment: 9
-      pivot: {x: 0.06996148, y: 0.50642467}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 053cdf87a96c4394c9ad8ff384909e4d
-      internalID: 1877768014
+      spriteID: 6cbcba659870b3742807c7a6598ae119
+      internalID: 1550672400
       vertices: []
       indices: 
       edges: []
@@ -259,7 +196,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 908b478ea66c2264c90b178c753cb04d
+    spriteID: 0864bea7f55200945b577c456e0ac66f
     internalID: 0
     vertices: []
     indices: 
@@ -267,14 +204,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      fox_0: -602888912
-      fox_1: -1337642470
-      fox_2: -1838683821
-      fox_3: -487867730
-      fox_4: -1114589689
-      fox_5: 1198703819
-      fox_6: 1877768014
-      fox_7: -379692239
+      chickkii_0: -310772628
+      chickkii_1: 1136215295
+      chickkii_2: -1503444939
+      chickkii_3: 1550672400
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

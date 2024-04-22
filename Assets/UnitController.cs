@@ -9,6 +9,7 @@ namespace Components
         public bool invertDirection;
 
         public float life = 100;
+        public float max_life = 100;
         private float armor_factor = 1;
         private float armor;
 
@@ -23,6 +24,16 @@ namespace Components
         public void Damage(float damage, Vector3 knockback)
         {
             life -= damage * armor_factor;
+
+            float damage_percentage = 1 - Mathf.Max(life, 0) / max_life;
+
+            // Set material property 
+            var all_my_renderers = transform.GetComponentsInChildren<SpriteRenderer>(true);
+            foreach (var renderer in all_my_renderers)
+            {
+                renderer.material.SetFloat("_RipPercentage", damage_percentage);
+            }
+
             if (life <= 0)
             {
                 if (AudioManager.Instance is not null)
@@ -59,6 +70,8 @@ namespace Components
 
         public void Start()
         {
+            // Set correct max life
+            max_life = life;
         }
 
         // public void Update()
