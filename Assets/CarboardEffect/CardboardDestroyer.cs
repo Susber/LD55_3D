@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel.Design.Serialization;
 using System.Net;
+using System.Runtime.InteropServices;
 using System.Transactions;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -16,7 +17,7 @@ public class CardboardDestroyer : MonoBehaviour
 	public float CardboardTexScale = 1f;
 	public Color cardboardColor;
 
-    public void SpawnDestroyedCardboard(int targetNumPieces, Vector3 killingKnockback)
+    public void SpawnDestroyedCardboard(int targetNumPieces, Vector3 killingKnockback, float _mass = 1.0f)
     {
         // Get object with correct mesh
         var frontFaceChild = transform.Find("renderer/CardboardFace");
@@ -29,7 +30,11 @@ public class CardboardDestroyer : MonoBehaviour
         // cut the mesh
         List<Mesh> pieces = CutterMesh.RecursiveCutting(cutMesh, targetNumPieces, new Vector3(0, 0, 1).normalized);
         // create game objects for each cut mesh
-        Transform coinContainer = ArenaController.Instance.coinContainer;
+        Transform coinContainer = null;
+        if (ArenaController.Instance != null)
+        {
+            coinContainer = ArenaController.Instance.coinContainer;
+        }
         if (coinContainer == null)
         {
             Debug.Log("no coin container found!");
@@ -89,7 +94,7 @@ public class CardboardDestroyer : MonoBehaviour
 			xpCollider.sharedMesh = null;
 			xpCollider.sharedMesh = frontFilter_side.mesh;
             float forceIntensity = UnityEngine.Random.Range(0.5f, 2f);
-            xpBody.mass = 1f;
+            xpBody.mass = _mass;
             Vector3 force = forceIntensity * UnityEngine.Random.onUnitSphere + killingKnockback;
             xpBody.AddForce(force, ForceMode.Force);
             xpBody.AddTorque(forceIntensity * (UnityEngine.Random.onUnitSphere), ForceMode.Force);

@@ -50,6 +50,7 @@ MonoBehaviour:
   - {fileID: 2068830020, guid: 297275a948f891942aadf3abb61cc280, type: 3}
   - {fileID: 912193540, guid: 297275a948f891942aadf3abb61cc280, type: 3}
   - {fileID: 977061769, guid: 297275a948f891942aadf3abb61cc280, type: 3}
+  spawnOdds: 01000000050000000a000000
 --- !u!65 &8872673206692500385
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -141,11 +142,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6096552135434257274, guid: afd78319d0811af42877c335ce657fe1, type: 3}
       propertyPath: m_SpriteTilingProperty.pivot.x
-      value: 0.5
+      value: 0.4917012
       objectReference: {fileID: 0}
     - target: {fileID: 6096552135434257274, guid: afd78319d0811af42877c335ce657fe1, type: 3}
       propertyPath: m_SpriteTilingProperty.pivot.y
-      value: 0.5
+      value: 0.05384961
       objectReference: {fileID: 0}
     - target: {fileID: 6096552135434257274, guid: afd78319d0811af42877c335ce657fe1, type: 3}
       propertyPath: m_SpriteTilingProperty.newSize.x
