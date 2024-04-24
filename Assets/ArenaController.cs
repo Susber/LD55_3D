@@ -33,6 +33,7 @@ public class ArenaController : MonoBehaviour
     public Transform bigRuneContainer;
     public Transform smallRuneContainer;
     public Transform coinContainer;
+    public Transform cardboardPieceContainer;
 
     public GameStage currentStage = GameStage.TUTORIAL;
 

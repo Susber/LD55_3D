@@ -16,66 +16,80 @@ public class CardboardDestroyer : MonoBehaviour
     public float cardboardWidth = 0.1f;
 	public float CardboardTexScale = 1f;
 	public Color cardboardColor;
+    public int numPieces = 5;
 
-    public void SpawnDestroyedCardboard(int targetNumPieces, Vector3 killingKnockback, float _mass = 1.0f)
+	private List<GameObject> myPieces = new List<GameObject>();
+
+	private void Start()
+	{
+		myPieces.Clear();
+	}
+
+	private void Update()
+	{
+		if (myPieces.Count > 0) { return; };
+
+        int rnum = UnityEngine.Random.Range(0, 500);
+        if (rnum == 0)
+        {
+            // generate cardboard
+            Debug.Log("randomly pre-generating my cardboard");
+			GenerateMyCardboard(numPieces);
+        }
+	}
+
+    private void GenerateMyCardboard(int _numPieces)
     {
-        // Get object with correct mesh
-        var frontFaceChild = transform.Find("renderer/CardboardFace");
-        if (frontFaceChild == null)
-        {
-            Debug.Log("No Cardboard to destroy");
-            return;
-        }
-        Mesh cutMesh = frontFaceChild.GetComponent<MeshFilter>().mesh;
-        // cut the mesh
-        List<Mesh> pieces = CutterMesh.RecursiveCutting(cutMesh, targetNumPieces, new Vector3(0, 0, 1).normalized);
-        // create game objects for each cut mesh
-        Transform coinContainer = null;
-        if (ArenaController.Instance != null)
-        {
-            coinContainer = ArenaController.Instance.coinContainer;
-        }
-        if (coinContainer == null)
-        {
-            Debug.Log("no coin container found!");
-            coinContainer = GameObject.Find("CoinContainer").transform;
-        }
+		// Get object with correct mesh
+		var frontFaceChild = transform.Find("renderer/CardboardFace");
+		if (frontFaceChild == null)
+		{
+			Debug.Log("No Cardboard to destroy");
+			return;
+		}
+		Mesh cutMesh = frontFaceChild.GetComponent<MeshFilter>().mesh;
+		List<Mesh> pieces = CutterMesh.RecursiveCutting(cutMesh, _numPieces, new Vector3(0, 0, 1).normalized);
+		Transform pieceContainer = null;
+		if (ArenaController.Instance != null)
+		{
+			pieceContainer = ArenaController.Instance.cardboardPieceContainer;
+		}
+		if (pieceContainer == null)
+		{
+			Debug.Log("no cardboard piece container found!");
+			pieceContainer = GameObject.Find("Cardboard Container").transform;
+		}
+		foreach (Mesh piece in pieces)
+		{
+			if (piece.vertexCount < 3)
+			{
+				continue;
+			}
 
-        foreach (Mesh piece in pieces)
-        {
-            if (piece.vertexCount < 3)
-            {
-                continue;
-            }
+			Mesh pieceInv = CutterMesh.InvertedMesh(piece);
+			Mesh boundary = CreateBoundaryMesh(piece, transform.TransformDirection(new Vector3(0, 0, cardboardWidth)));
 
-            Mesh pieceInv = CutterMesh.InvertedMesh(piece);
-            Mesh boundary = CreateBoundaryMesh(piece, transform.TransformDirection(new Vector3(0, 0, cardboardWidth)));
+			GameObject xpPiece = GameObject.Instantiate(cardboardPiece, pieceContainer);
+			MeshCollider xpCollider = xpPiece.GetComponent<MeshCollider>();
+			Debris xpBodyControlScript = xpPiece.GetComponent<Debris>();
 
-            GameObject xpPiece = GameObject.Instantiate(cardboardPiece, coinContainer);
-            MeshCollider xpCollider = xpPiece.GetComponent<MeshCollider>();
-            Rigidbody xpBody = xpPiece.GetComponent<Rigidbody>();
-            Debris xpBodyControlScript = xpPiece.GetComponent<Debris>();
-            xpPiece.transform.position = transform.position;
-            xpPiece.transform.rotation = transform.rotation;
-            xpPiece.transform.localScale = transform.localScale;
+			GameObject frontFace = new GameObject("FrontFace");
+			GameObject backFace = new GameObject("BackFace");
+			GameObject side = new GameObject("Side");
 
-            GameObject frontFace = new GameObject("FrontFace");
-            GameObject backFace = new GameObject("BackFace");
-            GameObject side = new GameObject("Side");
-
-            frontFace.transform.parent = xpPiece.transform;
-            frontFace.transform.localPosition = new Vector3(0,0,0);
+			frontFace.transform.parent = xpPiece.transform;
+			frontFace.transform.localPosition = new Vector3(0, 0, 0);
 			frontFace.transform.localEulerAngles = Vector3.zero;
-            frontFace.transform.localScale = Vector3.one;
+			frontFace.transform.localScale = Vector3.one;
 			MeshFilter frontFilter = frontFace.AddComponent<MeshFilter>();
-            MeshRenderer frontRenderer = frontFace.AddComponent<MeshRenderer>();
-            frontFilter.mesh = piece;
-            frontRenderer.material = cardboardMaterial;
+			MeshRenderer frontRenderer = frontFace.AddComponent<MeshRenderer>();
+			frontFilter.mesh = piece;
+			frontRenderer.material = cardboardMaterial;
 
-            backFace.transform.parent = xpPiece.transform;
-            backFace.transform.localPosition = new Vector3(0,0, cardboardWidth);
-            backFace.transform.localEulerAngles = Vector3.zero;
-            backFace.transform.localScale = Vector3.one;
+			backFace.transform.parent = xpPiece.transform;
+			backFace.transform.localPosition = new Vector3(0, 0, cardboardWidth);
+			backFace.transform.localEulerAngles = Vector3.zero;
+			backFace.transform.localScale = Vector3.one;
 			MeshFilter frontFilter_back = backFace.AddComponent<MeshFilter>();
 			MeshRenderer frontRenderer_back = backFace.AddComponent<MeshRenderer>();
 			frontFilter_back.mesh = pieceInv;
@@ -93,11 +107,6 @@ public class CardboardDestroyer : MonoBehaviour
 			// Set xp collider and add random force
 			xpCollider.sharedMesh = null;
 			xpCollider.sharedMesh = frontFilter_side.mesh;
-            float forceIntensity = UnityEngine.Random.Range(0.5f, 2f);
-            xpBody.mass = _mass;
-            Vector3 force = forceIntensity * UnityEngine.Random.onUnitSphere + killingKnockback;
-            xpBody.AddForce(force, ForceMode.Force);
-            xpBody.AddTorque(forceIntensity * (UnityEngine.Random.onUnitSphere), ForceMode.Force);
 
 			// set debris center for particle effect
 			Vector3 cog = Vector3.zero;
@@ -106,10 +115,42 @@ public class CardboardDestroyer : MonoBehaviour
 				cog += v;
 			}
 			cog /= boundary.vertexCount;
-            xpBodyControlScript.debrisCenter = cog;
+			xpBodyControlScript.debrisCenter = cog;
+
+			// deactivate the piece
+			xpPiece.SetActive(false);
+			myPieces.Add(xpPiece);
 		}
-        // I dont need to be rendered anymore
-        transform.gameObject.SetActive(false);
+	}
+
+	public void SpawnDestroyedCardboard(int targetNumPieces, Vector3 killingKnockback, float _mass = 1.0f)
+    {
+		if (targetNumPieces != numPieces || myPieces.Count == 0)
+		{
+			foreach (GameObject old_piece in myPieces)
+			{
+				Destroy(old_piece.gameObject);
+			}
+			myPieces.Clear();
+			GenerateMyCardboard(targetNumPieces);
+			Debug.Log("Cardboard pieces created at death");
+		}
+		foreach (GameObject piece in myPieces)
+		{
+			piece.SetActive(true);
+			piece.transform.position = transform.position;
+			piece.transform.rotation = transform.rotation;
+			piece.transform.localScale = transform.localScale;
+
+			var xpBody = piece.GetComponent<Rigidbody>();
+			xpBody.mass = _mass;
+			float forceIntensity = UnityEngine.Random.Range(0.5f, 2f);
+			Vector3 force = forceIntensity * UnityEngine.Random.onUnitSphere + killingKnockback;
+			xpBody.AddForce(force, ForceMode.Force);
+			xpBody.AddTorque(forceIntensity * (UnityEngine.Random.onUnitSphere), ForceMode.Force);
+		}
+		transform.gameObject.SetActive(false);
+		return;
     }
 
     private Mesh CreateBoundaryMesh(Mesh mesh, Vector3 offsetVec)
