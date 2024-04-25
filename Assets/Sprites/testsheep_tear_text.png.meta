@@ -113,12 +113,12 @@ TextureImporter:
       name: testsheep_0
       rect:
         serializedVersion: 2
-        x: 787
-        y: 626
-        width: 321
-        height: 263
+        x: 20
+        y: 31
+        width: 319
+        height: 251
       alignment: 9
-      pivot: {x: 0.5, y: 0.1}
+      pivot: {x: 0.5205637, y: 0.07313197}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []

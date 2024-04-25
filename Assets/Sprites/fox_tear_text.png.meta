@@ -113,12 +113,12 @@ TextureImporter:
       name: fox_0
       rect:
         serializedVersion: 2
-        x: 134
-        y: 899
+        x: 22
+        y: 637
         width: 237
         height: 350
       alignment: 9
-      pivot: {x: 0.9235438, y: 0.049314838}
+      pivot: {x: 0.92272246, y: 0.048616245}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -134,12 +134,12 @@ TextureImporter:
       name: fox_1
       rect:
         serializedVersion: 2
-        x: 434
-        y: 896
+        x: 322
+        y: 634
         width: 166
         height: 388
       alignment: 9
-      pivot: {x: 0.4244131, y: 0.042635888}
+      pivot: {x: 0.43809986, y: 0.046478745}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -155,12 +155,12 @@ TextureImporter:
       name: fox_2
       rect:
         serializedVersion: 2
-        x: 660
-        y: 894
+        x: 548
+        y: 632
         width: 251
         height: 370
       alignment: 9
-      pivot: {x: 0.12150446, y: 0.049453158}
+      pivot: {x: 0.15714559, y: 0.05565829}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -176,12 +176,12 @@ TextureImporter:
       name: fox_3
       rect:
         serializedVersion: 2
-        x: 925
-        y: 695
+        x: 838
+        y: 565
         width: 319
         height: 470
       alignment: 9
-      pivot: {x: 0.044851847, y: 0.05759628}
+      pivot: {x: 0.04501563, y: 0.070947394}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -197,12 +197,12 @@ TextureImporter:
       name: fox_4
       rect:
         serializedVersion: 2
-        x: 1298
-        y: 778
+        x: 1199
+        y: 610
         width: 266
         height: 358
       alignment: 9
-      pivot: {x: 0.035028674, y: 0.044365056}
+      pivot: {x: 0.050934527, y: 0.08022986}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -218,12 +218,12 @@ TextureImporter:
       name: fox_5
       rect:
         serializedVersion: 2
-        x: 1617
-        y: 714
-        width: 188
-        height: 410
+        x: 182
+        y: 287
+        width: 446
+        height: 279
       alignment: 9
-      pivot: {x: 0.15675582, y: 0.062805474}
+      pivot: {x: 0.07089815, y: 0.51381147}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -236,22 +236,22 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: fox_6
+      name: fox_7
       rect:
         serializedVersion: 2
-        x: 686
-        y: 277
-        width: 446
-        height: 279
+        x: 885
+        y: 28
+        width: 188
+        height: 410
       alignment: 9
-      pivot: {x: 0.06996148, y: 0.50642467}
+      pivot: {x: 0.15156588, y: 0.08334492}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 053cdf87a96c4394c9ad8ff384909e4d
-      internalID: 1877768014
+      spriteID: 780ed591fde7032408ca3b1032472cfd
+      internalID: -379692239
       vertices: []
       indices: 
       edges: []

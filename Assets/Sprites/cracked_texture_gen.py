@@ -1,7 +1,10 @@
-from PIL import Image
+from PIL import Image, UnidentifiedImageError, PngImagePlugin, ImageFile
 import numpy as np
 from collections import deque
 import os
+import io
+
+ImageFile.LOAD_TRUNCATED_IMAGES = True # wtf
 
 images_to_process = [
     "chickkii.png",
@@ -56,9 +59,22 @@ def get_neighbouring_indices(i, j, shape):
             
 
 def create_uv_remap_and_boundary_texture(image_path):
-    imfile = open(image_path, "rb")
-    im = np.array(Image.open(imfile))
-    imfile.close()
+    #imfile = open(image_path, "rb")
+
+    # img = open(image_path, "rb").read()
+    # img_b = io.BytesIO(img)
+    # img_b.seek(0)
+    # prefix = img_b.read(16)
+    # if PngImagePlugin._accept(prefix):
+    #     img_b.seek(0)
+    #     im = PngImagePlugin.PngImageFile(img_b)
+    #     print(im)
+    # else:
+    #     print("Prefix does not match magic")
+
+    im = np.array(Image.open(image_path, formats=("png",)))
+
+    #imfile.close()
     # flip image for easy processing
     im = np.flip(im, axis=0)
     xs, ys, widths, heights = extract_bounds_from_meta_file(image_path)
@@ -196,7 +212,7 @@ def try_to_copy_metadata(image_path):
 
 if __name__ == "__main__":
     for im_path in images_to_process:
-        create_uv_remap_and_boundary_texture(im_path)
+        #create_uv_remap_and_boundary_texture(im_path)
         try_to_copy_metadata(im_path)
         print(im_path, "processed")
 

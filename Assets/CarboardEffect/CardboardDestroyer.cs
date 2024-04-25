@@ -4,12 +4,15 @@ using System.Collections.Generic;
 using System.ComponentModel.Design.Serialization;
 using System.Net;
 using System.Runtime.InteropServices;
+using System.Runtime.InteropServices.WindowsRuntime;
 using System.Transactions;
 using Unity.VisualScripting;
 using UnityEngine;
 
 public class CardboardDestroyer : MonoBehaviour
 {
+	public static bool preComputationSlotFree = true;
+
     public GameObject cardboardPiece;
     public Material cardboardMaterial;
     public Material cardboardSideMaterial;
@@ -18,24 +21,140 @@ public class CardboardDestroyer : MonoBehaviour
 	public Color cardboardColor;
     public int numPieces = 5;
 
+	private List<Mesh> myMeshPieces = new List<Mesh>();
 	private List<GameObject> myPieces = new List<GameObject>();
+	private bool igeneratedlastframe = false;
+	private int currPieceIndex = 0;
+	private bool preProcessingDone = false;
+	private Transform pieceContainer = null;
 
 	private void Start()
 	{
+		myMeshPieces.Clear();
 		myPieces.Clear();
+		igeneratedlastframe = false;
+		preProcessingDone = false;
+		if (ArenaController.Instance != null)
+		{
+			pieceContainer = ArenaController.Instance.cardboardPieceContainer;
+		}
+		if (pieceContainer == null)
+		{
+			Debug.Log("no cardboard piece container in arena found!");
+			pieceContainer = GameObject.Find("CardboardContainer").transform;
+		}
+		numPieces = 5;
+		currPieceIndex = 0;
 	}
 
 	private void Update()
 	{
-		if (myPieces.Count > 0) { return; };
+		if (igeneratedlastframe) { 
+			preComputationSlotFree = true; 
+			igeneratedlastframe=false;
+			return;
+		};
 
-        int rnum = UnityEngine.Random.Range(0, 500);
-        if (rnum == 0)
-        {
-            // generate cardboard
-            Debug.Log("randomly pre-generating my cardboard");
-			GenerateMyCardboard(numPieces);
-        }
+		if (!preComputationSlotFree) { return; };
+		if (preProcessingDone) { return; };
+
+		int rNum = UnityEngine.Random.Range(0, 20);
+		if (rNum != 0) { return; };
+
+		preComputationSlotFree = false;
+		igeneratedlastframe = true;
+
+		if (myMeshPieces.Count == 0) 
+		{
+			Debug.Log("pre-generating cuts");
+			var frontFaceChild = transform.Find("renderer/CardboardFace");
+			if (frontFaceChild == null)
+			{
+				Debug.Log("No Cardboard to destroy");
+				return;
+			}
+			Mesh cutMesh = frontFaceChild.GetComponent<MeshFilter>().mesh;
+			myMeshPieces = CutterMesh.RecursiveCutting(cutMesh, numPieces, new Vector3(0, 0, 1).normalized);
+			Debug.Log("Cut Mesh into " + myMeshPieces.Count.ToString() + " pieces");
+			return;
+		}
+
+		if (currPieceIndex >= myMeshPieces.Count)
+		{
+			Debug.Log("Preprocessing Done");
+			preProcessingDone = true;
+			return;
+		}
+		IncrementalCardboardCreation();
+		currPieceIndex++;
+	}
+
+	private void IncrementalCardboardCreation()
+	{
+		if (currPieceIndex >= myMeshPieces.Count) { return; };
+		Mesh piece = myMeshPieces[currPieceIndex];
+		if (piece.vertexCount < 3)
+		{
+			return;
+		}
+
+		Debug.Log("Instantiating one piece");
+
+		Mesh pieceInv = CutterMesh.InvertedMesh(piece);
+		Mesh boundary = CreateBoundaryMesh(piece, transform.TransformDirection(new Vector3(0, 0, cardboardWidth)));
+
+		GameObject xpPiece = GameObject.Instantiate(cardboardPiece, pieceContainer);
+		MeshCollider xpCollider = xpPiece.GetComponent<MeshCollider>();
+		Debris xpBodyControlScript = xpPiece.GetComponent<Debris>();
+
+		GameObject frontFace = new GameObject("FrontFace");
+		GameObject backFace = new GameObject("BackFace");
+		GameObject side = new GameObject("Side");
+
+		frontFace.transform.parent = xpPiece.transform;
+		frontFace.transform.localPosition = new Vector3(0, 0, 0);
+		frontFace.transform.localEulerAngles = Vector3.zero;
+		frontFace.transform.localScale = Vector3.one;
+		MeshFilter frontFilter = frontFace.AddComponent<MeshFilter>();
+		MeshRenderer frontRenderer = frontFace.AddComponent<MeshRenderer>();
+		frontFilter.mesh = piece;
+		frontRenderer.material = cardboardMaterial;
+
+		backFace.transform.parent = xpPiece.transform;
+		backFace.transform.localPosition = new Vector3(0, 0, cardboardWidth);
+		backFace.transform.localEulerAngles = Vector3.zero;
+		backFace.transform.localScale = Vector3.one;
+		MeshFilter frontFilter_back = backFace.AddComponent<MeshFilter>();
+		MeshRenderer frontRenderer_back = backFace.AddComponent<MeshRenderer>();
+		frontFilter_back.mesh = pieceInv;
+		frontRenderer_back.material = cardboardMaterial;
+
+		side.transform.parent = xpPiece.transform;
+		side.transform.localPosition = new Vector3(0, 0, 0);
+		side.transform.localEulerAngles = Vector3.zero;
+		side.transform.localScale = Vector3.one;
+		MeshFilter frontFilter_side = side.AddComponent<MeshFilter>();
+		MeshRenderer frontRenderer_side = side.AddComponent<MeshRenderer>();
+		frontFilter_side.mesh = boundary;
+		frontRenderer_side.material = cardboardSideMaterial;
+
+		// Set xp collider and add random force
+		xpCollider.sharedMesh = null;
+		xpCollider.sharedMesh = frontFilter_side.mesh;
+
+		// set debris center for particle effect
+		Vector3 cog = Vector3.zero;
+		foreach (Vector3 v in boundary.vertices)
+		{
+			cog += v;
+		}
+		cog /= boundary.vertexCount;
+		xpBodyControlScript.debrisCenter = cog;
+
+		// deactivate the piece
+		xpPiece.SetActive(false);
+		myPieces.Add(xpPiece);
+
 	}
 
     private void GenerateMyCardboard(int _numPieces)
@@ -49,16 +168,6 @@ public class CardboardDestroyer : MonoBehaviour
 		}
 		Mesh cutMesh = frontFaceChild.GetComponent<MeshFilter>().mesh;
 		List<Mesh> pieces = CutterMesh.RecursiveCutting(cutMesh, _numPieces, new Vector3(0, 0, 1).normalized);
-		Transform pieceContainer = null;
-		if (ArenaController.Instance != null)
-		{
-			pieceContainer = ArenaController.Instance.cardboardPieceContainer;
-		}
-		if (pieceContainer == null)
-		{
-			Debug.Log("no cardboard piece container found!");
-			pieceContainer = GameObject.Find("Cardboard Container").transform;
-		}
 		foreach (Mesh piece in pieces)
 		{
 			if (piece.vertexCount < 3)
@@ -125,7 +234,7 @@ public class CardboardDestroyer : MonoBehaviour
 
 	public void SpawnDestroyedCardboard(int targetNumPieces, Vector3 killingKnockback, float _mass = 1.0f)
     {
-		if (targetNumPieces != numPieces || myPieces.Count == 0)
+		if (targetNumPieces != numPieces || !preProcessingDone)
 		{
 			foreach (GameObject old_piece in myPieces)
 			{
@@ -149,6 +258,12 @@ public class CardboardDestroyer : MonoBehaviour
 			xpBody.AddForce(force, ForceMode.Force);
 			xpBody.AddTorque(forceIntensity * (UnityEngine.Random.onUnitSphere), ForceMode.Force);
 		}
+		if (igeneratedlastframe)
+		{
+			preComputationSlotFree = true;
+			igeneratedlastframe = false;
+			return;
+		};
 		transform.gameObject.SetActive(false);
 		return;
     }

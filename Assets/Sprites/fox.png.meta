@@ -117,8 +117,8 @@ TextureImporter:
         y: 637
         width: 237
         height: 350
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 9
+      pivot: {x: 0.92272246, y: 0.048616245}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -138,8 +138,8 @@ TextureImporter:
         y: 634
         width: 166
         height: 388
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 9
+      pivot: {x: 0.43809986, y: 0.046478745}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -159,8 +159,8 @@ TextureImporter:
         y: 632
         width: 251
         height: 370
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 9
+      pivot: {x: 0.15714559, y: 0.05565829}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -180,8 +180,8 @@ TextureImporter:
         y: 565
         width: 319
         height: 470
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 9
+      pivot: {x: 0.04501563, y: 0.070947394}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -201,8 +201,8 @@ TextureImporter:
         y: 610
         width: 266
         height: 358
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 9
+      pivot: {x: 0.050934527, y: 0.08022986}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -222,8 +222,8 @@ TextureImporter:
         y: 287
         width: 446
         height: 279
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 9
+      pivot: {x: 0.07089815, y: 0.51381147}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -243,8 +243,8 @@ TextureImporter:
         y: 28
         width: 188
         height: 410
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 9
+      pivot: {x: 0.15156588, y: 0.08334492}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []

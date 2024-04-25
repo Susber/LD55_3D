@@ -47,7 +47,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   plantSprites:
-  - {fileID: -1474915506, guid: 6964b82c84907e943b8107559d1ea443, type: 3}
+  - {fileID: -1418013133, guid: 6964b82c84907e943b8107559d1ea443, type: 3}
   - {fileID: 1630359695, guid: 6964b82c84907e943b8107559d1ea443, type: 3}
   spawnOdds: 
 --- !u!65 &7021762264560830568
