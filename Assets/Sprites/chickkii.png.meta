@@ -113,12 +113,12 @@ TextureImporter:
       name: chickkii_0
       rect:
         serializedVersion: 2
-        x: 734
-        y: 828
+        x: 40
+        y: 248
         width: 124
         height: 165
-      alignment: 9
-      pivot: {x: 0.38929158, y: 0.08400583}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -134,12 +134,12 @@ TextureImporter:
       name: chickkii_1
       rect:
         serializedVersion: 2
-        x: 930
-        y: 831
+        x: 236
+        y: 251
         width: 150
         height: 170
-      alignment: 9
-      pivot: {x: 0.49346313, y: 0.05586512}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -155,12 +155,12 @@ TextureImporter:
       name: chickkii_2
       rect:
         serializedVersion: 2
-        x: 724
-        y: 611
+        x: 30
+        y: 31
         width: 127
         height: 169
-      alignment: 9
-      pivot: {x: 0.37646532, y: 0.05323674}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -176,12 +176,12 @@ TextureImporter:
       name: chickkii_3
       rect:
         serializedVersion: 2
-        x: 945
-        y: 617
+        x: 251
+        y: 37
         width: 148
         height: 172
-      alignment: 9
-      pivot: {x: 0.31448942, y: 0.049627613}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []

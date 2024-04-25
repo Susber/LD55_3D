@@ -113,8 +113,8 @@ TextureImporter:
       name: coins_0
       rect:
         serializedVersion: 2
-        x: 738
-        y: 825
+        x: 54
+        y: 224
         width: 103
         height: 90
       alignment: 0
@@ -134,8 +134,8 @@ TextureImporter:
       name: coins_1
       rect:
         serializedVersion: 2
-        x: 928
-        y: 845
+        x: 244
+        y: 244
         width: 101
         height: 75
       alignment: 0
@@ -155,8 +155,8 @@ TextureImporter:
       name: coins_2
       rect:
         serializedVersion: 2
-        x: 1117
-        y: 857
+        x: 433
+        y: 256
         width: 94
         height: 94
       alignment: 0
@@ -176,8 +176,8 @@ TextureImporter:
       name: coins_3
       rect:
         serializedVersion: 2
-        x: 707
-        y: 631
+        x: 23
+        y: 30
         width: 160
         height: 141
       alignment: 0
@@ -197,8 +197,8 @@ TextureImporter:
       name: coins_4
       rect:
         serializedVersion: 2
-        x: 1019
-        y: 639
+        x: 335
+        y: 38
         width: 170
         height: 118
       alignment: 0
@@ -218,8 +218,8 @@ TextureImporter:
       name: coins_5
       rect:
         serializedVersion: 2
-        x: 1195
-        y: 738
+        x: 511
+        y: 137
         width: 129
         height: 114
       alignment: 0

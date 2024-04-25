@@ -5,13 +5,13 @@ import os
 
 images_to_process = [
     "chickkii.png",
-    # "testsheep.png",
-    # "fox.png",
-    # "dog1.png",
-    # "dog2.png",
-    # "Minion.png",
+    "testsheep.png",
+    "fox.png",
+    #"dog1.png",
+    #"dog2.png",
+    #"Minion.png",
     #"flora.png",
-    #"smallObjects.png"
+    "smallObjects.png"
 ]
 
 def extract_bounds_from_meta_file(image_path):
@@ -56,7 +56,9 @@ def get_neighbouring_indices(i, j, shape):
             
 
 def create_uv_remap_and_boundary_texture(image_path):
-    im = np.array(Image.open(image_path))
+    imfile = open(image_path, "rb")
+    im = np.array(Image.open(imfile))
+    imfile.close()
     # flip image for easy processing
     im = np.flip(im, axis=0)
     xs, ys, widths, heights = extract_bounds_from_meta_file(image_path)

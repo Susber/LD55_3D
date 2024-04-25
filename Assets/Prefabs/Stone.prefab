@@ -49,6 +49,7 @@ MonoBehaviour:
   plantSprites:
   - {fileID: -1474915506, guid: 6964b82c84907e943b8107559d1ea443, type: 3}
   - {fileID: 1630359695, guid: 6964b82c84907e943b8107559d1ea443, type: 3}
+  spawnOdds: 
 --- !u!65 &7021762264560830568
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -140,19 +141,35 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6096552135434257274, guid: afd78319d0811af42877c335ce657fe1, type: 3}
       propertyPath: m_SpriteTilingProperty.pivot.x
-      value: 0.47987106
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 6096552135434257274, guid: afd78319d0811af42877c335ce657fe1, type: 3}
       propertyPath: m_SpriteTilingProperty.pivot.y
-      value: 0.17350216
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6096552135434257274, guid: afd78319d0811af42877c335ce657fe1, type: 3}
+      propertyPath: m_SpriteTilingProperty.newSize.x
+      value: 0.54
+      objectReference: {fileID: 0}
+    - target: {fileID: 6096552135434257274, guid: afd78319d0811af42877c335ce657fe1, type: 3}
+      propertyPath: m_SpriteTilingProperty.newSize.y
+      value: 0.68
       objectReference: {fileID: 0}
     - target: {fileID: 6096552135434257274, guid: afd78319d0811af42877c335ce657fe1, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
-      value: 0.82
+      value: 0.54
       objectReference: {fileID: 0}
     - target: {fileID: 6096552135434257274, guid: afd78319d0811af42877c335ce657fe1, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.y
-      value: 0.91
+      value: 0.68
+      objectReference: {fileID: 0}
+    - target: {fileID: 9157240664416866700, guid: afd78319d0811af42877c335ce657fe1, type: 3}
+      propertyPath: m_Size.x
+      value: 0.54
+      objectReference: {fileID: 0}
+    - target: {fileID: 9157240664416866700, guid: afd78319d0811af42877c335ce657fe1, type: 3}
+      propertyPath: m_Size.y
+      value: 0.68
       objectReference: {fileID: 0}
     - target: {fileID: 9157240664416866700, guid: afd78319d0811af42877c335ce657fe1, type: 3}
       propertyPath: m_Sprite
