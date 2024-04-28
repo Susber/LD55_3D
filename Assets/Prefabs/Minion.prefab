@@ -51,6 +51,7 @@ MonoBehaviour:
   cardboardWidth: 0.1
   CardboardTexScale: 1
   cardboardColor: {r: 0.8113208, g: 0.8113208, b: 0.8113208, a: 0}
+  numPieces: 5
 --- !u!1 &2803500051409867777
 GameObject:
   m_ObjectHideFlags: 0
@@ -103,6 +104,7 @@ MonoBehaviour:
   turntransform: {fileID: 7313498011230942275}
   invertDirection: 1
   life: 5
+  max_life: 100
   coins: 1
   pushKnockback: 1000
   currentangle: 0
@@ -219,6 +221,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7869340404830290835}
     m_Modifications:
+    - target: {fileID: 5146438726228270502, guid: 6f7e979114f64b94a838456a28e48c32, type: 3}
+      propertyPath: DoubleSided
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5146438726228270502, guid: 6f7e979114f64b94a838456a28e48c32, type: 3}
+      propertyPath: CardboardFaceMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: 6399dcf4b1625924f91a7456bcb5eb62, type: 2}
     - target: {fileID: 5286886440268558435, guid: 6f7e979114f64b94a838456a28e48c32, type: 3}
       propertyPath: m_Name
       value: renderer
@@ -283,6 +293,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 45eba33b5967f534c905138a9f09f599, type: 3}
+    - target: {fileID: 9157240664416866700, guid: 6f7e979114f64b94a838456a28e48c32, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9157240664416866700, guid: 6f7e979114f64b94a838456a28e48c32, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 

@@ -12,6 +12,7 @@ using UnityEngine.XR;
 using Vector2 = UnityEngine.Vector2;
 using Vector3 = UnityEngine.Vector3;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 
 public class ArenaController : MonoBehaviour
@@ -65,10 +66,10 @@ public class ArenaController : MonoBehaviour
     public int maxLevel = 10;
 
     public UpgradeUIComponent upgradeUi;
+    public HealthBar playerHealthBar;
 
-    public Text healthText;
-    public Text moneyText;
-    public Text levelText;
+    public TextMeshProUGUI moneyText;
+    public TextMeshProUGUI levelText;
 
     public int numBigRunes;
     public int numSmallRunes;
@@ -428,7 +429,8 @@ public class ArenaController : MonoBehaviour
             case GameStage.UPGRADE:
                 {
                     upgradeUi.gameObject.SetActive(true);
-                    upgradeUi.UpdateUI();
+					inLevelHud.SetActive(true);
+					upgradeUi.UpdateUI();
                     break;
                 }
         }
@@ -444,9 +446,9 @@ public class ArenaController : MonoBehaviour
 
     public void UpdateHud()
     {
-        healthText.text = "Health: " + PlayerController.Instance.GetHealth();
-        moneyText.text = "Money: " + PlayerController.Instance.coins;
-        levelText.text = "Level: " + (currentLevel + 1) + "/" + maxLevel;
+        playerHealthBar.updateHealthBar(PlayerController.Instance.GetHealth());
+        moneyText.text = "" + PlayerController.Instance.coins;
+        levelText.text = "" + (currentLevel < 9 ? "0" : "") + (currentLevel + 1) + "/" + maxLevel;
     }
 
     public UnitController GetClosestEnemyTo(Vector3 searchCenter)

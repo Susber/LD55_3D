@@ -5,13 +5,14 @@ using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class UpgradeUIComponent : MonoBehaviour
 {
     public int[] stats;
     public GameObject[] uiRows;
 
-    public Text titleText;
+    public TextMeshProUGUI titleText;
     public Text moneyText;
 
     public const int Health = 0;
@@ -33,8 +34,8 @@ public class UpgradeUIComponent : MonoBehaviour
         }
 
         var player = PlayerController.Instance;
-        titleText.text = "Congratulations, you completed level " + ArenaController.Instance.currentLevel + " / " + ArenaController.Instance.maxLevel + "!";
-        moneyText.text = "Money left: " + player.coins;
+        int currLevel = ArenaController.Instance.currentLevel;
+        titleText.text = "Congratulations, you completed level " + (currLevel < 9 ? "0" : "") + currLevel + " / " + ArenaController.Instance.maxLevel + "!";
     }
 
     public void HandleClick(UpgradeButtonComponent button)
