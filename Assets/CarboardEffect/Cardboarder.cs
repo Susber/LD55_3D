@@ -16,7 +16,7 @@ public class Cardboarder : MonoBehaviour
 
 	void Start()
 	{
-		CreateCardboard();
+		RedrawCardboard();
 	}
 
 	private void FindAndDestroyChild(string name)
@@ -26,7 +26,9 @@ public class Cardboarder : MonoBehaviour
 		{
 			// Debug.Log("Found object " + c.ToString());
 			Destroy(c.gameObject);
+			return;
 		}
+		// Debug.Log("CARDBOARD DESTROY OLD FAILED");
 	}
 
 	private void CreateCardboard()
@@ -199,6 +201,7 @@ public class Cardboarder : MonoBehaviour
 		// Set material
 		if (CardboardFaceMaterial != null)
 			rend.sharedMaterial = CardboardFaceMaterial;
+		return; // material code is shit
 		rend.sharedMaterial.color = FaceFillColor;
 		float materialTilingRatio = 1f;
 		float xTiling = (maxX - minX) * materialTilingRatio;
