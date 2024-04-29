@@ -18,7 +18,6 @@ public class CardboardDestroyer : MonoBehaviour
     public Material cardboardSideMaterial;
     public float cardboardWidth = 0.1f;
 	public float CardboardTexScale = 1f;
-	public Color cardboardColor;
 
 	public PrecomputedCBPieces myPrecomputedPieces;
 	private Transform pieceContainer = null;
