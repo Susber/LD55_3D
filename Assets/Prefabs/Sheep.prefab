@@ -185,7 +185,7 @@ MonoBehaviour:
   cardboardWidth: 0.1
   CardboardTexScale: 1
   cardboardColor: {r: 0.764151, g: 0.764151, b: 0.764151, a: 0}
-  numPieces: 5
+  myPrecomputedPieces: {fileID: 11400000, guid: 4357cc27562e33540a387cdea4780f37, type: 2}
 --- !u!1001 &6814327843858055700
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -255,16 +255,20 @@ PrefabInstance:
       value: 
       objectReference: {fileID: -1338262928, guid: d157807d7d3a7c34597bc46c23d47cb7, type: 3}
     - target: {fileID: 9157240664416866700, guid: 6f7e979114f64b94a838456a28e48c32, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9157240664416866700, guid: 6f7e979114f64b94a838456a28e48c32, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 7392cfe0657957240b1dfd6b58a1dc76, type: 2}
     - target: {fileID: 9221801291842902545, guid: 6f7e979114f64b94a838456a28e48c32, type: 3}
       propertyPath: m_SpriteTilingProperty.pivot.x
-      value: 0.5
+      value: 0.5205637
       objectReference: {fileID: 0}
     - target: {fileID: 9221801291842902545, guid: 6f7e979114f64b94a838456a28e48c32, type: 3}
       propertyPath: m_SpriteTilingProperty.pivot.y
-      value: 0.5
+      value: 0.07313197
       objectReference: {fileID: 0}
     - target: {fileID: 9221801291842902545, guid: 6f7e979114f64b94a838456a28e48c32, type: 3}
       propertyPath: m_SpriteTilingProperty.border.x

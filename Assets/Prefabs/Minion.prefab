@@ -51,7 +51,7 @@ MonoBehaviour:
   cardboardWidth: 0.1
   CardboardTexScale: 1
   cardboardColor: {r: 0.8113208, g: 0.8113208, b: 0.8113208, a: 0}
-  numPieces: 5
+  myPrecomputedPieces: {fileID: 11400000, guid: bb35ea44766b53346a4b6782e5a3c6d0, type: 2}
 --- !u!1 &2803500051409867777
 GameObject:
   m_ObjectHideFlags: 0

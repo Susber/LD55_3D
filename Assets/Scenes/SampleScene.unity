@@ -6148,7 +6148,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -281.7, y: -7.700012}
+  m_AnchoredPosition: {x: -281.7, y: -7.7000275}
   m_SizeDelta: {x: 287.8695, y: 64.0546}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &190138192
@@ -8028,7 +8028,7 @@ MonoBehaviour:
   cardboardWidth: 0.1
   CardboardTexScale: 1
   cardboardColor: {r: 0.764151, g: 0.764151, b: 0.764151, a: 0}
-  numPieces: 5
+  myPrecomputedPieces: {fileID: 0}
 --- !u!95 &262271829
 Animator:
   serializedVersion: 5
@@ -10224,7 +10224,7 @@ MonoBehaviour:
   cardboardWidth: 0.1
   CardboardTexScale: 1
   cardboardColor: {r: 0.764151, g: 0.764151, b: 0.764151, a: 0}
-  numPieces: 5
+  myPrecomputedPieces: {fileID: 0}
 --- !u!95 &324669368
 Animator:
   serializedVersion: 5
@@ -15540,7 +15540,7 @@ MonoBehaviour:
   cardboardWidth: 0.1
   CardboardTexScale: 1
   cardboardColor: {r: 0.8207547, g: 0.8207547, b: 0.8207547, a: 0}
-  numPieces: 5
+  myPrecomputedPieces: {fileID: 11400000, guid: 82b4be437af28b14f81578ab74ae963e, type: 2}
 --- !u!1001 &488998119
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -27486,7 +27486,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -6.9000244, y: -7.700012}
+  m_AnchoredPosition: {x: -6.9000244, y: -7.7000275}
   m_SizeDelta: {x: 287.8695, y: 64.0546}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &898517152
@@ -29575,7 +29575,7 @@ MonoBehaviour:
   cardboardWidth: 0.1
   CardboardTexScale: 1
   cardboardColor: {r: 0.764151, g: 0.764151, b: 0.764151, a: 0}
-  numPieces: 5
+  myPrecomputedPieces: {fileID: 0}
 --- !u!95 &962150900
 Animator:
   serializedVersion: 5
@@ -29833,7 +29833,7 @@ MonoBehaviour:
   cardboardWidth: 0.1
   CardboardTexScale: 1
   cardboardColor: {r: 0.764151, g: 0.764151, b: 0.764151, a: 0}
-  numPieces: 5
+  myPrecomputedPieces: {fileID: 0}
 --- !u!95 &962852099
 Animator:
   serializedVersion: 5
@@ -50204,7 +50204,7 @@ MonoBehaviour:
   cardboardWidth: 0.1
   CardboardTexScale: 1
   cardboardColor: {r: 0.764151, g: 0.764151, b: 0.764151, a: 0}
-  numPieces: 5
+  myPrecomputedPieces: {fileID: 0}
 --- !u!95 &1646870570
 Animator:
   serializedVersion: 5

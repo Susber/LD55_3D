@@ -55,7 +55,7 @@ MonoBehaviour:
   cardboardWidth: 0.1
   CardboardTexScale: 1
   cardboardColor: {r: 0.7924528, g: 0.7924528, b: 0.7924528, a: 0}
-  numPieces: 5
+  myPrecomputedPieces: {fileID: 11400000, guid: d8b4664bcafb5f6409dcf912701a67d6, type: 2}
 --- !u!1 &2938945773274849202
 GameObject:
   m_ObjectHideFlags: 0
@@ -335,11 +335,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4078777312041198230, guid: d6d0103cdf318944f81fc4e39247186d, type: 3}
       propertyPath: m_SpriteTilingProperty.pivot.x
-      value: 0.5
+      value: 0.050934527
       objectReference: {fileID: 0}
     - target: {fileID: 4078777312041198230, guid: d6d0103cdf318944f81fc4e39247186d, type: 3}
       propertyPath: m_SpriteTilingProperty.pivot.y
-      value: 0.5
+      value: 0.08022986
       objectReference: {fileID: 0}
     - target: {fileID: 4078777312041198230, guid: d6d0103cdf318944f81fc4e39247186d, type: 3}
       propertyPath: m_SpriteTilingProperty.newSize.x
@@ -450,11 +450,11 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: c1821549b5af53b4ea240eac3c4c5a32, type: 2}
     - target: {fileID: 4078777312041198230, guid: d6d0103cdf318944f81fc4e39247186d, type: 3}
       propertyPath: m_SpriteTilingProperty.pivot.x
-      value: 0.5
+      value: 0.43809986
       objectReference: {fileID: 0}
     - target: {fileID: 4078777312041198230, guid: d6d0103cdf318944f81fc4e39247186d, type: 3}
       propertyPath: m_SpriteTilingProperty.pivot.y
-      value: 0.5
+      value: 0.046478745
       objectReference: {fileID: 0}
     - target: {fileID: 4078777312041198230, guid: d6d0103cdf318944f81fc4e39247186d, type: 3}
       propertyPath: m_SpriteTilingProperty.newSize.x
@@ -567,6 +567,14 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: c1821549b5af53b4ea240eac3c4c5a32, type: 2}
+    - target: {fileID: 9221801291842902545, guid: 6f7e979114f64b94a838456a28e48c32, type: 3}
+      propertyPath: m_SpriteTilingProperty.pivot.x
+      value: 0.07089815
+      objectReference: {fileID: 0}
+    - target: {fileID: 9221801291842902545, guid: 6f7e979114f64b94a838456a28e48c32, type: 3}
+      propertyPath: m_SpriteTilingProperty.pivot.y
+      value: 0.51381147
+      objectReference: {fileID: 0}
     - target: {fileID: 9221801291842902545, guid: 6f7e979114f64b94a838456a28e48c32, type: 3}
       propertyPath: m_SpriteTilingProperty.newSize.x
       value: 4.46
@@ -738,11 +746,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4078777312041198230, guid: d6d0103cdf318944f81fc4e39247186d, type: 3}
       propertyPath: m_SpriteTilingProperty.pivot.x
-      value: 0.5
+      value: 0.15714559
       objectReference: {fileID: 0}
     - target: {fileID: 4078777312041198230, guid: d6d0103cdf318944f81fc4e39247186d, type: 3}
       propertyPath: m_SpriteTilingProperty.pivot.y
-      value: 0.5
+      value: 0.05565829
       objectReference: {fileID: 0}
     - target: {fileID: 4078777312041198230, guid: d6d0103cdf318944f81fc4e39247186d, type: 3}
       propertyPath: m_SpriteTilingProperty.newSize.x

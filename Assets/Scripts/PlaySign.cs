@@ -22,9 +22,7 @@ public class PlaySign : MonoBehaviour
 
 	private void OnMouseDown()
 	{
-        Debug.Log("Mouse clicked on start sign");
 		CardboardDestroyer myDestroyer = transform.GetComponentInChildren<CardboardDestroyer>();
-		Debug.Log(myDestroyer);
 		started = true;
 		myDestroyer.SpawnDestroyedCardboard(20, 100 * Vector3.forward);
 	}

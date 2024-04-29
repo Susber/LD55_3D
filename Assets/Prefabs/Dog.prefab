@@ -54,6 +54,7 @@ MonoBehaviour:
   turntransform: {fileID: 5608928395515774256}
   invertDirection: 0
   life: 20
+  max_life: 100
   coins: 3
   pushKnockback: 1500
   currentangle: 0
@@ -216,6 +217,7 @@ MonoBehaviour:
   cardboardWidth: 0.1
   CardboardTexScale: 1
   cardboardColor: {r: 0.8584906, g: 0.8584906, b: 0.8584906, a: 0}
+  myPrecomputedPieces: {fileID: 11400000, guid: d7d7b3b4213eb234a8fcd1e867908671, type: 2}
 --- !u!1 &5616468548750240602
 GameObject:
   m_ObjectHideFlags: 0
@@ -267,6 +269,7 @@ MonoBehaviour:
   cardboardWidth: 0.1
   CardboardTexScale: 1
   cardboardColor: {r: 0.8396226, g: 0.8396226, b: 0.8396226, a: 0}
+  myPrecomputedPieces: {fileID: 11400000, guid: 81704676f93d29143950781d28165560, type: 2}
 --- !u!1 &5884058744004297811
 GameObject:
   m_ObjectHideFlags: 0
@@ -361,6 +364,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: ab2e1fc6071544ffcb520ac0485e3f11, type: 3}
     - target: {fileID: 9157240664416866700, guid: 6f7e979114f64b94a838456a28e48c32, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9157240664416866700, guid: 6f7e979114f64b94a838456a28e48c32, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 8255454e57d5ce44aa6f054bcaae5fd0, type: 2}
@@ -454,6 +461,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: eaa38bd18b48646048ead0fe5e862ef6, type: 3}
+    - target: {fileID: 9157240664416866700, guid: 6f7e979114f64b94a838456a28e48c32, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9157240664416866700, guid: 6f7e979114f64b94a838456a28e48c32, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
