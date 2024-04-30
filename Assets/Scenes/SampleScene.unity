@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 410087040}
-  m_IndirectSpecularColor: {r: 0.6659458, g: 0.88264495, b: 0.88569474, a: 1}
+  m_IndirectSpecularColor: {r: 0.66594875, g: 0.88264585, b: 0.88569534, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -6148,7 +6148,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -281.7, y: -7.699936}
+  m_AnchoredPosition: {x: -281.7, y: -7.699951}
   m_SizeDelta: {x: 287.8695, y: 64.0546}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &190138192
@@ -8027,7 +8027,6 @@ MonoBehaviour:
   cardboardSideMaterial: {fileID: 2100000, guid: 34000f52b6e8f9f41960347ae81e0859, type: 2}
   cardboardWidth: 0.1
   CardboardTexScale: 1
-  cardboardColor: {r: 0.764151, g: 0.764151, b: 0.764151, a: 0}
   myPrecomputedPieces: {fileID: 0}
 --- !u!95 &262271829
 Animator:
@@ -10223,7 +10222,6 @@ MonoBehaviour:
   cardboardSideMaterial: {fileID: 2100000, guid: 34000f52b6e8f9f41960347ae81e0859, type: 2}
   cardboardWidth: 0.1
   CardboardTexScale: 1
-  cardboardColor: {r: 0.764151, g: 0.764151, b: 0.764151, a: 0}
   myPrecomputedPieces: {fileID: 0}
 --- !u!95 &324669368
 Animator:
@@ -14071,7 +14069,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -3.760315, y: 0}
+  m_AnchoredPosition: {x: -3.760254, y: 0}
   m_SizeDelta: {x: 63.6864, y: 2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &432918406
@@ -14961,7 +14959,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 983cd4da9468e48c9b1eed4b90d56175, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stats: 030000000000000000000000000000000000000000000000
+  stats: 030000000100000001000000010000000100000001000000
   uiRows:
   - {fileID: 2122375170}
   - {fileID: 105928549}
@@ -15539,7 +15537,6 @@ MonoBehaviour:
   cardboardSideMaterial: {fileID: 2100000, guid: 34000f52b6e8f9f41960347ae81e0859, type: 2}
   cardboardWidth: 0.1
   CardboardTexScale: 1
-  cardboardColor: {r: 0.8207547, g: 0.8207547, b: 0.8207547, a: 0}
   myPrecomputedPieces: {fileID: 11400000, guid: 82b4be437af28b14f81578ab74ae963e, type: 2}
 --- !u!1001 &488998119
 PrefabInstance:
@@ -27486,7 +27483,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -6.9000244, y: -7.699936}
+  m_AnchoredPosition: {x: -6.9000244, y: -7.699951}
   m_SizeDelta: {x: 287.8695, y: 64.0546}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &898517152
@@ -29574,7 +29571,6 @@ MonoBehaviour:
   cardboardSideMaterial: {fileID: 2100000, guid: 34000f52b6e8f9f41960347ae81e0859, type: 2}
   cardboardWidth: 0.1
   CardboardTexScale: 1
-  cardboardColor: {r: 0.764151, g: 0.764151, b: 0.764151, a: 0}
   myPrecomputedPieces: {fileID: 0}
 --- !u!95 &962150900
 Animator:
@@ -29832,7 +29828,6 @@ MonoBehaviour:
   cardboardSideMaterial: {fileID: 2100000, guid: 34000f52b6e8f9f41960347ae81e0859, type: 2}
   cardboardWidth: 0.1
   CardboardTexScale: 1
-  cardboardColor: {r: 0.764151, g: 0.764151, b: 0.764151, a: 0}
   myPrecomputedPieces: {fileID: 0}
 --- !u!95 &962852099
 Animator:
@@ -50276,7 +50271,6 @@ MonoBehaviour:
   cardboardSideMaterial: {fileID: 2100000, guid: 34000f52b6e8f9f41960347ae81e0859, type: 2}
   cardboardWidth: 0.1
   CardboardTexScale: 1
-  cardboardColor: {r: 0.764151, g: 0.764151, b: 0.764151, a: 0}
   myPrecomputedPieces: {fileID: 0}
 --- !u!95 &1646870570
 Animator:
@@ -55301,6 +55295,7 @@ Transform:
   - {fileID: 1846789867}
   - {fileID: 2139368254}
   - {fileID: 600279396}
+  - {fileID: 1171500197}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1827268864

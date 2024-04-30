@@ -388,7 +388,6 @@ public class ArenaController : MonoBehaviour
                     var edges = runeType.MakeEdges();
                     tutorialRune = ActualSpawnRune(
                         this.transform, this.transform.position, edges, new RuneController.TutorialRuneEffect());
-                    Debug.Log("spawn rune");
                     break;
                 }
             case GameStage.IN_LEVEL:
