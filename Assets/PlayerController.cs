@@ -108,6 +108,7 @@ public class PlayerController : MonoBehaviour
                     if (Input.GetKeyDown(KeyCode.K))
                     {
                         coins += 10;
+                        ArenaController.Instance.UpdateHud();
                     }
                     
                     if (Input.GetKeyDown(KeyCode.U))
