@@ -171,7 +171,7 @@ public class ArenaController : MonoBehaviour
     public Vector3 RandomPosOnArena(float distanceToBorder)
     {
         var origin = transform.position - this.arenaRadius + new Vector3(distanceToBorder, 0, distanceToBorder);
-        var radius = arenaRadius - 2 * new Vector3(distanceToBorder, 0, distanceToBorder);
+        var radius = arenaRadius - new Vector3(distanceToBorder, 0, distanceToBorder);
         var vec = origin + new Vector3((float)rnd.NextDouble() * radius.x * 2, 0, (float)rnd.NextDouble() * radius.z * 2);
         return vec;
     }
