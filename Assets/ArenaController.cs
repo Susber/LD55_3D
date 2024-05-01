@@ -261,7 +261,7 @@ public class ArenaController : MonoBehaviour
                         {
                             currentLevel += 1;
                             // todo, if level is >= 10, then play win screen!
-                            if (currentLevel >= 10)
+                            if (currentLevel >= maxLevel)
                             {
                                 SceneManager.LoadScene(4);
                             }

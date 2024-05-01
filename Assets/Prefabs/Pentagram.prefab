@@ -81,6 +81,6 @@ MonoBehaviour:
   startedDrawing: 0
   needsToStartAtEnd: 0
   lineSegments: []
-  maxPrepareTime: 1
+  maxPrepareTime: 0.1
   runeScale: 0
   currentState: 0

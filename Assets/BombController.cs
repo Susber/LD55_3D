@@ -18,7 +18,12 @@ public class BombController : MonoBehaviour
 
     public GameObject[] bombStates;
 
-    public void Init(float bombScale, float maxTimeToExplode)
+	private void Start()
+	{
+		SetStage(0);
+	}
+
+	public void Init(float bombScale, float maxTimeToExplode)
     {
         this.bombScale = bombScale;
         this.maxTimeToExplode = maxTimeToExplode;

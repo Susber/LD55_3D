@@ -160,3 +160,5 @@ MonoBehaviour:
   inactiveColor: {r: 0, g: 0, b: 0, a: 0}
   activeColor: {r: 1, g: 0, b: 0, a: 1}
   drawThreshold: 1.5
+  drawnParticlesPrefab: {fileID: 8032894993613361894, guid: 3f9d363a8d4880b478928edea32ae200, type: 3}
+  particlesSystemsPerMeter: 1.2

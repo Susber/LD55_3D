@@ -100,42 +100,41 @@ public class PlayerController : MonoBehaviour
 					{
 						gun.ChargeWithRockets(5);
 					}
+
+					if (Input.GetKey(KeyCode.R))
+					{
+						foreach (var enemy in ArenaController.Instance.enemyContainer.GetComponentsInChildren<UnitController>())
+						{
+							enemy.Damage(1000f, Vector3.zero);
+						}
+					}
+
 				}
-                if (ArenaController.Instance.currentStage == ArenaController.GameStage.UPGRADE)
-                {
-                    break;
-                }
 			    Vector3 direction = new Vector3(0, 0, 0);
-                if (Input.GetKey(KeyCode.W))
+                if (ArenaController.Instance.currentStage != ArenaController.GameStage.UPGRADE)
                 {
-                    direction += new Vector3(0, 0, 1);
-                }
-        
-                if (Input.GetKey(KeyCode.A))
-                {
-                    direction += -new Vector3(1, 0, 0);
-                }
-        
-                if (Input.GetKey(KeyCode.D))
-                {
-                    direction += new Vector3(1, 0, 0);
-                }
-        
-                if (Input.GetKey(KeyCode.S))
-                {
-                    direction += -new Vector3(0, 0, 1);
-                }
-        
+					if (Input.GetKey(KeyCode.W))
+					{
+						direction += new Vector3(0, 0, 1);
+					}
+
+					if (Input.GetKey(KeyCode.A))
+					{
+						direction += -new Vector3(1, 0, 0);
+					}
+
+					if (Input.GetKey(KeyCode.D))
+					{
+						direction += new Vector3(1, 0, 0);
+					}
+
+					if (Input.GetKey(KeyCode.S))
+					{
+						direction += -new Vector3(0, 0, 1);
+					}
+				}
                 direction = Vector3.Normalize(direction);
                 Walk(direction * speed, 0.8f);
-        
-                if (Input.GetKey(KeyCode.R))
-                {
-                    foreach (var enemy in ArenaController.Instance.enemyContainer.GetComponentsInChildren<UnitController>())
-                    {
-                        enemy.Damage(1000f, Vector3.zero);
-                    }
-                }
                 break;
             }
             case PlayerState.DEAD:

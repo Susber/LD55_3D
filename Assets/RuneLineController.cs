@@ -22,7 +22,22 @@ public class RuneLineController : MonoBehaviour
 
     public float drawThreshold;
 
-    void Update()
+    public GameObject drawnParticlesPrefab;
+    public float particlesSystemsPerMeter = 2.0f;
+    private int numParticles;
+    private List<RuneParticleController> drawnParticles;
+
+	private void Start()
+	{
+        numParticles = Mathf.CeilToInt( (right - left).magnitude * particlesSystemsPerMeter );
+		drawnParticles = new List<RuneParticleController>();
+        for (int i = 0; i < numParticles; i++)
+        {
+            drawnParticles.Add(null);
+        }
+	}
+
+	void Update()
     {
         UpdateGradient();
     }
@@ -74,7 +89,9 @@ public class RuneLineController : MonoBehaviour
         }
 
         UpdateGradient();
-    }
+        UpdateDrawParticles();
+
+	}
 
     public bool IsComplete()
     {
@@ -99,5 +116,64 @@ public class RuneLineController : MonoBehaviour
         newGradient.mode = GradientMode.Fixed;
         newGradient.SetKeys(colorList, colorAlphasList);
         lineRenderer.colorGradient = newGradient;
+    }
+
+    private void TrySpawnParticles(int index)
+    {
+        if (drawnParticles[index] == null) 
+        {
+			GameObject currParticles = Instantiate(drawnParticlesPrefab, Vector3.Lerp(left, right, (float)(index) / ((float)(numParticles - 1))), Quaternion.identity);
+			currParticles.transform.parent = rune.transform;
+            drawnParticles[index] = currParticles.GetComponent<RuneParticleController>();
+		}
+    }
+
+	public void UpdateDrawParticles()
+	{
+		var complete = IsComplete();
+		
+		if (complete)
+        {
+            for(int i = 0; i < numParticles; i++) { TrySpawnParticles(i); };
+			foreach (RuneParticleController pc in drawnParticles)
+			{
+				pc.ActivateDrawParticles();
+			}
+			return;
+        }
+        // activate left part
+        int l_idx = 0;
+        while (l_idx < Mathf.FloorToInt(leftAlphaActive * (numParticles - 1)))
+        {
+            TrySpawnParticles(l_idx);
+            drawnParticles[l_idx].ActivateDrawParticles();
+            l_idx++;
+        }
+
+		// activate right part
+		int r_idx = numParticles  - 1;
+		while (r_idx > Mathf.CeilToInt(rightAlphaActive * (numParticles - 1)))
+		{
+            TrySpawnParticles(r_idx);
+			drawnParticles[r_idx].ActivateDrawParticles();
+			r_idx--;
+		}
+
+	}
+
+    public void PLayParticleBurst()
+    {
+		for (int i = 0; i < numParticles; i++) { TrySpawnParticles(i); };
+		foreach (RuneParticleController pc in drawnParticles)
+		{
+            pc.ActivateDrawParticles();
+			pc.StopDrawParticleEmission();
+            pc.ActivateBurst();
+		}
+	}
+
+    public void HideLine()
+    {
+        lineRenderer.enabled = false;
     }
 }

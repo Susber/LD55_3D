@@ -18,6 +18,7 @@ public class RuneController : MonoBehaviour
     private float prepareTimeLeft = 0;
     public float maxPrepareTime = 1;
     private bool summonEffectFinished = false;
+    private float waitForDestroy = 2.0f;
 
     public float runeScale;
 
@@ -49,7 +50,8 @@ public class RuneController : MonoBehaviour
         DRAWING,
         PREPARE_SUMMON,
         SUMMONING,
-        FINISHED
+        FINISHED,
+        DESTROY_ME
     }
 
     public interface SummonEffect
@@ -287,18 +289,26 @@ public class RuneController : MonoBehaviour
         switch (newState)
         {
             case RuneState.PREPARE_SUMMON:
-                if (AudioManager.Instance is not null)
+				// Particle Burst
+				foreach (var segment in lineSegments)
+				{
+					segment.PLayParticleBurst();
+                    segment.HideLine();
+				}
+				if (AudioManager.Instance is not null)
                     AudioManager.Instance.PlaySoundPentagram();
                 prepareTimeLeft = maxPrepareTime;
                 break;
             case RuneState.SUMMONING:
-                if (AudioManager.Instance is not null)
+				if (AudioManager.Instance is not null)
                     AudioManager.Instance.PlaySoundDeath();
                 summonEffectFinished = false;
                 summonEffect.PlayEffect(this);
                 break; 
             case RuneState.FINISHED:
-
+                waitForDestroy = 2.0f;
+				break;
+            case RuneState.DESTROY_ME:
                 Destroy(this.gameObject);
                 break;
         }
@@ -340,8 +350,14 @@ public class RuneController : MonoBehaviour
                     SetState(RuneState.FINISHED);
                 break;
             }
+            case RuneState.FINISHED:
+            {
+                waitForDestroy -= Time.deltaTime;
+                if (waitForDestroy < 0)
+                    SetState(RuneState.DESTROY_ME);
+				break;
+            }
         }
-
     }
 
     public void MaybeDestroyOnWaveBegin()
