@@ -28,6 +28,8 @@ public class IntroSystem : MonoBehaviour
                 SceneManager.LoadScene(1);
             }
             else {
+                if (AudioManager.Instance is not null)
+                    AudioManager.Instance.PlaySoundDestroyEnemy();
                 stories[nextStory].SetActive(true);
                 nextStory++;
             }

@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class AudioManager : MonoBehaviour
 {
@@ -11,11 +12,49 @@ public class AudioManager : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
-            DontDestroyOnLoad(gameObject); 
+            DontDestroyOnLoad(gameObject);
+
+            // Register the SceneLoaded callback
+            SceneManager.sceneLoaded += OnSceneLoaded;
         }
         else if (Instance != this)
         {
             Destroy(gameObject);
+        }
+    }
+
+    private void OnDestroy()
+    {
+        // Make sure to unregister the callback to prevent memory leaks
+        if (Instance == this)
+        {
+            SceneManager.sceneLoaded -= OnSceneLoaded;
+        }
+    }
+
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        // This function is called every time a scene is loaded
+        Debug.Log("Loaded scene: " + scene.name);
+
+        // You can now call any function depending on the scene name
+        if (scene.name == "Menu")
+        {
+            PlaySoundDestroyEnemy();
+            FadeToMenuMusic();
+        }
+        if (scene.name == "SampleScene")
+        {
+            FadeToGameMusic();
+        }
+        if (scene.name == "WinMenu")
+        {
+            AudioManager.Instance.EndMusic();
+            AudioManager.Instance.PlaySoundEnd();
+        }
+        if (scene.name == "LooseMenu")
+        {
+            AudioManager.Instance.EndMusic();
         }
     }
 
@@ -35,7 +74,7 @@ public class AudioManager : MonoBehaviour
 
         // Start with menu music muted and game music playing
         menuMusic.volume = 0;
-        gameMusic.volume = 0.4f;
+        gameMusic.volume = 0;
         menuMusic.Play();
         gameMusic.Play();
     }
