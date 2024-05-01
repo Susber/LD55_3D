@@ -22,7 +22,12 @@ public class PlaySign : MonoBehaviour
 
 	private void OnMouseDown()
 	{
-		CardboardDestroyer myDestroyer = transform.GetComponentInChildren<CardboardDestroyer>();
+        if (AudioManager.Instance is not null)
+		{
+            AudioManager.Instance.PlaySoundDestroyEnemy();
+            AudioManager.Instance.PlaySoundDeath();
+        }
+        CardboardDestroyer myDestroyer = transform.GetComponentInChildren<CardboardDestroyer>();
 		started = true;
 		myDestroyer.SpawnDestroyedCardboard(20, 100 * Vector3.forward);
 	}
