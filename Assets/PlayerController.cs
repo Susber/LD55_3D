@@ -60,7 +60,52 @@ public class PlayerController : MonoBehaviour
         {
             case PlayerState.ALIVE:
             {
-                Vector3 direction = new Vector3(0, 0, 0);
+				//cheats
+				if (Input.GetKey(KeyCode.LeftShift))
+				{
+					if (Input.GetKeyDown(KeyCode.T))
+					{
+						gun.SetGuntype(GunController.Guntype.Rocketlauncher);
+					}
+
+					if (Input.GetKeyDown(KeyCode.Z))
+					{
+						gun.SetGuntype(GunController.Guntype.Shotgun);
+					}
+
+					if (Input.GetKeyDown(KeyCode.K))
+					{
+						coins += 10;
+						ArenaController.Instance.UpdateHud();
+					}
+
+					if (Input.GetKeyDown(KeyCode.U))
+					{
+						ArenaController.Instance.SetStage(ArenaController.GameStage.UPGRADE);
+					}
+
+					if (Input.GetKeyDown(KeyCode.H))
+					{
+						var upgrades = ArenaController.Instance.upgradeUi;
+						upgrades.stats[UpgradeUIComponent.Health] += 10;
+					}
+
+					if (Input.GetKeyDown(KeyCode.M))
+					{
+						MinionController minion = Instantiate(minionPrefab, ArenaController.Instance.friendContainer).GetComponent<MinionController>();
+						minion.Init(3, playerrigidbody.position, 60);
+					}
+
+					if (Input.GetKeyDown(KeyCode.C))
+					{
+						gun.ChargeWithRockets(5);
+					}
+				}
+                if (ArenaController.Instance.currentStage == ArenaController.GameStage.UPGRADE)
+                {
+                    break;
+                }
+			    Vector3 direction = new Vector3(0, 0, 0);
                 if (Input.GetKey(KeyCode.W))
                 {
                     direction += new Vector3(0, 0, 1);
@@ -91,49 +136,6 @@ public class PlayerController : MonoBehaviour
                         enemy.Damage(1000f, Vector3.zero);
                     }
                 }
-        
-                //cheats
-                if (Input.GetKey(KeyCode.LeftControl))
-                {
-                    if (Input.GetKeyDown(KeyCode.T))
-                    {
-                        gun.SetGuntype(GunController.Guntype.Rocketlauncher);
-                    }
-        
-                    if (Input.GetKeyDown(KeyCode.Z))
-                    {
-                        gun.SetGuntype(GunController.Guntype.Shotgun);
-                    }
-                    
-                    if (Input.GetKeyDown(KeyCode.K))
-                    {
-                        coins += 10;
-                        ArenaController.Instance.UpdateHud();
-                    }
-                    
-                    if (Input.GetKeyDown(KeyCode.U))
-                    {
-                        ArenaController.Instance.SetStage(ArenaController.GameStage.UPGRADE);
-                    }
-        
-                    if (Input.GetKeyDown(KeyCode.H))
-                    {
-                        var upgrades = ArenaController.Instance.upgradeUi;
-                        upgrades.stats[UpgradeUIComponent.Health] += 10;
-                    }
-                    
-                    if (Input.GetKeyDown(KeyCode.M))
-                    {
-                        MinionController minion = Instantiate(minionPrefab, ArenaController.Instance.friendContainer).GetComponent<MinionController>();
-                        minion.Init(3,playerrigidbody.position,60);
-                    }
-                    
-                    if (Input.GetKeyDown(KeyCode.C))
-                    {
-                        gun.ChargeWithRockets(5);
-                    }
-                }
-
                 break;
             }
             case PlayerState.DEAD:

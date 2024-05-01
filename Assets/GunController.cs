@@ -119,8 +119,11 @@ public class GunController : MonoBehaviour
     }
     public void TryShootAt(Vector3 worldpos)
     {
-        
-        if(timeout <= 0){
+		if (ArenaController.Instance.currentStage == ArenaController.GameStage.UPGRADE)
+		{
+			return;
+		}
+		if (timeout <= 0){
             if (AudioManager.Instance is not null) { AudioManager.Instance.PlaySoundGun(); };
             myLight.enabled = true;
             light_timer = 0;
